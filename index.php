@@ -1,39 +1,50 @@
 <?php
-  include_once "dtb/dtb.php";
-
-  if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $id = $_POST['uid'];
-    $pass = $_POST['pwd'];
-      $sql = "SELECT ID FROM teach WHERE uid = '$id' AND pwd = '$pass'";
-      echo $sql;
-      $result = mysqli_query($conn, $sql);
-      if(mysqli_num_rows($result)>0){
-        setcookie('STS', $id, time()+3600, '/');
-        header("Location: panel.php");
-        die();
-      } else {
-        $error = 'Неправильно введены данные';
-      }
-
-
+include_once "dtb/dtb.php";
+$ip=$_SERVER['REMOTE_ADDR'];
+echo "IP address= $ip";
+$sql = "SELECT * FROM connectons WHERE ip = '$ip';";
+$result = mysqli_query($conn, $sql);
+if(mysqli_num_rows($result) > 0){
+    
+    $row = $result->fetch_assoc();
+    $status = $row['status'];
+    $uid = $row['student_uid'];
+    echo ' Уже есть   ' . $status;
+} else {
+    if(!isset($uid)){
+        $uid = '';
     }
- ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="css/main.css">
-    <meta charset="utf-8">
-    <title>Панель управления преподавателя</title>
-  </head>
-  <body>
-    <section class="main">
-      <form class="login" action="index.php" method="post">
-        <input type="text" name="uid" placeholder="Логин">
-        <input type="password" name="pwd" placeholder="Пароль">
-        <input type="submit" name="" value="Войти">
-        <?php if(isset($error)){echo"<p>$error</p>";} ?>
-      </form>
+    $sql = "INSERT INTO connectons (ip, student_uid) VALUES ('$ip', '$uid') ;";
+    $insert = mysqli_query($conn, $sql);
+}
 
-    </section>
-  </body>
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СДО</title>
+</head>
+<body>
+    <section class="student-wrapper">
+       
+        <div class="intro">
+        <h2> <b>НАПИШИТЕ ВЫБОР МОДУЛЯ </b> </h2>
+        </div>
+        <marquee direction="right"><h1>модуль....</h1></marquee>
+
+        
+        <div class="student-info">
+        <?php  if($status == true){ echo "Вы подтверждены как: $uid";    }else{ echo "Ожидание подтверждения"; } ?>
+        </div>
+
+
+    </section>  
+
+
+
+</body>
 </html>
