@@ -19,7 +19,7 @@ if(mysqli_num_rows($result) > 0){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@ if(mysqli_num_rows($result) > 0){
 </head>
 <body>
     <section class="student-wrapper">
-      
+
         <div class="intro">
         <h2> <b>НАПИШИТЕ ВЫБОР МОДУЛЯ </b> </h2>
         </div>

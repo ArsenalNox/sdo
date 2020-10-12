@@ -18,7 +18,7 @@
  ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">

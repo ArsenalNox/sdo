@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <link rel="stylesheet" href="css/main.css">
     <meta charset="UTF-8">
@@ -48,6 +48,12 @@
             echo "Пока никого нету";
         }
     ?>
+
+<section>
+  <div class="">
+    <p>Тестовое изменение</p>
+  </div>
+</section>
 
 </body>
 </html>
