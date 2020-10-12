@@ -1,5 +1,17 @@
 <?php
   include_once "dtb/dtb.php";
+  if(isset($_COOKIE['STS'])){
+    $teachid = $_COOKIE['STS'];
+    $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
+    $check = mysqli_query($conn, $checkteach);
+    if(mysqli_num_rows($check) == 0){
+      header("Location: panel-login.php");
+      die();
+    }
+  } else {
+    header("Location: panel-login.php");
+    die();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -14,18 +26,6 @@
 <script src="js/panel.js"></script>
   <section class='student-ip-panel'>
     <?php
-        if(isset($_COOKIE['STS'])){
-          $teachid = $_COOKIE['STS'];
-          $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
-          $check = mysqli_query($conn, $checkteach);
-          if(mysqli_num_rows($check) == 0){
-            header("Location: panel-login.php");
-            die();
-          }
-        } else {
-          header("Location: panel-login.php");
-          die();
-        }
         echo $_COOKIE['STS'];
         $sql = "SELECT * FROM connectons;";
         $result = mysqli_query($conn, $sql);
@@ -42,18 +42,12 @@
                 switch($status){
                     case 0:
                         echo "
-                        <p>
-                        <button onclick='ConfirmStudent($id)'> Подтвердить </button>
-                        $ip : $uid
-                        </p>
+                        <p> <button onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid <p>
                         ";
                         break;
                     case 1:
                         echo "
-                        <p>
-                        <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button>
-                        $ip : $uid
-                        </p>
+                        <p> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid </p>
                         ";
                         break;
                 }
@@ -61,7 +55,6 @@
         } else {
             echo "Пока никого нету";
         }
-
     ?>
   </section>
 
