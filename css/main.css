@@ -31,3 +31,9 @@ body{
   margin: 12px;
   width: fit-content;
 }
+
+.module-wrapper{
+  padding: 1rem;
+  border: 1px solid black;
+  margin: 12px;  
+}

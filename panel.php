@@ -67,7 +67,32 @@
 
 <section class="module-wrapper">
   <div class="module-selector">
-    <p>Тест</p>
+    <h2>Модуль</h2>
+    <p>
+    Выбрать класс для тестирования
+    <?php
+    $groupQuery = "SELECT * FROM group_student;";
+    $result = mysqli_query($conn, $groupQuery);
+    echo "<select id='groups'>";
+    if(mysqli_num_rows($result) > 0){
+      while ($row = mysqli_fetch_assoc($result)) {
+        $group = $row['NAME'];
+        echo "<option> $group </option>";
+      }
+    }
+    echo "</select>";
+    ?>
+    </p>
+    Выберите предмет
+      <?php
+      $sql = "";
+      // создать 2 выпадающих списка для выбора предмета и темы (модуля)
+       ?>
+    <h2>Создать Модуль</h2>
+    <p>
+      <input type="text" name="new_module_name" placeholder="Название Модуля">
+      <button type="button" name="button" onclick="CreateModule()">Создать</button>
+    </p>
   </div>
 </section>
 
