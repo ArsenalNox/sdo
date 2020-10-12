@@ -24,3 +24,10 @@ body{
 .confirmed-button{
   background-color: #77d077;
 }
+
+.student-ip-panel{
+  padding: 1rem;
+  border: 1px solid black;
+  margin: 12px;
+  width: fit-content;
+}

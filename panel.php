@@ -12,7 +12,21 @@
 </head>
 <body>
 <script src="js/panel.js"></script>
+  <section class='student-ip-panel'>
     <?php
+        if(isset($_COOKIE['STS'])){
+          $teachid = $_COOKIE['STS'];
+          $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
+          $check = mysqli_query($conn, $checkteach);
+          if(mysqli_num_rows($check) == 0){
+            header("Location: panel-login.php");
+            die();
+          }
+        } else {
+          header("Location: panel-login.php");
+          die();
+        }
+        echo $_COOKIE['STS'];
         $sql = "SELECT * FROM connectons;";
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -47,11 +61,13 @@
         } else {
             echo "Пока никого нету";
         }
-    ?>
 
-<section>
-  <div class="">
-    <p>Тестовое изменение</p>
+    ?>
+  </section>
+
+<section class="module-wrapper">
+  <div class="module-selector">
+    <p>Тест</p>
   </div>
 </section>
 

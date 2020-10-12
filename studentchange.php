@@ -12,6 +12,4 @@ switch($action){
         $sql = "UPDATE connectons SET status = 0 WHERE id = '$id'; ";
         $result = mysqli_query($conn, $sql);
     break;
-
-
 }
