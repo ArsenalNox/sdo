@@ -28,17 +28,17 @@
                 switch($status){
                     case 0:
                         echo "
-                        <p> 
+                        <p>
                         <button onclick='ConfirmStudent($id)'> Подтвердить </button>
-                        $ip : $uid 
+                        $ip : $uid
                         </p>
                         ";
                         break;
                     case 1:
                         echo "
-                        <p> 
+                        <p>
                         <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button>
-                        $ip : $uid 
+                        $ip : $uid
                         </p>
                         ";
                         break;
@@ -48,7 +48,6 @@
             echo "Пока никого нету";
         }
     ?>
-
 
 </body>
 </html>
