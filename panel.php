@@ -19,11 +19,13 @@
 <head>
     <link rel="stylesheet" href="css/main.css">
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
 </head>
 <body>
 <script src="js/panel.js"></script>
+
   <section class='student-ip-panel'>
     <?php
         echo $_COOKIE['STS'];
@@ -58,13 +60,12 @@
 <section class="module-wrapper">
   <div class="module-selector">
     <h2>Модуль</h2>
-    <p>
     Выбрать класс для тестирования
     <?php
     //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
     $result = mysqli_query($conn, $groupQuery);
-    echo "<select id='groups'>";
+    echo "<select id='groups'> <option> </option>";
     if(mysqli_num_rows($result) > 0){
       while ($row = mysqli_fetch_assoc($result)) {
         $group = $row['NAME'];
@@ -77,16 +78,15 @@
     echo "</select>";
     ?>
   </div>
-
+  <br>
   <div class="subject-selector">
-    </p>
     Выберите предмет
       <?php
       //Список предметов
       $sql = "SELECT DISTINCT subject FROM new_module";
       $result = mysqli_query($conn, $sql);
       if(mysqli_num_rows($result)>0){
-        echo "<select id='subject'>";
+        echo "<select id='subject' onchange='LoadMouleMenu()'> <option> </option>";
         while($row = mysqli_fetch_assoc($result)){
           $sbj = $row['subject'];
           echo "<option> $sbj </option>";
@@ -95,9 +95,10 @@
       }
       // создать 2 выпадающих списка для выбора предмета и темы (модуля)
        ?>
-    <br>
-    </div>
 
+    </div>
+    <br>
+    <div class="class-module-confirmation" id='cmd1'><div>
     <div class="module-creation">
       <h2>Создать Модуль</h2>
       <p>
