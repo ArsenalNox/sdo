@@ -23,38 +23,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
 </head>
-<body>
+<body onload="getConnections()">
 <script src="js/panel.js"></script>
 
   <section class='student-ip-panel'>
-    <?php
-        echo $_COOKIE['STS'];
-        $sql = "SELECT * FROM connectons;";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) > 0){
-            while($row = $result->fetch_assoc()){
-                $ip = $row['ip'];
-                $status = $row['status'];
-                $uid = '';
-                $uid = $row['student_uid'];
-                $id = $row['id'];
-                switch($status){
-                    case 0:
-                        echo "
-                        <p> <button onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid <p>
-                        ";
-                        break;
-                    case 1:
-                        echo "
-                        <p> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid </p>
-                        ";
-                        break;
-                }
-            }
-        } else {
-            echo "Пока никого нету";
-        }
-    ?>
+    <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
+    <div id='scnt'>
+
+    </div>
   </section>
 
 <section class="module-wrapper">
@@ -98,7 +74,12 @@
 
     </div>
     <br>
-    <div class="class-module-confirmation" id='cmd1'><div>
+    <div class="class-module-confirmation" id='cmd1'>
+      Выберите тему
+      <select class="" name="">
+        <option>Выберите предмет</option>
+      </select>
+    </div>
     <div class="module-creation">
       <h2>Создать Модуль</h2>
       <p>
