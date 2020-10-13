@@ -34,7 +34,7 @@ if(mysqli_num_rows($result) > 0){
         <marquee direction="right"><h1>модуль....</h1></marquee>
 
         <div class="student-info">
-        <?php  if($status == true){ echo "Вы подтверждены как: $uid";    }else{ echo "Ожидание подтверждения"; } ?>
+        <?php  if($status == true){ echo "Вы подтверждены как: $uid";}else{ echo "Ожидание подтверждения"; } ?>
         </div>
 
     </section>
