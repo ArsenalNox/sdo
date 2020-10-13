@@ -68,9 +68,7 @@
         }
         echo "</select>";
       }
-      // создать 2 выпадающих списка для выбора предмета и темы (модуля)
        ?>
-
   </div>
   <br>
   <div class="class-module-confirmation" id='cmd1'>
@@ -80,6 +78,11 @@
     </select>
   </div>
   <br>
+
+  <div class="test-preview" id='tp1'>
+
+  </div>
+
   <button type="button" name="button" onclick='StartTest()'>Начать тест</button>
   <div class="module-creation">
     <h2>Создать Модуль</h2>

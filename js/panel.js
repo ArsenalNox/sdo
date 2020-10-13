@@ -55,5 +55,19 @@ function getConnections(){
 }
 
 function StartTest(){
+  console.log('Start test');
+}
 
+function ShowQuestions(){
+  var xhttp = new XMLHttpRequest();
+  var module_name = document.getElementById('tp1').value;
+  xhttp.onreadystatechange=function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        // document.getElementById("scnt").innerHTML = this.responseText;
+      }
+    };
+  xhttp.open("POST", "php/functions/get_question.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("module_name="+module_name);
 }
