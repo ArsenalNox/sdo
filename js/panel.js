@@ -23,7 +23,6 @@ function DeconfirmStudent(id){
     xhttp.open("POST", "studentchange.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("action=" + action +"&id="+id);
-
 }
 
 function reload(){
@@ -53,4 +52,8 @@ function getConnections(){
   xhttp.open("POST", "php/functions/get_connections.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("no"+0);
+}
+
+function StartTest(){
+
 }

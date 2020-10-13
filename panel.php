@@ -13,7 +13,6 @@
     die();
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -26,17 +25,16 @@
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
 
-  <section class='student-ip-panel'>
-    <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
-    <div id='scnt'>
-
-    </div>
-  </section>
+<section class='student-ip-panel'>
+  <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
+  <div id='scnt'> </div>
+</section>
 
 <section class="module-wrapper">
   <div class="module-selector">
     <h2>Модуль</h2>
     Выбрать класс для тестирования
+
     <?php
     //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
@@ -53,6 +51,7 @@
     }
     echo "</select>";
     ?>
+
   </div>
   <br>
   <div class="subject-selector">
@@ -72,21 +71,23 @@
       // создать 2 выпадающих списка для выбора предмета и темы (модуля)
        ?>
 
-    </div>
-    <br>
-    <div class="class-module-confirmation" id='cmd1'>
-      Выберите тему
-      <select class="" name="">
-        <option>Выберите предмет</option>
-      </select>
-    </div>
-    <div class="module-creation">
-      <h2>Создать Модуль</h2>
-      <p>
-        <input type="text" name="new_module_name" placeholder="Название Модуля">
-        <button type="button" name="button" onclick="CreateModule()">Создать</button>
-      </p>
-    </div>
+  </div>
+  <br>
+  <div class="class-module-confirmation" id='cmd1'>
+    Выберите тему
+    <select class="" name="">
+      <option>Выберите предмет</option>
+    </select>
+  </div>
+  <br>
+  <button type="button" name="button" onclick='StartTest()'>Начать тест</button>
+  <div class="module-creation">
+    <h2>Создать Модуль</h2>
+    <p>
+      <input type="text" name="new_module_name" placeholder="Название Модуля">
+      <button type="button" name="button" onclick="CreateModule()">Создать</button>
+    </p>
+  </div>
 
 </section>
 
