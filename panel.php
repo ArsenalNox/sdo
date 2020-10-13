@@ -33,11 +33,8 @@
             while($row = $result->fetch_assoc()){
                 $ip = $row['ip'];
                 $status = $row['status'];
-                if( $row['student_uid'] == '' ){
-                    $uid = '';
-                } else {
-                    $uid = $row['student_uid'];
-                }
+                $uid = '';
+                $uid = $row['student_uid'];
                 $id = $row['id'];
                 switch($status){
                     case 0:
@@ -64,6 +61,7 @@
     <p>
     Выбрать класс для тестирования
     <?php
+    //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
     $result = mysqli_query($conn, $groupQuery);
     echo "<select id='groups'>";
@@ -72,21 +70,42 @@
         $group = $row['NAME'];
         echo "<option> $group </option>";
       }
+    } else {
+      //Если пусто
+      echo "Занесите в бд классы";
     }
     echo "</select>";
     ?>
+  </div>
+
+  <div class="subject-selector">
     </p>
     Выберите предмет
       <?php
-      $sql = "";
+      //Список предметов
+      $sql = "SELECT DISTINCT subject FROM new_module";
+      $result = mysqli_query($conn, $sql);
+      if(mysqli_num_rows($result)>0){
+        echo "<select id='subject'>";
+        while($row = mysqli_fetch_assoc($result)){
+          $sbj = $row['subject'];
+          echo "<option> $sbj </option>";
+        }
+        echo "</select>";
+      }
       // создать 2 выпадающих списка для выбора предмета и темы (модуля)
        ?>
-    <h2>Создать Модуль</h2>
-    <p>
-      <input type="text" name="new_module_name" placeholder="Название Модуля">
-      <button type="button" name="button" onclick="CreateModule()">Создать</button>
-    </p>
-  </div>
+    <br>
+    </div>
+
+    <div class="module-creation">
+      <h2>Создать Модуль</h2>
+      <p>
+        <input type="text" name="new_module_name" placeholder="Название Модуля">
+        <button type="button" name="button" onclick="CreateModule()">Создать</button>
+      </p>
+    </div>
+
 </section>
 
 </body>
