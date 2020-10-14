@@ -2,6 +2,7 @@ body{
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #e6e6e6;
 }
 .main{
   position: absolute;
@@ -19,6 +20,8 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid black;
+  transition: width 1s, height 1s;
+
 }
 
 .confirmed-button{
@@ -26,14 +29,28 @@ body{
 }
 
 .student-ip-panel{
+  background-color: white;
+  box-shadow: 1px 1px 20px 1px;
+  position: relative;
   padding: 1rem;
   border: 1px solid black;
   margin: 12px;
   width: fit-content;
+  height: min-content;
+  transition: width 1s, height 1s;
 }
 
 .module-wrapper{
+  background-color: white;
+  box-shado w: 1px 1px 20px 1px;
+  width: 60%;
+  position: relative;
   padding: 1rem;
   border: 1px solid black;
-  margin: 12px;  
+  margin: 12px;
+  transition: width 1s, height 1s;
+}
+
+.wrapper{
+  display: flex;
 }

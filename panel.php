@@ -25,8 +25,14 @@
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
 
+<div class="wrapper">
+
 <section class='student-ip-panel'>
-  <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
+  <p>
+    <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
+  </p>
+
+  <button type="button" name="button" onclick="getConnections()">Обновить соединения</button>
   <div id='scnt'> </div>
 </section>
 
@@ -54,7 +60,7 @@
 
   </div>
   <br>
-  
+
   <div class="subject-selector">
     Выберите предмет
       <?php
@@ -94,6 +100,8 @@
   </div>
 
 </section>
+
+</div>
 
 </body>
 </html>
