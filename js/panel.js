@@ -60,11 +60,10 @@ function StartTest(){
 
 function ShowQuestions(){
   var xhttp = new XMLHttpRequest();
-  var module_name = document.getElementById('tp1').value;
+  var module_name = document.getElementById('module-select').value;
   xhttp.onreadystatechange=function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        // document.getElementById("scnt").innerHTML = this.responseText;
+        document.getElementById("cmd1").innerHTML = this.responseText;
       }
     };
   xhttp.open("POST", "php/functions/get_question.php", true);
