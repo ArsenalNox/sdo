@@ -88,3 +88,8 @@ function ShowQuestions(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("module_name="+module_name);
 }
+
+function ShowSpecificVariants(){
+  var variatnt = document.getElementById('varsel').value;
+  
+}
