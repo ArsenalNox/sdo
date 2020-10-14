@@ -1,5 +1,5 @@
 <?php
-//Показ JSON'а модуля (т.е все ответы)
+//Показ всех вопросов выбранного модуля
 include_once "../../dtb/dtb.php";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $module = $_POST['module_name'];
@@ -11,12 +11,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $json_a = json_decode($string, true);
   foreach ($json_a as $struct => $quest) {
   echo  $quest['QUESTION'] . " <br>
-    A) " . $quest['A'] . " ; B) " . $quest['B'] . "
-    ; C) " . $quest['C'] . " ; D) " . $quest['D'] . "<br> <hr>";
+    A) " . $quest['A'] . " ;
+    B) " . $quest['B'] . " ;
+    C) " . $quest['C'] . " ;
+    D) " . $quest['D'] . " <br> <hr> ";
   }
   echo "
     <button type='button' name='button' onclick='StartTest()'>Начать тест</button>
     ";
-
 }
 ?>
