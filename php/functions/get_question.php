@@ -1,14 +1,19 @@
 <?php
-//Показ JSON на преподавательской панели
+//Показ JSON'а модуля (т.е все ответы)
 include_once "../../dtb/dtb.php";
-
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $module = $_POST['module_name'];
-  $sql = "SELECT Questions FROM new_module WHERE Name = '$module' ;";
+  $sql = "SELECT * FROM new_module WHERE Name = '$module' ;";
   $result = mysqli_query($conn, $sql);
-  $data = mysqli_fetch_array($result);
-  if(mysqli_num_rows($result)>0){
-    echo json_encode($data);
+  $data = mysqli_fetch_assoc($result);
+  $path = $data['Questions'];
+  $string = file_get_contents("../../$path");
+  $json_a = json_decode($string, true);
+  foreach ($json_a as $struct => $quest) {
+  echo  $quest['QUESTION'] . " <br>
+    A) " . $quest['A'] . " ; B) " . $quest['B'] . "
+    ; C) " . $quest['C'] . " ; D) " . $quest['D'] . "<br> <hr>";
   }
+
 }
 ?>
