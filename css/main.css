@@ -42,7 +42,7 @@ body{
 
 .module-wrapper{
   background-color: white;
-  box-shado w: 1px 1px 20px 1px;
+  box-shadow: 1px 1px 20px 1px;
   width: 60%;
   position: relative;
   padding: 1rem;
