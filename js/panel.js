@@ -55,7 +55,25 @@ function getConnections(){
 }
 
 function StartTest(){
+  //Отправка теста в бд таблицу с активными тестами
   console.log('Start test');
+  var xhttp = new XMLHttpRequest();
+  //Тестируемый класс
+  var group = document.getElementById('group').value;
+  //Предмет
+  var sbj = document.getElementById('subject').value
+  //Сам тест
+  var module = document.getElementById('module-select').value;
+  //?Время на тест
+  var timetodo = 'Test';
+  xhttp.onreadystatechange=function() {
+      if (this.readyState == 4 && this.status == 200) {
+        alert(this.responseText);
+      }
+    };
+  xhttp.open("POST", "php/functions/start_test.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("class=" + group + "&module=" + module + "&subject=" + sbj);
 }
 
 function ShowQuestions(){
@@ -63,7 +81,7 @@ function ShowQuestions(){
   var module_name = document.getElementById('module-select').value;
   xhttp.onreadystatechange=function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("cmd1").innerHTML = this.responseText;
+        document.getElementById("tp1").innerHTML = this.responseText;
       }
     };
   xhttp.open("POST", "php/functions/get_question.php", true);

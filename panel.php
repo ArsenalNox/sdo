@@ -45,7 +45,7 @@
     //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
     $result = mysqli_query($conn, $groupQuery);
-    echo "<select id='groups'> <option> </option>";
+    echo "<select id='group'> <option> </option>";
     if(mysqli_num_rows($result) > 0){
       while ($row = mysqli_fetch_assoc($result)) {
         $group = $row['NAME'];
@@ -84,13 +84,12 @@
       <option>Выберите предмет</option>
     </select>
   </div>
+
   <br>
-
+  
   <div class="test-preview" id='tp1'>
-
   </div>
 
-  <button type="button" name="button" onclick='StartTest()'>Начать тест</button>
   <div class="module-creation">
     <h2>Создать Модуль</h2>
     <p>

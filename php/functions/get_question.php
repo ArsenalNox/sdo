@@ -14,6 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     A) " . $quest['A'] . " ; B) " . $quest['B'] . "
     ; C) " . $quest['C'] . " ; D) " . $quest['D'] . "<br> <hr>";
   }
+  echo "
+    <button type='button' name='button' onclick='StartTest()'>Начать тест</button>
+    ";
 
 }
 ?>
