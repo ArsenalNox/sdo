@@ -22,6 +22,7 @@ $json_a = json_decode($string, true);
 $qselector = 1;
 $selector = rand(1,5);
 $i = 0;
+$_SESSION['MODULE'] = $test_name;
 echo "<form action='complete_test.php' method='POST'>";
 foreach ($json_a as $struct => $quest) {
   if($quest['QUESTION_NUM'] == "$qselector"){
