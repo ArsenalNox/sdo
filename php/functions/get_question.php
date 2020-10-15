@@ -9,6 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $path = $data['Questions'];
   $string = file_get_contents("../../$path");
   $json_a = json_decode($string, true);
+  $i = 0;
   echo "<select onselect='ShowSpecificVariants()' id='varsel'>
   <option value='0'> Показать все варианты       </option>
   <option value='1'> Показывать только вариант 1 </option>
@@ -19,10 +20,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   </select>
   " ;
   foreach ($json_a as $struct => $quest) {
+    $i++;
+    $quest_quantity = $quest['QUESTION_NUM'];
     switch ($quest['NUM_ANSW']) {
       case '2':
         echo
-          "<div class='task' id='v" . $quest['VAR'] . "'>
+          "<div class='task' id='v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
           Вариант " . $quest['VAR'] . "
           </h4> " . $quest['QUESTION'] . " <br>
@@ -56,10 +59,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           <br> <b> Правильный ответ: " . $quest['CORRECT'] . " </b>
           <hr> </div>";
         break;
-
     }
   }
   echo "
+    <p> Всего вопросов $quest_quantity не учитывая варианты, <span id='qnum'>$i</span> учитывая</p>
     <button type='button' name='button' onclick='StartTest()'>Начать тест</button>
     ";
 }

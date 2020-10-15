@@ -49,7 +49,8 @@
     if(mysqli_num_rows($result) > 0){
       while ($row = mysqli_fetch_assoc($result)) {
         $group = $row['NAME'];
-        echo "<option> $group </option>";
+        $clsnum = preg_replace("/[^0-9]/","", $group);
+        echo "<option value='$clsnum'> $group </option>";
       }
     } else {
       //Если пусто
@@ -86,7 +87,7 @@
   </div>
 
   <br>
-  
+
   <div class="test-preview" id='tp1'>
   </div>
 
