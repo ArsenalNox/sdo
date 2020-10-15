@@ -1,5 +1,6 @@
 <?php
     include_once "dtb/dtb.php";
+    session_start();
     $ip = $_SERVER['REMOTE_ADDR'];
     //получение статуса ученика
     echo "<p style='display:none;' id='ip'>$ip</p>";
@@ -57,14 +58,20 @@
 
         <div class="student-info">
             <?php  if($status == true){
-               echo "Вы подтверждены как: $uid, <span id='student_group'>$group</span>
-               <script>
-               document.getElementById('sg1').style.display = 'none'
-               LoadTests()
-               </script>";
+              $_SESSION['UID'] = $uid;
+              $_SESSION['GROUP_UID'] = $group;
+              echo "Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+              <script>
+                document.getElementById('sg1').style.display = 'none'
+                LoadTests()
+              </script>";
             }
             else {
-               echo "Ожидание подтверждения как $uid  ";
+               echo "Ожидание подтверждения как $uid
+               <script>
+                var checkForUpdate = setinterval(getStatus(),1000)
+               </script>
+                 ";
              } ?>
         </div>
         <br>

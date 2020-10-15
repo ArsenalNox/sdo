@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `sdo`
@@ -77,7 +77,7 @@ INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_
 CREATE TABLE `date` (
   `ID` int(20) NOT NULL,
   `DATE` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ CREATE TABLE `date` (
 CREATE TABLE `group_student` (
   `ID` int(4) NOT NULL,
   `NAME` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `group_student`
@@ -110,8 +110,8 @@ CREATE TABLE `module` (
   `ID` int(10) NOT NULL,
   `ID_QUESTION` int(10) NOT NULL,
   `QUESTIONS` longtext DEFAULT NULL,
-  `JSON_QUESTION` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`JSON_QUESTION`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `JSON_QUESTION` longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL CHECK (json_valid(`JSON_QUESTION`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -144,7 +144,7 @@ INSERT INTO `new_module` (`id`, `Name`, `Class`, `Questions`, `subject`) VALUES
 CREATE TABLE `question` (
   `ID` int(10) NOT NULL,
   `JSON_QUESTION` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ CREATE TABLE `student` (
   `LAST_NAME` varchar(28) CHARACTER SET utf8 NOT NULL,
   `MIDDLE_NAME` varchar(28) CHARACTER SET utf8 NOT NULL,
   `GROUP_STUDENT_ID` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `student`
@@ -207,7 +207,7 @@ CREATE TABLE `test` (
   `STUDENT_ID` int(7) NOT NULL,
   `MODULE_ID` int(10) NOT NULL,
   `QUESTION_ID` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables

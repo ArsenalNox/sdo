@@ -180,7 +180,7 @@
         "CORRECT": "180 ткачиков"
     },
     {
-        "QUESTION_NUM": "5",
+        "QUESTION_NUM": "4",
         "VAR": "1",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image1.png",
@@ -192,7 +192,7 @@
         "CORRECT": "15"
     },
     {
-        "QUESTION_NUM": "5",
+        "QUESTION_NUM": "4",
         "VAR": "2",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image1.png",
@@ -204,7 +204,7 @@
         "CORRECT": "40"
     },
     {
-        "QUESTION_NUM": "5",
+        "QUESTION_NUM": "4",
         "VAR": "3",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image1.png",
@@ -216,7 +216,7 @@
         "CORRECT": "10"
     },
     {
-        "QUESTION_NUM": "5",
+        "QUESTION_NUM": "4",
         "VAR": "4",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image1.png",
@@ -228,7 +228,7 @@
         "CORRECT": "30"
     },
     {
-        "QUESTION_NUM": "5",
+        "QUESTION_NUM": "4",
         "VAR": "5",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image1.png",
@@ -240,7 +240,7 @@
         "CORRECT": "10"
     },
     {
-        "QUESTION_NUM": "6",
+        "QUESTION_NUM": "5",
         "VAR": "1",
         "NUM_ANSW": "2",
         "IMAGE": "",
@@ -252,7 +252,7 @@
         "CORRECT": "Неверно"
     },
     {
-        "QUESTION_NUM": "6",
+        "QUESTION_NUM": "5",
         "VAR": "2",
         "NUM_ANSW": "2",
         "IMAGE": "",
@@ -264,7 +264,7 @@
         "CORRECT": "Верно"
     },
     {
-        "QUESTION_NUM": "6",
+        "QUESTION_NUM": "5",
         "VAR": "3",
         "NUM_ANSW": "2",
         "IMAGE": "",
@@ -276,7 +276,7 @@
         "CORRECT": "Неверно"
     },
     {
-        "QUESTION_NUM": "6",
+        "QUESTION_NUM": "5",
         "VAR": "4",
         "NUM_ANSW": "2",
         "IMAGE": "",
@@ -288,7 +288,7 @@
         "CORRECT": "Неверно"
     },
     {
-        "QUESTION_NUM": "6",
+        "QUESTION_NUM": "5",
         "VAR": "5",
         "NUM_ANSW": "2",
         "IMAGE": "",
@@ -300,7 +300,7 @@
         "CORRECT": "Верно"
     },
     {
-        "QUESTION_NUM": "7",
+        "QUESTION_NUM": "6",
         "VAR": "1",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -312,7 +312,7 @@
         "CORRECT": "Рывок"
     },
     {
-        "QUESTION_NUM": "7",
+        "QUESTION_NUM": "6",
         "VAR": "2",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -324,7 +324,7 @@
         "CORRECT": "Ракета"
     },
     {
-        "QUESTION_NUM": "7",
+        "QUESTION_NUM": "6",
         "VAR": "3",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -336,7 +336,7 @@
         "CORRECT": "Ракета"
     },
     {
-        "QUESTION_NUM": "7",
+        "QUESTION_NUM": "6",
         "VAR": "4",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -348,7 +348,7 @@
         "CORRECT": "Метеор"
     },
     {
-        "QUESTION_NUM": "7",
+        "QUESTION_NUM": "6",
         "VAR": "5",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -360,7 +360,7 @@
         "CORRECT": "Звезда"
     },
     {
-        "QUESTION_NUM": "8",
+        "QUESTION_NUM": "7",
         "VAR": "1",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image3.png",
@@ -372,7 +372,7 @@
         "CORRECT": "90 мл"
     },
     {
-        "QUESTION_NUM": "8",
+        "QUESTION_NUM": "7",
         "VAR": "2",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image3.png",
@@ -384,7 +384,7 @@
         "CORRECT": "45 мл"
     },
     {
-        "QUESTION_NUM": "8",
+        "QUESTION_NUM": "7",
         "VAR": "3",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image3.png",
@@ -396,7 +396,7 @@
         "CORRECT": "15 мл"
     },
     {
-        "QUESTION_NUM": "8",
+        "QUESTION_NUM": "7",
         "VAR": "4",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image3.png",
@@ -408,7 +408,7 @@
         "CORRECT": "30 мл"
     },
     {
-        "QUESTION_NUM": "8",
+        "QUESTION_NUM": "7",
         "VAR": "5",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image3.png",

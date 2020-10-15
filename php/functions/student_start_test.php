@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Начало тестов
 include_once "../../dtb/dtb.php";
 //Загрузка данных из таблицы текущего теста
@@ -11,35 +12,44 @@ $test_subject = $row['subject'];
 $class = $row['group_to_test'];
 $time_to_complete = $row['time_to_complete'];
 echo "$test_subject, $test_name, $time_to_complete, $class";
-  //Загрузка данных о самом тесте
-  $sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $path = $row['Questions'];
-  $string = file_get_contents("../../$path");
-  $json_a = json_decode($string, true);
-  $qselector = 1;
-  $selector = 1;
-  $i = 0;
-  foreach ($json_a as $struct => $quest) {
-    if($quest['QUESTION_NUM'] == "$qselector"){
-      if($quest['VAR'] == "$selector"){
-          $selector = rand(1,5);
+//Загрузка данных о самом тесте
+$sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$path = $row['Questions'];
+$string = file_get_contents("../../$path");
+$json_a = json_decode($string, true);
+$qselector = 1;
+$selector = rand(1,5);
+$i = 0;
+echo "<form action='complete_test.php' method='POST'>";
+foreach ($json_a as $struct => $quest) {
+  if($quest['QUESTION_NUM'] == "$qselector"){
+    if($quest['VAR'] == "$selector"){
+        $selector = rand(1,5);
+        $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
+        $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
+        $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
+        echo "string";
+        echo
+          "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
+          <h4> Задание №" . $quest['QUESTION_NUM'] . "
+          Вариант " . $quest['VAR'] . "
+          </h4> " . $quest['QUESTION'] . " <br>
+          A) " . $quest['A'] . " ;
+          B) " . $quest['B'] . " ;
+          C) " . $quest['C'] . " ;
+          D) " . $quest['D'] . "
+          <br> <input name='ANSW_$qselector' type='text' placeholder='Ваш ответ'>
+          <hr> </div>";
           $qselector++;
-          echo
-            "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
-            <h4> Задание №" . $quest['QUESTION_NUM'] . "
-            Вариант " . $quest['VAR'] . "
-            </h4> " . $quest['QUESTION'] . " <br>
-            A) " . $quest['A'] . " ;
-            B) " . $quest['B'] . " ;
-            C) " . $quest['C'] . " ;
-            D) " . $quest['D'] . "
-            <br> <input placeholder='Ваш ответ'>
-            <hr> </div>";
-          
-        }
       }
     }
-    echo "<button> Завершить тест </button>";
+  }
+  $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
+  echo "
+  <button> Завершить тест </button>
+  </form>
+  ";
+
 ?>
