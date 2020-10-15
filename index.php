@@ -1,12 +1,13 @@
 <?php
     include_once "dtb/dtb.php";
-    $ip=$_SERVER['REMOTE_ADDR'];
+    $ip = $_SERVER['REMOTE_ADDR'];
     //получение статуса ученика
-    echo "IP address= $ip";
+    echo "IP address = $ip ";
     $sql = "SELECT * FROM connectons WHERE ip = '$ip';";
     $result = mysqli_query($conn, $sql);
+    $status = 0;
     if(mysqli_num_rows($result) > 0){
-        $row = $result->fetch_assoc();
+        $row = mysqli_fetch_assoc($result);
         $status = $row['status'];
         $uid = $row['student_uid'];
         echo ' Статус' . $status;
@@ -22,7 +23,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/student.css">
+    <meta charset="UTF-8">>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СДО</title>
     <style>
@@ -34,13 +36,10 @@
 <body>
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
+
     <section class="student-wrapper">
 
-        <div class="student-info">
-            <?php  if($status == true){ echo "Вы подтверждены как: $uid";    }else{ echo "Ожидание подтверждения"; } ?>
-        </div>
-        <br>
-        <div class="selection">
+        <div class="selection" id='sg1'>
                 Выберите класс:
                 <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
                     <?php
@@ -61,6 +60,21 @@
                 </select>
                 <button type="submit" class="button" onclick='SendStudentInfo()'>Отправить</button>
         </div>
+
+        <div class="student-info">
+            <?php  if($status == true){
+               echo "Вы подтверждены как: $uid
+               <script> document.getElementById('sg1').style.display = 'none' </script>";
+            }
+            else {
+               echo "Ожидание подтверждения";
+             } ?>
+        </div>
+        <br>
+
+
     </section>
+
+
 </body>
 </html>

@@ -20,7 +20,7 @@ function DeconfirmStudent(id){
           getConnections();
         }
       };
-    xhttp.open("POST", "studentchange.php", true);
+    xhttp.open("POST", "php/functions/studentchange.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("action=" + action +"&id="+id);
 }
@@ -62,11 +62,11 @@ function StartTest(){
   //Тестируемый класс
   var group = document.getElementById('group').value;
   //Предмет
-  var sbj = document.getElementById('subject').value
+  var sbj = document.getElementById('subject').value;
   //Сам тест
   var module = document.getElementById('module-select').value;
-  //?Время на тест
-  var timetodo = 'Test';
+  //Время на тест
+  var timetodo = document.getElementById('test_time').value;
   xhttp.onreadystatechange=function() {
       if (this.readyState == 4 && this.status == 200) {
         alert(this.responseText);
@@ -74,7 +74,7 @@ function StartTest(){
     };
   xhttp.open("POST", "php/functions/start_test.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("class=" + group + "&module=" + module + "&subject=" + sbj);
+  xhttp.send("class=" + group + "&module=" + module + "&subject=" + sbj + "&time=" + timetodo);
 }
 
 function ShowQuestions(){

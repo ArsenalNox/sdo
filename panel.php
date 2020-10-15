@@ -50,8 +50,8 @@
     if(mysqli_num_rows($result) > 0){
       while ($row = mysqli_fetch_assoc($result)) {
         $group = $row['NAME'];
-        $clsnum = preg_replace("/[^0-9]/","", $group);
-        echo "<option value='$clsnum'> $group </option>";
+        // $clsnum = preg_replace("/[^0-9]/","", $group);
+        echo "<option value='$group'> $group </option>";
       }
     } else {
       //Если пусто

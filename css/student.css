@@ -1,0 +1,16 @@
+.student-wrapper{
+  margin: auto;;
+  width: 70%;
+  height: auto;
+  background-color: white;
+  border: 1px black solid;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding: 1rem;
+  box-shadow: 0px 20px 20px 0px;
+}
+
+body{
+  background-color: #efefef;
+}

@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     switch ($quest['NUM_ANSW']) {
       case '2':
         echo
-          "<div class='task' id='v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
+          "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
           Вариант " . $quest['VAR'] . "
           </h4> " . $quest['QUESTION'] . " <br>
@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         break;
       case '3':
         echo
-          "<div class='task' id='v" . $quest['VAR'] . "'>
+          "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
           Вариант " . $quest['VAR'] . "
           </h4> " . $quest['QUESTION'] . " <br>
@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         break;
       case '4':
         echo
-          "<div class='task' id='v" . $quest['VAR'] . "'>
+          "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
           Вариант " . $quest['VAR'] . "
           </h4> " . $quest['QUESTION'] . " <br>
@@ -61,9 +61,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         break;
     }
   }
+  for ($j=1; $j < $quest_quantity+1; $j++) {
+      echo '
+      <p> Задание '. $j .' </p>
+     <input type="radio" id="'.$j.'" name="testn'.$j.'" value="1">
+     <label for="male">ВКЛ</label>
+     <input type="radio" id="'.$j.'" name="testn'.$j.'" value="0">
+     <label for="female">ВЫКЛ</label>
+     <br>
+     ';
+  }
   echo "
-    <p> Всего вопросов $quest_quantity не учитывая варианты, <span id='qnum'>$i</span> учитывая</p>
-    <button type='button' name='button' onclick='StartTest()'>Начать тест</button>
+    <p> Всего вопросов: $quest_quantity, не учитывая варианты, <span id='qnum'>$i</span> учитывая</p>
+    Время на выполнение в минутах <input type='number' name='time' placeholder='45' style='width:40px;' id='test_time'>
+    <br>
+    <button type='button' name='button' onclick='StartTest()' >Начать тест</button>
     ";
 }
 ?>
