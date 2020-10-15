@@ -33,6 +33,7 @@
   </p>
 
   <button type="button" name="button" onclick="getConnections()">Обновить соединения</button>
+  <button type="button" name="button" onclick="ResetConnections()">Обнулить соединения</button>
   <div id='scnt'> </div>
 </section>
 

@@ -1,5 +1,5 @@
 <?php
-include_once 'dtb/dtb.php';
+include_once '../../dtb/dtb.php';
 if($_SERVER['REQUEST_METHOD'] == "POST"){
   $id = $_POST['id'];
   $action = $_POST['action'];

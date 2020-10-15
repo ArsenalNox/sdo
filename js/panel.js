@@ -7,7 +7,7 @@ function ConfirmStudent(id){
           getConnections();
         }
       };
-    xhttp.open("POST", "studentchange.php", true);
+    xhttp.open("POST", "php/functions/studentchange.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("action=" + action +"&id="+id);
 }
@@ -92,5 +92,4 @@ function ShowQuestions(){
 
 function ShowSpecificVariants(){
   var variatnt = document.getElementById('varsel').value;
-  
 }
