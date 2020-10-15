@@ -14,3 +14,13 @@
 body{
   background-color: #efefef;
 }
+
+.avaliable-test{
+  border-bottom: 1px solid black;
+  background: #white;
+  transition: background 0.2s;
+  }
+
+.avaliable-test:hover {
+      background: lightgrey;
+}

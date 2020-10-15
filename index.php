@@ -2,15 +2,15 @@
     include_once "dtb/dtb.php";
     $ip = $_SERVER['REMOTE_ADDR'];
     //получение статуса ученика
-    echo "IP address = $ip ";
+    echo "<p style='display:none;' id='ip'>$ip</p>";
     $sql = "SELECT * FROM connectons WHERE ip = '$ip';";
     $result = mysqli_query($conn, $sql);
     $status = 0;
     if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
         $status = $row['status'];
+        $group = $row['group_nl'];
         $uid = $row['student_uid'];
-        echo ' Статус' . $status;
     } else {
         if(!isset($uid)){
             $uid = '';
@@ -24,19 +24,13 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="css/student.css">
-    <meta charset="UTF-8">>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СДО</title>
-    <style>
-        #get_name{
-            width: 224px;
-        }
-    </style>
 </head>
 <body>
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
-
     <section class="student-wrapper">
 
         <div class="selection" id='sg1'>
@@ -63,15 +57,19 @@
 
         <div class="student-info">
             <?php  if($status == true){
-               echo "Вы подтверждены как: $uid
-               <script> document.getElementById('sg1').style.display = 'none' </script>";
+               echo "Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+               <script>
+               document.getElementById('sg1').style.display = 'none'
+               LoadTests()
+               </script>";
             }
             else {
-               echo "Ожидание подтверждения";
+               echo "Ожидание подтверждения как $uid  ";
              } ?>
         </div>
         <br>
-
+        <div class="main-testfield" id='mtf'>
+        </div>
 
     </section>
 
