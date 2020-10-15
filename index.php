@@ -15,7 +15,7 @@
         if(!isset($uid)){
             $uid = '';
         }
-        $sql = "INSERT INTO connectons (ip, student_uid) VALUES ('$ip', '$uid') ;";
+        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl) VALUES ('$ip', '', '0', '') ;";
         $insert = mysqli_query($conn, $sql);
     }
 ?>
@@ -69,6 +69,9 @@
         </div>
         <br>
         <div class="main-testfield" id='mtf'>
+        </div>
+        <div class="test" id='test'>
+
         </div>
 
     </section>

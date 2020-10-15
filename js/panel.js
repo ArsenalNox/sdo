@@ -93,3 +93,14 @@ function ShowQuestions(){
 function ShowSpecificVariants(){
   var variatnt = document.getElementById('varsel').value;
 }
+function ResetConnections(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange=function() {
+      if (this.readyState == 4 && this.status == 200) {
+          getConnections();
+      }
+    };
+  xhttp.open("POST", "php/functions/reset_connections.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("delete");
+}

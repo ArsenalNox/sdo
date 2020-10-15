@@ -6,7 +6,6 @@
   border: 1px black solid;
   display: flex;
   flex-flow: column;
-  height: 100%;
   padding: 1rem;
   box-shadow: 0px 20px 20px 0px;
 }
@@ -18,7 +17,7 @@ body{
 .avaliable-test{
   border-bottom: 1px solid black;
   background: #white;
-  transition: background 0.2s;
+  transition: background 0.1s;
   }
 
 .avaliable-test:hover {
