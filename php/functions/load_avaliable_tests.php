@@ -25,7 +25,7 @@ if(mysqli_num_rows($result) > 0){
           ". $row['test_dir'] ."
           ". $row['time_to_complete'] ." Минут
           ". $row['subject'] ."
-          Test completed
+          Тест уже выполнен
           </p>
           ";
           $check = true;
