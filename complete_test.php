@@ -51,13 +51,15 @@ session_start();
       $today = date("Y-m-d H:i:s");
       $group = $_SESSION['GROUP_UID'];
 
-      $q1 = $_SESSION["STATE_1"];
-      $q2 = $_SESSION["STATE_2"];
-      $q3 = $_SESSION["STATE_3"];
-      $q4 = $_SESSION["STATE_4"];
-      $q5 = $_SESSION["STATE_5"];
-      $q6 = $_SESSION["STATE_6"];
-      $q7 = $_SESSION["STATE_7"];
+      //Check if answer result exists (for future expansion)
+      if(isset($_SESSION["STATE_1"])){$q1 = $_SESSION["STATE_1"];}
+      if(isset($_SESSION["STATE_2"])){$q2 = $_SESSION["STATE_2"];}
+      if(isset($_SESSION["STATE_3"])){$q3 = $_SESSION["STATE_3"];}
+      if(isset($_SESSION["STATE_4"])){$q4 = $_SESSION["STATE_4"];}
+      if(isset($_SESSION["STATE_5"])){$q5 = $_SESSION["STATE_5"];}
+      if(isset($_SESSION["STATE_6"])){$q6 = $_SESSION["STATE_6"];}
+      if(isset($_SESSION["STATE_7"])){$q7 = $_SESSION["STATE_7"];}
+      if(isset($_SESSION["STATE_8"])){$q8 = $_SESSION["STATE_8"];}
 
       $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES (
         '$student',
