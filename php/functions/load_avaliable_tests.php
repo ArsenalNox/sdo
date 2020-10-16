@@ -10,9 +10,11 @@ $result = mysqli_query($conn, $sql);
 $csql = "SELECT * FROM test_results WHERE student = '$student'";
 $check = mysqli_query($conn, $csql);
 $completed[] = 'null';
-if(mysqli_num_rows($check) > 0){
-  while ($row = mysqli_fetch_assoc($check)) {
-    $completed[] = $row['module'];
+if($check){
+  if(mysqli_num_rows($check) > 0){
+    while ($row = mysqli_fetch_assoc($check)) {
+      $completed[] = $row['module'];
+    }
   }
 }
 $check = false;
