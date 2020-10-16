@@ -8,16 +8,17 @@ if(mysqli_num_rows($result) > 0){
         $ip = $row['ip'];
         $status = $row['status'];
         $uid = $row['student_uid'];
+        $grp = $row['group_nl'];
         $id = $row['id'];
         switch($status){
             case 0:
                 echo "
-                <p> <button onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid <p>
+                <p> <button onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp<p>
                 ";
                 break;
             case 1:
                 echo "
-                <p> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid </p>
+                <p> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp</p>
                 ";
                 break;
         }
