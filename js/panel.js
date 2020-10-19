@@ -92,7 +92,8 @@ function ShowQuestions(){
 
 function ShowSpecificVariants(){
   var variatnt = document.getElementById('varsel').value;
-}
+
+
 function ResetConnections(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange=function() {

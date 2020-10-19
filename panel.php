@@ -100,6 +100,12 @@
     </p>
   </div>
 
+  <div class="print-to-excel">
+    <h3>Экспортировать таблицу результатов</h3>
+    <a href="php/functions/export.php"> <button type="button" name="button" class='export'> Экспотрировать таблицу </button> </a>
+
+  </div>
+
 </section>
 </div>
 </body>
