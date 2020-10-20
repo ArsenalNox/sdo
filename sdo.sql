@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 15, 2020 at 04:21 PM
+-- Host: 127.0.0.1
+-- Generation Time: Oct 20, 2020 at 06:53 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `sdo`
@@ -40,7 +40,7 @@ CREATE TABLE `connectons` (
 --
 
 INSERT INTO `connectons` (`id`, `ip`, `student_uid`, `status`, `group_nl`) VALUES
-(9, '::1', 'Ansimova Elizabeth Abdeeva', 1, '7A');
+(17, '::1', 'Калинин Михаил Антонович', 1, '8A');
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,9 @@ CREATE TABLE `current_test` (
 INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_complete`, `subject`, `question_num`) VALUES
 (1, '2020-10-15', 'Working with word problems', '7A', 45, 'Math', 8),
 (2, '2020-10-15', 'Working with word problems', '9A', 45, 'Math', 8),
-(3, '2020-10-15', 'Working with word problems', '7A', 45, 'Math', 8),
-(4, '2020-10-15', 'Working with word problems', '9A', 45, 'Math', 8);
+(5, '2020-10-15', 'Spatial relationships and Geometric figures', '8A', 20, 'Math', 8),
+(6, '2020-10-15', 'Spatial relationships and Geometric figures', '8A', 12, 'Math', 8),
+(7, '2020-10-15', 'Working with word problems', '8A', 45, 'Math', 8);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_
 CREATE TABLE `date` (
   `ID` int(20) NOT NULL,
   `DATE` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE `date` (
 CREATE TABLE `group_student` (
   `ID` int(4) NOT NULL,
   `NAME` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `group_student`
@@ -110,8 +111,8 @@ CREATE TABLE `module` (
   `ID` int(10) NOT NULL,
   `ID_QUESTION` int(10) NOT NULL,
   `QUESTIONS` longtext DEFAULT NULL,
-  `JSON_QUESTION` longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL CHECK (json_valid(`JSON_QUESTION`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `JSON_QUESTION` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`JSON_QUESTION`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,7 @@ INSERT INTO `new_module` (`id`, `Name`, `Class`, `Questions`, `subject`) VALUES
 CREATE TABLE `question` (
   `ID` int(10) NOT NULL,
   `JSON_QUESTION` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,7 @@ CREATE TABLE `student` (
   `LAST_NAME` varchar(28) CHARACTER SET utf8 NOT NULL,
   `MIDDLE_NAME` varchar(28) CHARACTER SET utf8 NOT NULL,
   `GROUP_STUDENT_ID` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student`
@@ -170,7 +171,7 @@ INSERT INTO `student` (`ID`, `NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_
 (3, 'Виталий', 'Горбушин', 'Валерьевич', 1),
 (4, 'Алексей', 'Гриненко', 'Алексеевич', 1),
 (5, 'Марк', 'Грунталь', 'Альбертович', 1),
-(6, 'Георгий', 'Гурский', 'Валентинович', 2),
+(6, 'George', 'Gurskyi', 'Valentinovich', 2),
 (7, 'Очир', 'Джемгиров', 'Санджиевич', 2),
 (8, 'Ярослав', 'Дунаев', 'Александрович', 2),
 (9, 'Даниил', 'Исхаков', 'Рамильевич', 2),
@@ -207,7 +208,38 @@ CREATE TABLE `test` (
   `STUDENT_ID` int(7) NOT NULL,
   `MODULE_ID` int(10) NOT NULL,
   `QUESTION_ID` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_results`
+--
+
+CREATE TABLE `test_results` (
+  `id` int(11) NOT NULL,
+  `student` varchar(120) NOT NULL,
+  `class` varchar(120) NOT NULL,
+  `date` date NOT NULL,
+  `module` varchar(120) NOT NULL,
+  `q1` tinyint(1) NOT NULL,
+  `q2` tinyint(1) NOT NULL,
+  `q3` tinyint(1) NOT NULL,
+  `q4` tinyint(1) NOT NULL,
+  `q5` tinyint(1) NOT NULL,
+  `q6` tinyint(1) NOT NULL,
+  `q7` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test_results`
+--
+
+INSERT INTO `test_results` (`id`, `student`, `class`, `date`, `module`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES
+(4, 'Ansimova Elizabeth Abdeeva', '7A', '2020-10-15', 'Working with word problems', 0, 0, 0, 0, 0, 0, 0),
+(5, 'Gurskyi George Valentinovich', '8A', '2020-10-15', 'Spatial relationships and Geometric figures', 0, 0, 0, 0, 0, 0, 0),
+(6, 'Беляев Матвей Артёмович', '7A', '2020-10-19', 'Working with word problems', 0, 0, 0, 0, 0, 0, 0),
+(7, 'Калинин Михаил Антонович', '8A', '2020-10-19', 'Working with word problems', 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -279,6 +311,12 @@ ALTER TABLE `test`
   ADD KEY `STUDENT_ID` (`STUDENT_ID`);
 
 --
+-- Indexes for table `test_results`
+--
+ALTER TABLE `test_results`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -286,13 +324,13 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `connectons`
 --
 ALTER TABLE `connectons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `current_test`
 --
 ALTER TABLE `current_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `date`
@@ -341,6 +379,12 @@ ALTER TABLE `teach`
 --
 ALTER TABLE `test`
   MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `test_results`
+--
+ALTER TABLE `test_results`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
