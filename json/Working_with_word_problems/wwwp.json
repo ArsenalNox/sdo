@@ -1,5 +1,10 @@
 [
     {
+      "Module_name": "Работа с мировыми проблемами",
+      "variants": "5",
+      "quest_quantity": "7"
+    },
+    {
         "QUESTION_NUM": "1",
         "VAR": "1",
         "NUM_ANSW": "4",

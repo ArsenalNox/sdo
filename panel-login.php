@@ -33,7 +33,6 @@
   </head>
   <body>
     <section class="main">
-  
         <form class="login" action="panel-login.php" method="post">
           <input type="text" name="uid" placeholder="Логин">
           <input type="password" name="pwd" placeholder="Пароль">

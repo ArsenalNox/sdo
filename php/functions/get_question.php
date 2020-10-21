@@ -10,6 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $string = file_get_contents("../../$path");
   $json_a = json_decode($string, true);
   $i = 0;
+  $showmeta = true;
   echo "<select onselect='ShowSpecificVariants()' id='varsel'>
   <option value='0'> Показать все варианты       </option>
   <option value='1'> Показывать только вариант 1 </option>
@@ -20,7 +21,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   </select>
   " ;
   foreach ($json_a as $struct => $quest) {
-    $i++;
+    if($showmeta){
+      $showmeta=false;
+      echo "
+      <p> Название модуля: ". $quest['Module_name'] ." </p>
+      <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
+      <p> Кол-во вариантов: ".$quest['variants']."</p>
+      ";
+      continue;
+    }
+    $i++; 
     $quest_quantity = $quest['QUESTION_NUM'];
     switch ($quest['NUM_ANSW']) {
       case '2':

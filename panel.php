@@ -28,10 +28,7 @@
 <div class="wrapper">
 
 <section class='student-ip-panel'>
-  <p>
-    <?php echo "Здравствуйте, ".$_COOKIE['STS']; ?>
-  </p>
-
+  <p><?php echo "Здравствуйте, ".$_COOKIE['STS']; ?></p>
   <button type="button" name="button" onclick="getConnections()">Обновить соединения</button>
   <button type="button" name="button" onclick="ResetConnections()">Обнулить соединения</button>
   <div id='scnt'> </div>
@@ -41,7 +38,6 @@
   <div class="module-selector">
     <h2>Модуль</h2>
     Выбрать класс для тестирования
-
     <?php
     //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
@@ -59,7 +55,6 @@
     }
     echo "</select>";
     ?>
-
   </div>
   <br>
 
@@ -86,24 +81,18 @@
       <option>Выберите предмет</option>
     </select>
   </div>
-
   <br>
-
   <div class="test-preview" id='tp1'>
   </div>
-
+  <hr>
   <div class="module-creation">
-    <h2>Создать Модуль</h2>
-    <p>
-      <input type="text" name="new_module_name" placeholder="Название Модуля">
-      <button type="button" name="button" onclick="CreateModule()">Создать</button>
-    </p>
+    <a href="create_module.php" class='to-crmd'> <h2>Создать Модуль → </h2> </a>
   </div>
+  <hr>
 
   <div class="print-to-excel">
-    <h3>Экспортировать таблицу результатов</h3>
+    <h2> Экспортировать таблицу результатов </h2>
     <a href="php/functions/export.php"> <button type="button" name="button" class='export'> Экспотрировать таблицу </button> </a>
-
   </div>
 
 </section>

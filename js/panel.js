@@ -105,3 +105,7 @@ function ResetConnections(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("delete");
 }
+
+function addQuestion(){
+  
+}
