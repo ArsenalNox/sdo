@@ -27,7 +27,9 @@
 
     <section class="module-creation-wrapper">
     <div class="section">
-        <a href="panel.php" class="to-crmd"><h4>← Назад</h4></a>
+        <a href="panel.php" class="to-crmd">
+          <button class="button">← Назад</button>
+        </a>
         <hr>
         <h2> Создание модуля </h2>
         <form class='new_module_form' action="submit_new_module.php" method="post" id='nmf'>
