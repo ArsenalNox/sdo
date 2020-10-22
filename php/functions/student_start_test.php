@@ -31,7 +31,6 @@ foreach ($json_a as $struct => $quest) {
         $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
         $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
         $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
-        echo "string";
         echo
           "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "

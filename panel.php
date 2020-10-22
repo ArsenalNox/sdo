@@ -43,7 +43,7 @@
     //Выбираем классы и выводим в список классы
     $groupQuery = "SELECT * FROM group_student;";
     $result = mysqli_query($conn, $groupQuery);
-    echo "<select id='group'> <option> </option>";
+    echo "<select id='group'> <option>--Класс--</option>";
     if(mysqli_num_rows($result) > 0){
       while ($row = mysqli_fetch_assoc($result)) {
         $group = $row['NAME'];
@@ -66,7 +66,7 @@
       $sql = "SELECT DISTINCT subject FROM new_module";
       $result = mysqli_query($conn, $sql);
       if(mysqli_num_rows($result)>0){
-        echo "<select id='subject' onchange='LoadMouleMenu()'> <option> </option>";
+        echo "<select id='subject' onchange='LoadMouleMenu()'> <option>--Предмет--</option>";
         while($row = mysqli_fetch_assoc($result)){
           $sbj = $row['subject'];
           echo "<option> $sbj </option>";
@@ -87,7 +87,7 @@
   </div>
   <hr>
   <div class="module-creation">
-    <a href="create_module.php" class='to-crmd'> <h2>Создать Модуль → </h2> </a>
+    <a href="create_module.php" class='to-crmd'><button class="button">Создать Модуль →</button></a>
   </div>
   <hr>
 
