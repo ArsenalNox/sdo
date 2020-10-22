@@ -1,8 +1,12 @@
-.question-result {
-    background: #ccc;
-}
 body {
     background: linear-gradient(to right, #480777, #290378)
+}
+input {
+    border-radius: 5px;
+    background: #232323;
+}
+.question-result {
+    background: #ccc;
 }
 .student-wrapper {
     background: #ccc;

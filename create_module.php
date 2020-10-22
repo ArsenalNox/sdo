@@ -19,21 +19,24 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/module.css">
     <meta charset="utf-8">
     <title>Создание модуля</title>
   </head>
   <body>
 
     <section class="module-creation-wrapper">
-      <a href="panel.php" class="to-crmd"><h4>← Назад</h4></a>
-      <hr>
-      <h2> Создание модуля </h2>
-      <form class='new_module_form' action="submit_new_module.php" method="post" id='nmf'>
-        <textarea id='mn' name="module_name" rows="2" cols="40" style="resize:none" placeholder="Название модуля"></textarea>
-        <textarea id='ms' name="module_subject" rows='2' cols='40' style="resize:none" placeholder="Премет модуля"></textarea>
-      </form>
-      <hr>
-      <button type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
+    <div class="section">
+        <a href="panel.php" class="to-crmd"><h4>← Назад</h4></a>
+        <hr>
+        <h2> Создание модуля </h2>
+        <form class='new_module_form' action="submit_new_module.php" method="post" id='nmf'>
+          <textarea id='mn' name="module_name" rows="2" cols="40" style="resize:none" placeholder="Название модуля"></textarea>
+          <textarea id='ms' name="module_subject" rows='2' cols='40' style="resize:none" placeholder="Премет модуля"></textarea>
+        </form>
+        <hr>
+        <button class="button" type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
+      </div>
     </section>
   </body>
 </html>

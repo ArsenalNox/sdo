@@ -1,0 +1,24 @@
+body {
+    background: linear-gradient(to right, #480777, #290378);
+}
+textarea {
+    border-radius: 5px;
+    background: #232323;
+}
+.module-creation-wrapper {
+    background-color: #ccc;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+.section {
+    padding: 10px;
+}
+.button {
+    background-color: #1e72b2;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
