@@ -40,5 +40,24 @@
         <button class="button" type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
       </div>
     </section>
+  <script type="text/javascript">
+    var current_question_number = 1;
+
+    function addQuestion(){
+      current_question_number++
+      //Создание оболочки для текста вопроса
+      var new_question = document.createElement('div');
+      new_question.className = 'question';
+      new_question.id = "q_"+current_question_number;
+      var question_textarea = document.createElement('textarea');
+      question_textarea.name = 'question_text_'+current_question_number;
+      question_textarea.rows = '8';
+      question_textarea.cols = '80';
+      question_textarea.style.resize = "none";
+      new_question.append(question_textarea);
+      document.getElementById('nmf').append(new_question);
+    }
+
+  </script>
   </body>
 </html>
