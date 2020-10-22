@@ -8,7 +8,7 @@
 }
 
 body{
-  background-color: #efefef;
+  background: linear-gradient(to right, #7e80ff, #b8aecd);
 }
 
 .avaliable-test{

@@ -2,7 +2,7 @@ text{
     color: #fff;
 }
 body{
-    background: linear-gradient(to right, #480777, #290378);
+    background: linear-gradient(to right, #7e80ff, #b8aecd);
 }
 
 button {
@@ -15,7 +15,7 @@ button {
     width: 500px;
     background: #ccc;
     height: auto;
-    
+
 }
 .get_group {
     background-color: #232323;

@@ -54,6 +54,8 @@
       question_textarea.rows = '8';
       question_textarea.cols = '80';
       question_textarea.style.resize = "none";
+      new_question.append(question_textarea);
+      document.getElementById('nmf').append(new_question);
     }
 
   </script>
