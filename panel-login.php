@@ -28,6 +28,7 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/panel-login.css">
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
   </head>
