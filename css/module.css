@@ -4,6 +4,7 @@ body {
 textarea {
     border-radius: 5px;
     background: #232323;
+    color: #fff;
 }
 .module-creation-wrapper {
     background-color: #ccc;
