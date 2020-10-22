@@ -1,0 +1,52 @@
+text{
+    color: #fff;
+}
+body{
+    background: linear-gradient(to right, #480777, #290378);
+}
+
+button {
+    background-color: #1e72b2;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+}
+.student-wrapper {
+    width: 500px;
+    background: #ccc;
+    height: auto;
+    
+}
+.get_group {
+    background-color: #232323;
+    color: #b5b5b5;
+    border: 0;
+}
+.get_name{
+    background-color: #232323;
+    color: #b5b5b5;
+    border: 0;
+}
+.selection{
+    display: inline-grid;
+}
+.selection select{
+    height: 30px;
+    color: #fff;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.selection button{
+    height: 30px;
+    margin: 5px 0;
+}
+.answer {
+    background-color: #232323;
+    border: 0;
+    margin-top: 5px;
+    color:#fff;
+}
+input {
+    color: #fff;
+    border-radius: 5px;
+}

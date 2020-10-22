@@ -2,6 +2,7 @@ body{
   margin: 0;
   padding: 0;
   background-color: #e6e6e6;
+  
 }
 .main{
   position: absolute;
@@ -18,7 +19,6 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
   transition: width 1s, height 1s;
 
 }
@@ -29,7 +29,6 @@ body{
 
 .student-ip-panel{
   background-color: white;
-  box-shadow: 1px 1px 20px 1px;
   position: relative;
   padding: 1rem;
   border: 1px solid black;
@@ -41,7 +40,6 @@ body{
 
 .module-wrapper{
   background-color: white;
-  box-shadow: 1px 1px 20px 1px;
   width: 60%;
   position: relative;
   padding: 1rem;
@@ -52,21 +50,4 @@ body{
 
 .wrapper{
   display: flex;
-}
-
-.to-crmd{
-    text-decoration: none;
-    color: black;
-}
-
-.module-creation-wrapper{
-  position: relative;
-  background-color: white;
-  box-shadow: 1px 1px 20px 1px;
-  width: 60%;
-  padding: 1rem;
-  border: 1px solid black;
-  top: 1rem;
-  margin: auto;
-  transition: width 1s, height 1s;
 }

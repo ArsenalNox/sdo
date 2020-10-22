@@ -1,0 +1,18 @@
+.question-result {
+    background: #ccc;
+}
+body {
+    background: linear-gradient(to right, #480777, #290378)
+}
+.student-wrapper {
+    background: #ccc;
+}
+a {
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #1e72b2;
+    color: #fff;
+    text-align: center;
+    width: 150px;
+}
