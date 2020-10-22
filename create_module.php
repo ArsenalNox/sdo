@@ -19,7 +19,6 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/module.css">
     <meta charset="utf-8">
     <title>Создание модуля</title>
   </head>

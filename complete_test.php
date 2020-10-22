@@ -9,7 +9,6 @@ session_start();
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/student.css">
-    <link rel="stylesheet" href="css/complete-test.css">
     <meta charset="utf-8">
     <title></title>
   </head>

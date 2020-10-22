@@ -30,16 +30,15 @@
     <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
-    <link rel="stylesheet" href="css/panel-login.css">
   </head>
   <body>
     <section class="main">
 
         <form class="login" action="panel-login.php" method="post">
-          <center><h1>Авторизация</h1></center>
+          <center><h1 class="text">Авторизация</h1></center>
           <input type="text" name="uid" placeholder="Логин" class="loginIn">
           <input type="password" name="pwd" placeholder="Пароль" class="password">
-          <input type="submit" name="" value="Войти" class="button">
+          <button type="submit" name="" value="Войти">Войти</button>
         </form>
         <?php if(isset($error)){echo"<p class='login-error'>$error</p>";} ?>
 

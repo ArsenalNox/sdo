@@ -1,8 +1,40 @@
 body{
   margin: 0;
   padding: 0;
-  
+  background: linear-gradient(to right, #7e80ff, #b8aecd);
 }
+
+button{
+  border: 1px solid #000;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #1e72b2;
+  margin: 2px 0;
+  color: #fff;
+}
+
+input {
+  color: #fff;
+  border-radius: 5px;
+  background: #232323;
+  border: 1px solid #000;
+  margin-top: 5px;
+  height: 30px;
+}
+
+select{
+  background-color: #232323;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+
+textarea {
+  border-radius: 5px;
+  background: #232323;
+  color: #fff;
+}
+
 .main{
   position: absolute;
   width: 100%;
@@ -49,4 +81,98 @@ body{
 
 .wrapper{
   display: flex;
+}
+
+/* create_module */
+
+.module-creation-wrapper {
+  background-color: #ccc;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+.section {
+  padding: 10px;
+}
+
+/* panel-login */
+
+.loginIn {
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 5px;
+}
+.password {
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.text {
+  color: #fff;
+}
+
+/* panel */
+
+.wrapper{
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+.module-wrapper{
+  border-radius: 5px;
+  background-color: #ccc;
+  color: #000;
+}
+.student-ip-panel{
+  border-radius: 5px;
+  color: #000;
+  background-color: #ccc;
+}
+
+/* complete_test */
+
+.question-result {
+  background: #ccc;
+}
+.student-wrapper {
+  background: #ccc;
+}
+a {
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #1e72b2;
+  color: #fff;
+  text-align: center;
+  width: 150px;
+}
+
+/* index */
+
+.student-wrapper {
+  width: 500px;
+  background: #ccc;
+  height: auto;
+
+}
+.selection{
+  display: inline-grid;
+}
+.selection select{
+  height: 30px;
+  margin: 5px 0;
+}
+.selection button{
+  height: 30px;
+  margin: 5px 0;
+}
+.answer {
+  background-color: #232323;
+  border: 0;
+  margin-top: 5px;
+  color:#fff;
 }
