@@ -28,19 +28,21 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/panel-login.css">
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
+    <link rel="stylesheet" href="css/panel-login.css">
   </head>
   <body>
     <section class="main">
+
         <form class="login" action="panel-login.php" method="post">
-          <input type="text" name="uid" placeholder="Логин">
-          <input type="password" name="pwd" placeholder="Пароль">
-          <input type="submit" name="" value="Войти">
+          <center><h1>Авторизация</h1></center>
+          <input type="text" name="uid" placeholder="Логин" class="loginIn">
+          <input type="password" name="pwd" placeholder="Пароль" class="password">
+          <input type="submit" name="" value="Войти" class="button">
         </form>
         <?php if(isset($error)){echo"<p class='login-error'>$error</p>";} ?>
 
     </section>
-  </body>
+  .</body>
 </html>
