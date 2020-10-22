@@ -2,7 +2,14 @@
     {
       "Module_name": "Работа с мировыми проблемами",
       "variants": "5",
-      "quest_quantity": "7"
+      "quest_quantity": "7",
+      "quest_num_1_var": "5",
+      "quest_num_2_var": "5",
+      "quest_num_3_var": "5",
+      "quest_num_4_var": "5",
+      "quest_num_5_var": "5",
+      "quest_num_6_var": "5",
+      "quest_num_7_var": "5"
     },
     {
         "QUESTION_NUM": "1",

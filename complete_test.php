@@ -16,6 +16,7 @@ session_start();
 <?php
   $student = $_SESSION['UID'];
   $module_name = $_SESSION['MODULE'];
+  $correct_answers = 0;
   echo " <section class='student-wrapper'> Результаты теста, " . $student;
   for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
     $variant = $_SESSION["QUESTION_VAR_$i"];
@@ -30,6 +31,7 @@ session_start();
     if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
       echo "<p>Вы ответели '$question_answer_given' Ваш ответ правилный!</p>";
       $_SESSION["STATE_$i"] = 1;
+      $correct_answers++;
     } else {
       echo "<p>Вы ответили '$question_answer_given' Ваш ответ не правильный! Правильный ответ $question_answer_correct </p>";
       $_SESSION["STATE_$i"] = 0;
@@ -75,11 +77,13 @@ session_start();
         '$q7'
       )";
       $result = mysqli_query($conn, $sql);
-      echo "Ваш результат быо записан!";
+      echo "Ваш результат был записан!";
     }
   }
 
-  echo "<br> <a href='index.php'> Вернутся на главную </a> </section>";
+  echo "<br>
+  <p> Вы набрали $correct_answers </p>
+  <a href='index.php'> Вернутся на главную </a> </section>";
  ?>
 
   </body>
