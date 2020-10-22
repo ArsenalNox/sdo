@@ -9,6 +9,7 @@ session_start();
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -25,7 +26,7 @@ session_start();
     $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
     echo "
     <div class='question-result'>
-      <p> Номер вопроса $i, вариант $variant </p>
+      <p> Номер вопроса $i</p>
       <p> Текст вопрос: $question_text</p>
       ";
     if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
@@ -82,7 +83,6 @@ session_start();
   }
 
   echo "<br>
-  <p> Вы набрали $correct_answers </p>
   <a href='index.php'> Вернутся на главную </a> </section>";
  ?>
 
