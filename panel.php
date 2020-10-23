@@ -28,15 +28,15 @@
 <div class="wrapper">
 
 <section class='student-ip-panel'>
-  <p><?php echo "Здравствуйте, ".$_COOKIE['STS']; ?></p>
-  <button type="button" name="button" onclick="getConnections()">Обновить соединения</button>
-  <button type="button" name="button" onclick="ResetConnections()">Обнулить соединения</button>
+  <h1>Устройства</h1>
+  <button type="button" name="button" onclick="getConnections()" class="button2">Обновить соединения</button>
+  <button type="button" name="button" onclick="ResetConnections()" class="button2">Обнулить соединения</button>
   <div id='scnt'> </div>
 </section>
 
 <section class="module-wrapper">
   <div class="module-selector">
-    <h2>Модуль</h2>
+    <h2 class="module">МОДУЛЬ</h2>
     Выбрать класс для тестирования
     <?php
     //Выбираем классы и выводим в список классы
@@ -84,15 +84,13 @@
   <br>
   <div class="test-preview" id='tp1'>
   </div>
-  <hr>
   <div class="module-creation">
-    <a href="create_module.php" class='to-crmd'><button class="button">Создать Модуль →</button></a>
+    <a href="create_module.php" class='to-crmd'><button class="button"><pre>Создать Модуль <img class="strelka" src="img/strelka.png"></pre></button></a>
   </div>
-  <hr>
 
   <div class="print-to-excel">
-    <h2> Экспортировать таблицу результатов </h2>
-    <a href="php/functions/export.php"> <button type="button" name="button" class='export'> Экспотрировать таблицу </button> </a>
+    <h2 class="table"> Экспортировать таблицу результатов </h2>
+    <a href="php/functions/export.php"> <button type="button" name="button" class='export'><pre>Экспотрировать таблицу</pre></button> </a>
   </div>
 
 </section>

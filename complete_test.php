@@ -83,7 +83,7 @@ session_start();
   }
 
   echo "<br>
-  <a href='index.php'> Вернутся на главную </a> </section>";
+  <a class='home' href='index.php'> Вернутся на главную </a> </section>";
  ?>
 
   </body>

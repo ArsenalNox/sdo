@@ -28,6 +28,7 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
   </head>
@@ -38,10 +39,10 @@
           <center><h1 class="text">Авторизация</h1></center>
           <input type="text" name="uid" placeholder="Логин" class="loginIn">
           <input type="password" name="pwd" placeholder="Пароль" class="password">
-          <button type="submit" name="" value="Войти">Войти</button>
+          <button type="submit" name="" value="Войти" class="button">Войти</button>
         </form>
         <?php if(isset($error)){echo"<p class='login-error'>$error</p>";} ?>
 
     </section>
-  .</body>
+  </body>
 </html>
