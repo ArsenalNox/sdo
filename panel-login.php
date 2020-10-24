@@ -32,11 +32,11 @@
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
   </head>
-  <body>
+  <body class="panellogin">
     <section class="main">
-
+    <img src="img/Группа.png" class="imgLogin">
         <form class="login" action="panel-login.php" method="post">
-          <center><h1 class="text">Авторизация</h1></center>
+          <center><h1 class="text">АВТОРИЗАЦИЯ</h1></center>
           <input type="text" name="uid" placeholder="Логин" class="loginIn">
           <input type="password" name="pwd" placeholder="Пароль" class="password">
           <button type="submit" name="" value="Войти" class="button">Войти</button>
