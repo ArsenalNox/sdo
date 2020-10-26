@@ -1,6 +1,5 @@
 .student-wrapper{
   margin: auto;
-  border: 1px black solid;
   display: flex;
   flex-flow: column;
   padding: 1rem;

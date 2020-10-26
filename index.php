@@ -30,50 +30,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СДО</title>
 </head>
-<body>
+<body class="panellogin">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
     <section class="student-wrapper">
-
-        <div class="selection" id='sg1'>
-                Выберите класс:
-                <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
-                    <?php
-                        $sql = "SELECT * FROM group_student";
-                        $result = mysqli_query($conn, $sql);
-                        echo "<option>--</option>";
-                        if(mysqli_num_rows($result) > 0){
-                            while($row = mysqli_fetch_assoc($result)){
-                                $name = $row['NAME'];
-                                $id = $row['ID'];
-                                echo "<option value=$id>$name</option>";
+        <div class="">
+            <div class="selection" id='sg1'>
+                <fieldset class="fieldset">
+                    <legend align="center"><h1 class="group">ВЫБЕРИТЕ КЛАСС:</h1></legend>
+                    <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
+                        <?php
+                            $sql = "SELECT * FROM group_student";
+                            $result = mysqli_query($conn, $sql);
+                            echo "<option>--</option>";
+                            if(mysqli_num_rows($result) > 0){
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $name = $row['NAME'];
+                                    $id = $row['ID'];
+                                    echo "<option value=$id>$name</option>";
+                                }
                             }
-                        }
-                    ?>
-                </select>
-                <select name="get_name" id="group_names" class="get_name">
-                    <option value=''> --Выберите Класс-- </option>";
-                </select>
-                <button type="submit" class="button" onclick='SendStudentInfo()'>Отправить</button>
-        </div>
+                        ?>
+                    </select>
+                    <select name="get_name" id="group_names" class="get_name" style="margin-bottom: 20px;">
+                        <option value=''> --Выберите Класс-- </option>";
+                    </select>
+                </fieldset>
+                <div class="download">
+                        <button type="submit" class="buttonindex" onclick='SendStudentInfo()'>Отправить</button>
+                </div>
+            </div>
 
-        <div class="student-info">
-            <?php  if($status == true){
-              $_SESSION['UID'] = $uid;
-              $_SESSION['GROUP_UID'] = $group;
-              echo "Вы подтверждены как: $uid, <span id='student_group'>$group</span>
-              <script>
-                document.getElementById('sg1').style.display = 'none'
-                LoadTests()
-              </script>";
-            }
-            else {
-               echo "Ожидание подтверждения как $uid
-               <script>
-                var checkForUpdate = setinterval(getStatus(),1000)
-               </script>
-                 ";
-             } ?>
+            <div class="student-info">
+                <?php  if($status == true){
+                $_SESSION['UID'] = $uid;
+                $_SESSION['GROUP_UID'] = $group;
+                echo "<h4>Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+                <script>
+                    document.getElementById('sg1').style.display = 'none'
+                    LoadTests()
+                </script></h4>";
+                }
+                else {
+                echo "<h4>Ожидание подтверждения как $uid
+                <script>
+                    var checkForUpdate = setinterval(getStatus(),1000)
+                </script></h4>
+                    ";
+                } ?>
+            </div>
         </div>
         <br>
         <div class="main-testfield" id='mtf'>

@@ -2,15 +2,15 @@ body{
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
-  /* background: url(../img/Прямоугольник.png) no-repeat; */
-  background-size: cover;
+  background-size: 100%;
   width: 100%;
   height: 100vh;
   font-family: 'Open Sans', sans-serif;
 }
 
 .panellogin {
-  background: url(../img/Прямоугольник.png) no-repeat;
+  background: url(../img/ученик.png) no-repeat right;
+  background-position: right bottom;
 }
 
 button{
@@ -44,9 +44,22 @@ textarea {
   color: #fff;
 }
 
+fieldset {
+  border: 2px solid #fff;
+}
+
+h4 {
+  color: #606060;
+}
+
+.form {
+  margin-top: 18%;
+  margin-left: 20%;
+}
+
 .imgLogin {
-  padding-top: 100px;
-  padding-left: 150px;
+  margin-top: 7%;
+  margin-left: 10%;
   width: 500px;
   height: 500px;
 }
@@ -74,8 +87,7 @@ textarea {
 }
 
 .login{
-  margin-top: 18%;
-  margin-left: 20%;
+  position: relative;
   width: 220px;
   height: 250px;
   flex-direction: column;
@@ -134,6 +146,7 @@ textarea {
   background: #fff;
   color: #000;
   border: 1px solid #fff;
+  outline: none;
   font-size: 17px;
 }
 .password {
@@ -144,6 +157,7 @@ textarea {
   color: #000;
   border: 1px solid #fff;
   font-size: 17px;
+  outline: none;
 }
 .text {
   color: #fff;
@@ -151,13 +165,16 @@ textarea {
 .button {
   border: 1px solid #fff;
   border-radius: 5px;
-  margin-left: 16%;
   font-family: 'Open Sans', sans-serif;
   height: 35px;
   width: 150px;
   text-align: center;
-  background-color: transparent;
-
+  background-color: #fff;
+  color: #000;
+  outline: none;
+  position: absolute;
+  top: 79%;
+  left: 25%;
 }
 
 .button2 {
@@ -200,9 +217,7 @@ pre {
 .question-result {
   background: #ccc;
 }
-.student-wrapper {
-  background: #ccc;
-}
+
 a {
   text-decoration: none;
   border-radius: 5px;
@@ -216,12 +231,12 @@ a {
 
 .student-wrapper {
   width: 500px;
-  background: #ccc;
   height: auto;
 
 }
 .selection{
-  display: inline-grid;
+  display: flex;
+  flex-flow: column;
 }
 .selection select{
   height: 30px;
@@ -236,4 +251,42 @@ a {
   border: 0;
   margin-top: 5px;
   color:#fff;
+}
+
+.group {
+  color: #0d47a1;
+}
+
+.get_group {
+  background: #29a8df;
+  width: 100%;
+}
+
+.get_name {
+  width: 100%;
+  background: #29a8df;
+  margin-bottom: 20px;
+}
+
+.fieldset {
+  border: 2px solid #0d47a1;
+  margin-bottom: 20px;
+}
+
+.buttonindex {
+  background: linear-gradient(to right, #0852ff, #b866b0);
+  border: 0;
+  width: 150px;
+  position: absolute;
+  left: 15%;
+  border-radius: 14px;
+}
+
+.download {
+  position: absolute;
+  top: 175px;
+  left: 42%;
+  background: #fff;
+  height: 35px;
+  width: 220px;
 }

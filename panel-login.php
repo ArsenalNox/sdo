@@ -32,15 +32,19 @@
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
   </head>
-  <body class="panellogin">
+  <body>
     <section class="main">
     <img src="img/Группа.png" class="imgLogin">
-        <form class="login" action="panel-login.php" method="post">
-          <center><h1 class="text">АВТОРИЗАЦИЯ</h1></center>
-          <input type="text" name="uid" placeholder="Логин" class="loginIn">
-          <input type="password" name="pwd" placeholder="Пароль" class="password">
-          <button type="submit" name="" value="Войти" class="button">Войти</button>
-        </form>
+      <div class="form">
+          <form class="login" action="panel-login.php" method="post">
+            <fieldset>
+              <legend align="center"><h1 class="text">ВХОД</h1></legend>
+              <input type="text" name="uid" placeholder="Логин" class="loginIn">
+              <input type="password" name="pwd" placeholder="Пароль" class="password">
+              <button type="submit" name="" value="Войти" class="button">Войти</button>
+            </fieldset>
+          </form>
+        </div>
         <?php if(isset($error)){echo"<p class='login-error'>$error</p>";} ?>
 
     </section>
