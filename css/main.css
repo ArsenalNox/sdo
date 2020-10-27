@@ -32,14 +32,14 @@ button{
 input {
   color: #fff;
   border-radius: 5px;
-  background: #232323;
-  border: 1px solid #000;
+  background: #606060;
+  border: 0;
   margin-top: 5px;
   height: 30px;
 }
 
 select{
-  background-color: #232323;
+  background-color: #29a8df;
   color: #fff;
   border: 0;
   border-radius: 5px;
@@ -303,10 +303,6 @@ a {
   height: 30px;
   margin: 5px 0;
 }
-.answer {
-  background: #606060;
-  border: 0;
-}
 
 .group {
   color: #0d47a1;
@@ -371,4 +367,4 @@ a {
   padding: 10px;
 }
 
-.answer::-webkit-input-placeholder { color: #fff};
+input::-webkit-input-placeholder { color: #fff};
