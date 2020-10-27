@@ -24,7 +24,16 @@ $selector = rand(1,5);
 $i = 0;
 $_SESSION['MODULE'] = $test_name;
 echo "<form action='complete_test.php' method='POST'>";
+$showmeta = true;
 foreach ($json_a as $struct => $quest) {
+  if($showmeta){
+    $showmeta=false;
+    echo "
+    <p> Название модуля: ". $quest['Module_name'] ." </p>
+    <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
+    ";
+    continue;
+  }
   if($quest['QUESTION_NUM'] == "$qselector"){
     if($quest['VAR'] == "$selector"){
         $selector = rand(1,5);
