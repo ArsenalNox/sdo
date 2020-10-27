@@ -4,6 +4,8 @@
   flex-flow: column;
   padding: 1rem;
   width: 60%;
+  background: #fff;
+  margin-bottom: 240px;
 }
 
 .avaliable-test{

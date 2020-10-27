@@ -32,7 +32,7 @@
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
   </head>
-  <body>
+  <body  class="panellogin">
     <section class="main">
     <img src="img/Группа.png" class="imgLogin">
       <div class="form">

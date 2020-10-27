@@ -13,12 +13,12 @@ if(mysqli_num_rows($result) > 0){
         switch($status){
             case 0:
                 echo "
-                <p> <button onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp<p>
+                <p class='ip' style='text-transform: uppercase'> <button class='button3' onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp<p>
                 ";
                 break;
             case 1:
                 echo "
-                <p> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp</p>
+                <p class='ip' style='text-transform: uppercase'> <button  class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp</p>
                 ";
                 break;
         }

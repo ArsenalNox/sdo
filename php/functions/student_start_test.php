@@ -33,14 +33,14 @@ foreach ($json_a as $struct => $quest) {
         $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
         echo
           "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
-          <h4> Задание №" . $quest['QUESTION_NUM'] . "
+          <h4 class='tests' style='border-radius: 15px;'> Задание №" . $quest['QUESTION_NUM'] . "
           Вариант " . $quest['VAR'] . "
-          </h4> " . $quest['QUESTION'] . " <br>
+          </h4> <p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
           A) " . $quest['A'] . " ;
           B) " . $quest['B'] . " ;
           C) " . $quest['C'] . " ;
-          D) " . $quest['D'] . "
-          <br> <input name='ANSW_$qselector' type='text' placeholder='Ваш ответ'>
+          D) " . $quest['D'] . "</p>
+          <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
           <hr> </div>";
           $qselector++;
       }
