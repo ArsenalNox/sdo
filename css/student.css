@@ -31,3 +31,11 @@
 .student-info {
   color: #000;
 }
+
+body{
+  overflow: auto;
+  background: url(../img/ученик.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
