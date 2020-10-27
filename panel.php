@@ -80,7 +80,7 @@
     <br>
     <div class="class-module-confirmation" id='cmd1'>
       Выберите тему
-      <select id="topic">
+      <select id="module-select">
         <option>--Выберите предмет--</option>
       </select>
     </div>

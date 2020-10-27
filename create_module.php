@@ -21,40 +21,145 @@
     <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
     <title>Создание модуля</title>
+    <style media="screen">
+
+      fieldset{
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .answers{
+        display: grid;
+      }
+
+      .txa-wrapper{
+          display: flex;
+      }
+
+      .correct_answer{
+        border: 2px red dotted;
+      }
+    </style>
   </head>
   <body>
 
     <section class="module-creation-wrapper">
-    <div class="section">
+    <section class="section">
         <a href="panel.php" class="to-crmd">
-          <button class="button">← Назад</button>
+          <button>← Назад</button>
         </a>
         <hr>
         <h2> Создание модуля </h2>
         <form class='new_module_form' action="submit_new_module.php" method="post" id='nmf'>
-          <textarea id='mn' name="module_name" rows="2" cols="40" style="resize:none" placeholder="Название модуля"></textarea>
+          Модуль для класса
+          <select style="height: 34px; position: relative; margin-bottom: 5px" name="class">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+          </select>
+          <fieldset>
+          <textarea id='mn' name="Module_name" rows="2" cols="40" style="resize:none" placeholder="Название модуля"></textarea>
           <textarea id='ms' name="module_subject" rows='2' cols='40' style="resize:none" placeholder="Премет модуля"></textarea>
+          </fieldset>
+          <hr>
+          <button type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
+          <input type="hidden" value="0" name='quest_quantity' id='qqn'>
+          <input type="submit" text="Создать модуль">
         </form>
-        <hr>
-        <button class="button" type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
-      </div>
+      </section>
     </section>
-  <script type="text/javascript">
-    var current_question_number = 1;
 
+  <script type="text/javascript">
+
+    var current_question_number = 1;
     function addQuestion(){
-      current_question_number++
-      //Создание оболочки для текста вопроса
-      var new_question = document.createElement('div');
+      //Создание оболочки для текста
+      var new_question = document.createElement('fieldset');
       new_question.className = 'question';
-      new_question.id = "q_"+current_question_number;
+      new_question.id = "q_" + current_question_number;
+
+      //Оболочка для номера вопроса и кнопки добавления варианта
+      var question_info_field = document.createElement('fieldset');
+      question_info_field.className = 'quest_num_f';
+
+      //Вопрос №
+      var par = document.createElement('h2');
+      par.innerText = 'Вопрос ' + current_question_number;
+      par.style.margin = '1rem';
+
+      //Кнопка для создания варианта
+      var new_var_button = document.createElement('button');
+      new_var_button.id = current_question_number
+      new_var_button.innerText = 'Добавить вариант';
+      new_var_button.onclick = AddNewVar(current_question_number);
+      new_var_button.type = 'button';
+
+      //Оболочка для оболочки текстовых полей....
+      var txarea_wrp = document.createElement('fieldset');
+      txarea_wrp.className = 'txa-wrapper';
+
+      //Оболочка для области с вопросом
+
+
+      //Оболочка для области с ответом
+
+      //Поле для текста вопроса
       var question_textarea = document.createElement('textarea');
+      question_textarea.placeholder = 'Текст вопроса';
       question_textarea.name = 'question_text_'+current_question_number;
-      question_textarea.rows = '8';
+      question_textarea.rows = '13';
       question_textarea.cols = '80';
-      question_textarea.style.resize = "none";
-      new_question.append(question_textarea);
+      question_textarea.required = true;
+      //Оболочка для ответов
+      var answer_field = document.createElement('fieldset');
+      answer_field.className = 'answers';
+
+      //Ответы
+      var question_answer_a = document.createElement('textarea');
+      question_answer_a.className = 'correct_answer'
+      question_answer_a.name = 'question_answer_a_'+current_question_number;
+      question_answer_a.rows = '3';
+      question_answer_a.cols = '15';
+      question_answer_a.style.resize = "none";
+      question_answer_a.required = true;
+      var question_answer_b = document.createElement('textarea');
+      question_answer_b.name = 'question_answer_b_'+current_question_number;
+      question_answer_b.rows = '3';
+      question_answer_b.cols = '15';
+      question_answer_b.style.resize = "none";
+      var question_answer_c = document.createElement('textarea');
+      question_answer_c.name = 'question_answer_c_'+current_question_number;
+      question_answer_c.rows = '3';
+      question_answer_c.cols = '15';
+      question_answer_c.style.resize = "none";
+      var question_answer_d = document.createElement('textarea');
+      question_answer_d.name = 'question_answer_d_'+current_question_number;
+      question_answer_d.rows = '3';
+      question_answer_d.cols = '15';
+      question_answer_d.style.resize = "none";
+
+      //Добавляем это всё в основной див
+      // question_info_field.append(par, new_var_button);
+      question_info_field.append(par)
+      answer_field.append(question_answer_a, question_answer_b, question_answer_c, question_answer_d);
+      txarea_wrp.append(question_textarea, answer_field)
+      new_question.append(question_info_field, txarea_wrp);
       document.getElementById('nmf').append(new_question);
+      document.getElementById('qqn').value = current_question_number;
+      current_question_number++
+    }
+
+    function AddNewVar(){
+      console.log('ф');
     }
 
   </script>

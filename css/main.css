@@ -71,7 +71,7 @@ h4 {
   margin-bottom: 15px;
 }
 
-#group, #subject, #topic {
+#group, #subject, #module-select {
   float: right;
   background-color: #29a8df;
   height: 30px;
@@ -372,4 +372,4 @@ a {
   padding: 10px;
 }
 
-.answer::-webkit-input-placeholder { color: #fff}; 
+.answer::-webkit-input-placeholder { color: #fff};
