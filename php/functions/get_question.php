@@ -23,6 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   foreach ($json_a as $struct => $quest) {
     if($showmeta){
       $showmeta=false;
+      $quest_quantity = $quest['quest_quantity'];
       echo "
       <p> Название модуля: ". $quest['Module_name'] ." </p>
       <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
@@ -30,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       continue;
     }
     $i++;
-    $quest_quantity = $quest['QUESTION_NUM'];
+
     switch ($quest['NUM_ANSW']) {
       case '2':
         echo
