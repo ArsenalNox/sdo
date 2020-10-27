@@ -22,10 +22,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
 </head>
-<body onload="getConnections()" class="qwer">
+<body onload="getConnections()">
 <script src="js/panel.js"></script>
 
-<div class="wrapper">
+<div class="wrapper" id="qwe">
 
 <section class='student-ip-panel'>
   <fieldset class="fieldset">
@@ -80,7 +80,7 @@
     <br>
     <div class="class-module-confirmation" id='cmd1'>
       Выберите тему
-      <select id="module-select">
+      <select class="" name="" id="topic">
         <option>--Выберите предмет--</option>
       </select>
     </div>

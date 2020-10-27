@@ -80,6 +80,7 @@ function StartTest(){
 function ShowQuestions(){
   var xhttp = new XMLHttpRequest();
   var module_name = document.getElementById('module-select').value;
+  console.log(module_name);
   xhttp.onreadystatechange=function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("tp1").innerHTML = this.responseText;

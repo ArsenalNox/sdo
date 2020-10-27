@@ -1,16 +1,18 @@
 body{
   margin: 0;
   padding: 0;
-  background: url(../img/ученик.png) no-repeat right;
+  /* background: url(../img/ученик.png) no-repeat right; */
   /* background-size: 100%; */
-  /* height: 100vh; */
+  height: 100%;
   width: 100%;
   background-position: right bottom;
   font-family: 'Open Sans', sans-serif;
 }
 
-.qwer {
-  height: 100vh;
+#qwe {
+  background: url(../img/ученик.png) no-repeat right;
+  /* height: 100hv; */
+  background-position: right bottom;
 }
 
 .panellogin {
@@ -71,7 +73,7 @@ h4 {
   margin-bottom: 15px;
 }
 
-#group, #subject, #module-select {
+#group, #subject, #module-select, #topic {
   float: right;
   background-color: #29a8df;
   height: 30px;
@@ -146,10 +148,6 @@ h4 {
   position: relative;
   margin: 12px;
   transition: width 1s, height 1s;
-}
-
-.wrapper{
-  display: flex;
 }
 
 /* create_module */
@@ -249,7 +247,7 @@ h4 {
   align-content: center;
   background: #fff;
   position: absolute;
-  top: 60%;
+  /* top: 60%; */
   left: 37%;
 }
 
@@ -266,8 +264,9 @@ pre {
 
 .wrapper{
   width: auto;
-  height: auto;
+  height: 100vh;
   margin: auto;
+  display: flex;
 }
 
 /* complete_test */
