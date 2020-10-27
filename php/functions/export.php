@@ -4,14 +4,27 @@ $user = 'root';
 $password = '';
 $server = 'localhost';
 $database = 'sdo';
+
+
+switch ($_POST['export_option']) {
+  case 'all_all':
+      $sql = 'SELECT * FROM test_results';
+      $filename = 'результаты_за_всё_время.xls';
+    break;
+
+  default:
+      $sql = 'SELECT * FROM test_results';
+      $filename = 'результаты_за_всё_время.xls';
+    break;
+}
 $pdo = new PDO("mysql:host=$server;dbname=$database", $user, $password);
+$filename = 'результаты_за_всё_время.xls';
 
 //Все используют для этого пдо так что и я буду использовать пдо
-$sql = 'SELECT * FROM test_results';
+
 $stmt = $pdo->query($sql);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$filename = 'результаты.xls';
 //Параметры для браузера
 header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=$filename");

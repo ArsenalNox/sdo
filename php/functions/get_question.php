@@ -26,11 +26,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       echo "
       <p> Название модуля: ". $quest['Module_name'] ." </p>
       <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
-      <p> Кол-во вариантов: ".$quest['variants']."</p>
       ";
       continue;
     }
-    $i++; 
+    $i++;
     $quest_quantity = $quest['QUESTION_NUM'];
     switch ($quest['NUM_ANSW']) {
       case '2':

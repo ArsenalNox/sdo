@@ -16,7 +16,8 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     "B" => $_POST["question_answer_b_$i"],
     "C" => $_POST["question_answer_c_$i"],
     "D" => $_POST["question_answer_d_$i"],
-    "CORRECT" => $_POST["question_answer_a_$i"]
+    "CORRECT" => $_POST["question_answer_a_$i"],
+    "NUM_ANSW" => '4'
   );
 }
 $class = $_POST['class'];
@@ -26,7 +27,7 @@ $sbj = $_POST['module_subject'];
 $sql = "INSERT INTO new_module (`Name`,`Class`,`Questions`,`subject`) VALUES ('$name', '$class', '$qst', '$sbj')";
 $result = mysqli_query($conn, $sql);
 $jsoned_data = json_encode($data,JSON_UNESCAPED_UNICODE);
-$fp = fopen( $_POST['Module_name'] . '.json', 'w');
+$fp = fopen('json/Working_with_word_problems/'. $_POST['Module_name'] . '.json', 'w');
 fwrite($fp, json_encode($data, JSON_UNESCAPED_UNICODE));
 fclose($fp);
 header("Location: panel.php");

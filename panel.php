@@ -22,10 +22,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
 </head>
-<body onload="getConnections()">
+<body onload="getConnections()" class="qwer">
 <script src="js/panel.js"></script>
 
-<div class="wrapper" id="qwe">
+<div class="wrapper">
 
 <section class='student-ip-panel'>
   <fieldset class="fieldset">
@@ -80,7 +80,7 @@
     <br>
     <div class="class-module-confirmation" id='cmd1'>
       Выберите тему
-      <select class="" name="" id="topic">
+      <select id="module-select">
         <option>--Выберите предмет--</option>
       </select>
     </div>
@@ -95,7 +95,7 @@
   </fieldset>
   <div class="print-to-excel">
     <h5 class="table" id="createModule"> Экспортировать таблицу результатов </h5>
-    <a href="php/functions/export.php"> <button type="button" name="button" class='export'><pre>Экспотрировать таблицу</pre></button> </a>
+    <a href="export.php"> <button type="button" name="button" class='export'><pre>Экспотрировать таблицу</pre></button> </a>
   </div>
 </section>
 </div>
