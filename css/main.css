@@ -1,16 +1,21 @@
 body{
   margin: 0;
   padding: 0;
-  background-attachment: fixed;
   background: url(../img/ученик.png) no-repeat right;
   /* background-size: 100%; */
+  /* height: 100vh; */
   width: 100%;
   background-position: right bottom;
   font-family: 'Open Sans', sans-serif;
 }
 
+.qwer {
+  height: 100vh;
+}
+
 .panellogin {
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
+  height: 1px;
 }
 
 button{
@@ -267,9 +272,9 @@ pre {
 
 /* complete_test */
 
-.question-result {
+/* .question-result {
   background: #ccc;
-}
+} */
 
 a {
   text-decoration: none;
@@ -285,7 +290,7 @@ a {
 .student-wrapper {
   width: 500px;
   height: auto;
-
+  margin-bottom: 300px;
 }
 .selection{
   display: flex;
@@ -368,7 +373,3 @@ a {
 }
 
 .answer::-webkit-input-placeholder { color: #fff}; 
-
-.pidor {
-  color: #606060;
-}
