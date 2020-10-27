@@ -10,7 +10,6 @@ echo "
 <textarea name='incorrect_anwer_". $_SESSION['QUESTIONS_QUANTITY_CREATED'] ."' rows='8' cols='80' placeholder='Неправильный вариант ответа'></textarea>
 <textarea name='incorrect_anwer_". $_SESSION['QUESTIONS_QUANTITY_CREATED'] ."' rows='8' cols='80' value='0' placeholder='Неправильный вариант ответа (Можно оставить пустым)'></textarea>
 <textarea name='incorrect_anwer_". $_SESSION['QUESTIONS_QUANTITY_CREATED'] ."' rows='8' cols='80' value='0' placeholder='Неправильный вариант ответа (Можно оставить пустым)'></textarea>
-
 </div>
 ";
 $_SESSION['QUESTIONS_QUANTITY_CREATED']++;

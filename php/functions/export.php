@@ -36,6 +36,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if(!$rows){
     echo "Произошла ошибка! Повторите запрос!";
 }
+
 //Параметры для браузера
 header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=$filename");

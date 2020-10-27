@@ -68,5 +68,4 @@ foreach ($json_a as $struct => $quest) {
   <button> Завершить тест </button>
   </form>
   ";
-
 ?>
