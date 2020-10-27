@@ -31,7 +31,7 @@ include_once "dtb/dtb.php";
     <a href="panel.php" class="to-crmd">
       <button>← Назад</button>
     </a>
-    <form class="" action="php/functions/export.php" method="post" id='exf' ">
+    <form class="" action="php/functions/export.php" method="post" id='exf'>
       <p> Экспортировать таблицу:
       <select class="" name="export_option" id='sm' onchange="defineExportMethod()">
         <option value="null">---</option>
@@ -56,8 +56,6 @@ include_once "dtb/dtb.php";
     let fieldset = document.createElement('fieldset');
     fieldset.id = 'addinfo'
     document.getElementById('exf').append(fieldset);
-
-
     switch (selection) {
 
       case "all_all":
@@ -77,12 +75,28 @@ include_once "dtb/dtb.php";
           let p = document.createElement('p');
           p.innerText = '--'
           document.getElementById('addinfo').append(input_first, p, input_second)
+
           let button3 = document.createElement('button');
           button3.type = 'submit';
           button3.innerText = 'Экспортировать'
           document.getElementById('addinfo').append(button3);
         break;
 
+      case "spec_all":
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange=function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  document.getElementById('addinfo').innerHTML = this.responseText;
+                  let button2 = document.createElement('button');
+                  button2.type = 'submit';
+                  button2.innerText = 'Экспортировать'
+                  document.getElementById('addinfo').append(button2);
+                }
+              };
+            xhttp.open("POST", "php/functions/getclasses.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("group");
+        break;
     }
   }
 </script>

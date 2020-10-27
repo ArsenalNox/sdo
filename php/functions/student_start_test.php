@@ -25,9 +25,13 @@ $i = 0;
 $_SESSION['MODULE'] = $test_name;
 echo "<form action='complete_test.php' method='POST'>";
 $showmeta = true;
+$vars = 1;
 foreach ($json_a as $struct => $quest) {
   if($showmeta){
     $showmeta=false;
+    if(isset($quest['quest_vars'])){
+      $vars = $quest['quest_vars'];
+    }
     echo "
     <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
@@ -36,7 +40,11 @@ foreach ($json_a as $struct => $quest) {
   }
   if($quest['QUESTION_NUM'] == "$qselector"){
     if($quest['VAR'] == "$selector"){
-        $selector = rand(1,5);
+        if($vars>1){
+          $selector = rand(1,$vars);
+        }else {
+          $selector = 1;
+        }
         $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
         $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
         $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];

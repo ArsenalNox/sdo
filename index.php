@@ -73,9 +73,7 @@
                 }
                 else {
                 echo "<h4>Ожидание подтверждения как $uid
-                <script>
-                    var checkForUpdate = setinterval(getStatus(),1000)
-                </script></h4>
+          </h4>
                     ";
                 } ?>
             </div>

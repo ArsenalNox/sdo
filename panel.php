@@ -95,7 +95,7 @@
   </fieldset>
   <div class="print-to-excel">
     <h5 class="table" id="createModule"> Экспортировать таблицу результатов </h5>
-    <a href="export.php"> <button type="button" name="button" class='export'><pre>Экспотрировать таблицу</pre></button> </a>
+    <a href="export.php"> <button type="button" name="button" class='export'><pre>Экспортировать таблицу</pre></button> </a>
   </div>
 </section>
 </div>
