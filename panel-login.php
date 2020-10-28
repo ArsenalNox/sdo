@@ -11,7 +11,7 @@
         $pass = $_POST['pwd'];
         $id = $_POST['uid'];
         $sql = "SELECT ID FROM teach WHERE uid = '$id' AND pwd = '$pass'";
-        echo $sql;
+
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
           setcookie('STS', $id, time()+3600, '/');
@@ -41,11 +41,12 @@
               <legend align="center"><h1 class="text">ВХОД</h1></legend>
               <input type="text" name="uid" placeholder="Логин" class="loginIn">
               <input type="password" name="pwd" placeholder="Пароль" class="password">
+              <?php if(isset($error)){echo"<script> alert('$error') </script>";} ?>
               <button type="submit" name="" value="Войти" class="button">Войти</button>
+
             </fieldset>
           </form>
         </div>
-        <?php if(isset($error)){echo"<p class='login-error'>$error</p>";} ?>
 
     </section>
   </body>
