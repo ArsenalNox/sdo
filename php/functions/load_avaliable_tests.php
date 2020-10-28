@@ -4,10 +4,8 @@ session_start();
 include_once "../../dtb/dtb.php";
 $group_id = $_POST['group'];
 $student = $_SESSION['UID'];
-echo "$group_id";
 $sql = "SELECT * FROM current_test WHERE group_to_test = '$group_id'";
 $result = mysqli_query($conn, $sql);
-
 $csql = "SELECT * FROM test_results WHERE student = '$student'";
 $check = mysqli_query($conn, $csql);
 $completed[] = 'null';
@@ -24,7 +22,7 @@ if(mysqli_num_rows($result) > 0){
       for ($i=0; $i < sizeof($completed); $i++) {
         if($completed[$i] == $row['test_dir']){
           echo " <p class='avaliable-test'>
-          ". $row['date']  ."
+          ". $row['date'] ."
           ". $row['test_dir'] ."
           ". $row['time_to_complete'] ." Минут
           ". $row['subject'] ."

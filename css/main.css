@@ -361,4 +361,13 @@ a {
   padding: 10px;
 }
 
+.txa-wrapper{
+  display: flex;
+}
+
+.answers{
+    display: grid;
+}
+
+
 input::-webkit-input-placeholder { color: #fff};

@@ -29,11 +29,9 @@ $vars = 1;
 foreach ($json_a as $struct => $quest) {
   if($showmeta){
     $showmeta=false;
-    if(isset($quest['quest_vars'])){
-      $vars = $quest['quest_vars'];
-    }
+    $vars = $quest['quest_vars'];
     echo "
-    <p> Название модуля: ". $quest['Module_name'] ." </p>
+    <p> $vars Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
     ";
     continue;
@@ -44,25 +42,24 @@ foreach ($json_a as $struct => $quest) {
           $selector = 1;
         }
   if($quest['QUESTION_NUM'] == "$qselector"){
-    	
-	if($quest['VAR'] == "$selector"){
-        $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
-        $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
-        $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
-        echo
-          "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
-          <h4 class='tests' style='border-radius: 15px;'> Задание №" . $quest['QUESTION_NUM'] . "
-          Вариант " . $quest['VAR'] . "
-          </h4> <p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
-          A) " . $quest['A'] . " ;
-          B) " . $quest['B'] . " ;
-          C) " . $quest['C'] . " ;
-          D) " . $quest['D'] . "</p>
-          <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
-          <hr> </div>";
-          $qselector++;
+  	if($quest['VAR'] == "$selector"){
+          $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
+          $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
+          $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
+          echo
+            "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
+            <h4 class='tests' style='border-radius: 15px;'> Задание №" . $quest['QUESTION_NUM'] . "
+            Вариант " . $quest['VAR'] . "
+            </h4> <p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
+            A) " . $quest['A'] . " ;
+            B) " . $quest['B'] . " ;
+            C) " . $quest['C'] . " ;
+            D) " . $quest['D'] . "</p>
+            <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
+            <hr> </div>";
+            $qselector++;
+        }
       }
-    }
   }
   $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
   echo "
