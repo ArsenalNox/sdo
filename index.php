@@ -86,22 +86,6 @@
         </fieldset>
     </section>
 
-<script type="text/javascript">
-  var test_update = setInterval(set_test_status, 2000);
-  function set_test_status(){
-      var xhttp = new XMLHttpRequest();
-      var id = document.getElementById('suid').value;
-      var student_test_status = document.getElementById('student_test_status').value;
-      xhttp.onreadystatechange=function() {
-          if (this.readyState == 4 && this.status == 200) {
-            console.log(id, student_test_status, this.responseText);
-          }
-        };
-      xhttp.open("POST", "php/functions/update_student_status.php", true);
-      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("status=" + student_test_status + "&id=" + id);
-    }
 
-</script>
 </body>
 </html>

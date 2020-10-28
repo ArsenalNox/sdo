@@ -32,6 +32,7 @@
     <legend align="center"><h1 style="text-transform: uppercase">Устройства</h1></legend>
     <button type="button" name="button" onclick="getConnections()" class="button2">Обновить соединения</button>
     <button type="button" name="button" onclick="ResetConnections()" class="button2">Обнулить соединения</button>
+    <hr>
     <div id='scnt'> </div>
   </fieldset>
 </section>
@@ -89,10 +90,12 @@
     </div>
 
   </fieldset>
-  <div class="print-to-excel">
-    <h5 class="table" id="createModule"> Экспортировать таблицу результатов </h5>
+
+
+  <fieldset class="fieldset">
+    <legend align="center"><h2 class="module"> Экспортировать таблицу результатов </h2></legend>
     <a href="export.php"> <button type="button" name="button" class='export'><pre>Экспортировать таблицу</pre></button> </a>
-  </div>
+  </fieldset>
 
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Создание модуля </h2></legend>

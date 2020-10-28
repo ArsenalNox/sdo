@@ -1,3 +1,7 @@
+var t_not = 'test_not_selected';
+var t_ong = 'test_started';
+var t_cmp = 'completed';
+
 function GetGroupNames(){
   var xhttp = new XMLHttpRequest();
   var student_group = document.getElementById('student_group_selector').value;
@@ -43,6 +47,7 @@ function SendStudentInfo(){
 }
 
 function startTest(id){
+  document.getElementById('student_test_status').value = t_ong
   var test_id = id;
   document.getElementById('mtf').remove();
   var xhttp = new XMLHttpRequest();
@@ -69,3 +74,19 @@ function getStatus(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("test_id=" + test_id);
 }
+
+var test_update = setInterval(set_test_status, 3000);
+
+function set_test_status(){
+    var xhttp = new XMLHttpRequest();
+    var id = document.getElementById('suid').value;
+    var student_test_status = document.getElementById('student_test_status').value;
+    xhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(id, student_test_status, this.responseText);
+        }
+      };
+    xhttp.open("POST", "php/functions/update_student_status.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("status=" + student_test_status + "&id=" + id);
+  }

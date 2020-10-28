@@ -4,6 +4,7 @@ if(!($_SERVER['REQUEST_METHOD'] == 'POST')){
   header("Location: index.php");
 }
 session_start();
+$uid = $_SESSION['UID'];
 ?>
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
@@ -16,9 +17,15 @@ session_start();
   <body>
 
 <?php
+
   $student = $_SESSION['UID'];
   $module_name = $_SESSION['MODULE'];
   $correct_answers = 0;
+
+  echo "
+  <input type='hidden' name='student_uid' value='$uid' id='suid'>
+  <input type='hidden' name='student_test_status' value='test_not_selected' id='student_test_status'>
+  ";
   echo " <section class='student-wrapper'>
   <fieldset class='fieldset'>
   Результаты теста, " .$student ;
@@ -103,5 +110,9 @@ session_start();
   <p> Вы ответели правильно на " .$percent. " </p>
   <a class='home' href='index.php'> Вернутся на главную </a></fieldset> </section>";
  ?>
+ <script type="text/javascript" src='js/student.js'></script>
+ <script type="text/javascript">
+   document.getElementById('student_test_status').value = t_cmp;
+ </script>
   </body>
 </html>
