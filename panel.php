@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
 </head>
-<body onload="getConnections()" class="qwer">
+<body onload="getConnections()">
 <script src="js/panel.js"></script>
 
 <div class="wrapper">

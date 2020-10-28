@@ -4,21 +4,20 @@
   flex-flow: column;
   padding: 1rem;
   width: 60%;
-  background: #fff;
+  background: #f8e5c7;
   margin-bottom: 240px;
 }
 
 .avaliable-test{
-  border-bottom: 1px solid black;
-  background: #232323;
+  background: #606060;
   transition: background 0.1s;
-  color: #b5b5b5;
+  color: #fff;
   border-radius: 5px;
   padding-left: 5px;
 }
 
 .avaliable-test:hover {
-  background: lightgrey;
+  background: #6f6f6f;
 }
 
 .main-testfield{
@@ -31,3 +30,5 @@
 .student-info {
   color: #000;
 }
+
+input::-webkit-input-placeholder { color: #fff};

@@ -45,7 +45,7 @@
   <body>
 
     <section class="module-creation-wrapper">
-    <section class="section">
+    <section class="section" style="color: #606060;">
         <a href="panel.php" class="to-crmd">
           <button>← Назад</button>
         </a>
@@ -73,7 +73,7 @@
           <hr>
           <button type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
           <input type="hidden" value="0" name='quest_quantity' id='qqn'>
-          <input type="submit" text="Создать модуль">
+          <input class="send" type="submit" text="Создать модуль">
         </form>
       </section>
     </section>

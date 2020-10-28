@@ -1,16 +1,16 @@
 body{
   margin: 0;
   padding: 0;
-  /* background: url(../img/ученик.png) no-repeat right; */
-  /* background-size: 100%; */
-  height: 100%;
+  background: #f8e5c7;
+  background-size: 100%;
+  height: 100vh;
   width: 100%;
   background-position: right bottom;
   font-family: 'Open Sans', sans-serif;
 }
 
 #qwe {
-  background: url(../img/ученик.png) no-repeat right;
+  /* background: url(../img/ученик.png) no-repeat right; */
   /* height: 100hv; */
   background-position: right bottom;
 }
@@ -21,10 +21,10 @@ body{
 }
 
 button{
-  border: 1px solid #1e72b2;
+  border: 0;
   border-radius: 5px;
   height: 30px;
-  background-color: #1e72b2;
+  background-color: #29a8df;
   margin: 2px 0;
   color: #fff;
 }
@@ -47,7 +47,7 @@ select{
 
 textarea {
   border-radius: 5px;
-  background: #232323;
+  background: #606060;
   color: #fff;
 }
 
@@ -134,7 +134,7 @@ h4 {
 }
 
 .student-ip-panel{
-  background-color: white;
+  background-color: #f8e5c7;
   position: relative;
   padding: 1rem;
   margin: 12px;
@@ -153,12 +153,11 @@ h4 {
 /* create_module */
 
 .module-creation-wrapper {
-  background-color: #ccc;
+  background-color: #f8e5c7;
   width: 80%;
   margin: auto;
   margin-top: 20px;
   border-radius: 5px;
-  border: 1px solid #000;
 }
 
 .section {
@@ -245,7 +244,7 @@ h4 {
   height: 36px;
   width: 320px;
   align-content: center;
-  background: #fff;
+  background: #f8e5c7;
   position: absolute;
   /* top: 60%; */
   left: 37%;
@@ -299,10 +298,6 @@ a {
   height: 30px;
   margin: 5px 0;
 }
-.selection button{
-  height: 30px;
-  margin: 5px 0;
-}
 
 .group {
   color: #0d47a1;
@@ -322,15 +317,14 @@ a {
 .fieldset {
   border: 2px solid #0d47a1;
   margin-bottom: 20px;
-  background: #fff;
+  background: #f8e5c7;
 }
 
 .buttonindex {
   background: linear-gradient(to right, #0852ff, #b866b0);
   border: 0;
   width: 150px;
-  position: absolute;
-  left: 15%;
+  margin: auto;
   border-radius: 14px;
 }
 
@@ -338,7 +332,7 @@ a {
   position: absolute;
   top: 175px;
   left: 42%;
-  background: #fff;
+  background: #f8e5c7;
   height: 35px;
   width: 220px;
 }
@@ -367,4 +361,8 @@ a {
   padding: 10px;
 }
 
-input::-webkit-input-placeholder { color: #fff};
+.send {
+  background: #7ac643;
+}
+
+textarea::-webkit-input-placeholder { color: #fff};

@@ -14,11 +14,14 @@ session_start();
     <title></title>
   </head>
   <body>
+  
 <?php
   $student = $_SESSION['UID'];
   $module_name = $_SESSION['MODULE'];
   $correct_answers = 0;
-  echo " <section class='student-wrapper'> Результаты теста, " . $student;
+  echo " <section class='student-wrapper'>
+  <fieldset class='fieldset'>
+  Результаты теста, " .$student ;
   for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
     $variant = $_SESSION["QUESTION_VAR_$i"];
     $question_text = $_SESSION["QUESTION_$i"];
@@ -83,8 +86,7 @@ session_start();
   }
 
   echo "<br>
-  <a class='home' href='index.php'> Вернутся на главную </a> </section>";
+  <a class='home' href='index.php'> Вернутся на главную </a></fieldset> </section>";
  ?>
-
   </body>
 </html>

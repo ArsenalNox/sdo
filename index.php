@@ -30,14 +30,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СДО</title>
 </head>
-<body>
+<body id="qwe">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
     <section class="student-wrapper">
+    <fieldset class="fieldset">
         <div class="">
-            <div class="selection" id='sg1'>
-                <fieldset class="fieldset">
-                    <legend align="center"><h1 class="group">ВЫБЕРИТЕ КЛАСС:</h1></legend>
+            <div class="selection" id='sg1'><h1 class="group">ВЫБЕРИТЕ КЛАСС:</h1>
                     <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
                         <?php
                             $sql = "SELECT * FROM group_student";
@@ -55,13 +54,11 @@
                     <select name="get_name" id="group_names" class="get_name" style="margin-bottom: 20px;">
                         <option value=''> --Выберите Класс-- </option>";
                     </select>
-                </fieldset>
-                <div class="download">
                         <button type="submit" class="buttonindex" onclick='SendStudentInfo()'>Отправить</button>
-                </div>
             </div>
 
             <div class="student-info">
+            
                 <?php  if($status == true){
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
@@ -76,6 +73,7 @@
           </h4>
                     ";
                 } ?>
+                
             </div>
         </div>
         <br>
@@ -84,7 +82,7 @@
         <div class="test" id='test'>
 
         </div>
-
+        </fieldset>
     </section>
 
 
