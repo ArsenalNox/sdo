@@ -19,9 +19,7 @@
         $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl) VALUES ('$ip', '', '0', '') ;";
         $insert = mysqli_query($conn, $sql);
     }
-// TODO: Автообнолвение статуса
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -64,21 +62,24 @@
                 $_SESSION['IP'] = $ip;
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
-                echo "<h4>Вы подтверждены как: $uid, <span id='student_group'>$group</span>
-                <input type='hidden' name='student_uid' value='$uid' id='suid'>
-                <script>
-                    document.getElementById('sg1').style.display = 'none';
-                    LoadTests();
-                    var test_update = setInterval(set_test_status, 3000);
-                </script></h4>";
+                echo "
+                  <h4> Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+                  <input type='hidden' name='student_uid' value='$uid' id='suid'>
+                  <script>
+                      document.getElementById('sg1').style.display = 'none';
+                      LoadTests();
+                      var test_update = setInterval(set_test_status, 3000);
+                  </script>
+                  </h4>
+                  ";
                 }
                 else {
-                echo "<h4>Ожидание подтверждения как $uid
-                </h4>
-                <script type='text/javascript'>
-                  var auto_update_timer = setInterval(update_status, 3000);
-                </script>
-                ";
+                  echo "<h4>Ожидание подтверждения как $uid
+                  </h4>
+                  <script type='text/javascript'>
+                    var auto_update_timer = setInterval(update_status, 3000);
+                  </script>
+                  ";
                 } ?>
             </div>
         </div>
