@@ -35,6 +35,7 @@
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
     <section class="student-wrapper">
+      <input type="hidden" name="student_test_status" value="test_not_selected" id='student_test_status'>
     <fieldset class="fieldset">
         <div class="">
             <div class="selection" id='sg1'><h1 class="group">ВЫБЕРИТЕ КЛАСС:</h1>
@@ -85,8 +86,21 @@
     </section>
 
 <script type="text/javascript">
-  var test_update = setInterval(set_test_status, 1000);
-  
+  var test_update = setInterval(set_test_status, 2000);
+  function set_test_status(){
+      var xhttp = new XMLHttpRequest();
+      var id = document.getElementById('student_test_status').value;
+      var student_test_status = document.getElementById('student_test_status').value;
+      xhttp.onreadystatechange=function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log('status update');
+          }
+        };
+      xhttp.open("POST", "php/functions/update_student_status.php", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("status=" + student_test_status + "?id=" + );
+    }
+
 </script>
 </body>
 </html>
