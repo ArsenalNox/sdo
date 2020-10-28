@@ -4,6 +4,7 @@ session_start();
 include_once "../../dtb/dtb.php";
 $group_id = $_POST['group'];
 $student = $_SESSION['UID'];
+echo "$group_id";
 $sql = "SELECT * FROM current_test WHERE group_to_test = '$group_id'";
 $result = mysqli_query($conn, $sql);
 

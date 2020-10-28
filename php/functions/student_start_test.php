@@ -38,13 +38,14 @@ foreach ($json_a as $struct => $quest) {
     ";
     continue;
   }
-  if($quest['QUESTION_NUM'] == "$qselector"){
-    if($quest['VAR'] == "$selector"){
-        if($vars>1){
+	if($vars>1){
           $selector = rand(1,$vars);
         }else {
           $selector = 1;
         }
+  if($quest['QUESTION_NUM'] == "$qselector"){
+    	
+	if($quest['VAR'] == "$selector"){
         $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
         $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
         $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
