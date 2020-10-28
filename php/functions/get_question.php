@@ -11,15 +11,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $json_a = json_decode($string, true);
   $i = 0;
   $showmeta = true;
-  echo "<select onselect='ShowSpecificVariants()' id='varsel'>
-  <option value='0'> Показать все варианты       </option>
-  <option value='1'> Показывать только вариант 1 </option>
-  <option value='2'> Показывать только вариант 2 </option>
-  <option value='3'> Показывать только вариант 3 </option>
-  <option value='4'> Показывать только вариант 4 </option>
-  <option value='5'> Показывать только вариант 5 </option>
-  </select>
-  " ;
+  // echo "<select onselect='ShowSpecificVariants()' id='varsel'>
+  // <option value='0'> Показать все варианты       </option>
+  // <option value='1'> Показывать только вариант 1 </option>
+  // <option value='2'> Показывать только вариант 2 </option>
+  // <option value='3'> Показывать только вариант 3 </option>
+  // <option value='4'> Показывать только вариант 4 </option>
+  // <option value='5'> Показывать только вариант 5 </option>
+  // </select>
+  // " ;
   foreach ($json_a as $struct => $quest) {
     if($showmeta){
       $showmeta=false;
@@ -31,7 +31,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       continue;
     }
     $i++;
-
     switch ($quest['NUM_ANSW']) {
       case '2':
         echo
