@@ -31,6 +31,8 @@ if(mysqli_num_rows($result) > 0){
           ";
           $check = true;
           break;
+        } else {
+          $check = false;
         }
       }
       if(!$check){

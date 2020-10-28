@@ -14,7 +14,7 @@ session_start();
     <title></title>
   </head>
   <body>
-  
+
 <?php
   $student = $_SESSION['UID'];
   $module_name = $_SESSION['MODULE'];
@@ -33,11 +33,16 @@ session_start();
       <p> Текст вопрос: $question_text</p>
       ";
     if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
-      echo "<p>Вы ответели '$question_answer_given' Ваш ответ правилный!</p>";
+      echo "
+      <p> Вы ответели '$question_answer_given'. </p>
+      <p> Ваш ответ правильный! </p>
+      ";
       $_SESSION["STATE_$i"] = 1;
       $correct_answers++;
     } else {
-      echo "<p>Вы ответили '$question_answer_given' Ваш ответ не правильный! Правильный ответ $question_answer_correct </p>";
+      echo "
+      <p>Вы ответили '$question_answer_given'. </p>
+      <p> Ваш ответ не правильный! Правильный ответ - '$question_answer_correct' </p>";
       $_SESSION["STATE_$i"] = 0;
     }
     echo "</div>";
@@ -45,6 +50,13 @@ session_start();
   //Writing to DB
   $sql = "SELECT * FROM test_results WHERE student = '$student' AND module='$module_name';";
   $check = mysqli_query($conn, $sql);
+
+  if($correct_answers == 0){
+    $percent = "0%";
+  } else {
+    $percent = round($_SESSION['QUESTIONS_QUANTITY']/$correct_answers*10) . "%";
+  }
+
   if($check){
     if(mysqli_num_rows($check) == 0){
       for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
@@ -56,7 +68,6 @@ session_start();
       }
       $today = date("Y-m-d H:i:s");
       $group = $_SESSION['GROUP_UID'];
-
       //Check if answer result exists (for future expansion)
       if(isset($_SESSION["STATE_1"])){$q1 = $_SESSION["STATE_1"];}
       if(isset($_SESSION["STATE_2"])){$q2 = $_SESSION["STATE_2"];}
@@ -66,12 +77,12 @@ session_start();
       if(isset($_SESSION["STATE_6"])){$q6 = $_SESSION["STATE_6"];}
       if(isset($_SESSION["STATE_7"])){$q7 = $_SESSION["STATE_7"];}
       if(isset($_SESSION["STATE_8"])){$q8 = $_SESSION["STATE_8"];}
-
-      $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES (
+      $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `percent`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES (
         '$student',
         '$group',
         '$today',
         '$module_name',
+        '$percent',
         '$q1',
         '$q2',
         '$q3',
@@ -81,11 +92,15 @@ session_start();
         '$q7'
       )";
       $result = mysqli_query($conn, $sql);
-      echo "Ваш результат был записан!";
+      echo "
+      $sql
+      <p> Ваш результат был сохранён! </p>
+      ";
     }
   }
 
   echo "<br>
+  <p> Вы ответели правильно на " .$percent. " </p>
   <a class='home' href='index.php'> Вернутся на главную </a></fieldset> </section>";
  ?>
   </body>

@@ -65,6 +65,7 @@
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
                 echo "<h4>Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+                <input type='hidden' name='student_uid' value='$uid' id='suid'>
                 <script>
                     document.getElementById('sg1').style.display = 'none'
                     LoadTests()
@@ -89,16 +90,16 @@
   var test_update = setInterval(set_test_status, 2000);
   function set_test_status(){
       var xhttp = new XMLHttpRequest();
-      var id = document.getElementById('student_test_status').value;
+      var id = document.getElementById('suid').value;
       var student_test_status = document.getElementById('student_test_status').value;
       xhttp.onreadystatechange=function() {
           if (this.readyState == 4 && this.status == 200) {
-            console.log('status update');
+            console.log(id, student_test_status, this.responseText);
           }
         };
       xhttp.open("POST", "php/functions/update_student_status.php", true);
       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("status=" + student_test_status + "?id=" + );
+      xhttp.send("status=" + student_test_status + "&id=" + id);
     }
 
 </script>
