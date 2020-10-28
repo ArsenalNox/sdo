@@ -9,15 +9,6 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-<<<<<<< HEAD
-#qwe {
-  /* background: url(../img/ученик.png) no-repeat right; */
-  /* height: 100hv; */
-  background-position: right bottom;
-}
-
-=======
->>>>>>> f43ea579a3a7304ee8e3dc693ad8e0b6edd257aa
 .panellogin {
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
   height: 1px;
@@ -364,21 +355,8 @@ a {
   padding: 10px;
 }
 
-<<<<<<< HEAD
 .send {
   background: #7ac643;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};
-=======
-.txa-wrapper{
-  display: flex;
-}
-
-.answers{
-    display: grid;
-}
-
-
-input::-webkit-input-placeholder { color: #fff};
->>>>>>> f43ea579a3a7304ee8e3dc693ad8e0b6edd257aa
