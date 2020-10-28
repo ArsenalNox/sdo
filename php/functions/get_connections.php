@@ -23,14 +23,20 @@ if(mysqli_num_rows($result) > 0){
           case 'completed':
               $test_status = 'Завершил тест';
             break;
-
+          default:
+              $test_status = '';
+            break;
         }
 
         if($status == 0){echo "<div class='student-ip-info'> <button class='button3' onclick='ConfirmStudent($id)'> Подтвердить </button>";
         } else {echo "<div class='student-ip-info'> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтверждён </button>";}
 
-        echo "<p class='ip' style='text-transform: uppercase'> $ip : $uid, $grp <p> <p> Статус: $test_status </p> <hr> </div>";
-
+        echo "<p class='ip' style='text-transform: uppercase'> $ip : $uid, $grp <p> ";
+        if(!($test_status == '')){
+          echo "<p> Статус: $test_status </p> <hr> </div>";
+        } else {
+          echo "<hr> </div>";
+        }
         // switch($status){
         //     case 0:
         //         echo "
