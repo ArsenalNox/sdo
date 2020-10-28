@@ -19,12 +19,12 @@
         $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl) VALUES ('$ip', '', '0', '') ;";
         $insert = mysqli_query($conn, $sql);
     }
+// TODO: Автообнолвение статуса
 ?>
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/student.css">
     <meta charset="UTF-8">
@@ -60,7 +60,6 @@
             </div>
 
             <div class="student-info">
-
                 <?php  if($status == true){
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
@@ -85,7 +84,5 @@
         </div>
         </fieldset>
     </section>
-
-
 </body>
 </html>

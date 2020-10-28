@@ -80,17 +80,15 @@
     </div>
     <br>
     <div class="class-module-confirmation" id='cmd1'>
-      Выберите тему
+      Выберите модуль
       <select id="module-select">
-        <option>--Выберите предмет--</option>
+        <option> -- Выберите предмет --</option>
       </select>
     </div>
     <br>
     <div class="test-preview" id='tp1'>
     </div>
-
   </fieldset>
-
 
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Экспортировать таблицу результатов </h2></legend>

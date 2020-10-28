@@ -1,11 +1,14 @@
 <?php
+
+// TODO: Новые формы для вопросов (по кол-ву ответов, по типу ответов и т.д.)
+// TODO: Добавление картинок в вопрос
+
 include_once "dtb/dtb.php";
 $module_name = $_POST['Module_name'];
 $data[] = array(
   'Module_name' => "".$_POST['Module_name']."",
   'module_subject' => "".$_POST['module_subject']."",
   'quest_quantity' => "".$_POST['quest_quantity']."");
-
 for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
   $data[] = array(
     "QUESTION_NUM" => "$i",

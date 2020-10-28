@@ -1,3 +1,4 @@
+//Переменные сосотояния 
 var t_not = 'test_not_selected';
 var t_ong = 'test_started';
 var t_cmp = 'completed';
