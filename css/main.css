@@ -9,12 +9,6 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-#qwe {
-  background: url(../img/ученик.png) no-repeat right;
-  /* height: 100hv; */
-  background-position: right bottom;
-}
-
 .panellogin {
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
   height: 1px;
