@@ -59,7 +59,7 @@
             </div>
 
             <div class="student-info">
-            
+
                 <?php  if($status == true){
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
@@ -74,7 +74,6 @@
           </h4>
                     ";
                 } ?>
-                
             </div>
         </div>
         <br>
@@ -85,6 +84,9 @@
         </fieldset>
     </section>
 
-
+<script type="text/javascript">
+  var test_update = setInterval(set_test_status, 1000);
+  
+</script>
 </body>
 </html>

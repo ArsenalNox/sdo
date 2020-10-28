@@ -70,16 +70,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         break;
     }
   }
-  for ($j=1; $j < $quest_quantity+1; $j++) {
-      echo '
-      <p> Задание '. $j .' </p>
-     <input type="radio" id="'.$j.'" name="testn'.$j.'" value="1">
-     <label for="male">ВКЛ</label>
-     <input type="radio" id="'.$j.'" name="testn'.$j.'" value="0">
-     <label for="female">ВЫКЛ</label>
-     <br>
-     ';
-  }
+  // for ($j=1; $j < $quest_quantity+1; $j++) {
+  //     echo '
+  //     <p> Задание '. $j .' </p>
+  //    <input type="radio" id="'.$j.'" name="testn'.$j.'" value="1">
+  //    <label for="male">ВКЛ</label>
+  //    <input type="radio" id="'.$j.'" name="testn'.$j.'" value="0">
+  //    <label for="female">ВЫКЛ</label>
+  //    <br>
+  //    ';
+  // }
   echo "
     <p> Всего вопросов: $quest_quantity, не учитывая варианты, <span id='qnum'>$i</span> учитывая</p>
     Время на выполнение в минутах <input type='number' name='time' placeholder='45' style='width:40px;' id='test_time'>
