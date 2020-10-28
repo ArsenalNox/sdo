@@ -38,7 +38,7 @@
 
 <section class="module-wrapper">
   <fieldset class="fieldset">
-    <legend align="center"><h2 class="module">МОДУЛЬ</h2></legend>
+    <legend align="center"><h2 class="module"> Выбор модуля </h2></legend>
     <div class="module-selector">
       Выбрать класс для тестирования
       <?php
@@ -87,16 +87,20 @@
     <br>
     <div class="test-preview" id='tp1'>
     </div>
-    <div class="module-creation">
-      <a href="create_module.php" class='to-crmd'>
-        <button class="button4">Создать Модуль</button>
-      </a>
-    </div>
+
   </fieldset>
   <div class="print-to-excel">
     <h5 class="table" id="createModule"> Экспортировать таблицу результатов </h5>
     <a href="export.php"> <button type="button" name="button" class='export'><pre>Экспортировать таблицу</pre></button> </a>
   </div>
+
+  <fieldset class="fieldset">
+    <legend align="center"><h2 class="module"> Создание модуля </h2></legend>
+        <a href="create_module.php" class='to-crmd'>
+          <button class="button4"> Создать Модуль </button>
+        </a>
+  </fieldset>
+
 </section>
 </div>
 </body>
