@@ -21,7 +21,6 @@ $uid = $_SESSION['UID'];
   $student = $_SESSION['UID'];
   $module_name = $_SESSION['MODULE'];
   $correct_answers = 0;
-
   echo "
   <input type='hidden' name='student_uid' value='$uid' id='suid'>
   <input type='hidden' name='student_test_status' value='test_not_selected' id='student_test_status'>
@@ -41,15 +40,15 @@ $uid = $_SESSION['UID'];
       ";
     if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
       echo "
-      <p> Вы ответели '$question_answer_given'. </p>
-      <p> Ваш ответ правильный! </p>
+      <p> Ответ ученика: '$question_answer_given'. </p>
+      <p> Ответ правильный. </p>
       ";
       $_SESSION["STATE_$i"] = 1;
       $correct_answers++;
     } else {
       echo "
-      <p>Вы ответили '$question_answer_given'. </p>
-      <p> Ваш ответ не правильный! Правильный ответ - '$question_answer_correct' </p>";
+      <p> Ответ ученика: '$question_answer_given'. </p>
+      <p> Ответ не правильный! Правильный ответ - '$question_answer_correct' </p>";
       $_SESSION["STATE_$i"] = 0;
     }
     echo "</div>";
@@ -100,7 +99,6 @@ $uid = $_SESSION['UID'];
       )";
       $result = mysqli_query($conn, $sql);
       echo "
-      $sql
       <p> Ваш результат был сохранён! </p>
       ";
     }
