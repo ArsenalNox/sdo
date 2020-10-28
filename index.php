@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="css/main.css">
+
     <link rel="stylesheet" href="css/student.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,9 +80,11 @@
         <div class="main-testfield" id='mtf'>
         </div>
         <div class="test" id='test'>
-
         </div>
+<<<<<<< HEAD
         </fieldset>
+=======
+>>>>>>> f43ea579a3a7304ee8e3dc693ad8e0b6edd257aa
     </section>
 
 
