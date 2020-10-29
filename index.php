@@ -16,7 +16,7 @@
         if(!isset($uid)){
             $uid = '';
         }
-        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl) VALUES ('$ip', '', '0', '') ;";
+        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl, test_status) VALUES ('$ip', '', '0', '', '') ;";
         $insert = mysqli_query($conn, $sql);
     }
 ?>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/student.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СДО</title>
+    <title>Панель студента</title>
 </head>
 <body>
     <script src="js/jquery-3.5.1.js"></script>

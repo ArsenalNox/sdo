@@ -17,6 +17,6 @@ if($result){
       echo "NO";
     }
     die();
-  }
-}
+  } else {echo "not found";}
+} else {echo "error";}
 die();

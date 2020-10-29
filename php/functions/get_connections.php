@@ -1,5 +1,9 @@
 <?php
 //Получение сединений
+
+// TODO: Добавить цветовое отображение статуса теста у ученика
+// TODO: Добавить возможность смотреть результат теста преподавателю (через панель устройств)
+
 include_once "../../dtb/dtb.php";
 $sql = "SELECT * FROM connectons;";
 $result = mysqli_query($conn, $sql);
@@ -21,8 +25,9 @@ if(mysqli_num_rows($result) > 0){
             break;
 
           case 'completed':
-              $test_status = 'Завершил тест';
+              $test_status = 'Завершил тест <button onclick=""> Смотреть результат </button>';
             break;
+
           default:
               $test_status = '';
             break;
