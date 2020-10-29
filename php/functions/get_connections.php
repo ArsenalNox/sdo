@@ -2,7 +2,7 @@
 //Получение сединений
 
 // TODO: Добавить цветовое отображение статуса теста у ученика
-// TODO: Добавить возможность смотреть результат теста преподавателю (через панель устройств)
+// DONE: Добавить возможность смотреть результат теста преподавателю (через панель устройств)
 
 include_once "../../dtb/dtb.php";
 $sql = "SELECT * FROM connectons;";
@@ -46,18 +46,6 @@ if(mysqli_num_rows($result) > 0){
         } else {
           echo "<hr> </div>";
         }
-        // switch($status){
-        //     case 0:
-        //         echo "
-        //         <p class='ip' style='text-transform: uppercase'> <button class='button3' onclick='ConfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp<p>
-        //         ";
-        //         break;
-        //     case 1:
-        //         echo "
-        //         <p class='ip' style='text-transform: uppercase'> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтвердить </button> $ip : $uid, $grp</p>
-        //         ";
-        //         break;
-        // }
     }
 } else {
     echo "Пока никого нету";

@@ -14,6 +14,10 @@
     header("Location: panel-login.php");
     die();
   }
+
+  // TODO: Новые формы для вопросов (по кол-ву ответов, по типу ответов и т.д.)
+  // TODO: Добавление картинок в вопрос
+
 ?>
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">

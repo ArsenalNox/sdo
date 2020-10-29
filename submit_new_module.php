@@ -1,8 +1,5 @@
 <?php
 
-// TODO: Новые формы для вопросов (по кол-ву ответов, по типу ответов и т.д.)
-// TODO: Добавление картинок в вопрос
-
 include_once "dtb/dtb.php";
 $module_name = $_POST['Module_name'];
 $data[] = array(
