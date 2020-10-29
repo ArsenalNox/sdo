@@ -101,12 +101,12 @@ $uid = $_SESSION['UID'];
         $result_table_name = 'tr_'.$row['id'];
         //создание таблицы если не существует
         $resulttable_sql = "CREATE TABLE IF NOT EXISTS $result_table_name (
-          id int(4) NOT NULL AUTO_INCREMENT,
-          Question_var int(4) ,
-          Question_text varchar(512),
-          Given_answer varchar(512),
-          Correct_answer varchar(512),
-          PRIMARY_KEY(id)
+          id int(4) AUTO_INCREMENT,
+          Question_var int(4),
+          Question_text nvarchar(512),
+          Given_answer nvarchar(512),
+          Correct_answer nvarchar(512),
+          PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
         for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
