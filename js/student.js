@@ -91,11 +91,9 @@ function set_test_status() {
 }
 
 function update_status() {
-  console.log('updating');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
       if(this.responseText == "OK"){
         location.reload();
       }
@@ -104,4 +102,31 @@ function update_status() {
   xhttp.open("POST", "php/functions/autoupdatestudent.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("stat");
+}
+
+function update_status_demote(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        if(this.responseText == "NO"){
+          location.reload();
+        }
+      }
+    };
+    xhttp.open("POST", "php/functions/autoupdatestudent.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("stat");
+}
+
+function sendtestinfo(){
+  var xhttp = new XMLHttpRequest();
+  var id = document.getElementById('suid').value
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        console.log(test, this.responseText);
+    }
+  };
+  xhttp.open("POST", "php/functions/set_student_completed_test.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("status="+test+"&id="+id);
 }

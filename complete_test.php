@@ -126,15 +126,14 @@ $uid = $_SESSION['UID'];
 
       echo "
       <p> Ваш результат был сохранён! </p>
+      <p> Процент правильных ответов: " .$percent. " </p>
+      <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
       ";
     } else {
-      echo "Ваш результат уже записан";
+      echo "Ваш результат уже записан
+      <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
-
-  echo "<br>
-  <p> Процент правильных ответов: " .$percent. " </p>
-  <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
  ?>
  <script type="text/javascript" src='js/student.js'></script>
  <script type="text/javascript">

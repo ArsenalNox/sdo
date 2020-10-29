@@ -67,7 +67,6 @@ foreach ($json_a as $struct => $quest) {
   echo "
   <button> Завершить тест </button>
   </form>
-
   <script  type='text/javascript'>
   var time_to_complete = $time_to_complete;
   console.log(time_to_complete);

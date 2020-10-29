@@ -14,7 +14,11 @@ if(mysqli_num_rows($result) > 0){
         $uid = $row['student_uid'];
         $grp = $row['group_nl'];
         $id = $row['id'];
-
+        if($row['test_id'] == ''){
+          $test_dir = '';
+        } else {
+          $test_dir = $row['test_id'];
+        }
         switch ( $row['test_status']) {
           case 'test_not_selected':
               $test_status = 'Не выбрал тест';
@@ -25,7 +29,7 @@ if(mysqli_num_rows($result) > 0){
             break;
 
           case 'completed':
-              $test_status = 'Завершил тест <button onclick=""> Смотреть результат </button>';
+              $test_status = 'Завершил тест <a href="viewresult.php?td='.$test_dir.'"> <button> Смотреть результат </button> </a>';
             break;
 
           default:

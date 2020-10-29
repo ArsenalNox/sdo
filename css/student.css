@@ -31,4 +31,8 @@
   color: #000;
 }
 
+.question{
+  
+  border-bottom: 1px black solid;
+}
 input::-webkit-input-placeholder { color: #fff};

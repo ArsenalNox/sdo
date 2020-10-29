@@ -16,7 +16,7 @@
         if(!isset($uid)){
             $uid = '';
         }
-        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl, test_status) VALUES ('$ip', '', '0', '', '') ;";
+        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl, test_status, test_id) VALUES ('$ip', '', '0', '', '', '') ;";
         $insert = mysqli_query($conn, $sql);
     }
 ?>
@@ -68,6 +68,7 @@
                   <script>
                       document.getElementById('sg1').style.display = 'none';
                       LoadTests();
+                      var auto_update_timer_demote = setInterval(update_status_demote, 3000);
                       var test_update = setInterval(set_test_status, 3000);
                   </script>
                   </h4>
@@ -80,7 +81,27 @@
                     var auto_update_timer = setInterval(update_status, 3000);
                   </script>
                   ";
-                } ?>
+                }
+
+                if(isset($_GET['status'])){
+                    if(isset($_GET['test'])){
+                      echo "
+                      <script type='text/javascript'>
+                        var status = true
+                        var test = '".$_GET['test']."'
+                        sendtestinfo()
+                      </script>
+                      ";
+                  }
+                } else {
+                  echo "
+                  <script type='text/javascript'>
+                    var test = false;
+                  </script>
+                  ";
+                }
+                ?>
+
             </div>
         </div>
         <br>
