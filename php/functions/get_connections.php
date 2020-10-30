@@ -17,19 +17,19 @@ if(mysqli_num_rows($result) > 0){
         if($row['test_id'] == ''){
           $test_dir = '';
         } else {
-          $test_dir = $row['test_id'];
+          $test_dir = "<br><a href='viewresult.php?td=" . $row['test_id'] . "'> Смотреть результат последненго завершенного теста   </a>";
         }
         switch ( $row['test_status']) {
           case 'test_not_selected':
-              $test_status = 'Не выбрал тест';
+              $test_status = 'Не выбрал тест' . $test_dir;
             break;
 
           case 'test_started':
-              $test_status = 'Проходит тест';
+              $test_status = 'Проходит тест'.$test_dir;
             break;
 
           case 'completed':
-              $test_status = 'Завершил тест <a href="viewresult.php?td='.$test_dir.'"> <button> Смотреть результат </button> </a>';
+              $test_status = 'Завершил тест'.$test_dir;
             break;
 
           default:
@@ -40,7 +40,7 @@ if(mysqli_num_rows($result) > 0){
         if($status == 0){echo "<div class='student-ip-info'> <button class='button3' onclick='ConfirmStudent($id)'> Подтвердить </button>";
         } else {echo "<div class='student-ip-info'> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтверждён </button>";}
 
-        echo "<p class='ip' style='text-transform: uppercase'> $ip : $uid, $grp <p> ";
+        echo "<p class='ip'> $ip : $uid, $grp </p> ";
         if(!($test_status == '')){
           echo "<p> Статус: $test_status </p> <hr> </div>";
         } else {
