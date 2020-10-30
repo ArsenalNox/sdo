@@ -130,18 +130,17 @@ h4 {
 .student-ip-panel{
   background-color: #f8e5c7;
   position: relative;
-  padding: 1rem;
-  margin: 12px;
   width: fit-content;
   height: min-content;
   transition: width 1s, height 1s;
+  padding: 20px;
 }
 
 .module-wrapper{
   width: 60%;
   position: relative;
-  margin: 12px;
   transition: width 1s, height 1s;
+  padding-top: 25px;
 }
 
 /* create_module */
@@ -357,6 +356,10 @@ a {
 
 .send {
   background: #7ac643;
+}
+
+.fieldsetlogin {
+  height: 230px;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};

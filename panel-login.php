@@ -39,7 +39,7 @@
     <img src="img/Группа.png" class="imgLogin">
       <div class="form">
           <form class="login" action="panel-login.php" method="post">
-            <fieldset>
+            <fieldset class="fieldsetlogin">
               <legend align="center"><h1 class="text">ВХОД</h1></legend>
               <input type="text" name="uid" placeholder="Логин" class="loginIn">
               <input type="password" name="pwd" placeholder="Пароль" class="password">
