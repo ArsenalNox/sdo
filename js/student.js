@@ -1,9 +1,10 @@
-//Переменные сосотояния
+//Переменные состояния
 var t_not = 'test_not_selected';
 var t_ong = 'test_started';
 var t_cmp = 'completed';
 
 function GetGroupNames() {
+  //Получает все имена класса
   var xhttp = new XMLHttpRequest();
   var student_group = document.getElementById('student_group_selector').value;
   console.log('Requesting names for ', student_group);
@@ -19,6 +20,7 @@ function GetGroupNames() {
 }
 
 function LoadTests() {
+  //Загружает тесты
   var xhttp = new XMLHttpRequest();
   var student_group = document.getElementById('student_group').textContent;
   xhttp.onreadystatechange = function() {
@@ -33,6 +35,7 @@ function LoadTests() {
 }
 
 function SendStudentInfo() {
+  //Отправка выбранной инофрмации об ученике в таблицу
   var xhttp = new XMLHttpRequest();
   var new_name = document.getElementById('group_names').value;
   var ip = document.getElementById('ip').textContent;
@@ -48,6 +51,7 @@ function SendStudentInfo() {
 }
 
 function startTest(id) {
+  //Начинает тест по его id
   document.getElementById('student_test_status').value = t_ong
   var test_id = id;
   document.getElementById('mtf').remove();
@@ -63,6 +67,7 @@ function startTest(id) {
 }
 
 function getStatus() {
+  // QUESTION: Функция почти не отлчиается от предидущей. Скорее всего будет удалена
   var test_id = id;
   document.getElementById('mtf').remove();
   var xhttp = new XMLHttpRequest();
@@ -77,6 +82,7 @@ function getStatus() {
 }
 
 function set_test_status() {
+  //Обновляет состояние ученика (Не выбрал, начал, завершил тест)
   var xhttp = new XMLHttpRequest();
   var id = document.getElementById('suid').value;
   var student_test_status = document.getElementById('student_test_status').value;
@@ -91,6 +97,7 @@ function set_test_status() {
 }
 
 function update_status() {
+  //Проверка статуса из неподтверждённого состояния
   console.log('Проверка статуса');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -107,6 +114,7 @@ function update_status() {
 }
 
 function update_status_demote(){
+    //Проверяет статус студента когда студент подтверждён. Если статус NO обновить страницу и ждать подтверждения
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -121,6 +129,7 @@ function update_status_demote(){
 }
 
 function sendtestinfo(){
+  //Отправляет адрес таблицы с выполненым тестом в таблицу соединений
   var xhttp = new XMLHttpRequest();
   var id = document.getElementById('suid').value
   xhttp.onreadystatechange = function() {

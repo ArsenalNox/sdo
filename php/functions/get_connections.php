@@ -19,9 +19,9 @@ if(mysqli_num_rows($result) > 0){
         } else {
           $test_dir = "<br><a href='viewresult.php?td=" . $row['test_id'] . "'> Смотреть результат последненго завершенного теста   </a>";
         }
-        switch ( $row['test_status']) {
+        switch ($row['test_status']) {
           case 'test_not_selected':
-              $test_status = 'Не выбрал тест' . $test_dir;
+              $test_status = 'Не выбрал тест'. $test_dir;
             break;
 
           case 'test_started':
