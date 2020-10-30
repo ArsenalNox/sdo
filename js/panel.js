@@ -1,3 +1,5 @@
+var autoUpdateStatus = setInterval(getConnections, 2000);
+
 function ConfirmStudent(id) {
   var action = 'confirm'
   var xhttp = new XMLHttpRequest();
@@ -43,6 +45,7 @@ function LoadMouleMenu() {
 }
 
 function getConnections() {
+  console.log('getting connections');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -95,9 +98,11 @@ function ShowSpecificVariants() {
 }
 
 function ResetConnections() {
+  console.log('Обнуление соединений');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      console.log('Обнуление завершено успешно');
       getConnections();
     }
   };

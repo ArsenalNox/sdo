@@ -27,7 +27,7 @@ $uid = $_SESSION['UID'];
   echo "
   <section class='student-wrapper'>
   <fieldset class='fieldset'>
-  Результаты теста, " . $student ;
+  Результаты теста " . $student ;
   for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
     $variant = $_SESSION["QUESTION_VAR_$i"];
     $question_text = $_SESSION["QUESTION_$i"];

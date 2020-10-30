@@ -91,9 +91,11 @@ function set_test_status() {
 }
 
 function update_status() {
+  console.log('Проверка статуса');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
       if(this.responseText == "OK"){
         location.reload();
       }
@@ -108,7 +110,7 @@ function update_status_demote(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        if(this.responseText == "NO"){
+        if( (this.responseText == "NO") || (this.responseText == 'not found') ){
           location.reload();
         }
       }

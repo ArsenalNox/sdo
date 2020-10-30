@@ -3,10 +3,8 @@ session_start();
 include_once "../../dtb/dtb.php";
 
 $ip = $_SESSION['IP'];
-$uid = $_SESSION['UID'];
-$group = $_SESSION['GROUP_UID'];
 
-$sql = "SELECT status FROM connectons WHERE student_uid = '$uid' AND ip = '$ip' ";
+$sql = "SELECT status FROM connectons WHERE ip = '$ip' ";
 $result = mysqli_query($conn, $sql);
 if($result){
   if(mysqli_num_rows($result) > 0){
@@ -17,6 +15,6 @@ if($result){
       echo "NO";
     }
     die();
-  } else {echo "not found";}
+  } else {echo "NO";}
 } else {echo "error";}
 die();
