@@ -45,11 +45,9 @@
               <input type="password" name="pwd" placeholder="Пароль" class="password">
               <?php if(isset($error)){echo"<p> $error </p>";} ?>
               <button type="submit" name="" value="Войти" class="button">Войти</button>
-
             </fieldset>
           </form>
         </div>
-
     </section>
   </body>
 </html>
