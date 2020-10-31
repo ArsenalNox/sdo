@@ -39,10 +39,7 @@ if(isset($_COOKIE['STS'])){
 
     <div class="data-select-wrapper" id='dsw1'>
 
-
-
     </div>
-
     Сортировать по:
     <select class="sort-by" name="sort" id='ss1'>
       <option value="class-desc"> Классу убыв. </option>

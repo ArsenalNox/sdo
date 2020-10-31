@@ -23,8 +23,6 @@ $uid = $_SESSION['UID'];
   echo "
   <input type='hidden' name='student_uid' value='$uid' id='suid'>
   <input type='hidden' name='student_test_status' value='test_not_selected' id='student_test_status'>
-  ";
-  echo "
   <section class='student-wrapper'>
   <fieldset class='fieldset'>
   Результаты теста " . $student ;
@@ -43,14 +41,12 @@ $uid = $_SESSION['UID'];
       <p> Ответ ученика: '$question_answer_given'. </p>
       <p> Ответ правильный. </p>
       ";
-      $_SESSION["STATE_$i"] = 1;
       $correct_answers++;
     } else {
       echo "
       <p> Ответ ученика: '$question_answer_given'. </p>
       <p> Ответ не правильный! Правильный ответ - '$question_answer_correct' </p>";
-      $_SESSION["STATE_$i"] = 0;
-    }
+      }
     echo "
     </div>
     ";
@@ -111,7 +107,6 @@ $uid = $_SESSION['UID'];
               '$correct'
           )";
           $insert = mysqli_query($conn, $sql);
-          echo "";
         }
       }
 
