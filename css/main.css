@@ -358,4 +358,16 @@ a {
   height: 230px;
 }
 
+.viewpanel-wrapper{
+  width: 80%;
+  position: relative;
+  left: 50%;
+  margin-top: 3rem;
+  transform: translate(-50%,0);
+  border: 1px solid black;
+  padding: 1rem;
+}
+table, th, td {
+  border: 1px solid black;
+}
 textarea::-webkit-input-placeholder { color: #fff};

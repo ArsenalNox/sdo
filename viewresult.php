@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/student.css">
     <title>Результат теста</title>
   </head>
-  <body> 
+  <body>
 <?php
 //Показ резуьтата теста ученика преподавателю
 include_once "dtb/dtb.php";
@@ -24,7 +24,7 @@ if ($result) {
         <div class='question' id='$num'>
         <p> Номер вопроса: $num </p>
         <p> Текст вопроса: $question </p>
-        <p> Ответ студента: '$answer' </p>
+        <p> Ответ ученика: '$answer' </p>
         <p> Правильный ответ: '$correct' </p>
         </div>
       ";

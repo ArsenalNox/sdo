@@ -58,7 +58,7 @@ $uid = $_SESSION['UID'];
   if($correct_answers == 0){
     $percent = "0%";
   } else {
-    $percent = round($_SESSION['QUESTIONS_QUANTITY']/$correct_answers*10) . "%";
+    $percent = round($correct_answers/$_SESSION['QUESTIONS_QUANTITY']*100) . "%";
   }
   //Проверка на наличие результата этого теста у ученика в бд
   $sql = "SELECT * FROM test_results WHERE student = '$student' AND module='$module_name';";
@@ -68,27 +68,12 @@ $uid = $_SESSION['UID'];
       $today = date("Y-m-d");
       $group = $_SESSION['GROUP_UID'];
       //Проверка наличия резуьтатов. (Надо бы по-хорошему эту систему изменить)
-      if(isset($_SESSION["STATE_1"])){$q1 = $_SESSION["STATE_1"];}
-      if(isset($_SESSION["STATE_2"])){$q2 = $_SESSION["STATE_2"];}
-      if(isset($_SESSION["STATE_3"])){$q3 = $_SESSION["STATE_3"];}
-      if(isset($_SESSION["STATE_4"])){$q4 = $_SESSION["STATE_4"];}
-      if(isset($_SESSION["STATE_5"])){$q5 = $_SESSION["STATE_5"];}
-      if(isset($_SESSION["STATE_6"])){$q6 = $_SESSION["STATE_6"];}
-      if(isset($_SESSION["STATE_7"])){$q7 = $_SESSION["STATE_7"];}
-      if(isset($_SESSION["STATE_8"])){$q8 = $_SESSION["STATE_8"];}
-      $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `percent`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES (
+      $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `percent`) VALUES (
         '$student',
         '$group',
         '$today',
         '$module_name',
-        '$percent',
-        '$q1',
-        '$q2',
-        '$q3',
-        '$q4',
-        '$q5',
-        '$q6',
-        '$q7'
+        '$percent'
       )";
       $result = mysqli_query($conn, $sql);
       if($result){
@@ -103,9 +88,10 @@ $uid = $_SESSION['UID'];
         $resulttable_sql = "CREATE TABLE IF NOT EXISTS $result_table_name (
           id int(4) AUTO_INCREMENT,
           Question_var int(4),
-          Question_text nvarchar(512),
-          Given_answer nvarchar(512),
-          Correct_answer nvarchar(512),
+          Question_text varchar(512),
+          Given_answer varchar(512),
+          Correct_answer varchar(512),
+          Correctness tinyint(1),
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -114,13 +100,18 @@ $uid = $_SESSION['UID'];
           $question_text = $_SESSION["QUESTION_$i"];
           $question_answer_given = $_POST["ANSW_$i"];
           $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
-          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`) VALUES (
+          if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
+            $correct = 0;
+          }
+          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`) VALUES (
               '$variant',
               '$question_text',
               '$question_answer_given',
-              '$question_answer_correct'
+              '$question_answer_correct',
+              '$correct'
           )";
           $insert = mysqli_query($conn, $sql);
+          echo "";
         }
       }
 
@@ -134,8 +125,15 @@ $uid = $_SESSION['UID'];
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
+  echo "
+  <script type='text/javascript' src='js/student.js'></script>
+  <script type='text/javascript'>
+    var status = true
+    var test = '".$result_table_name."'
+    sendtestinfo()
+  </script>
+  ";
  ?>
- <script type="text/javascript" src='js/student.js'></script>
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
    set_test_status();

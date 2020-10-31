@@ -3,7 +3,7 @@
 // TODO: Дизайн..................................
 // TODO: Перелопатить структуру бд................. переписать весь код под новую бд................................................................................
 /* TODO: Выборочное превью тестов ученика (Нажимаешь на кнопку где-то рядом с учеником и переносит на страницу со всеми его тестами) */
-
+// TODO: Панель где видны
   include_once "dtb/dtb.php";
   if(isset($_COOKIE['STS'])){
     $teachid = $_COOKIE['STS'];
@@ -29,7 +29,6 @@
 </head>
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
-
 <div class="wrapper">
 
 <section class='student-ip-panel'>
@@ -101,9 +100,13 @@
   </fieldset>
 
   <fieldset class="fieldset">
-    <legend align="center"><h2 class="module"> Создание модуля </h2></legend>
-        <a href="create_module.php" class='to-crmd'>
-          <button class="button4"> Создать Модуль </button>
+    <legend align="center"><h2 class="module"> Мета панель </h2></legend>
+        <a href="create_module.php" class='create'>
+          Создать Модуль
+        </a>
+        <br>
+        <a href="viewmod.php" class='viewmod'>
+          Просмотр мероприятий
         </a>
   </fieldset>
 
