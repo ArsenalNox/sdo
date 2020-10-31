@@ -29,38 +29,33 @@ if(isset($_COOKIE['STS'])){
       <hr>
       <div class="method-select-wrapper">
         Провести выбор по:
-        <select class="method-select" name="method" id='ms1'>
+        <select class="method-select" name="method" id='ms1' onchange="loadAssociatedData()">
           <option value="module"> Модулю </option>
           <option value="class"> Классу </option>
           <option value="date"> Дате </option>
           <option value="student"> Студенту </option>
         </select>
       </div>
-    <div class="module-list">
-    <br> Список модулей <br>
-      <?php
-      $sql = "SELECT DISTINCT module FROM test_results";
-      $result = mysqli_query($conn, $sql);
-      if($result){
-        if(mysqli_num_rows($result)>0){
-            echo "
-            <select id='mds1'>
-            ";
-            while ($row = mysqli_fetch_assoc($result)) {
-              $module = $row['module'];
-              echo '<option value="'.$module.'"> '.$module.' </option> <br>';
-            }
-            echo "</select>";
-        }
-      } else {
-        echo "<h3> При загрузке произошла ошибка! </h3>";
-      }
-      ?>
-    </div>
-    <button type="button" name="button" onclick="showAllResultsOfModule()">Провести поиск</button>
 
+    <div class="data-select-wrapper" id='dsw1'>
+
+
+
+    </div>
+
+    Сортировать по:
+    <select class="sort-by" name="sort" id='ss1'>
+      <option value=""> Дате убыв.</option>
+      <option value=""> Дате возр.</option>
+      <option value=""></option>
+    </select>
+    <br>
+    <button type="button" name="button" onclick="showAllResults()">Провести поиск</button>
     </section>
     <div class="test-list-wrapper" id='tlw1'> </div>
     <script src="js/meta.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      loadAssociatedData()
+    </script>
   </body>
 </html>
