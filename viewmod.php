@@ -45,9 +45,12 @@ if(isset($_COOKIE['STS'])){
 
     Сортировать по:
     <select class="sort-by" name="sort" id='ss1'>
-      <option value=""> Дате убыв.</option>
-      <option value=""> Дате возр.</option>
-      <option value=""></option>
+      <option value="class-desc"> Классу убыв. </option>
+      <option value="class-asc">  Классу возр. </option>
+      <option value="date-desc">  Дате убыв.   </option>
+      <option value="date-asc">   Дате возр.   </option>
+      <option value="module-desc">  Модулю убыл.   </option>
+      <option value="module-asc">   Модулю возр.   </option>
     </select>
     <br>
     <button type="button" name="button" onclick="showAllResults()">Провести поиск</button>

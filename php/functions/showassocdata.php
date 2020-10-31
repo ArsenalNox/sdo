@@ -17,7 +17,7 @@ if($data == 'date') {
           $module = $row["$data"];
           echo '<option value="'.$module.'"> '.$module.' </option> <br>';
         }
-        echo "</select>";
+        echo "</select> <br>";
     }
   } else {
     echo "<h3> При загрузке произошла ошибка! </h3>";
