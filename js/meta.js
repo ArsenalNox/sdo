@@ -1,4 +1,5 @@
-function showAllResultsOfModule(module){
+function showAllResultsOfModule(){
+    module = document.getElementById('mds1').value;
     console.log('Запрашиваю результаты модуля ' + module);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {

@@ -44,7 +44,7 @@ if(isset($_COOKIE['STS'])){
       if($result){
         if(mysqli_num_rows($result)>0){
             echo "
-            <select>
+            <select id='mds1'>
             ";
             while ($row = mysqli_fetch_assoc($result)) {
               $module = $row['module'];
@@ -57,6 +57,7 @@ if(isset($_COOKIE['STS'])){
       }
       ?>
     </div>
+    <button type="button" name="button" onclick="showAllResultsOfModule()">Провести поиск</button>
 
     </section>
     <div class="test-list-wrapper" id='tlw1'> </div>
