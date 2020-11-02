@@ -386,4 +386,15 @@ table, th, td {
 .veiwlink{
   float: right;
 }
+.add-opt-select{
+    display: none;
+}
+.addv-p{
+  width: max-content;
+}
+.addv-p:hover{
+  background-color: #DDDDAA;
+  transition: 0.1s;
+}
+
 textarea::-webkit-input-placeholder { color: #fff};

@@ -50,12 +50,37 @@ if(isset($_COOKIE['STS'])){
       <option value="module-asc">   Модулю возр.   </option>
     </select>
     <br>
+    <div class="addv-opt-wrapper" id='apt1'>
+      <p id='pel' class="addv-p" onclick='showElem("apt2")'> Дополнительные опции +</p>
+      <br>
+      <select id='apt2' class="add-opt-select" name="optional">
+
+      </select>
+    </div>
+    <br>
     <button type="button" name="button" onclick="showAllResults()">Провести поиск</button>
     </section>
     <div class="test-list-wrapper" id='tlw1'> </div>
     <script src="js/meta.js" charset="utf-8"></script>
     <script type="text/javascript">
       loadAssociatedData()
+      var display = false
+      function showElem(id){
+        switch (display) {
+          case false:
+            document.getElementById('pel').innerText = 'Дополнительные опции -';
+            document.getElementById('apt2').style.display = 'grid';
+            display = true;
+            break;
+
+          case true:
+            document.getElementById('pel').innerText = 'Дополнительные опции +';
+            document.getElementById('apt2').style.display = 'none';
+            display = false;
+            break;
+        }
+      }
+
     </script>
   </body>
 </html>
