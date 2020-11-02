@@ -24,6 +24,7 @@ if($data == 'date') {
         }
         echo "</select> <br>";
         echo createDataset('student', $conn);
+        echo createDataset('class', $conn);
     }
   } else {
     echo "<h3> При загрузке произошла ошибка! </h3>";

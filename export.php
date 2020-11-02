@@ -40,9 +40,9 @@ include_once "dtb/dtb.php";
         <option value="all_all">Все результаты за всё время</option>
         <option value="all_time">Все результаты за промежуток времени</option>
         <option value="spec_all">Результаты класса за всё время</option>
-        <option value="spec_time">Результаты класса за промежуток времени</option>
+        <!-- <option value="spec_time">Результаты класса за промежуток времени</option>
         <option value="all_all">Результаты ученика за всё время</option>
-        <option value="all_all">Результаты ученика за промежуток времени</option>
+        <option value="all_all">Результаты ученика за промежуток времени</option> -->
       </select> </p>
       <fieldset id='addinfo'>
 
@@ -59,7 +59,6 @@ include_once "dtb/dtb.php";
     fieldset.id = 'addinfo'
     document.getElementById('exf').append(fieldset);
     switch (selection) {
-
       case "all_all":
           let button = document.createElement('button');
           button.type = 'submit';

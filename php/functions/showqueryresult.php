@@ -204,7 +204,7 @@ if($result){
         echo "</table>";
       break;
     }
-    echo "$sql";
+    echo "<br> <p> <button onclick='export('$sql')'> Экспорт данной таблицы </p>";
   } else {
     echo "По данному запросу отсутсвуют результаты";
   }

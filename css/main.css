@@ -383,23 +383,40 @@ table, th, td {
   padding: 1px;
   border: 1px solid black;
 }
+
 .veiwlink{
   float: right;
 }
+
 .add-opt-select{
     display: none;
 }
+
 .addv-p{
   width: max-content;
 }
+
 .addv-p:hover{
   background-color: #DDDDAA;
   transition: 0.1s;
 }
+
 dataset{
   display: none;
 }
+
 .stsrch{
   width: 300px;
+}
+
+.option{
+  display: none;
+}
+
+.option-wrap{
+  margin: 1rem;
+  padding: 5px;
+  border-bottom: 1px dotted black;
+  border-top: 1px dotted black;
 }
 textarea::-webkit-input-placeholder { color: #fff};

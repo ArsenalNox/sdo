@@ -49,3 +49,31 @@ function loadAdditionalOptions(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("data=" + option);
 }
+
+function showOption(id){
+  var state = document.getElementById('optstate'+id).value;
+  console.log('Изменяю отоброжение опции '+id +state);
+  switch (state) {
+    case 'hidden':
+        document.getElementById('opt'+id).style.display= 'grid';
+        document.getElementById('optstate'+id).value= 'displayed';
+      break;
+    case 'displayed':
+        document.getElementById('opt'+id).style.display= 'none';
+        document.getElementById('optstate'+id).value= 'hidden';
+      break;
+  }
+}
+
+function export(sql){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log('Готово! (2)');
+      document.getElementById('s-holder').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "php/functions/showAdditionalOptions.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("data=" + option);
+}
