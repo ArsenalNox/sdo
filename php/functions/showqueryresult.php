@@ -22,26 +22,36 @@ switch ($_POST['method']) {
     $sql = "SELECT * FROM test_results";
     break;
 }
+//Добавление дополнительных опций поиска, если таковые имеются
+
+
 //Выбор сортировки
 switch ($_POST['sort']) {
   case 'class-asc':
     $sql .= " ORDER BY class ASC ";
     break;
   case 'class-desc':
-    $sql .= " ORDER BY class desc ";
+    $sql .= " ORDER BY class DESC ";
     break;
   case 'date-asc':
     $sql .= " ORDER BY date ASC ";
     break;
   case 'date-desc':
-    $sql .= " ORDER BY date desc ";
+    $sql .= " ORDER BY date DESC ";
     break;
   case 'module-asc':
-    $sql .= " ORDER BY module asc ";
+    $sql .= " ORDER BY module ASC ";
     break;
   case 'module-desc':
-    $sql .= " ORDER BY module desc ";
+    $sql .= " ORDER BY module DESC ";
     break;
+  case 'percent-desc':
+    $sql .= " ORDER BY percent DESC ";
+    break;
+  case 'percent-asc':
+    $sql .= " ORDER BY percent ASC ";
+    break;
+
 }
 
 $result = mysqli_query($conn, $sql);
@@ -194,8 +204,7 @@ if($result){
         echo "</table>";
       break;
     }
-
-
+    echo "$sql";
   } else {
     echo "По данному запросу отсутсвуют результаты";
   }

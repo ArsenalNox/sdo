@@ -1,9 +1,10 @@
 function showAllResults(){
     //Выводит запрашиваемые данные в таблицу
+
     var request = document.getElementById('dvm1').value;
     var method = document.getElementById('ms1').value;
     var sort = document.getElementById('ss1').value;
-    console.log('Запрос ' + method + ", " + request);
+    console.log('Запрос ' + method + ", " + request + ", " + sort);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -41,7 +42,7 @@ function loadAdditionalOptions(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log('Готово! (2)');
-      document.getElementById('apt2').innerHTML = this.responseText;
+      document.getElementById('s-holder').innerHTML = this.responseText;
     }
   };
   xhttp.open("POST", "php/functions/showAdditionalOptions.php", true);

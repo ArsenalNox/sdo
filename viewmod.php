@@ -37,9 +37,7 @@ if(isset($_COOKIE['STS'])){
           <option value="all"> Показать всё </option>
         </select>
       </div>
-
     <div class="data-select-wrapper" id='dsw1'>
-
     </div>
     Сортировать по:
     <select class="sort-by" name="sort" id='ss1'>
@@ -47,16 +45,17 @@ if(isset($_COOKIE['STS'])){
       <option value="class-asc">  Классу возр. </option>
       <option value="date-desc">  Дате убыв.   </option>
       <option value="date-asc">   Дате возр.   </option>
-      <option value="module-desc">  Модулю убыл.   </option>
+      <option value="module-desc">  Модулю убыв.   </option>
       <option value="module-asc">   Модулю возр.   </option>
+      <option value="percent-desc">  Процент выполнения убыв.   </option>
+      <option value="percent-asc">   Процент выполнения возр.   </option>
     </select>
     <br>
     <div class="addv-opt-wrapper" id='apt1'>
       <p id='pel' class="addv-p" onclick='showElem("apt2")'> Дополнительные опции +</p>
       <br>
-      <select id='apt2' class="add-opt-select" name="optional">
-
-      </select>
+      <div id='s-holder' class='add-opt-select'>
+      </div>
     </div>
     <br>
     <button type="button" name="button" onclick="showAllResults()">Провести поиск</button>
@@ -70,13 +69,13 @@ if(isset($_COOKIE['STS'])){
         switch (display) {
           case false:
             document.getElementById('pel').innerText = 'Дополнительные опции -';
-            document.getElementById('apt2').style.display = 'grid';
+            document.getElementById('s-holder').style.display = 'grid';
             display = true;
             break;
 
           case true:
             document.getElementById('pel').innerText = 'Дополнительные опции +';
-            document.getElementById('apt2').style.display = 'none';
+            document.getElementById('s-holder').style.display = 'none';
             display = false;
             break;
         }

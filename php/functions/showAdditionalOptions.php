@@ -1,36 +1,27 @@
 <?php
-include_once ",,/,,/dtb/dtb.php";
+include_once "../../dtb/dtb.php";
 
 switch ($_POST['data']) {
   case 'module':
     echo "
-    <option value=''>  </option>
-    ";
+    <div class='option'>
+    <label for='search-student'> Показывать только результаты ученика: </label>
+    <input class='stsrch' type='search' list='student-dataset' id='search-student' name='add-student' placeholder='Имя студента'>
+    </div>";
+
     break;
   case 'class':
     echo "
-    <option>
-    опции класса
-    </option>
+
     ";
     break;
   case 'date':
     echo "
-    <option>
-    опции даты
-    </option>
     ";
     break;
   case 'student':
     echo "
-    <option>
-    опции студента
-    </option>
     ";
     break;
-
 }
-
-echo "<option value=''> --Не использовать дополнительных опций-- </option>";
-
 ?>

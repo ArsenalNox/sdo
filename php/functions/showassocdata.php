@@ -1,6 +1,8 @@
 <?php
 //Получаем из таблицы результатов соответсвующие данные для создание выпадающего списка для выбора
 include_once "../../dtb/dtb.php";
+include_once "code_functions.php";
+
 $data = $_POST['data'];
 if($data == 'date') {
   echo "<input id='dvm1' type='date'>";
@@ -21,6 +23,7 @@ if($data == 'date') {
           echo '<option value="'.$module.'"> '.$module.' </option> <br>';
         }
         echo "</select> <br>";
+        echo createDataset('student', $conn);
     }
   } else {
     echo "<h3> При загрузке произошла ошибка! </h3>";

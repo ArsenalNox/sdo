@@ -396,5 +396,10 @@ table, th, td {
   background-color: #DDDDAA;
   transition: 0.1s;
 }
-
+dataset{
+  display: none;
+}
+.stsrch{
+  width: 300px;
+}
 textarea::-webkit-input-placeholder { color: #fff};
