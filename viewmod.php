@@ -34,6 +34,7 @@ if(isset($_COOKIE['STS'])){
           <option value="class"> Классу </option>
           <option value="date"> Дате </option>
           <option value="student"> Студенту </option>
+          <option value="all"> Показать всё </option>
         </select>
       </div>
 

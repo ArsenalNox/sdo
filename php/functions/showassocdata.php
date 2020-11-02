@@ -4,7 +4,10 @@ include_once "../../dtb/dtb.php";
 $data = $_POST['data'];
 if($data == 'date') {
   echo "<input id='dvm1' type='date'>";
-}else {
+} elseif ($data == 'all') {
+  echo "<br> <select id='dvm1' style='display:none'> <option value='all'> all </option> </select>
+  ";
+} else {
   $sql = "SELECT DISTINCT $data FROM test_results";
   $result = mysqli_query($conn, $sql);
   if($result){

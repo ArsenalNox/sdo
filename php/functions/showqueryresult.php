@@ -18,6 +18,9 @@ switch ($_POST['method']) {
     $student = $_POST['data'];
     $sql = "SELECT * FROM test_results WHERE student = '$student'";
     break;
+  case 'all':
+    $sql = "SELECT * FROM test_results";
+    break;
 }
 //Выбор сортировки
 switch ($_POST['sort']) {
@@ -56,7 +59,7 @@ if($result){
           <br>
           <table>
             <tr>
-              <th> Имя студента </th>
+              <th> ФИО студента </th>
               <th> Класс </th>
               <th> Дата выполнения </th>
               <th> Процент выполнения </th>
@@ -85,7 +88,7 @@ if($result){
         <br>
         <table>
           <tr>
-            <th> Имя студента </th>
+            <th> ФИО студента </th>
             <th> Модуль </th>
             <th> Дата выполнения </th>
             <th> Процент выполнения </th>
@@ -113,7 +116,7 @@ if($result){
         <br>
         <table>
           <tr>
-            <th> Имя студента </th>
+            <th> ФИО студента </th>
             <th> Класс </th>
             <th> Модуль </th>
             <th> Дата выполнения </th>
@@ -161,6 +164,35 @@ if($result){
         }
         echo "</table>";
         break;
+      case 'all':
+        echo "
+        <div class='data-preview'>
+          Полная таблица результатов
+        </div>
+        <br>
+        <table>
+          <tr>
+            <th> ФИО студента </th>
+            <th> Класс </th>
+            <th> Модуль </th>
+            <th> Дата выполнения </th>
+            <th> Процент выполнения </th>
+          </tr>
+        ";
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "
+          <tr>
+            <td> ".$row['student']." </td>
+            <td> ".$row['class']."</td>
+            <td> ".$row['module']." </td>
+            <td> ".$row['date']." </td>
+            <td> ".$row['percent']." <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+            Смотреть результат </a> </td>
+          </tr>
+          ";
+        }
+        echo "</table>";
+      break;
     }
 
 
