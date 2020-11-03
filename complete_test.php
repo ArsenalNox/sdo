@@ -45,7 +45,7 @@ $uid = $_SESSION['UID'];
     } else {
       echo "
       <p> Ответ ученика: '$question_answer_given'. </p>
-      <p> Ответ не правильный! Правильный ответ - '$question_answer_correct' </p>";
+      <p> Ответ не правильный!</p>";
       }
     echo "
     </div>
@@ -78,7 +78,7 @@ $uid = $_SESSION['UID'];
         $sql = "SELECT * FROM test_results WHERE `student` = '$uid' AND `date` ='$today' AND `module` = '$module_name'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
-        echo "$sql, $uid, $today, $module_name, " . $row['id'];
+  
         $result_table_name = 'tr_'.$row['id'];
         //создание таблицы если не существует
         $resulttable_sql = "CREATE TABLE IF NOT EXISTS $result_table_name (

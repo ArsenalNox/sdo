@@ -32,8 +32,9 @@ foreach ($json_a as $struct => $quest) {
     $showmeta=false;
     $vars = $quest['quest_vars'];
     echo "
-    <p> $vars Название модуля: ". $quest['Module_name'] ." </p>
+    <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
+    <p> Время на выполнение: ".$time_to_complete." минут</p>
     ";
     continue;
   }
@@ -51,8 +52,11 @@ foreach ($json_a as $struct => $quest) {
           echo
             "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
             <h4 class='tests' style='border-radius: 15px;'> Задание №" . $quest['QUESTION_NUM'] . "
-            Вариант " . $quest['VAR'] . "
-            </h4> <p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
+            Вариант " . $quest['VAR'] . "</h4>";
+            if($quest['IMAGE'] !== ''){
+                echo "<img src='".$quest['IMAGE']."' >";
+            }
+          echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
             A) " . $quest['A'] . " ;
             B) " . $quest['B'] . " ;
             C) " . $quest['C'] . " ;
