@@ -128,27 +128,27 @@
 
       //Ответы
       var question_answer_a = document.createElement('textarea');
-      question_answer_a.className = 'correct_answer'
-      question_answer_a.name = 'question_answer_a_'+current_question_number;
-      question_answer_a.rows = '3';
-      question_answer_a.cols = '15';
-      question_answer_a.style.resize = "none";
-      question_answer_a.required = true;
+        question_answer_a.className = 'correct_answer'
+        question_answer_a.name = 'question_answer_a_'+current_question_number;
+        question_answer_a.rows = '3';
+        question_answer_a.cols = '15';
+        question_answer_a.style.resize = "none";
+        question_answer_a.required = true;
       var question_answer_b = document.createElement('textarea');
-      question_answer_b.name = 'question_answer_b_'+current_question_number;
-      question_answer_b.rows = '3';
-      question_answer_b.cols = '15';
-      question_answer_b.style.resize = "none";
+        question_answer_b.name = 'question_answer_b_'+current_question_number;
+        question_answer_b.rows = '3';
+        question_answer_b.cols = '15';
+        question_answer_b.style.resize = "none";
       var question_answer_c = document.createElement('textarea');
-      question_answer_c.name = 'question_answer_c_'+current_question_number;
-      question_answer_c.rows = '3';
-      question_answer_c.cols = '15';
-      question_answer_c.style.resize = "none";
+        question_answer_c.name = 'question_answer_c_'+current_question_number;
+        question_answer_c.rows = '3';
+        question_answer_c.cols = '15';
+        question_answer_c.style.resize = "none";
       var question_answer_d = document.createElement('textarea');
-      question_answer_d.name = 'question_answer_d_'+current_question_number;
-      question_answer_d.rows = '3';
-      question_answer_d.cols = '15';
-      question_answer_d.style.resize = "none";
+        question_answer_d.name = 'question_answer_d_'+current_question_number;
+        question_answer_d.rows = '3';
+        question_answer_d.cols = '15';
+        question_answer_d.style.resize = "none";
 
       //Добавляем это всё в основной див
       // question_info_field.append(par, new_var_button);

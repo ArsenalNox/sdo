@@ -21,7 +21,7 @@ $path = $row['Questions'];
 $string = file_get_contents("../../$path");
 $json_a = json_decode($string, true);
 $qselector = 1;
-$selector = rand(1,5);
+$selector = 1;
 $i = 0;
 $_SESSION['MODULE'] = $test_name;
 echo "<form action='complete_test.php' method='POST'>";
@@ -30,7 +30,11 @@ $vars = 1;
 foreach ($json_a as $struct => $quest) {
   if($showmeta){
     $showmeta=false;
-    $vars = $quest['quest_vars'];
+    if(isset($quest['quest_vars'])){
+      $vars = $quest['quest_vars'];
+    } else {
+      $vars = 1;
+    }
     echo "
     <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
@@ -56,13 +60,31 @@ foreach ($json_a as $struct => $quest) {
             if($quest['IMAGE'] !== ''){
                 echo "<img src='".$quest['IMAGE']."' >";
             }
-          echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
-            A) " . $quest['A'] . " ;
-            B) " . $quest['B'] . " ;
-            C) " . $quest['C'] . " ;
-            D) " . $quest['D'] . "</p>
-            <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
-            <hr> </div>";
+            if(isset($quest['type']) ){
+              switch ($quest['type']) {
+                case 'open':
+                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
+                  A) " . $quest['A'] . " ;
+                  B) " . $quest['B'] . " ;
+                  C) " . $quest['C'] . " ;
+                  D) " . $quest['D'] . "</p>
+                  <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
+                  <hr> </div>";
+                  break;
+
+                default:
+                  // code...
+                  break;
+              }
+            } else {
+              echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
+              A) " . $quest['A'] . " ;
+              B) " . $quest['B'] . " ;
+              C) " . $quest['C'] . " ;
+              D) " . $quest['D'] . "</p>
+              <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
+              <hr> </div>";
+            }
             $qselector++;
         }
       }
