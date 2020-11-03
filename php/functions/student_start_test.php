@@ -17,7 +17,6 @@ $sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $path = $row['Questions'];
-
 $string = file_get_contents("../../$path");
 $json_a = json_decode($string, true);
 $qselector = 1;
@@ -93,10 +92,7 @@ foreach ($json_a as $struct => $quest) {
   echo "
   <button> Завершить тест </button>
   </form>
-  <script  type='text/javascript'>
-  var time_to_complete = $time_to_complete;
-  console.log(time_to_complete);
-  </script>
-
+  <input type='hidden' name='time_to_complete' id='ttc' value='time_to_complete'>
+  <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
   ";
 ?>
