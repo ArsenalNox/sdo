@@ -35,7 +35,4 @@
   border-bottom: 1px black solid;
 }
 
-.fieldset{
-  background-color: white;
-}
 input::-webkit-input-placeholder { color: #fff};
