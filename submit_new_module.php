@@ -36,5 +36,7 @@ $jsoned_data = json_encode($data,JSON_UNESCAPED_UNICODE);
 $fp = fopen('json/Working_with_word_problems/'. $_POST['Module_name'] . '.json', 'w');
 fwrite($fp, json_encode($data, JSON_UNESCAPED_UNICODE));
 fclose($fp);
+header("Location: panel.php");
+die();
 ?>
 </pre>
