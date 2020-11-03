@@ -36,9 +36,9 @@
     <section class="student-wrapper">
       <input type="hidden" name="student_test_status" value="test_not_selected" id='student_test_status'>
     <fieldset class="fieldset">
-      
+
         <div class="">
-            <div class="selection" id='sg1'><h1 class="group">ВЫБЕРИТЕ КЛАСС:</h1>
+            <div class="selection" id='sg1'><h1 class="group">ВЫБЕРИТЕ СЕБЯ:</h1>
                     <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
                         <?php
                             $sql = "SELECT * FROM group_student";

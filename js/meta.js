@@ -1,24 +1,23 @@
-function showAllResults(){
-    //Выводит запрашиваемые данные в таблицу
-
-    var request = document.getElementById('dvm1').value;
-    var method = document.getElementById('ms1').value;
-    var sort = document.getElementById('ss1').value;
-    console.log('Запрос ' + method + ", " + request + ", " + sort);
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log('Готово!');
-        document.getElementById('tlw1').style.display = 'grid';
-        document.getElementById('tlw1').innerHTML = this.responseText;
-      }
-    };
-    xhttp.open("POST", "php/functions/showqueryresult.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("method="+ method +"&data=" + request + "&sort=" + sort);
+function showAllResults() {
+  //Выводит запрашиваемые данные в таблицу
+  var request = document.getElementById('dvm1').value;
+  var method = document.getElementById('ms1').value;
+  var sort = document.getElementById('ss1').value;
+  console.log('Запрос ' + method + ", " + request + ", " + sort);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log('Готово!');
+      document.getElementById('tlw1').style.display = 'grid';
+      document.getElementById('tlw1').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "php/functions/showqueryresult.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("method=" + method + "&data=" + request + "&sort=" + sort);
 }
 
-function loadAssociatedData(){
+function loadAssociatedData() {
   var request = document.getElementById('ms1').value;
   console.log('Запрос данных для ' + request);
   var xhttp = new XMLHttpRequest();
@@ -35,7 +34,7 @@ function loadAssociatedData(){
   loadAdditionalOptions()
 }
 
-function loadAdditionalOptions(){
+function loadAdditionalOptions() {
   var option = document.getElementById('ms1').value;
   console.log('Запрос соответствующих дополнительных опций для ' + option);
   var xhttp = new XMLHttpRequest();
@@ -50,22 +49,22 @@ function loadAdditionalOptions(){
   xhttp.send("data=" + option);
 }
 
-function showOption(id){
-  var state = document.getElementById('optstate'+id).value;
-  console.log('Изменяю отоброжение опции '+id +state);
+function showOption(id) {
+  var state = document.getElementById('optstate' + id).value;
+  console.log('Изменяю отоброжение опции ' + id + state);
   switch (state) {
     case 'hidden':
-        document.getElementById('opt'+id).style.display= 'grid';
-        document.getElementById('optstate'+id).value= 'displayed';
+      document.getElementById('opt' + id).style.display = 'grid';
+      document.getElementById('optstate' + id).value = 'displayed';
       break;
     case 'displayed':
-        document.getElementById('opt'+id).style.display= 'none';
-        document.getElementById('optstate'+id).value= 'hidden';
+      document.getElementById('opt' + id).style.display = 'none';
+      document.getElementById('optstate' + id).value = 'hidden';
       break;
   }
 }
 
-function export(sql){
+function exportToExcel(sql) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
