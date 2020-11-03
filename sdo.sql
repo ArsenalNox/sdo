@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 28, 2020 at 03:06 PM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 03, 2020 at 03:43 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,15 +33,16 @@ CREATE TABLE `connectons` (
   `student_uid` varchar(120) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `group_nl` varchar(12) NOT NULL,
-  `test_status` varchar(120) NOT NULL
+  `test_status` varchar(120) NOT NULL,
+  `test_id` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `connectons`
 --
 
-INSERT INTO `connectons` (`id`, `ip`, `student_uid`, `status`, `group_nl`, `test_status`) VALUES
-(17, '::1', 'Ansimova Elizabeth Abdeeva', 1, '7A', 'completed');
+INSERT INTO `connectons` (`id`, `ip`, `student_uid`, `status`, `group_nl`, `test_status`, `test_id`) VALUES
+(21, '::1', 'Исхаков Даниил Рамильевич', 1, '8A', 'test_not_selected', 'tr_65');
 
 -- --------------------------------------------------------
 
@@ -65,22 +66,10 @@ CREATE TABLE `current_test` (
 
 INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_complete`, `subject`, `question_num`) VALUES
 (2, '2020-10-15', 'Working with word problems', '9A', 45, 'Math', 8),
-(5, '2020-10-15', 'Spatial relationships and Geometric figures', '8A', 20, 'Math', 8),
-(6, '2020-10-15', 'Spatial relationships and Geometric figures', '8A', 12, 'Math', 8),
+(5, '2020-10-15', 'Пространственные отношения и геометрические фигуры', '8A', 20, 'Math', 8),
 (7, '2020-10-15', 'Working with word problems', '8A', 45, 'Math', 8),
-(8, '2020-10-28', 'Spatial relationships and Geometric figures', '7A', 45, 'Math', 8),
+(8, '2020-10-28', 'Пространственные отношения и геометрические фигуры', '7A', 45, 'Math', 8),
 (9, '2020-10-28', 'Working with word problems', '7A', 45, 'Math', 8);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `date`
---
-
-CREATE TABLE `date` (
-  `ID` int(20) NOT NULL,
-  `DATE` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -136,7 +125,7 @@ CREATE TABLE `new_module` (
 
 INSERT INTO `new_module` (`id`, `Name`, `Class`, `Questions`, `subject`) VALUES
 (2, 'Working with word problems', '7', 'json/Working_with_word_problems/wwwp.json', 'Math'),
-(3, 'Spatial relationships and Geometric figures', '7', 'json/Working_with_word_problems/wwwp.json', 'Math');
+(3, 'Пространственные отношения и геометрические фигуры', '7', 'json/Working_with_word_problems/wwwp.json', 'Math');
 
 -- --------------------------------------------------------
 
@@ -168,12 +157,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`ID`, `NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_ID`) VALUES
-(1, 'Elizabeth', 'Ansimova', 'Abdeeva', 1),
+(1, 'Елизавета', 'Ансимиова', 'Адеева', 1),
 (2, 'Матвей', 'Беляев', 'Артёмович', 1),
 (3, 'Виталий', 'Горбушин', 'Валерьевич', 1),
 (4, 'Алексей', 'Гриненко', 'Алексеевич', 1),
 (5, 'Марк', 'Грунталь', 'Альбертович', 1),
-(6, 'George', 'Gurskyi', 'Valentinovich', 2),
 (7, 'Очир', 'Джемгиров', 'Санджиевич', 2),
 (8, 'Ярослав', 'Дунаев', 'Александрович', 2),
 (9, 'Даниил', 'Исхаков', 'Рамильевич', 2),
@@ -201,20 +189,6 @@ INSERT INTO `teach` (`id`, `uid`, `pwd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `test`
---
-
-CREATE TABLE `test` (
-  `ID` int(30) NOT NULL,
-  `DATE_ID` int(20) NOT NULL,
-  `STUDENT_ID` int(7) NOT NULL,
-  `MODULE_ID` int(10) NOT NULL,
-  `QUESTION_ID` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `test_results`
 --
 
@@ -224,23 +198,43 @@ CREATE TABLE `test_results` (
   `class` varchar(120) NOT NULL,
   `date` date NOT NULL,
   `module` varchar(120) NOT NULL,
-  `percent` varchar(120) NOT NULL,
-  `q1` tinyint(1) NOT NULL,
-  `q2` tinyint(1) NOT NULL,
-  `q3` tinyint(1) NOT NULL,
-  `q4` tinyint(1) NOT NULL,
-  `q5` tinyint(1) NOT NULL,
-  `q6` tinyint(1) NOT NULL,
-  `q7` tinyint(1) NOT NULL
+  `percent` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `test_results`
 --
 
-INSERT INTO `test_results` (`id`, `student`, `class`, `date`, `module`, `percent`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`) VALUES
-(14, 'Ansimova Elizabeth Abdeeva', '7A', '2020-10-28', 'Spatial relationships and Geometric figures', '0%', 0, 0, 0, 0, 0, 0, 0),
-(15, 'Ansimova Elizabeth Abdeeva', '7A', '2020-10-28', 'Working with word problems', '0%', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `test_results` (`id`, `student`, `class`, `date`, `module`, `percent`) VALUES
+(65, 'Исхаков Даниил Рамильевич', '8A', '2020-11-03', 'Working with word problems', '0%');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tr_65`
+--
+
+CREATE TABLE `tr_65` (
+  `id` int(4) NOT NULL,
+  `Question_var` int(4) DEFAULT NULL,
+  `Question_text` varchar(512) DEFAULT NULL,
+  `Given_answer` varchar(512) DEFAULT NULL,
+  `Correct_answer` varchar(512) DEFAULT NULL,
+  `Correctness` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tr_65`
+--
+
+INSERT INTO `tr_65` (`id`, `Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`) VALUES
+(1, 2, 'Решите задачу: Для приготовления 10 пол-литровых банок салата из чёрной̆ редьки, кроме других продуктов, надо 3 кг редьки. Сколько килограммов редьки нужно, чтобы приготовить 30 таких же банок салата?', '', '9 кг', 0),
+(2, 1, 'Решите задачу:  Между двумя гаванями 1 530 км. Два корабля вышли одновременно из этих гаваней и идут друг другу навстречу. Один корабль проходит в час 24 км, другой – 7 этого расстояния. Сколько километров пройдёт каждый из них до встречи?', '', '816 км; 714 км', 0),
+(3, 3, 'Решите задачу: На заводе было 3 600 рабочих. 3/5 всех рабочих составляли мужчины, а остальные – женщины. Сколько женщин было на заводе?', '', '1440 женщин', 0),
+(4, 3, 'На диаграмме показано количество каждого вида цветов на клумбе – ромашек, фиалок, тюльпанов и колокольчиков. Известно, что больше всего ромашек, меньше всего фиалок, а тюльпанов больше, чем колокольчиков. Используя диаграмму, ответьте на вопрос. Сколько фиалок на клумбе?', '', '10', 0),
+(5, 3, 'В одной из поездок Елена сначала проехала 4 км за 10 минут, а затем ещё 2 км за следующие 5 минут. Верно ли следующее утверждение? Средняя скорость Елены была меньше в первые 10 минут, чем в последующие 5 минут.', '', 'Неверно', 0),
+(6, 1, 'За каждую эстафету команда получает количество баллов, равное занятому в этой эстафете месту, затем баллы по всем эстафетам суммируются. Какая команда получила 3 балла в третьей эстафете?', '', 'Рывок', 0),
+(7, 1, 'Рассмотрите данную таблицу, дайте ответ на вопрос. Для приготовления 100 миллилитров (мл) заправки для салата потребуется: Сколько миллилитров (мл) салатного масла понадобится, чтобы сделать 150 мл этой заправки?', '', '90 мл', 0);
 
 --
 -- Indexes for dumped tables
@@ -257,12 +251,6 @@ ALTER TABLE `connectons`
 --
 ALTER TABLE `current_test`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `date`
---
-ALTER TABLE `date`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `group_student`
@@ -302,19 +290,15 @@ ALTER TABLE `teach`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `test`
---
-ALTER TABLE `test`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `DATE_ID` (`DATE_ID`),
-  ADD KEY `MODULE_ID` (`MODULE_ID`),
-  ADD KEY `QUESTION_ID` (`QUESTION_ID`),
-  ADD KEY `STUDENT_ID` (`STUDENT_ID`);
-
---
 -- Indexes for table `test_results`
 --
 ALTER TABLE `test_results`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tr_65`
+--
+ALTER TABLE `tr_65`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -325,19 +309,13 @@ ALTER TABLE `test_results`
 -- AUTO_INCREMENT for table `connectons`
 --
 ALTER TABLE `connectons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `current_test`
 --
 ALTER TABLE `current_test`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `date`
---
-ALTER TABLE `date`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `group_student`
@@ -376,16 +354,16 @@ ALTER TABLE `teach`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `test`
---
-ALTER TABLE `test`
-  MODIFY `ID` int(30) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `test_results`
 --
 ALTER TABLE `test_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `tr_65`
+--
+ALTER TABLE `tr_65`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -396,15 +374,6 @@ ALTER TABLE `test_results`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `FK` FOREIGN KEY (`GROUP_STUDENT_ID`) REFERENCES `group_student` (`ID`);
-
---
--- Constraints for table `test`
---
-ALTER TABLE `test`
-  ADD CONSTRAINT `test_ibfk_1` FOREIGN KEY (`DATE_ID`) REFERENCES `date` (`ID`),
-  ADD CONSTRAINT `test_ibfk_2` FOREIGN KEY (`MODULE_ID`) REFERENCES `module` (`ID`),
-  ADD CONSTRAINT `test_ibfk_3` FOREIGN KEY (`QUESTION_ID`) REFERENCES `question` (`ID`),
-  ADD CONSTRAINT `test_ibfk_4` FOREIGN KEY (`STUDENT_ID`) REFERENCES `student` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
