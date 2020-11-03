@@ -99,15 +99,16 @@
 
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Мета панель </h2></legend>
+    <div class="met">
         <a href="create_module.php" class='create'>
-          Создать Модуль
+          <button>Создать Модуль</button>
         </a>
         <br>
-        <a href="viewmod.php" class='viewmod'>
-          Просмотр мероприятий
+        <a href="viewmod.php" class='viewmod' id="buttonmet">
+        <button class="buttonmet">Просмотр мероприятий</button>
         </a>
+    </div>
   </fieldset>
-
 </section>
 </div>
 </body>

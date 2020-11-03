@@ -17,7 +17,7 @@ if(mysqli_num_rows($result) > 0){
         if($row['test_id'] == ''){
           $test_dir = '';
         } else {
-          $test_dir = "<br><a href='viewresult.php?td=" . $row['test_id'] . "'> Смотреть результат последненго завершенного теста   </a>";
+          $test_dir = "<br><a class='test' href='viewresult.php?td=" . $row['test_id'] . "'> Смотреть результат последненго завершенного теста   </a>";
         }
         switch ($row['test_status']) {
           case 'test_not_selected':

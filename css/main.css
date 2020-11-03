@@ -266,7 +266,7 @@ pre {
 a {
   text-decoration: none;
   border-radius: 5px;
-  background-color: #1e72b2;
+  background-color: #29a8df;
   color: #fff;
   text-align: center;
   width: 150px;
@@ -419,4 +419,22 @@ dataset{
   border-bottom: 1px dotted black;
   border-top: 1px dotted black;
 }
+
+.student_test_status {
+  background: #1e72b2;
+}
+
+.create {
+  background: transparent;
+}
+
+.met {
+  display: flex;
+}
+
+#buttonmet {
+  width: 200px;
+}
+
+
 textarea::-webkit-input-placeholder { color: #fff};
