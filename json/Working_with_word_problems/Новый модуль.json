@@ -1,1 +1,27 @@
-[{"Module_name":"Новый модуль","module_subject":"Русский Язык","quest_quantity":"2"},{"QUESTION_NUM":"1","VAR":"1","IMAGE":"","QUESTION":"цигане или цыгане","A":"цыгане","B":"цигане1","C":"","D":"","CORRECT":"цыгане","NUM_ANSW":"4"},{"QUESTION_NUM":"2","VAR":"1","IMAGE":"","QUESTION":"Пушкин","A":"да","B":"нет","C":"","D":"","CORRECT":"да","NUM_ANSW":"4"}]
+[{
+  "Module_name": "Новый модуль",
+  "module_subject": "Русский Язык",
+  "quest_quantity": "2"
+}, {
+  "QUESTION_NUM": "1",
+  "VAR": "1",
+  "IMAGE": "",
+  "QUESTION": "цигане или цыгане",
+  "A": "цыгане",
+  "B": "цигане1",
+  "C": "",
+  "D": "",
+  "CORRECT": "цыгане",
+  "NUM_ANSW": "4"
+}, {
+  "QUESTION_NUM": "2",
+  "VAR": "1",
+  "IMAGE": "",
+  "QUESTION": "Пушкин",
+  "A": "да",
+  "B": "нет",
+  "C": "",
+  "D": "",
+  "CORRECT": "да",
+  "NUM_ANSW": "4"
+}]

@@ -1,1 +1,16 @@
-[{"Module_name":"Тест","module_subject":"Русский Язык","quest_quantity":"1"},{"QUESTION_NUM":"1","VAR":"1","IMAGE":"","QUESTION":"АБВ","A":"А","B":"Б","C":"В","D":"","CORRECT":"А","NUM_ANSW":"4"}]
+[{
+  "Module_name": "Тест",
+  "module_subject": "Русский Язык",
+  "quest_quantity": "1"
+}, {
+  "QUESTION_NUM": "1",
+  "VAR": "1",
+  "IMAGE": "",
+  "QUESTION": "АБВ",
+  "A": "А",
+  "B": "Б",
+  "C": "В",
+  "D": "",
+  "CORRECT": "А",
+  "NUM_ANSW": "4"
+}]

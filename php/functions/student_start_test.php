@@ -11,7 +11,6 @@ $test_name = $row['test_dir'];
 $test_subject = $row['subject'];
 $class = $row['group_to_test'];
 $time_to_complete = $row['time_to_complete'];
-echo "$test_subject, $test_name, $time_to_complete, $class";
 //Загрузка данных о самом тесте
 $sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
 $result = mysqli_query($conn, $sql);
@@ -35,6 +34,7 @@ foreach ($json_a as $struct => $quest) {
       $vars = 1;
     }
     echo "
+    <p> <button onclick='stopTest()'> Прекратить выполнение теста </button> </p>
     <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
     <p> Время на выполнение: ".$time_to_complete." минут</p>
