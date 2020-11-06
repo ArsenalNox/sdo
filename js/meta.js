@@ -3,7 +3,8 @@ function showAllResults() {
   var request = document.getElementById('dvm1').value;
   var method = document.getElementById('ms1').value;
   var sort = document.getElementById('ss1').value;
-  console.log('Запрос ' + method + ", " + request + ", " + sort);
+  var additionalOptions = processOptions();
+  console.log(' Запрос ' + method + ", " + request + ", " + sort + ' дополнительные опции: ' + additionalOptions);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -14,7 +15,7 @@ function showAllResults() {
   };
   xhttp.open("POST", "php/functions/showqueryresult.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("method=" + method + "&data=" + request + "&sort=" + sort);
+  xhttp.send("method=" + method + "&data=" + request + "&sort=" + sort + additionalOptions);
 }
 
 function loadAssociatedData() {
@@ -36,7 +37,7 @@ function loadAssociatedData() {
 
 function loadAdditionalOptions() {
   var option = document.getElementById('ms1').value;
-  console.log('Запрос соответствующих дополнительных опций для ' + option);
+  console.log(' Запрос соответствующих дополнительных опций для ' + option);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -51,7 +52,7 @@ function loadAdditionalOptions() {
 
 function showOption(id) {
   var state = document.getElementById('optstate' + id).value;
-  console.log('Изменяю отоброжение опции ' + id + state);
+  console.log(' Изменяю отоброжение опции ' + id);
   switch (state) {
     case 'hidden':
       document.getElementById('opt' + id).style.display = 'grid';
@@ -62,6 +63,25 @@ function showOption(id) {
       document.getElementById('optstate' + id).value = 'hidden';
       break;
   }
+}
+
+function processOptions(){
+  var result = '';
+  var type = '';
+  var processedOptions = '&addoptcount=0';
+  if(document.getElementById('s-holder').style.display == 'grid'){
+    var optionCount = document.getElementById('oc').value;
+    var j = 0;
+    for (var i = 1; i <= optionCount; i++) {
+        if(document.getElementById('optstate'+i).value == 'displayed'){
+          j++;
+          result += '&addoption' + j + '=' + document.getElementById('ao'+i).value;
+          type += '&optiontype' + j + '=' + document.getElementById('ao'+i).name;
+        }
+      }
+    processedOptions = "&addoptcount=" + j;
+  }
+  return processedOptions+result+type;
 }
 
 function exportToExcel(sql) {
