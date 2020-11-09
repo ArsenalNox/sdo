@@ -43,8 +43,8 @@
               <legend align="center"><h1 class="text">ВХОД</h1></legend>
               <input type="text" name="uid" placeholder="Логин" class="loginIn">
               <input type="password" name="pwd" placeholder="Пароль" class="password">
-                
-              <button type="submit" name="" value="Войти" class="button" id="entrance">Войти</button>
+              <?php if(isset($error)){echo"<p> $error </p>";} ?>
+              <button type="submit" name="" value="Войти" class="button">Войти</button>
             </fieldset>
           </form>
         </div>

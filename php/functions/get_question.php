@@ -31,12 +31,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       continue;
     }
     $i++;
+    if($quest['IMAGE'] == ''){
+      $image = '';
+    } else {
+      $image = "<img src='".$quest['IMAGE']."'>";
+    }
     switch ($quest['NUM_ANSW']) {
       case '2':
         echo
           "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
-          Вариант " . $quest['VAR'] . "
+          Вариант " . $quest['VAR'] . " $image
           </h4> " . $quest['QUESTION'] . " <br>
           A) " . $quest['A'] . " ;
           B) " . $quest['B'] . " ;
@@ -47,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         echo
           "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
-          Вариант " . $quest['VAR'] . "
+          Вариант " . $quest['VAR'] . " $image
           </h4> " . $quest['QUESTION'] . " <br>
           A) " . $quest['A'] . " ;
           B) " . $quest['B'] . " ;
@@ -59,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         echo
           "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
           <h4> Задание №" . $quest['QUESTION_NUM'] . "
-          Вариант " . $quest['VAR'] . "
+          Вариант " . $quest['VAR'] . " $image
           </h4> " . $quest['QUESTION'] . " <br>
           A) " . $quest['A'] . " ;
           B) " . $quest['B'] . " ;

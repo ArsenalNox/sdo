@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Ноя 03 2020 г., 07:12
--- Версия сервера: 10.4.14-MariaDB
--- Версия PHP: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Nov 03, 2020 at 03:43 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `sdo`
+-- Database: `sdo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `connectons`
+-- Table structure for table `connectons`
 --
 
 CREATE TABLE `connectons` (
@@ -38,17 +38,16 @@ CREATE TABLE `connectons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `connectons`
+-- Dumping data for table `connectons`
 --
 
 INSERT INTO `connectons` (`id`, `ip`, `student_uid`, `status`, `group_nl`, `test_status`, `test_id`) VALUES
-(26, '::1', 'Стрелков Варлаам Филиппович', 1, '9A', 'test_started', ''),
-(27, '192.168.101.135', 'Стрелков Варлаам Филиппович', 1, '9A', 'test_started', '');
+(21, '::1', 'Исхаков Даниил Рамильевич', 1, '8A', 'test_not_selected', 'tr_65');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `current_test`
+-- Table structure for table `current_test`
 --
 
 CREATE TABLE `current_test` (
@@ -62,7 +61,7 @@ CREATE TABLE `current_test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `current_test`
+-- Dumping data for table `current_test`
 --
 
 INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_complete`, `subject`, `question_num`) VALUES
@@ -70,13 +69,12 @@ INSERT INTO `current_test` (`id`, `date`, `test_dir`, `group_to_test`, `time_to_
 (5, '2020-10-15', 'Пространственные отношения и геометрические фигуры', '8A', 20, 'Math', 8),
 (7, '2020-10-15', 'Working with word problems', '8A', 45, 'Math', 8),
 (8, '2020-10-28', 'Пространственные отношения и геометрические фигуры', '7A', 45, 'Math', 8),
-(9, '2020-10-28', 'Working with word problems', '7A', 45, 'Math', 8),
-(10, '2020-11-03', 'Контрольная работа', '9A', 45, 'Биология', 8);
+(9, '2020-10-28', 'Working with word problems', '7A', 45, 'Math', 8);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `group_student`
+-- Table structure for table `group_student`
 --
 
 CREATE TABLE `group_student` (
@@ -85,7 +83,7 @@ CREATE TABLE `group_student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `group_student`
+-- Dumping data for table `group_student`
 --
 
 INSERT INTO `group_student` (`ID`, `NAME`) VALUES
@@ -97,7 +95,7 @@ INSERT INTO `group_student` (`ID`, `NAME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `module`
+-- Table structure for table `module`
 --
 
 CREATE TABLE `module` (
@@ -110,7 +108,7 @@ CREATE TABLE `module` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `new_module`
+-- Table structure for table `new_module`
 --
 
 CREATE TABLE `new_module` (
@@ -122,18 +120,17 @@ CREATE TABLE `new_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `new_module`
+-- Dumping data for table `new_module`
 --
 
 INSERT INTO `new_module` (`id`, `Name`, `Class`, `Questions`, `subject`) VALUES
 (2, 'Working with word problems', '7', 'json/Working_with_word_problems/wwwp.json', 'Math'),
-(3, 'Пространственные отношения и геометрические фигуры', '7', 'json/Working_with_word_problems/wwwp.json', 'Math'),
-(4, 'Контрольная работа', '9', 'json/Working_with_word_problems/Контрольная работа.json', 'Биология');
+(3, 'Пространственные отношения и геометрические фигуры', '7', 'json/Working_with_word_problems/wwwp.json', 'Math');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `question`
+-- Table structure for table `question`
 --
 
 CREATE TABLE `question` (
@@ -144,7 +141,7 @@ CREATE TABLE `question` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `student`
+-- Table structure for table `student`
 --
 
 CREATE TABLE `student` (
@@ -156,7 +153,7 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `student`
+-- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`ID`, `NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_ID`) VALUES
@@ -168,13 +165,12 @@ INSERT INTO `student` (`ID`, `NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_
 (7, 'Очир', 'Джемгиров', 'Санджиевич', 2),
 (8, 'Ярослав', 'Дунаев', 'Александрович', 2),
 (9, 'Даниил', 'Исхаков', 'Рамильевич', 2),
-(10, 'Михаил', 'Калинин', 'Антонович', 2),
-(11, 'Варлаам', 'Стрелков', 'Филиппович', 4);
+(10, 'Михаил', 'Калинин', 'Антонович', 2);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `teach`
+-- Table structure for table `teach`
 --
 
 CREATE TABLE `teach` (
@@ -184,7 +180,7 @@ CREATE TABLE `teach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `teach`
+-- Dumping data for table `teach`
 --
 
 INSERT INTO `teach` (`id`, `uid`, `pwd`) VALUES
@@ -193,7 +189,7 @@ INSERT INTO `teach` (`id`, `uid`, `pwd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `test_results`
+-- Table structure for table `test_results`
 --
 
 CREATE TABLE `test_results` (
@@ -206,7 +202,7 @@ CREATE TABLE `test_results` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `test_results`
+-- Dumping data for table `test_results`
 --
 
 INSERT INTO `test_results` (`id`, `student`, `class`, `date`, `module`, `percent`) VALUES
@@ -215,7 +211,7 @@ INSERT INTO `test_results` (`id`, `student`, `class`, `date`, `module`, `percent
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `tr_65`
+-- Table structure for table `tr_65`
 --
 
 CREATE TABLE `tr_65` (
@@ -228,7 +224,7 @@ CREATE TABLE `tr_65` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `tr_65`
+-- Dumping data for table `tr_65`
 --
 
 INSERT INTO `tr_65` (`id`, `Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`) VALUES
@@ -241,140 +237,140 @@ INSERT INTO `tr_65` (`id`, `Question_var`, `Question_text`, `Given_answer`, `Cor
 (7, 1, 'Рассмотрите данную таблицу, дайте ответ на вопрос. Для приготовления 100 миллилитров (мл) заправки для салата потребуется: Сколько миллилитров (мл) салатного масла понадобится, чтобы сделать 150 мл этой заправки?', '', '90 мл', 0);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `connectons`
+-- Indexes for table `connectons`
 --
 ALTER TABLE `connectons`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `current_test`
+-- Indexes for table `current_test`
 --
 ALTER TABLE `current_test`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `group_student`
+-- Indexes for table `group_student`
 --
 ALTER TABLE `group_student`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `module`
+-- Indexes for table `module`
 --
 ALTER TABLE `module`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `new_module`
+-- Indexes for table `new_module`
 --
 ALTER TABLE `new_module`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `question`
+-- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `student`
+-- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FK` (`GROUP_STUDENT_ID`);
 
 --
--- Индексы таблицы `teach`
+-- Indexes for table `teach`
 --
 ALTER TABLE `teach`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `test_results`
+-- Indexes for table `test_results`
 --
 ALTER TABLE `test_results`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `tr_65`
+-- Indexes for table `tr_65`
 --
 ALTER TABLE `tr_65`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `connectons`
+-- AUTO_INCREMENT for table `connectons`
 --
 ALTER TABLE `connectons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT для таблицы `current_test`
+-- AUTO_INCREMENT for table `current_test`
 --
 ALTER TABLE `current_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT для таблицы `group_student`
+-- AUTO_INCREMENT for table `group_student`
 --
 ALTER TABLE `group_student`
   MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `module`
+-- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `new_module`
+-- AUTO_INCREMENT for table `new_module`
 --
 ALTER TABLE `new_module`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `question`
+-- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `student`
+-- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `ID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT для таблицы `teach`
+-- AUTO_INCREMENT for table `teach`
 --
 ALTER TABLE `teach`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `test_results`
+-- AUTO_INCREMENT for table `test_results`
 --
 ALTER TABLE `test_results`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT для таблицы `tr_65`
+-- AUTO_INCREMENT for table `tr_65`
 --
 ALTER TABLE `tr_65`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `student`
+-- Constraints for table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `FK` FOREIGN KEY (`GROUP_STUDENT_ID`) REFERENCES `group_student` (`ID`);

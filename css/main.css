@@ -59,11 +59,6 @@ h4 {
   margin: 5px;
 }
 
-#entrance {
-  position: absolute;
-  top: 80%;
-}
-
 .module-selector {
   margin-top: 15px;
 }
@@ -85,8 +80,7 @@ h4 {
 }
 
 .imgLogin {
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 7%;
   margin-left: 10%;
   width: 500px;
   height: 500px;
@@ -361,7 +355,7 @@ a {
 }
 
 .fieldsetlogin {
-  height: 200px;
+  height: 230px;
 }
 
 .viewpanel-wrapper{
@@ -400,6 +394,7 @@ table, th, td {
 
 .addv-p{
   width: max-content;
+  margin: 0;
 }
 
 .addv-p:hover{
@@ -442,5 +437,12 @@ dataset{
   width: 200px;
 }
 
+.addv-opt-wrapper{
+  margin: 0;
+  margin-top: 12px;
+  padding: 1rem;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+}
 
 textarea::-webkit-input-placeholder { color: #fff};
