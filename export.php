@@ -1,7 +1,5 @@
 <?php
 include_once "dtb/dtb.php";
-
-// TODO: Превью экспорта таблицы прямо в форме (5-10 строк из таблицы)
 ?>
 <html lang="ru">
 <head>
@@ -74,9 +72,8 @@ include_once "dtb/dtb.php";
           input_second.type = 'date';
           input_second.name = 'second_date';
           let p = document.createElement('p');
-          p.innerText = '--'
+          p.innerText = '--';
           document.getElementById('addinfo').append(input_first, p, input_second)
-
           let button3 = document.createElement('button');
           button3.type = 'submit';
           button3.innerText = 'Экспортировать'

@@ -1,36 +1,41 @@
 <?php
+session_start();
 $user = 'root';
 $password = '';
 $server = 'localhost';
 $database = 'sdo';
+if(!isset($_SESSION['sql'])){
+  switch ($_POST['export_option']) {
+    case 'all_all':
+        $sql = 'SELECT * FROM test_results';
+        $filename = 'результаты_за_всё_время.xls';
+      break;
 
-switch ($_POST['export_option']) {
-  case 'all_all':
-      $sql = 'SELECT * FROM test_results';
-      $filename = 'результаты_за_всё_время.xls';
-    break;
+    case 'all_time':
+        $date_start = $_POST['first_date'];
+        $date_end = $_POST['second_date'];
+        $sql = "SELECT * FROM test_results WHERE date >= '$date_start' and date <= '$date_end'";
+        $filename = "результаты_за_$date_start-$date_end.xls";
+      break;
 
-  case 'all_time':
-      $date_start = $_POST['first_date'];
-      $date_end = $_POST['second_date'];
-      $sql = "SELECT * FROM test_results WHERE date >= '$date_start' and date <= '$date_end'";
-      $filename = "результаты_за_$date_start-$date_end.xls";
-    break;
+    case 'spec_all':
+        $group = $_POST['group'];
+        $sql = "SELECT * FROM test_results WHERE class = '$group'";
+        $filename = "результаты_класса_$group.xls";
+      break;
 
-  case 'spec_all':
-      $group = $_POST['group'];
-      $sql = "SELECT * FROM test_results WHERE class = '$group'";
-      $filename = "результаты_класса_$group.xls";
-    break;
-
-  default:
-      $sql = 'SELECT * FROM test_results';
-      $filename = 'результаты_за_всё_время.xls';
-    break;
+    default:
+        $sql = 'SELECT * FROM test_results';
+        $filename = 'результаты_за_всё_время.xls';
+      break;
+  }
+} else {
+  $sql = $_SESSION['sql'];
+  $filename = 'таблица_результатов.xls';
 }
-$pdo = new PDO("mysql:host=$server;dbname=$database", $user, $password);
 
-//Все используют для этого пдо так что и я буду использовать пдо
+
+$pdo = new PDO("mysql:host=$server;dbname=$database", $user, $password);
 $stmt = $pdo->query($sql);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if(!$rows){

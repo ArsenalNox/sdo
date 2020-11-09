@@ -19,6 +19,7 @@ function showAllResults() {
 }
 
 function loadAssociatedData() {
+  //Загружает соответсвующий выпадающий список с данными
   var request = document.getElementById('ms1').value;
   console.log('Запрос данных для ' + request);
   var xhttp = new XMLHttpRequest();
@@ -36,6 +37,7 @@ function loadAssociatedData() {
 }
 
 function loadAdditionalOptions() {
+  //Загружент соответсвующие дополнительные опции
   var option = document.getElementById('ms1').value;
   console.log(' Запрос соответствующих дополнительных опций для ' + option);
   var xhttp = new XMLHttpRequest();
@@ -51,6 +53,7 @@ function loadAdditionalOptions() {
 }
 
 function showOption(id) {
+  //Скрывает/Показывет допольнительные опции 
   var state = document.getElementById('optstate' + id).value;
   console.log(' Изменяю отоброжение опции ' + id);
   switch (state) {
@@ -66,6 +69,7 @@ function showOption(id) {
 }
 
 function processOptions(){
+  //Обрабатывает дополнительные опции
   var result = '';
   var type = '';
   var processedOptions = '&addoptcount=0';
@@ -85,6 +89,7 @@ function processOptions(){
 }
 
 function exportToExcel(sql) {
+  //?????
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -95,4 +100,9 @@ function exportToExcel(sql) {
   xhttp.open("POST", "php/functions/showAdditionalOptions.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("data=" + option);
+}
+
+function exportCurrentTable(){
+  //Скорее всего придётся переделать на ссылку и просто открывать export.php и брать из сессии sql
+  console.log('Экспортирую таблци......');
 }

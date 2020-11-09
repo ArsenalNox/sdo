@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Создание SQL запроса
 include_once "../../dtb/dtb.php";
 switch ($_POST['method']) {
@@ -22,10 +23,11 @@ switch ($_POST['method']) {
     $sql = "SELECT * FROM test_results";
     break;
 }
-//Добавление дополнительных опций поиска, если таковые имеются
+//ДЕБАГ ИНФОРМАЦИЯ
 echo "<pre>";
 print_r($_POST);
 echo "</pre>";
+//Добавление дополнительных опций поиска, если таковые имеются
 if(isset($_POST['addoptcount'])){
   if($_POST['addoptcount'] > 0){
     for ($i=1; $i < $_POST['addoptcount']+1; $i++) {
@@ -37,6 +39,14 @@ if(isset($_POST['addoptcount'])){
         case 'addl-student':
           $student = $_POST["addoption$i"];
           $sql .= "AND student='$student'";
+          break;
+        case 'addl-date':
+          $date = $_POST["addoption$i"];
+          $sql .= "AND date='$date'";
+          break;
+        case 'addl-module':
+          $module = $_POST["addoption$i"];
+          $sql .= "AND module='$module'";
           break;
       }
     }
@@ -68,9 +78,9 @@ switch ($_POST['sort']) {
   case 'percent-asc':
     $sql .= " ORDER BY percent ASC ";
     break;
-
 }
 
+$_SESSION['sql'] = $sql;
 $result = mysqli_query($conn, $sql);
 
 if($result){
@@ -221,12 +231,15 @@ if($result){
         echo "</table>";
       break;
     }
-    echo "<br>";
+    echo "<br>
+    <p>
+    <a href='php/functions/export.php'> Экспортировать данную таблицу </a>
+    </p>";
   } else {
     echo "По данному запросу отсутсвуют результаты";
   }
 } else {
   echo "Что-то пошло не так";
 }
-
+// TODO: Добавить кнопку "Экспотрировать данную таблцу", которая текущи берёт sql запрос (который надо будет занести в $_SESSION) и по нему экспортирует таблицу
 ?>

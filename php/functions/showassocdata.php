@@ -25,6 +25,8 @@ if($data == 'date') {
         echo "</select> <br>";
         echo createDataset('student', $conn);
         echo createDataset('class', $conn);
+        echo createDataset('module', $conn);
+        // TODO: Создать ещё датасеты под каждый класс с учениками класса, иначе когда поиск по конкретному студенту в классе показывет вообще всех учеников
     }
   } else {
     echo "<h3> При загрузке произошла ошибка! </h3>";

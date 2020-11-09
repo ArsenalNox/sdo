@@ -48,7 +48,7 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $imageExtTmp = explode('.', $imageName);
     $imageExtAct = strtolower(end($imageExtTmp));
     // print_r($_FILES["question_image_$i"]);
-    // TODO: Углоубленная проверка загружаемого изображения
+    // TODO: Углубленная проверка загружаемого изображения
     if($imageError === 0){
       $imagepath = "$path/images/image_q_$i.$imageExtAct";
       // echo "$imagepath";
