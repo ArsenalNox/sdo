@@ -22,15 +22,38 @@ switch ($_POST['data']) {
     break;
   case 'class':
     echo "
-
+    <input type='hidden' name='option-count' id='oc' value='2'>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Опция 1 </p>
+      <div class='option' id='opt1'>
+        <label for='search-student'> Показывать только результаты ученика: </label>
+        <input class='stsrch' type='search' list='student-dataset' id='ao1' name='addl-student' placeholder='Имя студента'>
+        <input type='hidden' id='optstate1' value='hidden'>
+      </div>
+    </div>
     ";
     break;
   case 'date':
     echo "
+    <input type='hidden' name='option-count' id='oc' value='1'>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Опция 1 </p>
+      <div class='option' id='opt1'>
+        <label for='search-student'> Показывать только результаты ученика: </label>
+        <input class='stsrch' type='search' list='student-dataset' id='ao1' name='addl-student' placeholder='Имя студента'>
+        <input type='hidden' id='optstate1' value='hidden'>
+      </div>
+    </div>
     ";
     break;
   case 'student':
     echo "
+    <input type='hidden' name='option-count' id='oc' value='1'>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Опция 1 </p>
+      <div class='option' id='opt1'>
+        <label for=' '> </label>
+        <input class='stsrch' type='search' list=' ' id='ao1' name=' ' placeholder=' '>
+        <input type='hidden' id='optstate1' value='hidden'>
+      </div>
+    </div>
     ";
     break;
 }
