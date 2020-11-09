@@ -59,6 +59,11 @@ h4 {
   margin: 5px;
 }
 
+#entrance {
+  position: absolute;
+  top: 80%;
+}
+
 .module-selector {
   margin-top: 15px;
 }
@@ -80,7 +85,7 @@ h4 {
 }
 
 .imgLogin {
-  margin-top: 7%;
+  margin-top: auto;
   margin-left: 10%;
   width: 500px;
   height: 500px;
@@ -355,7 +360,7 @@ a {
 }
 
 .fieldsetlogin {
-  height: 230px;
+  height: 200px;
 }
 
 .viewpanel-wrapper{
