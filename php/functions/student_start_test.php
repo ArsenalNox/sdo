@@ -11,13 +11,11 @@ $test_name = $row['test_dir'];
 $test_subject = $row['subject'];
 $class = $row['group_to_test'];
 $time_to_complete = $row['time_to_complete'];
-echo "$test_subject, $test_name, $time_to_complete, $class";
 //Загрузка данных о самом тесте
 $sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $path = $row['Questions'];
-
 $string = file_get_contents("../../$path");
 $json_a = json_decode($string, true);
 $qselector = 1;
@@ -36,6 +34,7 @@ foreach ($json_a as $struct => $quest) {
       $vars = 1;
     }
     echo "
+    <p> <button onclick='stopTest()'> Прекратить выполнение теста </button> </p>
     <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
     <p> Время на выполнение: ".$time_to_complete." минут</p>
@@ -93,10 +92,7 @@ foreach ($json_a as $struct => $quest) {
   echo "
   <button> Завершить тест </button>
   </form>
-  <script  type='text/javascript'>
-  var time_to_complete = $time_to_complete;
-  console.log(time_to_complete);
-  </script>
-
+  <input type='hidden' name='time_to_complete' id='ttc' value='time_to_complete'>
+  <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
   ";
 ?>

@@ -394,6 +394,7 @@ table, th, td {
 
 .addv-p{
   width: max-content;
+  margin: 0;
 }
 
 .addv-p:hover{
@@ -436,5 +437,12 @@ dataset{
   width: 200px;
 }
 
+.addv-opt-wrapper{
+  margin: 0;
+  margin-top: 12px;
+  padding: 1rem;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+}
 
 textarea::-webkit-input-placeholder { color: #fff};

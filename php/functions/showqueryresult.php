@@ -23,8 +23,25 @@ switch ($_POST['method']) {
     break;
 }
 //Добавление дополнительных опций поиска, если таковые имеются
-
-
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+if(isset($_POST['addoptcount'])){
+  if($_POST['addoptcount'] > 0){
+    for ($i=1; $i < $_POST['addoptcount']+1; $i++) {
+      switch ($_POST["optiontype$i"]) {
+        case 'addl-class':
+          $class = $_POST["addoption$i"];
+          $sql .= "AND class='$class'";
+          break;
+        case 'addl-student':
+          $student = $_POST["addoption$i"];
+          $sql .= "AND student='$student'";
+          break;
+      }
+    }
+  }
+}
 //Выбор сортировки
 switch ($_POST['sort']) {
   case 'class-asc':
