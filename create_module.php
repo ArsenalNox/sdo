@@ -55,7 +55,7 @@
         </a>
         <hr>
         <h2> Создание модуля </h2>
-        <form class='new_module_form' action="submit_new_module.php" method="POST" id='nmf' enctype="multipart/form-data">
+        <form class='new_module_form' action="submit_new_module.php" method="post" id='nmf'>
           Модуль для класса
           <select style="height: 34px; position: relative; margin-bottom: 5px" name="class">
             <option value="1">1</option>
@@ -88,39 +88,43 @@
     function addQuestion(){
       //Создание оболочки для текста
       var new_question = document.createElement('fieldset');
-        new_question.className = 'question';
-        new_question.id = "q_" + current_question_number;
+      new_question.className = 'question';
+      new_question.id = "q_" + current_question_number;
 
       //Оболочка для номера вопроса и кнопки добавления варианта
       var question_info_field = document.createElement('fieldset');
-        question_info_field.className = 'quest_num_f';
+      question_info_field.className = 'quest_num_f';
 
       //Вопрос №
       var par = document.createElement('h2');
-        par.innerText = 'Вопрос ' + current_question_number;
-        par.style.margin = '1rem';
+      par.innerText = 'Вопрос ' + current_question_number;
+      par.style.margin = '1rem';
 
       //Кнопка для создания варианта
       var new_var_button = document.createElement('button');
-        new_var_button.id = current_question_number
-        new_var_button.innerText = 'Добавить вариант';
-        new_var_button.onclick = AddNewVar(current_question_number);
-        new_var_button.type = 'button';
+      new_var_button.id = current_question_number
+      new_var_button.innerText = 'Добавить вариант';
+      new_var_button.onclick = AddNewVar(current_question_number);
+      new_var_button.type = 'button';
 
       //Оболочка для оболочки текстовых полей....
       var txarea_wrp = document.createElement('fieldset');
-        txarea_wrp.className = 'txa-wrapper';
+      txarea_wrp.className = 'txa-wrapper';
+
+      //Оболочка для области с вопросом
+
+      //Оболочка для области с ответом
 
       //Поле для текста вопроса
       var question_textarea = document.createElement('textarea');
-        question_textarea.placeholder = 'Текст вопроса';
-        question_textarea.name = 'question_text_'+current_question_number;
-        question_textarea.rows = '13';
-        question_textarea.cols = '80';
-        question_textarea.required = true;
+      question_textarea.placeholder = 'Текст вопроса';
+      question_textarea.name = 'question_text_'+current_question_number;
+      question_textarea.rows = '13';
+      question_textarea.cols = '80';
+      question_textarea.required = true;
       //Оболочка для ответов
       var answer_field = document.createElement('fieldset');
-        answer_field.className = 'answers';
+      answer_field.className = 'answers';
 
       //Ответы
       var question_answer_a = document.createElement('textarea');
@@ -145,13 +149,11 @@
         question_answer_d.rows = '3';
         question_answer_d.cols = '15';
         question_answer_d.style.resize = "none";
-      var image_input = document.createElement('input');
-        image_input.type = 'file';
-        image_input.name = 'question_image_'+current_question_number;
 
       //Добавляем это всё в основной див
+      // question_info_field.append(par, new_var_button);
       question_info_field.append(par)
-      answer_field.append(question_answer_a, question_answer_b, question_answer_c, question_answer_d, image_input);
+      answer_field.append(question_answer_a, question_answer_b, question_answer_c, question_answer_d);
       txarea_wrp.append(question_textarea, answer_field)
       new_question.append(question_info_field, txarea_wrp);
       document.getElementById('nmf').append(new_question);
@@ -160,7 +162,7 @@
     }
 
     function AddNewVar(){
-      console.log('Добавляю вариант');
+      console.log('ф');
     }
 
   </script>
