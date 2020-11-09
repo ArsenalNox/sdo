@@ -59,7 +59,6 @@ function startTest(id) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('test').innerHTML = this.responseText;
-      document.title = document.getElementById('ntl').value;
     }
   };
   xhttp.open("POST", "php/functions/student_start_test.php", true);
