@@ -1,0 +1,11 @@
+@media (max-width: 640px) {
+    .auth-button {
+        position: inherit;
+    }
+    .student-wrapper {
+        width: 80%;
+    }
+    #group, #subject, #module-select, #topic {
+        float: inherit;
+    }
+}
