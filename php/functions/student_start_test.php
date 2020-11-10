@@ -64,23 +64,63 @@ foreach ($json_a as $struct => $quest) {
             if(isset($quest['TYPE']) ){
               switch ($quest['TYPE']) {
                 case 'open':
-                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
-                  A) " . $quest['A'] . " ;
-                  B) " . $quest['B'] . " ;
-                  C) " . $quest['C'] . " ;
-                  D) " . $quest['D'] . "</p>
+                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br> ";
+                  if(isset($quest['NUM_ANSW'])){
+                    switch ($quest['NUM_ANSW']) {
+                      case '4':
+                          echo "
+                          A) " . $quest['A'] . " ;
+                          B) " . $quest['B'] . " ;
+                          C) " . $quest['C'] . " ;
+                          D) " . $quest['D'] . "</p>";
+                        break;
+                      case '2':
+                          echo "
+                          A) " . $quest['A'] . " ;
+                          B) " . $quest['B'] . " ;
+                          </p>";
+                        break;
+                    }
+                  } else {
+                    echo "
+                    A) " . $quest['A'] . " ;
+                    B) " . $quest['B'] . " ;
+                    C) " . $quest['C'] . " ;
+                    D) " . $quest['D'] . "</p>";
+                  }
+                  echo "
                   <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
                   <hr> </div>";
                   break;
                 case 'choose-answer':
-                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " </p> <br>
-                  <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
-                  <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
-                  <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
-                  <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
-                  </ul>
-                  <br>
-                  <hr> </div>";
+                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " </p> <br>";
+                  if(isset($quest['NUM_ANSW'])){
+                    switch ($quest['NUM_ANSW']) {
+                      case '4':
+                          echo "
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
+                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
+                          <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
+                          <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
+                          <br>
+                          <hr> </div>";
+                        break;
+                      case '2':
+                          echo "
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
+                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
+                          <br>
+                          <hr> </div>";
+                        break;
+                  }}else {
+                    echo "
+                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
+                    <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
+                    <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
+                    <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
+                    <br>
+                    <hr> </div>";
+                  }
                   break;
 
               }

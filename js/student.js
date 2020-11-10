@@ -69,7 +69,6 @@ function startTest(id) {
 }
 
 function getStatus() {
-  // QUESTION: Функция почти не отлчиается от предидущей. Скорее всего будет удалена
   var test_id = id;
   document.getElementById('mtf').remove();
   var xhttp = new XMLHttpRequest();
