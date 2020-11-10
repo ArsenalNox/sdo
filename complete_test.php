@@ -129,7 +129,7 @@ $uid = $_SESSION['UID'];
     }
   }
   echo "<div class='debug'> <pre> " . print_r($_SESSION) . "</pre> </div>";
-  
+
   echo "
   <script type='text/javascript' src='js/student.js'></script>
   <script type='text/javascript'>
@@ -142,7 +142,7 @@ $uid = $_SESSION['UID'];
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
    set_test_status();
-   // window.location.href = "index.php";
+   window.location.href = "index.php";
  </script>
   </body>
 </html>
