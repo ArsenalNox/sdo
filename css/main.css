@@ -11,6 +11,7 @@ body{
 
 .panellogin {
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
+  height: 1px;
 }
 
 button{
@@ -97,8 +98,8 @@ h4 {
 
 .main{
   position: absolute;
-  width: 100vh;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
 }
 
@@ -473,5 +474,6 @@ dataset{
   height: 100%;
   z-index: 12000;
 }
+
 
 textarea::-webkit-input-placeholder { color: #fff};

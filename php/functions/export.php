@@ -58,11 +58,7 @@ if(!empty($rows)){
             $row[$k] = str_replace($separator . "$", "", $row[$k]);
             $row[$k] = preg_replace("/\r\n|\n\r|\n|\r/", " ", $row[$k]);
             $row[$k] = trim($row[$k]);
-<<<<<<< Updated upstream
             $row[$k] = mb_convert_encoding($row[$k], 'Windows-1251');
-=======
-            $row[$k] = mb_convert_encoding($row[$k], 'windows-1251');
->>>>>>> Stashed changes
         }
         //Эхо получившийся таблицы
         echo implode($separator, $row) . "\n";

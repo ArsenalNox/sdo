@@ -29,19 +29,10 @@
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
-    <link rel="stylesheet" href="css/main.css">  
-    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <title>Вход в панель управления </title>
-    <!-- <style>
-      @media (max-width: 640px) {
-        .imgLogin {
-        width: 250px;
-        height: 250px;
-        }
-      }
-    </style> -->
   </head>
   <body class="panellogin">
     <section class="main">
