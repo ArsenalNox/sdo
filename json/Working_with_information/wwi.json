@@ -121,6 +121,7 @@
     },
     {
         "QUESTION_NUM": "7",
+        "TYPE": "choose-answer",
         "VAR": "1",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -133,6 +134,7 @@
     },
     {
         "QUESTION_NUM": "7",
+        "TYPE": "choose-answer",
         "VAR": "2",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -145,6 +147,7 @@
     },
     {
         "QUESTION_NUM": "7",
+        "TYPE": "choose-answer",
         "VAR": "3",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -157,6 +160,7 @@
     },
     {
         "QUESTION_NUM": "7",
+        "TYPE": "choose-answer",
         "VAR": "4",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",
@@ -169,6 +173,7 @@
     },
     {
         "QUESTION_NUM": "7",
+        "TYPE": "choose-answer",
         "VAR": "5",
         "NUM_ANSW": "4",
         "IMAGE": "../../json/img/wwi/image2.png",

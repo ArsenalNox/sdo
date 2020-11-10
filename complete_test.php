@@ -72,7 +72,7 @@ $uid = $_SESSION['UID'];
         '$module_name',
         '$percent'
       )";
-      echo "$sql";
+      // echo "$sql";
       $result = mysqli_query($conn, $sql);
       if($result){
         //Создание отдельной таблицы для хранения детальных результатов теста
@@ -129,7 +129,8 @@ $uid = $_SESSION['UID'];
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
-  echo "<div class='debug'> <pre> " . print_r($_SESSION) . "</pre> </div>";
+  // echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
+  // echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
 
   echo "
   <script type='text/javascript' src='js/student.js'></script>

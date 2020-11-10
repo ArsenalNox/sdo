@@ -61,8 +61,8 @@ foreach ($json_a as $struct => $quest) {
             } else {
               $_SESSION["QUESTION_IMAGE_$qselector"] = '';
             }
-            if(isset($quest['type']) ){
-              switch ($quest['type']) {
+            if(isset($quest['TYPE']) ){
+              switch ($quest['TYPE']) {
                 case 'open':
                   echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
                   A) " . $quest['A'] . " ;
@@ -72,10 +72,17 @@ foreach ($json_a as $struct => $quest) {
                   <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
                   <hr> </div>";
                   break;
-
-                default:
-                  // code...
+                case 'choose-answer':
+                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " </p> <br>
+                  <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
+                  <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
+                  <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
+                  <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
+                  </ul>
+                  <br>
+                  <hr> </div>";
                   break;
+
               }
             } else {
               echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
