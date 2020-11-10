@@ -31,7 +31,7 @@ if(!isset($_SESSION['sql'])){
   }
 } else {
   $sql = $_SESSION['sql'];
-  $filename = 'таблица_результатов.xls';
+  $filename = 'таблица_результатов.xlsm';
 }
 
 
