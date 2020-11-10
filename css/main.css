@@ -19,7 +19,6 @@ button{
   border-radius: 5px;
   height: 30px;
   background-color: #29a8df;
-  margin: 2px 0;
   color: #fff;
 }
 
@@ -203,6 +202,7 @@ h4 {
   text-align: center;
   font-size: 15px;
   border: 0;
+  margin-bottom: 2px;
 }
 
 .button3 {
@@ -228,7 +228,13 @@ h4 {
 
 .to-crmd {
   border: 0;
-  background-color: #fff;
+  height: 25px;
+  font-size: 25px;
+}
+
+.search {
+  height: 25px;
+  font-size: 20px;
 }
 
 .module-creation {
@@ -328,7 +334,7 @@ a {
 }
 
 .export {
-  background: linear-gradient(to right, #0852ff, #b866b0);
+  margin: auto;
   border: 0;
   outline: none;
 }
@@ -378,6 +384,10 @@ a {
 table, th, td {
   padding: 1px;
   border: 1px solid black;
+}
+
+.tabling {
+  padding: 5px;
 }
 
 .veiwlink{
@@ -447,6 +457,17 @@ dataset{
   left: 65%;
 }
 
+.exel {
+  margin: 35%;
+}
+
+#dvm1 {
+  width: 300px;
+}
+
+.method-select, #dvm1, .sort-by {
+  font-size: 20px;
+}
 .debug{
   position: absolute;
   width: 100%;
