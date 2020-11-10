@@ -21,7 +21,7 @@ if ($result) {
       $answer = $row['Given_answer'];
       $correct = $row['Correct_answer'];
       if(!($row['Image']=='')){
-        $image = "<img href='".$row['Image']."'>";
+        $image = "<img src='".$row['Image']."'>";
       } else {
         $image = '';
       }
