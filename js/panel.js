@@ -41,7 +41,7 @@ function LoadMouleMenu() {
   };
   xhttp.open("POST", "php/functions/get_modules.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("subject=" + sbj + "&class=");
+  xhttp.send("subject=" + sbj);
 }
 
 function getConnections() {

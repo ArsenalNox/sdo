@@ -445,4 +445,8 @@ dataset{
   border-top: 1px black solid;
 }
 
+.auth-button{
+  float: right;
+}
+
 textarea::-webkit-input-placeholder { color: #fff};

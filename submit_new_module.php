@@ -14,10 +14,10 @@ $error = '';
 
 if(!is_dir($path)){
   //Создание папки теста и папки изображений
-  mkdir("$path");
-  mkdir("$path/images");
+  mkdir("$path", 0777);
+  mkdir("$path/images", 0777);
 } else {
-  // echo "Директория $path уже существует";
+  echo "Директория $path уже существует";
 }
 
 //Массив, который будет переведён в json

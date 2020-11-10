@@ -63,8 +63,8 @@ if(isset($_COOKIE['STS'])){
     <div class="test-list-wrapper" id='tlw1'> </div>
     <script src="js/meta.js" charset="utf-8"></script>
     <script type="text/javascript">
-      loadAssociatedData()
-      var display = false
+      loadAssociatedData();
+      var display = false;
       function showElem(id){
         switch (display) {
           case false:

@@ -66,6 +66,7 @@
                 $_SESSION['GROUP_UID'] = $group;
                 echo "
                   <h4> Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+                  <button onclick='Deauthorization()' class='auth-button'> Новая авторизация </button>
                   <input type='hidden' name='student_uid' value='$uid' id='suid'>
                   <script>
                       document.getElementById('sg1').style.display = 'none';

@@ -24,9 +24,9 @@ switch ($_POST['method']) {
     break;
 }
 //ДЕБАГ ИНФОРМАЦИЯ
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 //Добавление дополнительных опций поиска, если таковые имеются
 if(isset($_POST['addoptcount'])){
   if($_POST['addoptcount'] > 0){

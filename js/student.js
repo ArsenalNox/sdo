@@ -142,3 +142,22 @@ function sendtestinfo(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("status="+test+"&id="+id);
 }
+
+function Deauthorization(){
+  //Сбрасывает статус студента, по сути релогин
+  var xhttp = new XMLHttpRequest();
+  var studid = document.getElementById('suid').value;
+  console.log(studid);
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(this.responseText == 'done'){
+        location.reload();
+      } else {
+        console.log('An error ocurred '+this.responseText);
+      }
+    }
+  }
+  xhttp.open("POST", "php/functions/drop_student_state.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("suid="+studid);
+}
