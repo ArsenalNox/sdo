@@ -33,6 +33,7 @@
 <body>
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/student.js"></script>
+    <script src="js/student-interface.js" charset="utf-8"></script>
     <section class="student-wrapper">
       <input type="hidden" name="student_test_status" value="test_not_selected" id='student_test_status'>
     <fieldset class="fieldset">
@@ -56,7 +57,7 @@
                     <select name="get_name" id="group_names" class="get_name" style="margin-bottom: 20px;">
                         <option value=''> --Выберите Класс-- </option>";
                     </select>
-                        <button type="submit" class="buttonindex" onclick='SendStudentInfo()'>Отправить</button>
+                        <button type="submit" class="buttonindex" onclick='SendStudentInfo()' id='sl' style='display: none;'> Войти </button>
             </div>
 
             <div class="student-info">
@@ -65,7 +66,7 @@
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
                 echo "
-                  <h4> Вы подтверждены как: $uid, <span id='student_group'>$group</span>
+                  <h4> Вы вошли как: $uid, <span id='student_group'>$group</span>
                   <button onclick='Deauthorization()' class='auth-button'> Новая авторизация </button>
                   <input type='hidden' name='student_uid' value='$uid' id='suid'>
                   <script>
@@ -77,14 +78,14 @@
                   </h4>
                   ";
                 }
-                else {
-                  echo "<h4>Ожидание подтверждения как $uid
-                  </h4>
-                  <script type='text/javascript'>
-                    var auto_update_timer = setInterval(update_status, 3000);
-                  </script>
-                  ";
-                }
+                // else {
+                //   echo "<h4>Ожидание подтверждения как $uid
+                //   </h4>
+                //   <script type='text/javascript'>
+                //     var auto_update_timer = setInterval(update_status, 3000);
+                //   </script>
+                //   ";
+                // }
 
                 if(isset($_GET['status'])){
                     if(isset($_GET['test'])){

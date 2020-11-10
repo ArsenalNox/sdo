@@ -12,6 +12,7 @@ function GetGroupNames() {
     if (this.readyState == 4 && this.status == 200) {
       console.log('Done!', this.responseText);
       document.getElementById('group_names').innerHTML = this.responseText;
+      showLoginButton();
     }
   };
   xhttp.open("POST", "php/functions/get_name.php", true);
