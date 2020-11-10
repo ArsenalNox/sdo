@@ -233,7 +233,7 @@ if($result){
     }
     echo "<br>
     <p>
-    <a href='php/functions/export.php'> Экспортировать данную таблицу </a>
+    <a class='tabling' href='php/functions/export.php'> Экспортировать данную таблицу </a>
     </p>";
   } else {
     echo "По данному запросу отсутсвуют результаты";

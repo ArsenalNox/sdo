@@ -18,7 +18,6 @@ include_once "dtb/dtb.php";
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 3rem;
-        background-color: #f7f7f7d1;
       }
       .export-link{
 
@@ -42,9 +41,9 @@ include_once "dtb/dtb.php";
         <option value="all_all">Результаты ученика за всё время</option>
         <option value="all_all">Результаты ученика за промежуток времени</option> -->
       </select> </p>
-      <fieldset id='addinfo'>
+      <div id='addinfo'>
 
-      </fieldset>
+      </div>
     </form>
   </section>
 
@@ -53,7 +52,7 @@ include_once "dtb/dtb.php";
     var selection = document.getElementById('sm').value;
     console.log(selection);
     document.getElementById('addinfo').remove();
-    let fieldset = document.createElement('fieldset');
+    let fieldset = document.createElement('div');
     fieldset.id = 'addinfo'
     document.getElementById('exf').append(fieldset);
     switch (selection) {

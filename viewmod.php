@@ -18,13 +18,19 @@ if(isset($_COOKIE['STS'])){
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
     <meta charset="utf-8">
     <title> Просмотр мероприятий</title>
+    <style>
+      body{
+        font-size: 25px;
+      }
+    </style>
   </head>
   <body>
     <section class='viewpanel-wrapper'>
       <a href="panel.php" class="to-crmd">
-        <button>← Назад</button>
+        <button class="to-crmd">Назад</button>
       </a>
       <hr>
       <div class="method-select-wrapper">
@@ -58,7 +64,7 @@ if(isset($_COOKIE['STS'])){
       </div>
     </div>
     <br>
-    <button type="button" name="button" onclick="showAllResults()">Провести поиск</button>
+    <button class="search" type="button" name="button" onclick="showAllResults()">Провести поиск</button>
     </section>
     <div class="test-list-wrapper" id='tlw1'> </div>
     <script src="js/meta.js" charset="utf-8"></script>
