@@ -20,9 +20,15 @@ if ($result) {
       $question = $row['Question_text'];
       $answer = $row['Given_answer'];
       $correct = $row['Correct_answer'];
+      if(!($row['Image']=='')){
+        $image = "<img href='".$row['Image']."'>";
+      } else {
+        $image = '';
+      }
       echo "
         <div class='question' id='$num'>
         <p> Номер вопроса: $num </p>
+        $image
         <p> Текст вопроса: $question </p>
         <p> Ответ ученика: '$answer' </p>
         <p> Правильный ответ: '$correct' </p>

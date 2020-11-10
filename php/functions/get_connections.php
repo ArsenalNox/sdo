@@ -1,7 +1,6 @@
 <?php
 //Получение сединений
 
-// TODO: Добавить цветовое отображение статуса теста у ученика
 // DONE: Добавить возможность смотреть результат теста преподавателю (через панель устройств)
 
 include_once "../../dtb/dtb.php";
@@ -40,7 +39,7 @@ if(mysqli_num_rows($result) > 0){
         if($status == 0){echo "<div class='student-ip-info'> <button class='button3' onclick='ConfirmStudent($id)'> Подтвердить </button>";
         } else {echo "<div class='student-ip-info'> <button class='confirmed-button' onclick='DeconfirmStudent($id)'> Подтверждён </button>";}
 
-        echo "<p class='ip'> $ip : $uid, $grp </p> ";
+        echo "<p class='ip'> $ip:$uid, $grp </p> ";
         if(!($test_status == '')){
           echo "<p> Статус: $test_status </p> <hr> </div>";
         } else {

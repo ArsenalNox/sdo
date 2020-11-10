@@ -41,7 +41,6 @@ foreach ($json_a as $struct => $quest) {
     ";
     continue;
   }
-
   if($quest['QUESTION_NUM'] == "$qselector"){
   	if($quest['VAR'] == "$selector"){
           if($vars>1){
@@ -58,6 +57,9 @@ foreach ($json_a as $struct => $quest) {
             Вариант " . $quest['VAR'] . "</h4>";
             if($quest['IMAGE'] !== ''){
                 echo "<img src='".$quest['IMAGE']."' >";
+                $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
+            } else {
+              $_SESSION["QUESTION_IMAGE_$qselector"] = '';
             }
             if(isset($quest['type']) ){
               switch ($quest['type']) {

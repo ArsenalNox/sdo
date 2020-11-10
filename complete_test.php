@@ -58,12 +58,12 @@ $uid = $_SESSION['UID'];
   }
   //Проверка на наличие результата этого теста у ученика в бд
   $sql = "SELECT * FROM test_results WHERE student = '$student' AND module='$module_name';";
+  echo "$sql";
   $check = mysqli_query($conn, $sql);
   if($check){
     if(mysqli_num_rows($check) == 0){
       $today = date("Y-m-d");
       $group = $_SESSION['GROUP_UID'];
-      //Проверка наличия резуьтатов. (Надо бы по-хорошему эту систему изменить)
       $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `percent`) VALUES (
         '$student',
         '$group',
@@ -71,6 +71,7 @@ $uid = $_SESSION['UID'];
         '$module_name',
         '$percent'
       )";
+      echo "$sql";
       $result = mysqli_query($conn, $sql);
       if($result){
         //Создание отдельной таблицы для хранения детальных результатов теста
@@ -78,7 +79,7 @@ $uid = $_SESSION['UID'];
         $sql = "SELECT * FROM test_results WHERE `student` = '$uid' AND `date` ='$today' AND `module` = '$module_name'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
-  
+
         $result_table_name = 'tr_'.$row['id'];
         //создание таблицы если не существует
         $resulttable_sql = "CREATE TABLE IF NOT EXISTS $result_table_name (
@@ -88,6 +89,7 @@ $uid = $_SESSION['UID'];
           Given_answer varchar(512),
           Correct_answer varchar(512),
           Correctness tinyint(1),
+          Image varchar(512),
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -96,20 +98,26 @@ $uid = $_SESSION['UID'];
           $question_text = $_SESSION["QUESTION_$i"];
           $question_answer_given = $_POST["ANSW_$i"];
           $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
+          if(isset($_SESSION["QUESTION_IMAGE_$i"])){
+            $image = $_SESSION["QUESTION_IMAGE_$i"];
+          } else {
+            $image = '';
+          }
+          echo "$image";
           if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
             $correct = 0;
           }
-          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`) VALUES (
+          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`, `Image`) VALUES (
               '$variant',
               '$question_text',
               '$question_answer_given',
               '$question_answer_correct',
-              '$correct'
+              '$correct',
+              '$image'
           )";
           $insert = mysqli_query($conn, $sql);
         }
       }
-
       echo "
       <p> Ваш результат был сохранён! </p>
       <p> Процент правильных ответов: " .$percent. " </p>
@@ -120,6 +128,8 @@ $uid = $_SESSION['UID'];
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
+  echo "<div class='debug'> <pre> " . print_r($_SESSION) . "</pre> </div>";
+  
   echo "
   <script type='text/javascript' src='js/student.js'></script>
   <script type='text/javascript'>
@@ -132,6 +142,7 @@ $uid = $_SESSION['UID'];
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
    set_test_status();
+   // window.location.href = "index.php";
  </script>
   </body>
 </html>
