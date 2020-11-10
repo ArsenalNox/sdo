@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: #f8e5c7;
+  background: #fff;
   background-size: 100%;
   height: 100vh;
   width: 100%;
@@ -128,7 +128,6 @@ h4 {
 }
 
 .student-ip-panel{
-  background-color: #f8e5c7;
   position: relative;
   width: fit-content;
   height: min-content;
@@ -146,7 +145,6 @@ h4 {
 /* create_module */
 
 .module-creation-wrapper {
-  background-color: #f8e5c7;
   width: 80%;
   margin: auto;
   margin-top: 20px;
@@ -277,7 +275,6 @@ a {
 .student-wrapper {
   width: 500px;
   height: auto;
-  margin-bottom: 300px;
 }
 .selection{
   display: flex;
@@ -306,7 +303,6 @@ a {
 .fieldset {
   border: 2px solid #0d47a1;
   margin-bottom: 20px;
-  background: #f8e5c7;
 }
 
 .buttonindex {
@@ -446,7 +442,9 @@ dataset{
 }
 
 .auth-button{
-  float: right;
+  position: absolute;
+  top: 5.5%;
+  left: 65%;
 }
 
 .debug{

@@ -26,6 +26,7 @@
 <head>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/media.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель студента</title>
@@ -108,7 +109,6 @@
 
             </div>
         </div>
-        <br>
         <div class="main-testfield" id='mtf'>
         </div>
         <div class="test" id='test'>
