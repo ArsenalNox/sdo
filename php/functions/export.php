@@ -31,7 +31,7 @@ if(!isset($_SESSION['sql'])){
   }
 } else {
   $sql = $_SESSION['sql'];
-  $filename = 'таблица_результатов.xlsm';
+  $filename = 'таблица_результатов.xls';
 }
 
 
@@ -58,6 +58,7 @@ if(!empty($rows)){
             $row[$k] = str_replace($separator . "$", "", $row[$k]);
             $row[$k] = preg_replace("/\r\n|\n\r|\n|\r/", " ", $row[$k]);
             $row[$k] = trim($row[$k]);
+            $row[$k] = mb_convert_encoding($row[$k], 'UTF-8');
         }
         //Эхо получившийся таблицы
         echo implode($separator, $row) . "\n";
