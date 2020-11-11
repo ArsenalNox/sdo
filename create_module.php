@@ -22,7 +22,9 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Создание модуля</title>
     <style media="screen">
 
@@ -50,13 +52,13 @@
     <section class="module-creation-wrapper">
     <section class="section" style="color: #606060;">
         <a href="panel.php" class="to-crmd">
-          <button>← Назад</button>
+          <button class="to-crmd">Назад</button>
         </a>
         <hr>
         <h2> Создание модуля </h2>
         <form class='new_module_form' action="submit_new_module.php" method="POST" id='nmf' enctype="multipart/form-data">
           Модуль для класса
-          <select style="height: 34px; position: relative; margin-bottom: 5px" name="class">
+          <select style="height: 34px; position: relative; margin-bottom: 5px" name="class" class="class">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -74,7 +76,7 @@
           <textarea id='ms' name="module_subject" rows='2' cols='40' style="resize:none" placeholder="Премет модуля"></textarea>
           </fieldset>
           <hr>
-          <button type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
+          <button class="getbutton" type="button" name="button" onclick='addQuestion()'> Добавить вопрос </button>
           <input type="hidden" value="0" name='quest_quantity' id='qqn'>
           <input class="send" type="submit" text="Создать модуль">
         </form>
