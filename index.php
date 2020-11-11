@@ -30,6 +30,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель студента</title>
+    <style media="screen">
+      .timer-wrap{
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        border: 1px solid black;
+        width: 21rem;
+        padding: 7px;
+      }
+    </style>
 </head>
 <body>
     <script src="js/jquery-3.5.1.js"></script>
@@ -67,7 +77,7 @@
                 $_SESSION['GROUP_UID'] = $group;
                 echo "
                   <h4> Вы вошли как: $uid, <span id='student_group'>$group</span>
-                  <button onclick='Deauthorization()' class='auth-button'> Новая авторизация </button>
+                  <button onclick='Deauthorization()' class='auth-button' id='nauth'> Новая авторизация </button>
                   <input type='hidden' name='student_uid' value='$uid' id='suid'>
                   <script>
                       document.getElementById('sg1').style.display = 'none';
@@ -78,16 +88,6 @@
                   </h4>
                   ";
                 }
-
-                // else {
-                //   echo "<h4>Ожидание подтверждения как $uid
-                //   </h4>
-                //   <script type='text/javascript'>
-                //     var auto_update_timer = setInterval(update_status, 3000);
-                //   </script>
-                //   ";
-                // }
-
                 if(isset($_GET['status'])){
                     if(isset($_GET['test'])){
                       echo "
@@ -115,6 +115,6 @@
         </fieldset>
     </section>
     <script src="js/jquery-3.5.1.js" charset="utf-8"></script>
-    
+
 </body>
 </html>

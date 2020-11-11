@@ -2,15 +2,15 @@
 var t_not = 'test_not_selected';
 var t_ong = 'test_started';
 var t_cmp = 'completed';
+//Таймер
+var timer
 
 function GetGroupNames() {
   //Получает все имена класса
   var xhttp = new XMLHttpRequest();
   var student_group = document.getElementById('student_group_selector').value;
-  console.log('Requesting names for ', student_group);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log('Done!', this.responseText);
       document.getElementById('group_names').innerHTML = this.responseText;
       showLoginButton();
     }
@@ -26,7 +26,6 @@ function LoadTests() {
   var student_group = document.getElementById('student_group').textContent;
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(student_group);
       document.getElementById('mtf').innerHTML = this.responseText;
     }
   };
@@ -57,11 +56,14 @@ function startTest(id) {
   var test_id = id;
   document.getElementById('mtf').remove();
   var xhttp = new XMLHttpRequest();
+  document.getElementById('nauth').style.display = 'none';
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('test').innerHTML = this.responseText;
       document.title = document.getElementById('ntl').value;
       shuffle_divs();
+      tick();
+      timer = setInterval(tick, 1000);
     }
   };
   xhttp.open("POST", "php/functions/student_start_test.php", true);
@@ -161,4 +163,32 @@ function Deauthorization(){
   xhttp.open("POST", "php/functions/drop_student_state.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("suid="+studid);
+}
+
+function stopTest(reason){
+  if(reason=='timeout'){
+    document.getElementById('tfs1').submit()
+  }
+  else if (confirm("Вы действительно хотите прекратить выполнение теста?")){
+    location.reload();
+  }
+}
+
+function tick(){
+  var timeToComplete = document.getElementById('ttc').value*60;
+  seconds++;
+  if(seconds == 60){
+    minutes++;
+    seconds = 0;
+  }
+  let timePassedSeconds = seconds+minutes*60;
+  let timeLeftSeconds = (timeToComplete - timePassedSeconds);
+  let timeLeftMinutes = (timeLeftSeconds - timeLeftSeconds%60)/60;
+  timeLeftSeconds = timeLeftSeconds%60;
+  document.getElementById('timer').innerText = timeLeftMinutes + ':' + timeLeftSeconds;
+  if( (timeToComplete-timePassedSeconds) < 0 ){
+      clearInterval(timer);
+      alert('Время на выполнение теста вышло, \nваши ответы будут записанны как есть.');
+      stopTest('timeout');
+  }
 }

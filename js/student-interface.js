@@ -1,3 +1,5 @@
+var minutes = 0;
+var seconds = 0;
 
 function showLoginButton(){
   document.getElementById('sl').style.display = 'block';

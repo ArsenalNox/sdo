@@ -26,8 +26,6 @@ echo "
   </div>
 ";
 
-
-
 $sql = "SELECT * FROM $test";
 $result = mysqli_query($conn, $sql);
 if ($result) {
@@ -38,6 +36,11 @@ if ($result) {
       $answer = $row['Given_answer'];
       $correct = $row['Correct_answer'];
       $variant = $row['Question_var'];
+      if($row['Correctness'] == 0){
+        $correctness = '<p> <span style="color: red;"> <b> Ответ неправильный </b>  </span> </p>';
+      } else {
+        $correctness = '<p> <span style="color: green;"> <b> Ответ правильный </b> </span> </p>';
+      }
       if(!($row['Image']=='')){
         $image = "<img src='".$row['Image']."'>";
       } else {
@@ -45,11 +48,12 @@ if ($result) {
       }
       echo "
         <div class='question' id='$num'>
-        <p> Номер задания: $num, Вариант: $variant</p>
+        <p> Номер задания: <b style='font-size: larger;'>$num</b>, Вариант: <b style='font-size: larger;'>$variant</b> </p>
         $image
         <p> Текст вопроса: $question </p>
         <p> Ответ ученика: '$answer' </p>
         <p> Правильный ответ: '$correct' </p>
+        $correctness
         </div>
       ";
     }
