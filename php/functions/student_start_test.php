@@ -141,7 +141,6 @@ foreach ($json_a as $struct => $quest) {
   }
   $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
   echo "
-  <button> Завершить тест </button>
   </form>
   <input type='hidden' name='time_to_complete' id='ttc' value='time_to_complete'>
   <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
