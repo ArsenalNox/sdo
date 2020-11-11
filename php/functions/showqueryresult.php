@@ -20,7 +20,7 @@ switch ($_POST['method']) {
     $sql = "SELECT * FROM test_results WHERE student = '$student'";
     break;
   case 'all':
-    $sql = "SELECT * FROM test_results";
+    $sql = "SELECT * FROM test_results WHERE 1 ";
     break;
 }
 //ДЕБАГ ИНФОРМАЦИЯ
@@ -239,6 +239,6 @@ if($result){
     echo "По данному запросу отсутсвуют результаты";
   }
 } else {
-  echo "Что-то пошло не так";
+  echo "Что-то пошло не так $sql";
 }
 ?>
