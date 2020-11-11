@@ -22,7 +22,6 @@ $qselector = 1;
 $selector = 1;
 $i = 0;
 $_SESSION['MODULE'] = $test_name;
-echo "<form action='complete_test.php' method='POST'>";
 $showmeta = true;
 $vars = 1;
 foreach ($json_a as $struct => $quest) {
@@ -39,6 +38,7 @@ foreach ($json_a as $struct => $quest) {
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
     <p> Время на выполнение: ".$time_to_complete." минут</p>
     ";
+    echo "<form action='complete_test.php' method='POST' id='tfs1'>";
     continue;
   }
   if($quest['QUESTION_NUM'] == "$qselector"){
@@ -51,73 +51,75 @@ foreach ($json_a as $struct => $quest) {
           $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
           $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
           $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
-          echo
-            "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "'>
-            <h4 class='tests' style='border-radius: 15px;'> Задание №" . $quest['QUESTION_NUM'] . "
-            Вариант " . $quest['VAR'] . "</h4>";
-            if($quest['IMAGE'] !== ''){
-                echo "<img src='".$quest['IMAGE']."' >";
-                $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
-            } else {
-              $_SESSION["QUESTION_IMAGE_$qselector"] = '';
-            }
-            if(isset($quest['TYPE']) ){
-              switch ($quest['TYPE']) {
+          echo "
+          <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
+          <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
+          if($quest['IMAGE'] !== ''){
+              echo "<img src='".$quest['IMAGE']."' >";
+              $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
+          } else {
+            $_SESSION["QUESTION_IMAGE_$qselector"] = '';
+          }
+          if(isset($quest['TYPE']) ){
+            switch ($quest['TYPE']) {
+            // TODO: Переписать вывод кол-ва вопросов в зависимости от их наличия в json, что убирает необходимость в NUM_ANSW (if isset)
+                //С открытым ответом
                 case 'open':
                   echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br> ";
                   if(isset($quest['NUM_ANSW'])){
                     switch ($quest['NUM_ANSW']) {
                       case '4':
                           echo "
-                          A) " . $quest['A'] . " ;
-                          B) " . $quest['B'] . " ;
-                          C) " . $quest['C'] . " ;
+                          A) " . $quest['A'] . "
+                          B) " . $quest['B'] . "
+                          C) " . $quest['C'] . "
                           D) " . $quest['D'] . "</p>";
                         break;
                       case '2':
                           echo "
-                          A) " . $quest['A'] . " ;
-                          B) " . $quest['B'] . " ;
+                          A) " . $quest['A'] . "
+                          B) " . $quest['B'] . "
                           </p>";
                         break;
                     }
                   } else {
                     echo "
-                    A) " . $quest['A'] . " ;
-                    B) " . $quest['B'] . " ;
-                    C) " . $quest['C'] . " ;
+                    A) " . $quest['A'] . "
+                    B) " . $quest['B'] . "
+                    C) " . $quest['C'] . "
                     D) " . $quest['D'] . "</p>";
                   }
                   echo "
                   <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
                   <hr> </div>";
                   break;
+
+                //С выбором ответа
                 case 'choose-answer':
                   echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " </p> <br>";
                   if(isset($quest['NUM_ANSW'])){
                     switch ($quest['NUM_ANSW']) {
                       case '4':
                           echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
-                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
-                          <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
-                          <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
-                          <br>
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
+                          <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
+                          <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
                           <hr> </div>";
                         break;
                       case '2':
                           echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
-                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
                           <br>
                           <hr> </div>";
                         break;
                   }}else {
                     echo "
-                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label>; <br>
-                    <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label>; <br>
-                    <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label>; <br>
-                    <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label>; <br>
+                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                    <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
+                    <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
+                    <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
                     <br>
                     <hr> </div>";
                   }
@@ -126,9 +128,9 @@ foreach ($json_a as $struct => $quest) {
               }
             } else {
               echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
-              A) " . $quest['A'] . " ;
-              B) " . $quest['B'] . " ;
-              C) " . $quest['C'] . " ;
+              A) " . $quest['A'] . "
+              B) " . $quest['B'] . "
+              C) " . $quest['C'] . "
               D) " . $quest['D'] . "</p>
               <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
               <hr> </div>";

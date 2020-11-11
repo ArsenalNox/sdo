@@ -61,6 +61,7 @@ function startTest(id) {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('test').innerHTML = this.responseText;
       document.title = document.getElementById('ntl').value;
+      shuffle_divs();
     }
   };
   xhttp.open("POST", "php/functions/student_start_test.php", true);

@@ -60,7 +60,6 @@
                     </select>
                         <button type="submit" class="buttonindex" onclick='SendStudentInfo()' id='sl' style='display: none;'> Войти </button>
             </div>
-
             <div class="student-info">
                 <?php  if($status == true){
                 $_SESSION['IP'] = $ip;
@@ -79,6 +78,7 @@
                   </h4>
                   ";
                 }
+
                 // else {
                 //   echo "<h4>Ожидание подтверждения как $uid
                 //   </h4>
@@ -106,7 +106,6 @@
                   ";
                 }
                 ?>
-
             </div>
         </div>
         <div class="main-testfield" id='mtf'>
@@ -115,5 +114,7 @@
         </div>
         </fieldset>
     </section>
+    <script src="js/jquery-3.5.1.js" charset="utf-8"></script>
+    
 </body>
 </html>
