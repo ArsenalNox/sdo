@@ -1,7 +1,5 @@
 <?php
-
-// TODO: Дизайн..................................
-// TODO: Перелопатить структуру бд................. переписать весь код под новую бд................................................................................
+// TODO: Дизайн
   include_once "dtb/dtb.php";
   if(isset($_COOKIE['STS'])){
     $teachid = $_COOKIE['STS'];
@@ -101,10 +99,10 @@
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Мета панель </h2></legend>
     <div class="met">
-        <a href="create_module.php" class='create'>
+        <!-- <a href="create_module.php" class='create'>
           <button>Создать модуль</button>
         </a>
-        <br>
+        <br> -->
         <a href="viewmod.php" class='viewmod' id="buttonmet">
         <button class="buttonmet">Просмотр мероприятий</button>
         </a>

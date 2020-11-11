@@ -11,6 +11,9 @@ if(mysqli_num_rows($result) > 0){
         $ip = $row['ip'];
         $status = $row['status'];
         $uid = $row['student_uid'];
+        if( ($status == 0 ) && ($uid == '') ){
+          continue;
+        }
         $grp = $row['group_nl'];
         $id = $row['id'];
         if($row['test_id'] == ''){
