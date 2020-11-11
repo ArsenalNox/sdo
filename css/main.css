@@ -227,7 +227,7 @@ h4 {
 }
 
 .button5 {
-  
+
 }
 
 .to-crmd {
@@ -477,5 +477,9 @@ dataset{
   z-index: 12000;
 }
 
+.student-ip-info{
+  border-left: 1px dotted black;
+  padding: 1rem;
+}
 
 textarea::-webkit-input-placeholder { color: #fff};
