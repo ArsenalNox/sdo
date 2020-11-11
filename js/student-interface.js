@@ -16,5 +16,6 @@ function shuffle_divs() {
     $("#q"+question_num).children("h4").text('Задание № '+question_num);
     question_num++;
   }
+  $("#tfs1").append("<button> Завершить тест </button>");
 }
 shuffle_divs();
