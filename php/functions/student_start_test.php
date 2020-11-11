@@ -101,7 +101,7 @@ foreach ($json_a as $struct => $quest) {
                     switch ($quest['NUM_ANSW']) {
                       case '4':
                           echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
                           <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
                           <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
                           <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
@@ -109,14 +109,14 @@ foreach ($json_a as $struct => $quest) {
                         break;
                       case '2':
                           echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
                           <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
                           <br>
                           <hr> </div>";
                         break;
                   }}else {
                     echo "
-                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."'> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
+                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
                     <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
                     <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
                     <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
@@ -142,6 +142,7 @@ foreach ($json_a as $struct => $quest) {
   $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
   echo "
   </form>
+  <div class='timer-wrap'> <p> Оставшееся время на выполнение: <span id='timespan'> </span> </p> </div>
   <input type='hidden' name='time_to_complete' id='ttc' value='time_to_complete'>
   <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
   ";
