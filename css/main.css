@@ -114,7 +114,7 @@ h4 {
   flex-direction: column;
 }
 
-.confirmed-button{
+.confirmed-button {
   background-color: #65aa13;
   font-family: 'Open Sans', sans-serif;
   height: 35px;
@@ -226,14 +226,16 @@ h4 {
   left: 5%;
 }
 
+.button5 {
+  
+}
+
 .to-crmd {
   border: 0;
-  height: 25px;
   font-size: 25px;
 }
 
 .search {
-  height: 25px;
   font-size: 20px;
 }
 

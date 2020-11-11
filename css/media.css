@@ -11,4 +11,34 @@
     .exel {
         margin: 15%;
     }
+    .imgLogin {
+        width: 250px;
+        height: 250px;
+    }
+    .login {
+        margin-top: 5%;
+    }   
+}
+
+@media (max-width: 800px) {
+    body, textarea, .send, .class, .getbutton {
+        font-size: 20px;
+    }
+    #group, #subject, #module-select, #topic {
+        float: inherit;
+    }
+    .student-ip-panel {
+        padding: 11px;
+    }
+    .button2, .button {
+        font-size: 20px;
+        width: 100%;
+    }
+    .button5 {
+        margin: auto;
+        width: 80%;
+    }
+    .confirmed-button, .test {
+        width: 100%;
+    }
 }
