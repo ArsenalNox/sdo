@@ -10,16 +10,34 @@
 //Показ резуьтата теста ученика преподавателю
 include_once "dtb/dtb.php";
 $test = $_GET['td'];
+
+$test_id = explode('_',$test)[1];
+echo "<div class='student-wrapper'>";
+$testInfoSql = "SELECT * FROM test_results WHERE id = '$test_id' ;";
+$InfoResult = mysqli_query($conn, $testInfoSql);
+$rowInfo = mysqli_fetch_assoc($InfoResult);
+echo "
+  <div class='test-info'>
+    <p> Индефикатор теста: ".$rowInfo['id']." </p>
+    <p> ФИО студента: <b>".$rowInfo['student']."</b>, Класс: <b>".$rowInfo['class']."</b></p>
+    <p> Модуль: ".$rowInfo['module']."</p>
+    <p> Процент выполнения: ".$rowInfo['percent']."</p>
+    <hr>
+  </div>
+";
+
+
+
 $sql = "SELECT * FROM $test";
 $result = mysqli_query($conn, $sql);
 if ($result) {
   if(mysqli_num_rows($result) > 0){
-    echo "<div class='student-wrapper'>";
     while ($row = mysqli_fetch_assoc($result)) {
       $num = $row['id'];
       $question = $row['Question_text'];
       $answer = $row['Given_answer'];
       $correct = $row['Correct_answer'];
+      $variant = $row['Question_var'];
       if(!($row['Image']=='')){
         $image = "<img src='".$row['Image']."'>";
       } else {
@@ -27,7 +45,7 @@ if ($result) {
       }
       echo "
         <div class='question' id='$num'>
-        <p> Номер вопроса: $num </p>
+        <p> Номер задания: $num, Вариант: $variant</p>
         $image
         <p> Текст вопроса: $question </p>
         <p> Ответ ученика: '$answer' </p>
