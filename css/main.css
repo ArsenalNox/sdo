@@ -479,6 +479,8 @@ dataset{
 
 .student-ip-info{
   border-left: 1px dotted black;
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
   padding: 1rem;
 }
 
