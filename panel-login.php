@@ -14,7 +14,7 @@
 
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
-          setcookie('STS', $id, time()+3600, '/');
+          setcookie('STS', $id, time()+12000, '/');
           header("Location: panel.php");
           die();
         } else {

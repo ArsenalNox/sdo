@@ -55,11 +55,10 @@ $uid = $_SESSION['UID'];
   if($correct_answers == 0){
     $percent = "0%";
   } else {
-    $percent = round($correct_answers/$_SESSION['QUESTIONS_QUANTITY']*100) . "%";
+    $percent = round($correct_answers/($_SESSION['QUESTIONS_QUANTITY'])*100) . "%";
   }
   //Проверка на наличие результата этого теста у ученика в бд
   $sql = "SELECT * FROM test_results WHERE student = '$student' AND module='$module_name';";
-  echo "$sql";
   $check = mysqli_query($conn, $sql);
   if($check){
     if(mysqli_num_rows($check) == 0){
@@ -124,6 +123,14 @@ $uid = $_SESSION['UID'];
       <p> Процент правильных ответов: " .$percent. " </p>
       <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
       ";
+      echo "
+      <script type='text/javascript' src='js/student.js'></script>
+      <script type='text/javascript'>
+      var status = true
+      var test = '".$result_table_name."'
+      sendtestinfo()
+      </script>
+      ";
     } else {
       echo "Ваш результат уже записан
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
@@ -131,15 +138,6 @@ $uid = $_SESSION['UID'];
   }
   // echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
   // echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
-
-  echo "
-  <script type='text/javascript' src='js/student.js'></script>
-  <script type='text/javascript'>
-    var status = true
-    var test = '".$result_table_name."'
-    sendtestinfo()
-  </script>
-  ";
  ?>
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;

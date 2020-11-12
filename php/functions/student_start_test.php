@@ -135,11 +135,11 @@ foreach ($json_a as $struct => $quest) {
               <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
               <hr> </div>";
             }
+            $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
             $qselector++;
         }
       }
   }
-  $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
   echo "
   </form>
   <div class='timer-wrap'> <p> Оставшееся время на выполнение: <span id='timer'> </span> </p> </div>

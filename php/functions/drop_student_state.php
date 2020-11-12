@@ -1,5 +1,6 @@
 <?php
 //Назначает неподтверждённый статус студенту по suid
+session_start();
 include_once "../../dtb/dtb.php";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   if(isset($_POST['suid'])){}
@@ -8,6 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = mysqli_query($conn, $sql);
     if($result){
       echo "done";
+      session_unset();
+      session_destroy();
     } else {
       echo "$suid $sql";
     }
@@ -15,4 +18,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   header('Location: ../../index.php');
   die();
 }
+die();
 ?>
