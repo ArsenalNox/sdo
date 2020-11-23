@@ -19,6 +19,7 @@ if(isset($_COOKIE['STS'])){
   <head>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <meta charset="utf-8">
     <title> Просмотр мероприятий</title>
     <style>

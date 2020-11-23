@@ -27,7 +27,7 @@
 </head>
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
-<button id="tema" onclick="tema()">Темная тема</button>
+<!-- <button id="tema" onclick="tema()">Темная тема</button> -->
 <div class="wrapper">
 
 <section class='student-ip-panel'>
@@ -101,11 +101,11 @@
           <button>Создать модуль</button>
         </a>
         <br> -->
-        <a href="viewmod.php" class='viewmod' id="buttonmet">
-          <button>Просмотр мероприятий</button>
+        <a href="viewmod.php" id="buttonmet">
+          <button class='buttonmet'>Просмотр мероприятий</button>
         </a>
         
-        <a href="import.php">
+        <a href="import.php" id="buttonmet">
           <button class="buttonmet">Импорт модуля</button>
         </a>
 

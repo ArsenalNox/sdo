@@ -6,24 +6,11 @@ body{
   height: 100vh;
   width: 100%;
   background-position: right bottom;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .panellogin {
   background: linear-gradient(to bottom right, #21abec, #9a32b0);
   height: 1px;
-}
-
-button{
-  border: 0;
-  border-radius: 5px;
-  height: 30px;
-  background: transparent;
-  color: #fff;
-  font-family: Panton-Bold;
-  font-size: 30px;
-  line-height: 80%;
-  padding-top: 5px;
 }
 
 input {
@@ -40,6 +27,7 @@ select{
   color: #fff;
   border: 0;
   border-radius: 5px;
+  outline: none;
 }
 
 textarea {
@@ -58,8 +46,9 @@ h4 {
 
 .module-selector, .subject-selector, .class-module-confirmation {
   font-size: 20px;
-  color: #606060;
+  color: #000;
   margin: 5px;
+  font-family: Panton-Bold;
 }
 
 .module-selector {
@@ -82,6 +71,7 @@ legend {
   background-color: #29a8df;
   height: 30px;
   width: 280px;
+  font-family: Panton-Regular;
 }
 
 .form {
@@ -127,14 +117,18 @@ legend {
 
 .confirmed-button {
   background-color: #65aa13;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Panton-Bold;
   height: 35px;
   text-align: center;
   font-size: 15px;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .ip {
-  color: #606060;
+  color: #000;
+  font-family: Panton-Bold;
 }
 
 .student-ip-panel{
@@ -205,26 +199,35 @@ legend {
   position: absolute;
   top: 79%;
   left: 25%;
+  outline: none;
 }
 
 .button2 {
   background: #29a8df;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Panton-Bold;
   height: 35px;
   width: 180px;
   text-align: center;
   font-size: 15px;
   border: 0;
   margin-bottom: 2px;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
 }
 
 .button3 {
   background: #29a8df;
-  font-family: 'Open Sans', sans-serif;
+  font-family: Panton-Bold;
   height: 35px;
   text-align: center;
   font-size: 15px;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
 }
+
 
 .button4 {
   background: linear-gradient(to right, #21abec, #9a32b0);
@@ -252,12 +255,21 @@ legend {
 }
 
 .to-crmd {
+  font-size: 20px;
   border: 0;
-  font-size: 25px;
+  border-radius: 5px;
+  background: #29a8df;
+  color: #fff;
+  font-family: Panton-Bold;
 }
 
 .search {
   font-size: 20px;
+  border: 0;
+  border-radius: 5px;
+  background: #29a8df;
+  color: #fff;
+  font-family: Panton-Bold;
 }
 
 .module-creation {
@@ -292,11 +304,6 @@ pre {
 
 a {
   text-decoration: none;
-  border-radius: 5px;
-  background-color: #29a8df;
-  color: #fff;
-  text-align: center;
-  width: 150px;
 }
 
 /* index */
@@ -335,11 +342,15 @@ a {
 }
 
 .buttonindex {
-  background: linear-gradient(to right, #0852ff, #b866b0);
+  outline: none;
+  background: #29a8df;
   border: 0;
-  width: 150px;
+  color: #fff;
+  /* width: 150px; */
   margin: auto;
   border-radius: 14px;
+  font-size: 20px;
+  padding: 5px 10px;
 }
 
 .download {
@@ -465,9 +476,7 @@ table, th, td {
 
 #buttonmet {
   margin: auto;
-  border-radius: 15px;
-  width: 300px;
-  height: 60px;
+  border-radius: 5px;
   background: #29a8df;
 }
 
@@ -480,8 +489,8 @@ table, th, td {
 }
 
 .auth-button{
-  height: 50px;
-  border: 1px solid #000;
+  border: 0;
+  border-radius: 5px;
   margin: auto;
   font-size: 20px;
   padding: 5px;
@@ -499,6 +508,7 @@ table, th, td {
 
 .method-select, #dvm1, .sort-by {
   font-size: 20px;
+  font-family: Panton-Regular;
 }
 .debug{
   position: absolute;
@@ -540,13 +550,30 @@ table, th, td {
 .endTest {
   background: #29a8df;
   padding-top: 0;
-  padding-bottom: 30px;
-  height: 30px
 }
 
 .font {
   font-family: Panton-Regular;
   font-size: 20px;
+}
+
+.buttonmet {
+  background: 0;
+  border: 0;
+  color: #fff;
+  height: 50px;
+  font-size: 20px;
+  outline: none;
+}
+
+.testtext {
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #29a8df;
+  color: #fff;
+  text-align: center;
+  width: 150px;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};
