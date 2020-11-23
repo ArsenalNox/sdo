@@ -42,3 +42,10 @@
         width: 100%;
     }
 }
+
+@media (max-width: 900px) {
+    .button2, .button {
+        font-size: 20px;
+        width: 100%;
+    }
+}

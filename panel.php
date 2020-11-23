@@ -19,6 +19,7 @@
 <head>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,13 +27,16 @@
 </head>
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
+<button id="tema" onclick="tema()">Темная тема</button>
 <div class="wrapper">
 
 <section class='student-ip-panel'>
   <fieldset class="fieldset">
     <legend align="center"><h1 style="text-transform: uppercase">Устройства</h1></legend>
+    <div class="knopka">
     <button type="button" name="button" onclick="getConnections()" class="button2">Обновить соединения</button>
     <button type="button" name="button" onclick="ResetConnections()" class="button2">Обнулить соединения</button>
+    </div>
     <hr>
     <div id='scnt'> </div>
   </fieldset>
@@ -103,10 +107,11 @@
         </a>
         <br> -->
         <a href="viewmod.php" class='viewmod' id="buttonmet">
-          <button class="buttonmet">Просмотр мероприятий</button>
+          <button>Просмотр мероприятий</button>
         </a>
     </div>
 </section>
 </div>
+<script src="js/theme.js"></script>
 </body>
 </html>
