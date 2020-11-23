@@ -95,11 +95,6 @@
     </div>
   </fieldset>
 
-  <!-- <fieldset class="fieldset">
-    <legend align="center"><h2 class="module"> Экспортировать таблицу результатов </h2></legend>
-    <a href="export.php" class="exel"> <button type="button" name="button" class='export'><pre>Экспортировать таблицу</pre></button> </a>
-  </fieldset> -->
-
     <legend align="center"><h2 class="module"> Мета панель </h2></legend>
     <div class="met">
         <!-- <a href="create_module.php" class='create'>
@@ -109,6 +104,11 @@
         <a href="viewmod.php" class='viewmod' id="buttonmet">
           <button>Просмотр мероприятий</button>
         </a>
+        
+        <a href="import.php">
+          <button class="buttonmet">Импорт модуля</button>
+        </a>
+
     </div>
 </section>
 </div>

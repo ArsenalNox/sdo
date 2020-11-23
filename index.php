@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
     include_once "dtb/dtb.php";
     session_start();
@@ -21,7 +22,6 @@
         $insert = mysqli_query($conn, $sql);
     }
 ?>
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="css/main.css">
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" width="device-width, initial-scale=1.0">
     <title>Панель студента</title>
 </head>
 <body>
