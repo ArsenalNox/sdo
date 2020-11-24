@@ -1,5 +1,14 @@
 <?php
+// TODO: Загрузка эксель файла
+// TODO: Превью загруженной таблицы, конпка подверждения экспорта
+// TODO: Экспорт в submit module
+
 include_once "dtb/dtb.php";
+require 'php/vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
 if(isset($_COOKIE['STS'])){
   $teachid = $_COOKIE['STS'];
   $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
@@ -22,24 +31,28 @@ if(isset($_COOKIE['STS'])){
   <body>
 
     <section class="main">
-      <form class="import-from" action="import.php" method="post" enctype="application/x-www-form-urlencoded">
+      <form class="import-from" action="import.php" method="post" enctype="multipart/form-data">
         <input type="file" name="uploadedFile" id='fu'>
         <input type="submit" name="submit">
       </form>
-    </section>
 
     <section class='import-preview' id='ip1'>
         <?php
         if ($_SERVER['REQUEST_METHOD']=='POST') {
           if (isset($_POST['submit'])) {
-            if (isset($_POST['uploadedFile'])) {
-              echo "Вы импортировали модуль";
-            } else {
-              echo "Выберите файл";
+
+            echo "<pre>".print_r($_FILES)."</pre>";
+
+            if (isset($_FILES['uploadedFile'])) {
+              echo $_FILES['uploadedFile']['name'];
+              $reader = IOFactory::createReader('Xlsx');
+              $spreadsheet = $reader->load($_FILES['uploadedFile']['tmp_name']);
+              $writer = IOFactory::createWriter($spreadsheet, 'Html');
+              $message = $writer->save('php://output');
             }
           }
         }
+        echo "$message";
          ?>
-    </section>
   </body>
 </html>
