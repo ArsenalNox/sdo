@@ -27,19 +27,10 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/student.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
     <meta name="viewport" width="device-width, initial-scale=1.0">
     <title>Панель студента</title>
-    <style media="screen">
-      .timer-wrap{
-        position: fixed;
-        top: 12px;
-        right: 12px;
-        border: 1px solid black;
-        width: 21rem;
-        padding: 7px;
-      }
-    </style>
 </head>
 <body>
     <script src="js/jquery-3.5.1.js"></script>
@@ -76,7 +67,7 @@
                 $_SESSION['UID'] = $uid;
                 $_SESSION['GROUP_UID'] = $group;
                 echo "
-                  <h4> Вы вошли как: $uid, <span id='student_group'>$group</span>
+                  <div class='info'> <p class='infotext'>Вы вошли как: $uid, <span id='student_group'>$group</span></p>
                   <button onclick='Deauthorization()' class='auth-button' id='nauth'> Новая авторизация </button>
                   <input type='hidden' name='student_uid' value='$uid' id='suid'>
                   <script>
@@ -85,7 +76,7 @@
                       var auto_update_timer_demote = setInterval(update_status_demote, 3000);
                       var test_update = setInterval(set_test_status, 3000);
                   </script>
-                  </h4>
+                  </div>
                   ";
                 }
                 if(isset($_GET['status'])){

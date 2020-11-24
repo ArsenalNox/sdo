@@ -11,7 +11,9 @@
   transition: background 0.1s;
   color: #fff;
   border-radius: 5px;
-  padding-left: 5px;
+  padding: 5px;
+  font-family: Panton-Black;
+  font-size: 20px;
 }
 
 .avaliable-test:hover {
@@ -27,6 +29,8 @@
 
 .student-info {
   color: #000;
+  font-family: Panton-Black;
+  font-size: 20px;
 }
 
 .question{

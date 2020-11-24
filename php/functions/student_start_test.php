@@ -33,10 +33,13 @@ foreach ($json_a as $struct => $quest) {
       $vars = 1;
     }
     echo "
-    <p> <button onclick='stopTest()'> Прекратить выполнение теста </button> </p>
     <p> Название модуля: ". $quest['Module_name'] ." </p>
     <p> Кол-во вопросов: ".$quest['quest_quantity']."</p>
     <p> Время на выполнение: ".$time_to_complete." минут</p>
+    <div class='timer-wrap'> <p> Оставшееся время на выполнение: <span id='timer'> </span> </p> </div>
+    <input type='hidden' name='time_to_complete' id='ttc' value='$time_to_complete'>
+    <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
+    <hr>
     ";
     echo "<form action='complete_test.php' method='POST' id='tfs1'>";
     continue;
@@ -55,7 +58,7 @@ foreach ($json_a as $struct => $quest) {
           <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
           <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
           if($quest['IMAGE'] !== ''){
-              echo "<img src='".$quest['IMAGE']."' >";
+              echo "<img src='/sdo".$quest['IMAGE']."' >";
               $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';
@@ -65,7 +68,7 @@ foreach ($json_a as $struct => $quest) {
             // TODO: Переписать вывод кол-ва вопросов в зависимости от их наличия в json, что убирает необходимость в NUM_ANSW (if isset)
                 //С открытым ответом
                 case 'open':
-                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br> ";
+                  echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " <br> ";
                   if(isset($quest['NUM_ANSW'])){
                     switch ($quest['NUM_ANSW']) {
                       case '4':
@@ -96,7 +99,7 @@ foreach ($json_a as $struct => $quest) {
 
                 //С выбором ответа
                 case 'choose-answer':
-                  echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " </p> <br>";
+                  echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " </p> <br>";
                   if(isset($quest['NUM_ANSW'])){
                     switch ($quest['NUM_ANSW']) {
                       case '4':
@@ -140,10 +143,5 @@ foreach ($json_a as $struct => $quest) {
         }
       }
   }
-  echo "
-  </form>
-  <div class='timer-wrap'> <p> Оставшееся время на выполнение: <span id='timer'> </span> </p> </div>
-  <input type='hidden' name='time_to_complete' id='ttc' value='$time_to_complete'>
-  <input type='hidden' name='newtitle' id='ntl' value='$test_name'>
-  ";
+  echo "</form>";
 ?>
