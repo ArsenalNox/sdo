@@ -54,6 +54,7 @@ if(isset($_COOKIE['STS'])){
             echo"<hr> <form>
             <input type='text' name='Module_name' placeholder='Название модуля'>
             <input type='text' name='module_subject' placeholder='Название модуля'>
+            <input type='number' name='class' placeholder='Класс'
             ";
             while(true){
               $qquant = 0;
@@ -67,6 +68,9 @@ if(isset($_COOKIE['STS'])){
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
                   $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
+                  $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(9, $i)->getValue();
+                  $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(11, $i)->getValue();
+                  $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(13, $i)->getValue();
                   echo "
                   <div>
                   <p> Номер вопроса: $qnum, Вариант: $variant</p>
@@ -77,12 +81,14 @@ if(isset($_COOKIE['STS'])){
                   <p> Правильный ответ: $qansw </p>
                   <hr>
                   <fieldset>
-                    <input type='hidden' name='QUESTION_NUM'>
-                    <input type='hidden' name=''>
-                    <input type='hidden' name=''>
-                    <input type='hidden' name=''>
-                    <input type='hidden' name=''>
-                    <input type='hidden' name=''>
+                    <input type='hidden' name='QUESTION_NUM' value='$i'>
+                    <input type='hidden' name='VAR' value='$variant'>
+                    <input type='hidden' name='IMAGE' value=''>
+                    <input type='hidden' name='QUESTION' value='$qtextF $qtextL'>>
+                    <input type='hidden' name='question_answer_a_$i' value='$qansw'>
+                    <input type='hidden' name='question_answer_b_$i' value='$qanswb'>
+                    <input type='hidden' name='question_answer_c_$i' value='$qanswc'>
+                    <input type='hidden' name='question_answer_d_$i' value='$qanswd'>
                   </fieldset>
                   </div>
                   ";
@@ -93,8 +99,8 @@ if(isset($_COOKIE['STS'])){
               break;
             }
             echo"
-
-            <button> Загрузить данный тест </button>  </form> $qquant ";
+            <input type='hidden' name='quest_quantity' value='$qquant'>
+            <button> Загрузить данный тест </button>  </form> ";
 
           }
         }
