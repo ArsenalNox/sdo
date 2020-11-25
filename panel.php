@@ -94,9 +94,8 @@
     <div class="test-preview" id='tp1'>
     </div>
   </fieldset>
-
-    <legend align="center"><h2 class="module"> Мета панель </h2></legend>
     <div class="met">
+      <h2 class="module"> Мета панель </h2>
         <!-- <a href="create_module.php" class='create'>
           <button>Создать модуль</button>
         </a>
