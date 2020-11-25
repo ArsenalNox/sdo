@@ -11,10 +11,10 @@ $path = 'tests/'.$dir;
 //информация для проверки изображений
 $allowed_extensions = array('jpg','jpeg', 'png');
 $error = '';
-
 if(!is_dir($path)){
   //Создание папки теста и папки изображений
-  mkdir("$path", 0777);
+  echo "$path";
+  mkdir("$path", 777);
   mkdir("$path/images", 0777);
 } else {
   echo "Директория $path уже существует";
@@ -59,8 +59,8 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
   }
   //Добавляем в массив со всей информаций теста массив вопроса
   $data[] = array(
-    "QUESTION_NUM" => "$i",
-    "VAR" => "1",
+    "QUESTION_NUM" => $_POST["question_a_num_$i"],
+    "VAR" => $_POST["question_var_$i"],
     "IMAGE" => $imagepath,
     "QUESTION" => $_POST["question_text_$i"],
     "A" => $questions[0],

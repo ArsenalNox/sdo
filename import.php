@@ -42,8 +42,6 @@ if(isset($_COOKIE['STS'])){
         if ($_SERVER['REQUEST_METHOD']=='POST') {
           if (isset($_POST['submit'])) {
 
-            echo "<pre>".print_r($_FILES)."</pre>";
-
             if (isset($_FILES['uploadedFile'])) {
               echo $_FILES['uploadedFile']['name'];
               $reader = IOFactory::createReader('Xlsx');
@@ -51,16 +49,17 @@ if(isset($_COOKIE['STS'])){
               $writer = IOFactory::createWriter($spreadsheet, 'Html');
               // $message = $writer->save('php://output');
             }
-            echo"<hr> <form>
+            echo"<hr> <form method='POST' action='submit_new_module.php'>
             <input type='text' name='Module_name' placeholder='Название модуля'>
             <input type='text' name='module_subject' placeholder='Название модуля'>
-            <input type='number' name='class' placeholder='Класс'
+            <input type='number' name='class' placeholder='Класс' />
             ";
             while(true){
               $qquant = 0;
+              $qnum_post = 1;
               for ($i=6; $i<8 ; $i++) {
                 $variant = 1;
-                for ($j=8; $j<13 ; $j++) {
+                for ($j=7; $j<17 ; $j+=2) {
                   $qnum = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(2, $i)->getValue();
                   $qtype = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(3, $i)->getValue();
                   $qsubtype = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(4, $i)->getValue();
@@ -68,32 +67,31 @@ if(isset($_COOKIE['STS'])){
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
                   $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
-                  $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(9, $i)->getValue();
-                  $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(11, $i)->getValue();
-                  $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(13, $i)->getValue();
+                  $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                  $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                  $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
                   echo "
-                  <div>
+                  <hr>
                   <p> Номер вопроса: $qnum, Вариант: $variant</p>
                   <p> Вид задания: $qtype </p>
                   <p> Подвид задания: $qsubtype </p>
                   <p> Комментарий к заданию: $qcomm </p>
                   <p> Текст вопроса: $qtextF $qtextL </p>
                   <p> Правильный ответ: $qansw </p>
-                  <hr>
-                  <fieldset>
-                    <input type='hidden' name='QUESTION_NUM' value='$i'>
-                    <input type='hidden' name='VAR' value='$variant'>
+
+                    <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
+                    <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
+                    <input type='hidden' name='question_var_$qnum_post' value='$variant'>
                     <input type='hidden' name='IMAGE' value=''>
-                    <input type='hidden' name='QUESTION' value='$qtextF $qtextL'>>
-                    <input type='hidden' name='question_answer_a_$i' value='$qansw'>
-                    <input type='hidden' name='question_answer_b_$i' value='$qanswb'>
-                    <input type='hidden' name='question_answer_c_$i' value='$qanswc'>
-                    <input type='hidden' name='question_answer_d_$i' value='$qanswd'>
-                  </fieldset>
-                  </div>
+                    <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
+                    <input type='hidden' name='question_answer_a_$qnum_post' value='$qansw'>
+                    <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
+                    <input type='hidden' name='question_answer_c_$qnum_post' value='$qanswc'>
+                    <input type='hidden' name='question_answer_d_$qnum_post' value='$qanswd'>
                   ";
                   $variant++;
                   $qquant++;
+                  $qnum_post++;
                 }
               }
               break;
