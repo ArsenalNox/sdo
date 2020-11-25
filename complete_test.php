@@ -27,7 +27,7 @@ $uid = $_SESSION['UID'];
   <section class='student-wrapper'>
   <fieldset class='fieldset'>
   Результаты теста " . $student ;
-  for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
+  for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']+1; $i++) {
     $variant = $_SESSION["QUESTION_VAR_$i"];
     $question_text = $_SESSION["QUESTION_$i"];
     $question_answer_given = $_POST["ANSW_$i"];
@@ -93,7 +93,8 @@ $uid = $_SESSION['UID'];
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
-        for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']; $i++) {
+        for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']+1; $i++) {
+          echo "вопрос $i";
           $variant = $_SESSION["QUESTION_VAR_$i"];
           $question_text = $_SESSION["QUESTION_$i"];
           $question_answer_given = $_POST["ANSW_$i"];
@@ -136,8 +137,8 @@ $uid = $_SESSION['UID'];
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
-  // echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
-  // echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
+  echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
+  echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
  ?>
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
