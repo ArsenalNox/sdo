@@ -3,7 +3,6 @@
 // TODO: Превью загруженной таблицы, конпка подверждения экспорта
 // TODO: Экспорт в submit module
 
-
 include_once "dtb/dtb.php";
 require 'php/vendor/autoload.php';
 
@@ -103,7 +102,7 @@ if(isset($_COOKIE['STS'])){
             }
             echo"
             <input type='hidden' name='quest_quantity' value='$qquant'>
-            <button> Загрузить данный тест </button>  </form> ";
+            <button> Загрузить данный модуль </button>  </form> ";
 
           }
         }

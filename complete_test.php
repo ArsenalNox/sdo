@@ -143,7 +143,7 @@ $uid = $_SESSION['UID'];
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
    set_test_status();
-   // window.location.href = "index.php";
+   window.location.href = "index.php";
  </script>
   </body>
 </html>

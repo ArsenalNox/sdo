@@ -85,8 +85,7 @@ $jsoned_data = json_encode($data,JSON_UNESCAPED_UNICODE);
 $module_name = preg_replace('/\s+/', '_', $module_name);
 $fp = fopen($path.'/'. $_POST['Module_name'] . '.json', 'w');
 fwrite($fp, json_encode($data, JSON_UNESCAPED_UNICODE));
-fclose($fp);
-print_r($data);
-header("Location: create_module.php?succes=true");
+fclose($fp):
+header("Location: panel.php?succes=true");
 ?>
 </pre>
