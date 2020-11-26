@@ -11,7 +11,7 @@ $uid = $_SESSION['UID'];
   <head>
     <link rel="stylesheet" href="css/student.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
+    <!-- <link rel="stylesheet" href="css/media.css"> -->
     <meta charset="utf-8">
     <title>Результаты теста</title>
   </head>

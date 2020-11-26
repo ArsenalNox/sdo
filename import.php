@@ -26,34 +26,38 @@ if(isset($_COOKIE['STS'])){
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
+  <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
 
-    <section class="main">
+    <section>
+    <div class="import">
       <form class="import-from" action="import.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="uploadedFile" id='fu'>
-        <input type="submit" name="submit">
+        <input type="file" name="uploadedFile" id='fu' class="importfile">
+        <input type="submit" name="submit" class="importbutton">
       </form>
 
     <section class='import-preview' id='ip1'>
         <?php
         if ($_SERVER['REQUEST_METHOD']=='POST') {
           if (isset($_POST['submit'])) {
-
+            echo"<hr> <form method='POST' action='submit_new_module.php' class='fromimport'>
+            <input type='text' name='Module_name' placeholder='Название модуля'>
+            <input type='text' name='module_subject' placeholder='Название модуля'>
+            <input type='number' name='class' placeholder='Класс' max='11' min='0' style='width: 70px' />
+            <br>";
+            
             if (isset($_FILES['uploadedFile'])) {
-              echo $_FILES['uploadedFile']['name'];
+              echo "<div class='importname'> <p>Название файла:   ";
+              echo  $_FILES['uploadedFile']['name'];
               $reader = IOFactory::createReader('Xlsx');
               $spreadsheet = $reader->load($_FILES['uploadedFile']['tmp_name']);
               $writer = IOFactory::createWriter($spreadsheet, 'Html');
               // $message = $writer->save('php://output');
+              echo "</div>";
             }
-            echo"<hr> <form method='POST' action='submit_new_module.php'>
-            <input type='text' name='Module_name' placeholder='Название модуля'>
-            <input type='text' name='module_subject' placeholder='Название модуля'>
-            <input type='number' name='class' placeholder='Класс' />
-            ";
             while(true){
               $qquant = 0;
               $qnum_post = 1;
@@ -71,7 +75,7 @@ if(isset($_COOKIE['STS'])){
                   $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
                   $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
                   echo "
-                  <hr>
+                  <div class='importmodule'>
                   <p> Номер вопроса: $qnum, Вариант: $variant</p>
                   <p> Вид задания: $qtype </p>
                   <p> Подвид задания: $qsubtype </p>
@@ -88,7 +92,8 @@ if(isset($_COOKIE['STS'])){
                     <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
                     <input type='hidden' name='question_answer_c_$qnum_post' value='$qanswc'>
                     <input type='hidden' name='question_answer_d_$qnum_post' value='$qanswd'>
-                  ";
+                  </div>
+                  <hr>";
                   $variant++;
                   $qquant++;
                   $qnum_post++;
@@ -103,6 +108,7 @@ if(isset($_COOKIE['STS'])){
           }
         }
          ?>
+         <div>
       </section>
   </body>
 </html>

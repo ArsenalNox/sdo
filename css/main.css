@@ -6,12 +6,24 @@ body{
   height: 100vh;
   width: 100%;
   background-position: right bottom;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .panellogin {
-  background: linear-gradient(to bottom right, #21abec, #9a32b0) no-repeat;
-  min-height: 100vh;
-  width: 100%;
+  background: linear-gradient(to bottom right, #21abec, #9a32b0);
+  height: 1px;
+}
+
+button{
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
+  background: transparent;
+  color: #fff;
+  font-family: Panton-Bold;
+  font-size: 30px;
+  line-height: 80%;
+  padding-top: 5px;
 }
 
 input {
@@ -28,7 +40,6 @@ select{
   color: #fff;
   border: 0;
   border-radius: 5px;
-  outline: none;
 }
 
 textarea {
@@ -47,9 +58,8 @@ h4 {
 
 .module-selector, .subject-selector, .class-module-confirmation {
   font-size: 20px;
-  color: #000;
+  color: #606060;
   margin: 5px;
-  font-family: Panton-Bold;
 }
 
 .module-selector {
@@ -72,7 +82,6 @@ legend {
   background-color: #29a8df;
   height: 30px;
   width: 280px;
-  font-family: Panton-Regular;
 }
 
 .form {
@@ -81,8 +90,8 @@ legend {
 }
 
 .imgLogin {
-  position: relative;
-  top: 15%;
+  margin-top: auto;
+  margin-left: 5%;
   width: 600px;
   height: 600px;
 }
@@ -91,10 +100,6 @@ legend {
   font-size: 30px;
   margin-bottom: 10px;
   margin-top: 12px;
-  color: #29a8df;
-  font-family: Panton-ExtraBold;
-  color: #0d47a1;
-  text-transform: uppercase;
 }
 
 .table {
@@ -114,26 +119,22 @@ legend {
 }
 
 .login{
-  position: relative;
+  /* position: relative; */
   width: 220px;
-  /* height: 250px; */
+  height: 250px;
   flex-direction: column;
 }
 
 .confirmed-button {
   background-color: #65aa13;
-  font-family: Panton-Bold;
+  font-family: 'Open Sans', sans-serif;
   height: 35px;
   text-align: center;
   font-size: 15px;
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
 }
 
 .ip {
-  color: #000;
-  font-family: Panton-Bold;
+  color: #606060;
 }
 
 .student-ip-panel{
@@ -142,15 +143,13 @@ legend {
   height: min-content;
   transition: width 1s, height 1s;
   padding: 20px;
-  width: 40%;
 }
 
 .module-wrapper{
-  width: 80%;
+  width: 60%;
   position: relative;
   transition: width 1s, height 1s;
   padding-top: 25px;
-  padding-right: 20px;
 }
 
 /* create_module */
@@ -206,35 +205,26 @@ legend {
   position: absolute;
   top: 79%;
   left: 25%;
-  outline: none;
 }
 
 .button2 {
   background: #29a8df;
-  font-family: Panton-Bold;
-  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  height: 35px;
   width: 180px;
   text-align: center;
   font-size: 15px;
   border: 0;
   margin-bottom: 2px;
-  border-radius: 5px;
-  color: #fff;
-  outline: none;
 }
 
 .button3 {
   background: #29a8df;
-  font-family: Panton-Bold;
+  font-family: 'Open Sans', sans-serif;
   height: 35px;
   text-align: center;
   font-size: 15px;
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
-  outline: none;
 }
-
 
 .button4 {
   background: linear-gradient(to right, #21abec, #9a32b0);
@@ -251,6 +241,7 @@ legend {
 
 .button5 {
   position: relative;
+  /* top: 20px; */
   background: #fff;
   color: #0852ff;
   width: 70%;
@@ -258,26 +249,15 @@ legend {
   margin-left: 35px;
   font-family: Panton-ExtraBold;
   font-size: 25px;
-  border: 0;
-  border-radius: 5px;
 }
 
 .to-crmd {
-  font-size: 20px;
   border: 0;
-  border-radius: 5px;
-  background: #29a8df;
-  color: #fff;
-  font-family: Panton-Bold;
+  font-size: 25px;
 }
 
 .search {
   font-size: 20px;
-  border: 0;
-  border-radius: 5px;
-  background: #29a8df;
-  color: #fff;
-  font-family: Panton-Bold;
 }
 
 .module-creation {
@@ -312,6 +292,11 @@ pre {
 
 a {
   text-decoration: none;
+  border-radius: 5px;
+  background-color: #29a8df;
+  color: #fff;
+  text-align: center;
+  width: 150px;
 }
 
 /* index */
@@ -350,15 +335,11 @@ a {
 }
 
 .buttonindex {
-  outline: none;
-  background: #29a8df;
+  background: linear-gradient(to right, #0852ff, #b866b0);
   border: 0;
-  color: #fff;
-  /* width: 150px; */
+  width: 150px;
   margin: auto;
   border-radius: 14px;
-  font-size: 20px;
-  padding: 5px 10px;
 }
 
 .download {
@@ -484,7 +465,9 @@ table, th, td {
 
 #buttonmet {
   margin: auto;
-  border-radius: 5px;
+  border-radius: 15px;
+  width: 300px;
+  height: 60px;
   background: #29a8df;
 }
 
@@ -497,8 +480,8 @@ table, th, td {
 }
 
 .auth-button{
-  border: 0;
-  border-radius: 5px;
+  height: 50px;
+  border: 1px solid #000;
   margin: auto;
   font-size: 20px;
   padding: 5px;
@@ -516,7 +499,6 @@ table, th, td {
 
 .method-select, #dvm1, .sort-by {
   font-size: 20px;
-  font-family: Panton-Regular;
 }
 .debug{
   position: absolute;
@@ -558,6 +540,8 @@ table, th, td {
 .endTest {
   background: #29a8df;
   padding-top: 0;
+  padding-bottom: 30px;
+  height: 30px
 }
 
 .font {
@@ -565,34 +549,57 @@ table, th, td {
   font-size: 20px;
 }
 
-.buttonmet {
-  background: 0;
+.import-from  .importfile{
+  position: relative;
+  top: -2px;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.import-from .importbutton {
+  height: 40px;
   border: 0;
-  color: #fff;
-  padding: 7px;
-  font-size: 20px;
-  outline: none;
-  font-family: Panton-Bold; 
-}
-
-.testtext {
-  padding: 5px;
-  text-decoration: none;
   border-radius: 5px;
-  background-color: #29a8df;
+  background: #29a8df;
+  font-size: 15px;
+}
+
+.import {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0d47a1;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.fromimport input {
+  padding-left: 10px;
+}
+
+.fromimport input::placeholder {
   color: #fff;
-  text-align: center;
-  width: 150px;
+  /* padding-left: 10px; */
 }
 
-.loginIn:-webkit-autofill::first-line{
-  font-size: 30px;
-  font-family: Panton-Regular;
+.fromimport button {
+  border: 0;
+  border-radius: 5px;
+  background: #29a8df;
+  font-size: 20px;
+  position: relative;
+  left: 35%;
 }
 
-.password:-webkit-autofill::first-line{
-  font-size: 30px;
-  font-family: Panton-Regular;
+.importmodule {
+  width: 80%;
+  margin-left: auto ;
+  margin-right: auto;
+}
+
+.importname {
+  margin-top: 20px;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};

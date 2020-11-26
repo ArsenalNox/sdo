@@ -18,7 +18,7 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
+    <!-- <link rel="stylesheet" href="css/media.css"> -->
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
