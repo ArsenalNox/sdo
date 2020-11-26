@@ -43,6 +43,9 @@
 </section>
 
 <section class="module-wrapper">
+  <div class="exit-wrap">
+    <button  style="float:right" type="button" name="button" class="buttonmet"> <a href="logout.php"> Выйти </a> </button>
+  </div>
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Выбор модуля </h2></legend>
     <div class="module-selector">
@@ -103,7 +106,7 @@
         <a href="viewmod.php" id="buttonmet">
           <button class='buttonmet'>Просмотр мероприятий</button>
         </a>
-        
+
         <a href="import.php" id="buttonmet">
           <button class="buttonmet">Импорт модуля</button>
         </a>
