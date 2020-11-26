@@ -20,7 +20,7 @@
 <html lang="ru" dir="ltr">
   <head>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
+    <!-- <link rel="stylesheet" href="css/media.css"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Создание модуля</title>
