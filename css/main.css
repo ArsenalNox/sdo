@@ -617,7 +617,7 @@ table, th, td {
 .exit-wrap {
   position: fixed;
   top: 95%;
-  left: 83%;
+  left: 0%;
   border-radius: 5px;
 }
 

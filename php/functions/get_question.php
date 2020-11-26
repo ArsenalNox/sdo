@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if($quest['IMAGE'] == ''){
       $image = '';
     } else {
-      $image = "<img src='".$quest['IMAGE']."'>";
+      $image = "<img src='/sdo".$quest['IMAGE']."'>";
     }
     switch ($quest['NUM_ANSW']) {
       case '2':
