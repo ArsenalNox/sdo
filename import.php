@@ -56,7 +56,7 @@ if(isset($_COOKIE['STS'])){
             while(true){
               $qquant = 0;
               $qnum_post = 1;
-              for ($i=6; $i<8 ; $i++) {
+              for ($i=6; $i<10 ; $i++) {
                 $variant = 1;
                 for ($j=7; $j<17 ; $j+=2) {
                   $qnum = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(2, $i)->getValue();
