@@ -103,7 +103,7 @@
           <button>Создать модуль</button>
         </a>
         <br> -->
-        <a href="viewmod.php" id="buttonmet">
+        <a href="viewmod.php" id="buttonmet" style="margin-right: 1%;">
           <button class='buttonmet'>Просмотр мероприятий</button>
         </a>
 
