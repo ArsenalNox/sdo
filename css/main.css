@@ -461,6 +461,7 @@ table, th, td {
 
 .met {
   display: flex;
+  width: 90%;
 }
 
 #buttonmet {
@@ -471,6 +472,12 @@ table, th, td {
   background: #29a8df;
   padding-bottom: 7px;
 }
+/* 
+.buttonmet2 {
+  position: absolute;
+  top: 94%;
+  left: 80%;  
+} */
 
 .buttonmet {
   height: 54px;
@@ -605,6 +612,13 @@ table, th, td {
 
 .importname {
   margin-top: 20px;
+}
+
+.exit-wrap {
+  position: fixed;
+  top: 95%;
+  left: 83%;
+  border-radius: 5px;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};

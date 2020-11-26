@@ -44,7 +44,7 @@
 
 <section class="module-wrapper">
   <div class="exit-wrap">
-    <button  style="float:right" type="button" name="button" class="buttonmet"> <a href="logout.php"> Выйти </a> </button>
+    <button  style="float:right" type="button" name="button" class="buttonmet2"> <a href="logout.php" style='padding: 0px 5px;'> Выйти </a> </button>
   </div>
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Выбор модуля </h2></legend>
@@ -98,7 +98,7 @@
     </div>
   </fieldset>
     <div class="met">
-      <h2 class="module"> Мета панель </h2>
+      <!-- <h2 class="module"> Мета панель </h2> -->
         <!-- <a href="create_module.php" class='create'>
           <button>Создать модуль</button>
         </a>
