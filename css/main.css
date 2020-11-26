@@ -621,4 +621,9 @@ table, th, td {
   border-radius: 5px;
 }
 
+.nexttest {
+  background: #29a8df;
+  font-size: 25px;
+}
+
 textarea::-webkit-input-placeholder { color: #fff};

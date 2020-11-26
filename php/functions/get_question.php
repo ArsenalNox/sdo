@@ -89,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <p> Всего вопросов: $quest_quantity, не учитывая варианты, <span id='qnum'>$i</span> учитывая</p>
     Время на выполнение в минутах <input type='number' name='time' placeholder='45' style='width:40px;' id='test_time'>
     <br>
-    <button type='button' name='button' onclick='StartTest()' >Начать тест</button>
+    <button class='nexttest' type='button' name='button' onclick='StartTest()' >Начать тест</button>
     ";
 }
 ?>
