@@ -51,7 +51,7 @@ if(isset($_COOKIE['STS'])){
             }
             echo"<hr> <form method='POST' action='submit_new_module.php'>
             <input type='text' name='Module_name' placeholder='Название модуля'>
-            <input type='text' name='module_subject' placeholder='Название модуля'>
+            <input type='text' name='module_subject' placeholder='Предмет модуля'>
             <input type='number' name='class' placeholder='Класс' />
             ";
             while(true){
@@ -98,7 +98,7 @@ if(isset($_COOKIE['STS'])){
             }
             echo"
             <input type='hidden' name='quest_quantity' value='$qquant'>
-            <button> Загрузить данный тест </button>  </form> ";
+            <button> Загрузить данный модуль </button>  </form> ";
 
           }
         }
