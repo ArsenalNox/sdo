@@ -43,6 +43,9 @@
 </section>
 
 <section class="module-wrapper">
+  <div class="exit-wrap">
+    <button  style="float:right" type="button" name="button" class="buttonmet2"> <a href="logout.php" style='padding: 0px 5px;'> Выйти </a> </button>
+  </div>
   <fieldset class="fieldset">
     <legend align="center"><h2 class="module"> Выбор модуля </h2></legend>
     <div class="module-selector">
@@ -95,15 +98,15 @@
     </div>
   </fieldset>
     <div class="met">
-      <h2 class="module"> Мета панель </h2>
+      <!-- <h2 class="module"> Мета панель </h2> -->
         <!-- <a href="create_module.php" class='create'>
           <button>Создать модуль</button>
         </a>
         <br> -->
-        <a href="viewmod.php" id="buttonmet">
+        <a href="viewmod.php" id="buttonmet" style="margin-right: 1%;">
           <button class='buttonmet'>Просмотр мероприятий</button>
         </a>
-        
+
         <a href="import.php" id="buttonmet">
           <button class="buttonmet">Импорт модуля</button>
         </a>

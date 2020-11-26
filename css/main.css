@@ -461,14 +461,26 @@ table, th, td {
 
 .met {
   display: flex;
+  width: 90%;
 }
 
 #buttonmet {
   margin: auto;
   border-radius: 15px;
-  width: 300px;
-  height: 60px;
+  width: 50%;
+  /* height: 60px; */
   background: #29a8df;
+  padding-bottom: 7px;
+}
+/* 
+.buttonmet2 {
+  position: absolute;
+  top: 94%;
+  left: 80%;  
+} */
+
+.buttonmet {
+  height: 54px;
 }
 
 .addv-opt-wrapper{
@@ -600,6 +612,13 @@ table, th, td {
 
 .importname {
   margin-top: 20px;
+}
+
+.exit-wrap {
+  position: fixed;
+  top: 95%;
+  left: 0%;
+  border-radius: 5px;
 }
 
 textarea::-webkit-input-placeholder { color: #fff};

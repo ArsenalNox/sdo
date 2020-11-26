@@ -61,6 +61,7 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     "QUESTION_NUM" => $_POST["question_a_num_$i"],
     "VAR" => $_POST["question_var_$i"],
     "IMAGE" => $imagepath,
+    "TYPE" => 'choose-answer',
     "QUESTION" => $_POST["question_text_$i"],
     "A" => $questions[0],
     "B" => $questions[1],
