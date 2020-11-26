@@ -7,7 +7,7 @@ switch ($_POST['data']) {
     echo "
     <input type='hidden' name='option-count' id='oc' value='3'>
 
-    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты ученика </p>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты обучающегося  </p>
       <div class='option' id='opt1'>
         <input class='stsrch' type='search' list='student-dataset' id='ao1' name='addl-student' placeholder='Имя студента'>
         <input type='hidden' id='optstate1' value='hidden'>
@@ -33,7 +33,7 @@ switch ($_POST['data']) {
     echo "
     <input type='hidden' name='option-count' id='oc' value='3'>
 
-    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты ученика </p>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты обучающегося  </p>
       <div class='option' id='opt1'>
         <input class='stsrch' type='search' list='student-dataset' id='ao1' name='addl-student' placeholder='Имя студента'>
         <input type='hidden' id='optstate1' value='hidden'>
@@ -59,7 +59,7 @@ switch ($_POST['data']) {
     echo "
     <input type='hidden' name='option-count' id='oc' value='3'>
 
-    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты ученика </p>
+    <div class='option-wrap'> <p onclick='showOption(1)'> Показывать только результаты обучающегося  </p>
       <div class='option' id='opt1'>
         <input class='stsrch' type='search' list='student-dataset' id='ao1' name='addl-student' placeholder='Имя студента'>
         <input type='hidden' id='optstate1' value='hidden'>

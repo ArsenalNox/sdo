@@ -179,7 +179,7 @@ if($result){
       case 'student':
         echo "
         <div class='data-preview'>
-          Таблица результатов студента ".$student."
+          Таблица результатов обучающегося ".$student."
         </div>
         <br>
         <table>
