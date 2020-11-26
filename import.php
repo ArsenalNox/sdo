@@ -1,8 +1,4 @@
 <?php
-// TODO: Загрузка эксель файла
-// TODO: Превью загруженной таблицы, конпка подверждения экспорта
-// TODO: Экспорт в submit module
-
 include_once "dtb/dtb.php";
 require 'php/vendor/autoload.php';
 
@@ -26,7 +22,7 @@ if(isset($_COOKIE['STS'])){
 <html lang="ru" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Импорт модуля</title>
   </head>
   <body>
 
@@ -40,6 +36,7 @@ if(isset($_COOKIE['STS'])){
         <?php
         if ($_SERVER['REQUEST_METHOD']=='POST') {
           if (isset($_POST['submit'])) {
+            // TODO: Более гибкая обработка таблицы
 
             if (isset($_FILES['uploadedFile'])) {
               echo $_FILES['uploadedFile']['name'];
@@ -49,9 +46,9 @@ if(isset($_COOKIE['STS'])){
               // $message = $writer->save('php://output');
             }
             echo"<hr> <form method='POST' action='submit_new_module.php'>
-            <input type='text' name='Module_name' placeholder='Название модуля'>
-            <input type='text' name='module_subject' placeholder='Предмет модуля'>
-            <input type='number' name='class' placeholder='Класс' />
+            <input type='text' name='Module_name' placeholder='Название модуля' required>
+            <input type='text' name='module_subject' placeholder='Предмет модуля' required>
+            <input type='number' name='class' placeholder='Класс' required>
             ";
             while(true){
               $qquant = 0;
