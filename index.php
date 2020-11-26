@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
     <meta name="viewport" width="device-width, initial-scale=1.0">
-    <title>Панель обучающийся</title>
+    <title>Панель обучающегося</title>
 </head>
 <body>
     <script src="js/jquery-3.5.1.js"></script>

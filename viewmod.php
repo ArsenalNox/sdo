@@ -21,7 +21,7 @@ if(isset($_COOKIE['STS'])){
     <!-- <link rel="stylesheet" href="css/media.css"> -->
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="utf-8">
-    <title> Просмотр мероприятий</title>
+    <title> Просмотр мероприятий </title>
     <style>
       body{
         font-size: 25px;

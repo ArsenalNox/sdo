@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/student.css">
-    <title>Результат теста</title>
+    <title> Результат теста </title>
   </head>
   <body>
 <?php
