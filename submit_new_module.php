@@ -13,11 +13,11 @@ $allowed_extensions = array('jpg','jpeg', 'png');
 $error = '';
 if(!is_dir($path)){
   //Создание папки теста и папки изображений
-  echo "$path";
+  // echo "$path";
   mkdir("$path", 777);
   mkdir("$path/images", 0777);
 } else {
-  echo "Директория $path уже существует";
+  // echo "Директория $path уже существует";
 }
 
 //Массив, который будет переведён в json
@@ -48,7 +48,6 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $imageExtTmp = explode('.', $imageName);
     $imageExtAct = strtolower(end($imageExtTmp));
     // print_r($_FILES["question_image_$i"]);
-    // TODO: Углубленная проверка загружаемого изображения
     if($imageError === 0){
       $imagepath = "$path/images/image_q_$i.$imageExtAct";
       // echo "$imagepath";
@@ -71,6 +70,7 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     "NUM_ANSW" => '4'
   );
 }
+//Вставляем в таблицу информацию о модуле
 $class = $_POST['class'];
 $name = $_POST['Module_name'];
 $qst = $path.'/'.$_POST['Module_name'].'.json';
@@ -81,6 +81,7 @@ $sql = "INSERT INTO new_module (`Name`,`Class`,`Questions`,`subject`) VALUES (
   '$qst',
   '$sbj')";
 $result = mysqli_query($conn, $sql);
+//Записываем модуль в JSON
 $jsoned_data = json_encode($data,JSON_UNESCAPED_UNICODE);
 $module_name = preg_replace('/\s+/', '_', $module_name);
 $fp = fopen($path.'/'. $_POST['Module_name'] . '.json', 'w');

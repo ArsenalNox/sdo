@@ -66,6 +66,7 @@ foreach ($json_a as $struct => $quest) {
           if(isset($quest['TYPE']) ){
             switch ($quest['TYPE']) {
             // TODO: Переписать вывод кол-ва вопросов в зависимости от их наличия в json, что убирает необходимость в NUM_ANSW (if isset)
+            // TODO: (Под вопросом) Убрать проверку на тип вопроса и всегда выводить выбор ответа
                 //С открытым ответом
                 case 'open':
                   echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " <br> ";

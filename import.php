@@ -1,8 +1,4 @@
 <?php
-// TODO: Загрузка эксель файла
-// TODO: Превью загруженной таблицы, конпка подверждения экспорта
-// TODO: Экспорт в submit module
-
 include_once "dtb/dtb.php";
 require 'php/vendor/autoload.php';
 
@@ -27,7 +23,7 @@ if(isset($_COOKIE['STS'])){
   <head>
   <link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
-    <title></title>
+    <title>Импорт модуля</title>
   </head>
   <body>
 
@@ -47,7 +43,7 @@ if(isset($_COOKIE['STS'])){
             <input type='text' name='module_subject' placeholder='Название модуля'>
             <input type='number' name='class' placeholder='Класс' max='11' min='0' style='width: 70px' />
             <br>";
-            
+
             if (isset($_FILES['uploadedFile'])) {
               echo "<div class='importname'> <p>Название файла:   ";
               echo  $_FILES['uploadedFile']['name'];
