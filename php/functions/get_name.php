@@ -22,9 +22,7 @@
           $lastName = $row['LAST_NAME'];
           $middleName = $row['MIDDLE_NAME'];
           $full = "$lastName $firsName $middleName";
-          if(in_array($full, $currentStudents)){
-            echo "<option> Студент $full уже на сайте </option>";
-          } else {
+          if(!(in_array($full, $currentStudents))){
             echo "
             <option value='$lastName $firsName $middleName'> $lastName $firsName $middleName </option>
             ";
