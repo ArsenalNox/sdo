@@ -25,11 +25,17 @@
           $_SESSION['SSID'] = uniqid();
           $ssid = $_SESSION['SSID'];
           $name = $_COOKIE['UTM'];
+          $ip = $_SERVER['REMOTE_ADDR'];
           $checkSql = "SELECT id FROM entrylogs WHERE id = '$ssid'" ;
           $checkQuery = mysqli_query($conn, $checkSql);
           if($checkQuery){
             if(mysqli_num_rows($checkQuery) == 0){
-              $sql = "INSERT INTO `entrylogs`(`id`,`name`,`entryTime`) VALUES ('$ssid','$name','$entryDate')";
+              $sql = "INSERT INTO `entrylogs`(`id`,`name`,`entryTime`, `ip`) VALUES (
+                '$ssid',
+                '$name',
+                '$entryDate',
+                '$ip'
+              )";
               $result = mysqli_query($conn, $sql);
               if(!$result){
                 echo "$sql \n $checkSql";
