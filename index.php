@@ -30,8 +30,10 @@
            VALUES (
           '$ip', '$uname', '', '0', '', '', '') ;";
         $insert = mysqli_query($conn, $sql);
-        echo "$sql";
     }
+    $newDate = date("Y-m-d H:i:s");
+    $updateLastDateSql = "UPDATE connectons SET lastdate = '$newDate' WHERE ip = '$ip'";
+    $updateQuery = mysqli_query($conn, $updateLastDateSql);
 ?>
 <html lang="ru">
 <head>
