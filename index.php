@@ -7,6 +7,9 @@
     session_start();
     $ip = $_SERVER['REMOTE_ADDR'];
     $_SESSION['IP'] = $ip;
+    if(!(isset($_COOKIE['UTSID']))){
+      setcookie('UTSID', md5(uniqid()), time()+86400*30*2, '/');
+    }
     //получение статуса ученика
     echo "<p style='display:none;' id='ip'>$ip</p>";
     $sql = "SELECT * FROM connectons WHERE ip = '$ip';";
@@ -21,8 +24,13 @@
         if(!isset($uid)){
             $uid = '';
         }
-        $sql = "INSERT INTO connectons (ip, student_uid, status, group_nl, test_status, test_id) VALUES ('$ip', '', '0', '', '', '') ;";
+        $uname = $_COOKIE['UTSID'];
+        $sql = "INSERT INTO connectons (
+          ip, uiqname, student_uid, status, group_nl, test_status, test_id)
+           VALUES (
+          '$ip', '$uname', '', '0', '', '', '') ;";
         $insert = mysqli_query($conn, $sql);
+        echo "$sql";
     }
 ?>
 <html lang="ru">

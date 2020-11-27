@@ -20,7 +20,7 @@
           //"Логирование" входящих пользователей в панель управления
           $entryDate = date("Y-m-d H:i:s");
           if(!isset($_COOKIE['UTM'])){
-            setcookie('UTM', md5(uniqid()), time()+1200*20*20, '/');
+            setcookie('UTM', md5(uniqid()), time()+86400*30*2, '/');
           }
           $_SESSION['SSID'] = uniqid();
           $ssid = $_SESSION['SSID'];
