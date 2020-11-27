@@ -18,4 +18,9 @@ function createDataset($data, $conection){
   }
 }
 
+
+function echoQuestionImportError(){
+    echo "<p> Вопрос не удалось ипортировать, недосаточно вариантов ответа </p>";
+}
+
 ?>
