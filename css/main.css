@@ -85,15 +85,14 @@ legend {
 }
 
 .form {
-  margin-top: 18%;
-  margin-left: 20%;
+  position: absolute;
+  top: 50%
 }
 
 .imgLogin {
-  margin-top: auto;
-  margin-left: 5%;
-  width: 600px;
-  height: 600px;
+  position: absolute;
+  width: 500px;
+  height: 500px;
 }
 
 .module {
@@ -480,7 +479,8 @@ table, th, td {
 } */
 
 .buttonmet {
-  height: 54px;
+  font-size: 25px;
+  height: 100%;
 }
 
 .addv-opt-wrapper{

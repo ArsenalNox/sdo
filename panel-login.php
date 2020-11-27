@@ -36,11 +36,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в панель управления </title>
+    <script src="js/panel-login.js" ></script>
   </head>
   <body class="panellogin">
+  
     <section class="main">
-    <img src="img/Группа.png" class="imgLogin">
-      <div class="form">
+    <img id="adapimg" src="img/Группа.png" class="imgLogin">
+      <div id="adap" class="form">
           <form class="login" action="panel-login.php" method="post">
             <fieldset class="fieldsetlogin">
               <legend align="center"><h1 class="text">ВХОД</h1></legend>
@@ -52,5 +54,6 @@
           </form>
         </div>
     </section>
+    
   </body>
 </html>
