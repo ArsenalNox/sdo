@@ -7,9 +7,7 @@
     session_start();
     $ip = $_SERVER['REMOTE_ADDR'];
     $_SESSION['IP'] = $ip;
-    if(!(isset($_COOKIE['UTSID']))){
-      setcookie('UTSID', md5(uniqid()), time()+86400*30*2, '/');
-    }
+    setcookie('UTSID', md5(uniqid()), time()+86400*30*2, '/');
     //получение статуса ученика
     echo "<p style='display:none;' id='ip'>$ip</p>";
     $sql = "SELECT * FROM connectons WHERE ip = '$ip';";
