@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once "dtb/dtb.php";
   $error = '';
   if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -15,6 +16,27 @@
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
           setcookie('STS', $id, time()+12000, '/');
+
+          //"Логирование" входящих пользователей в панель управления
+          $entryDate = date("Y-m-d H:i:s");
+          if(!isset($_COOKIE['UTM'])){
+            setcookie('UTM', md5(uniqid()), time()+1200*20*20, '/');
+          }
+          $_SESSION['SSID'] = uniqid();
+          $ssid = $_SESSION['SSID'];
+          $name = $_COOKIE['UTM'];
+          $checkSql = "SELECT id FROM entrylogs WHERE id = '$ssid'" ;
+          $checkQuery = mysqli_query($conn, $checkSql);
+          if($checkQuery){
+            if(mysqli_num_rows($checkQuery) == 0){
+              $sql = "INSERT INTO `entrylogs`(`id`,`name`,`entryTime`) VALUES ('$ssid','$name','$entryDate')";
+              $result = mysqli_query($conn, $sql);
+              if(!$result){
+                echo "$sql \n $checkSql";
+              }
+            }
+          }
+
           header("Location: panel.php");
           die();
         } else {
