@@ -1,9 +1,15 @@
 <?php
 include_once "dtb/dtb.php";
+
+require 'php/functions/code_functions.php';
 require 'php/vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+// TODO: Нормальный ипорт таблицы
+// TODO: Вопрос импортируется в зависимости от кол-ва вариантов
+// TODO: Кол-во вопросов определяется автоматически
 
 if(isset($_COOKIE['STS'])){
   $teachid = $_COOKIE['STS'];
@@ -66,9 +72,14 @@ if(isset($_COOKIE['STS'])){
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
                   $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
+                  //Проверка на кол-во вариантов ответа, если один из них отсутвует - впорос пропускается
                   $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                  if(strlen($qanswb)<1){echoQuestionImportError(); continue;}
                   $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                  if(strlen($qanswc)<1){echoQuestionImportError(); continue;}
                   $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
+                  if(strlen($qanswd)<1){echoQuestionImportError(); continue;}
+
                   echo "
                   <div class='importmodule'>
                   <p> Номер вопроса: $qnum, Вариант: $variant</p>

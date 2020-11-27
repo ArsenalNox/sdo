@@ -1,5 +1,6 @@
 <?php
 // TODO: Дизайн
+// TODO: Добавление времени начала теста и конца, т.е. тест можно выполнить только в этот промежуток времени
   include_once "dtb/dtb.php";
   if(isset($_COOKIE['STS'])){
     $teachid = $_COOKIE['STS'];
