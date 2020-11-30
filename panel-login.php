@@ -20,11 +20,12 @@
           //"Логирование" входящих пользователей в панель управления
           $entryDate = date("Y-m-d H:i:s");
           if(!isset($_COOKIE['UTM'])){
-            setcookie('UTM', md5(uniqid()), time()+86400*30*2, '/');
+            setcookie('UTM', md5($entryDate), time()+86400*30*2, '/');
           }
           $_SESSION['SSID'] = uniqid();
           $ssid = $_SESSION['SSID'];
           $name = $_COOKIE['UTM'];
+
           $ip = $_SERVER['REMOTE_ADDR'];
           $checkSql = "SELECT id FROM entrylogs WHERE id = '$ssid'" ;
           $checkQuery = mysqli_query($conn, $checkSql);
@@ -67,7 +68,7 @@
     <script src="js/panel-login.js" ></script>
   </head>
   <body class="panellogin">
-  
+
     <section class="main">
     <img id="adapimg" src="img/Группа.png" class="imgLogin">
       <div id="adap" class="form">
@@ -82,6 +83,6 @@
           </form>
         </div>
     </section>
-    
+
   </body>
 </html>
