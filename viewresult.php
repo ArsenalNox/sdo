@@ -42,7 +42,7 @@ if ($result) {
         $correctness = '<p> <span style="color: green;"> <b> Ответ правильный </b> </span> </p>';
       }
       if(!($row['Image']=='')){
-        $image = "<img src='".$row['Image']."'>";
+        $image = "<img src='/sdo".$row['Image']."'>";
       } else {
         $image = '';
       }
