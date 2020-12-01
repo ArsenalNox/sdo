@@ -62,8 +62,14 @@ if(isset($_COOKIE['STS'])){
             while(true){
               $qquant = 0;
               $qnum_post = 1;
-              for ($i=6; $i<10 ; $i++) {
+              for ($i=6; $i<20 ; $i++) {
                 $variant = 1;
+                if( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow(7, $i)->getValue())<1 ){
+                  echo "<p>
+                  Пустой вопрос. Заканчиваю обратоку теста
+                  </p>";
+                  break;
+                }
                 for ($j=7; $j<17 ; $j+=2) {
                   $qnum = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(2, $i)->getValue();
                   $qtype = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(3, $i)->getValue();
@@ -71,14 +77,18 @@ if(isset($_COOKIE['STS'])){
                   $qcomm = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(5, $i)->getValue();
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
                   $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+                  if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<1 ) {
+                    $variant++;
+                    continue;
+                  }
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
                   //Проверка на кол-во вариантов ответа, если один из них отсутвует - впорос пропускается
                   $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
-                  if(strlen($qanswb)<1){echoQuestionImportError(); continue;}
+                  if(strlen($qanswb)<1){ continue;}
                   $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
-                  if(strlen($qanswc)<1){echoQuestionImportError(); continue;}
+                  if(strlen($qanswc)<1){ continue;}
                   $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
-                  if(strlen($qanswd)<1){echoQuestionImportError(); continue;}
+                  if(strlen($qanswd)<1){ continue;}
 
                   echo "
                   <div class='importmodule'>
@@ -108,6 +118,7 @@ if(isset($_COOKIE['STS'])){
               break;
             }
             echo"
+            Найдено $qquant вопросв
             <input type='hidden' name='quest_quantity' value='$qquant'>
             <button> Загрузить данный модуль </button>  </form> ";
 
