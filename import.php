@@ -8,8 +8,8 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 // TODO: Нормальный ипорт таблицы
-// TODO: Вопрос импортируется в зависимости от кол-ва вариантов
 // TODO: Кол-во вопросов определяется автоматически
+// TODO: Обработка картинок
 
 if(isset($_COOKIE['STS'])){
   $teachid = $_COOKIE['STS'];
