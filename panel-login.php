@@ -1,6 +1,14 @@
 <?php
+  if(!isset($_COOKIE['UTM'])){
+    //Куки с айди устройства
+    setcookie('UTM', md5(date("Y-m-d H:i:s")), time()+86400*30*30);
+    header("Refresh:0");
+    die();
+  }
+
   session_start();
   include_once "dtb/dtb.php";
+
   $error = '';
   if($_SERVER['REQUEST_METHOD'] == "POST"){
     if( ($_POST['uid'] == '') || ($_POST['pwd'] == '') ){
@@ -19,13 +27,10 @@
 
           //"Логирование" входящих пользователей в панель управления
           $entryDate = date("Y-m-d H:i:s");
-          if(!isset($_COOKIE['UTM'])){
-            setcookie('UTM', md5($entryDate), time()+86400*30*2, '/');
-          }
+
           $_SESSION['SSID'] = uniqid();
           $ssid = $_SESSION['SSID'];
           $name = $_COOKIE['UTM'];
-
           $ip = $_SERVER['REMOTE_ADDR'];
           $checkSql = "SELECT id FROM entrylogs WHERE id = '$ssid'" ;
           $checkQuery = mysqli_query($conn, $checkSql);
