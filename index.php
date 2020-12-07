@@ -12,10 +12,10 @@
       header("Refresh:0");
       die();
     }
-    echo $_COOKIE['UTSID'];
+    $uqin = $_COOKIE['UTSID'];
     //получение статуса ученика
     echo "<p style='display:none;' id='ip'>$ip</p>";
-    $sql = "SELECT * FROM connectons WHERE ip = '$ip';";
+    $sql = "SELECT * FROM connectons WHERE uiqname = '$uqin';";
     $result = mysqli_query($conn, $sql);
     $status = 0;
     if(mysqli_num_rows($result) > 0){
@@ -35,7 +35,7 @@
         $insert = mysqli_query($conn, $sql);
     }
     $newDate = date("Y-m-d H:i:s");
-    $updateLastDateSql = "UPDATE connectons SET lastdate = '$newDate' WHERE ip = '$ip'";
+    $updateLastDateSql = "UPDATE connectons SET lastdate = '$newDate' WHERE uiqname = '$uqin'";
     $updateQuery = mysqli_query($conn, $updateLastDateSql);
 ?>
 <html lang="ru">
