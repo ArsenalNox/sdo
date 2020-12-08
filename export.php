@@ -19,9 +19,6 @@ include_once "dtb/dtb.php";
         transform: translate(-50%, -50%);
         padding: 3rem;
       }
-      .export-link{
-
-      }
     </style>
 </head>
 <body>

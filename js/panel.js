@@ -1,5 +1,5 @@
 var autoUpdateStatus = setInterval(getConnections, 2000);
-
+var forbiddenStatuses = ['--Выберите предмет--','','0','--Выберите модуль--','Предмет','--Предмет--','Модуль']
 function ConfirmStudent(id) {
   var action = 'confirm'
   var xhttp = new XMLHttpRequest();
@@ -31,17 +31,19 @@ function reload() {
 }
 
 function LoadMouleMenu() {
-  var sbj = document.getElementById('subject').value;
-  var group = document.getElementById('group').value
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("cmd1").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("POST", "php/functions/get_modules.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("subject=" + sbj);
+        var sbj = document.getElementById('subject').value;
+	if(!forbiddenStatuses.includes(sbj)){
+	  var group = document.getElementById('group').value
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById("cmd1").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("POST", "php/functions/get_modules.php", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send("subject=" + sbj+"&group="+group);
+	}
 }
 
 function getConnections() {
@@ -80,8 +82,9 @@ function StartTest() {
 }
 
 function ShowQuestions() {
-  var xhttp = new XMLHttpRequest();
   var module_name = document.getElementById('module-select').value;
+  if(!forbiddenStatuses.includes(module_name)){
+  var xhttp = new XMLHttpRequest();
   console.log(module_name);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -91,10 +94,11 @@ function ShowQuestions() {
   xhttp.open("POST", "php/functions/get_question.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("module_name=" + module_name);
+  }
 }
-
 function ShowSpecificVariants() {
   var variatnt = document.getElementById('varsel').value;
+  variatnt.id = '123123123'
 }
 
 function ResetConnections() {

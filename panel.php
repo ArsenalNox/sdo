@@ -28,8 +28,7 @@
 </head>
 <body onload="getConnections()">
 <script src="js/panel.js"></script>
-<!-- <button id="tema" onclick="tema()">Темная тема</button> -->
-<div class="wrapper">
+<!-- <button id="tema" onclick="tema()">Темная тема</button> --> <div class="wrapper">
 
 <section class='student-ip-panel'>
   <fieldset class="fieldset">
