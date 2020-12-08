@@ -25,32 +25,31 @@ $uid = $_SESSION['UID'];
   <input type='hidden' name='student_uid' value='$uid' id='suid'>
   <input type='hidden' name='student_test_status' value='test_not_selected' id='student_test_status'>
   <section class='student-wrapper'>
-  <fieldset class='fieldset'>
-  Результаты теста " . $student ;
+  <fieldset class='fieldset'>";
   for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']+1; $i++) {
     $variant = $_SESSION["QUESTION_VAR_$i"];
     $question_text = $_SESSION["QUESTION_$i"];
     $question_answer_given = $_POST["ANSW_$i"];
     $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
-    echo "
-    <div class='question-result'>
-      <p> Номер вопроса $i</p>
-      <p> Текст вопрос: $question_text</p>
-      ";
-    if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
-      echo "
-      <p> Ответ ученика: '$question_answer_given'. </p>
-      <p> Ответ правильный. </p>
-      ";
-      $correct_answers++;
-    } else {
-      echo "
-      <p> Ответ ученика: '$question_answer_given'. </p>
-      <p> Ответ не правильный!</p>";
-      }
-    echo "
-    </div>
-    ";
+    // echo "
+    // <div class='question-result'>
+    //   <p> Номер вопроса $i</p>
+    //   <p> Текст вопрос: $question_text</p>
+    //   ";
+    // if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
+    //   echo "
+    //   <p> Ответ ученика: '$question_answer_given'. </p>
+    //   <p> Ответ правильный. </p>
+    //   ";
+    //   $correct_answers++;
+    // } else {
+    //   echo "
+    //   <p> Ответ ученика: '$question_answer_given'. </p>
+    //   <p> Ответ не правильный!</p>";
+    //   }
+    // echo "
+    // </div>
+    // ";
   }
   if($correct_answers == 0){
     $percent = "0%";
