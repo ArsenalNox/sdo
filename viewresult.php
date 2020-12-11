@@ -22,6 +22,7 @@ echo "
   <div class='test-info'>
     <p> Индефикатор теста: ".$rowInfo['id']." </p>
     <p> ФИО студента: <b>".$rowInfo['student']."</b>, Класс: <b>".$rowInfo['class']."</b></p>
+    <p> Дата выполнения: ".$rowInfo['date']." </p>
     <p> Модуль: ".$rowInfo['module']."</p>
     <p> Процент выполнения: ".$rowInfo['percent']."</p>
     <hr>
