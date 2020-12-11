@@ -119,7 +119,7 @@ if(isset($_COOKIE['STS'])){
               break;
             }
             echo"
-            Найдено $qquant вопросв
+            Найдено $qnum вопросов, всего с вариантами $qquant 
             <input type='hidden' name='quest_quantity' value='$qquant'>
             <button> Загрузить данный модуль </button>  </form> ";
 
