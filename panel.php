@@ -37,6 +37,20 @@
     <button type="button" name="button" onclick="getConnections()" class="button2">Обновить соединения</button>
     <button type="button" name="button" onclick="ResetConnections()" class="button2">Обнулить соединения</button>
     </div>
+	Показывать класс: <select id='sgtuc1'> <option value='all'> Показывать все классы </option>
+	<?php
+	//Получаем список всех групп
+	$allGroupSql = "SELECT * FROM group_student";
+  	$query = mysqli_query($conn, $allGroupSql);
+	if($query){
+		if(mysqli_num_rows($query) > 0){
+			while($row = mysqli_fetch_assoc($query)){
+				echo "<option value='".$row['NAME']."'>".$row['NAME']."</option>";
+			}
+		}
+	}
+	?>
+    </select>
     <hr>
     <div id='scnt'> </div>
   </fieldset>

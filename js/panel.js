@@ -1,4 +1,4 @@
-var autoUpdateStatus = setInterval(getConnections, 2000);
+var autoUpdateStatus = setInterval(getConnections, 1000);
 var forbiddenStatuses = ['--Выберите предмет--','','0','--Выберите модуль--','Предмет','--Предмет--','Модуль']
 function ConfirmStudent(id) {
   var action = 'confirm'
@@ -48,6 +48,7 @@ function LoadMouleMenu() {
 
 function getConnections() {
   console.log('getting connections');
+  var group = document.getElementById('sgtuc1').value
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -56,7 +57,7 @@ function getConnections() {
   };
   xhttp.open("POST", "php/functions/get_connections.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("no" + 0);
+  xhttp.send("group=" + group);
 }
 
 function StartTest() {

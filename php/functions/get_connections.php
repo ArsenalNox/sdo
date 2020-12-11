@@ -4,7 +4,15 @@
 // DONE: Добавить возможность смотреть результат теста преподавателю (через панель устройств)
 
 include_once "../../dtb/dtb.php";
-$sql = "SELECT * FROM connectons;";
+if(isset($_POST['group'])){
+	if($_POST['group']=='all'){
+		$sql = "SELECT * FROM connectons";
+	}else{
+		$sql = "SELECT * FROM connectons WHERE group_nl='".$_POST['group']."'";
+	}
+} else { 
+	$sql = "SELECT * FROM connectons;";
+}
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0){
     while($row = $result->fetch_assoc()){
