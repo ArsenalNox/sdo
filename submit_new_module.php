@@ -3,9 +3,8 @@
 include_once "dtb/dtb.php";
 include_once "php/functions/checkAuth.php";
 
-
 //создать папку для теста
-//создать папку для изображений (папка будет создана даже если она будет пустой)
+//создать папку для изображений (папка будет создана даже если в модуле не будет ни одного изображения)
 $module_name = $_POST['Module_name'];
 $dir = preg_replace('/\s+/', '_', $module_name);
 $path = 'tests/'.$dir;
@@ -15,14 +14,12 @@ $allowed_extensions = array('jpg','jpeg', 'png');
 $error = '';
 if(!is_dir($path)){
   //Создание папки теста и папки изображений
-  // echo "$path";
   mkdir("$path", 777);
   mkdir("$path/images", 0777);
-} else {
-  // echo "Директория $path уже существует";
 }
 
 //Массив, который будет переведён в json
+//Добавляем в начало мета информацию
 $data[] = array(
   'Module_name' => "".$_POST['Module_name']."",
   'module_subject' => "".$_POST['module_subject']."",
@@ -31,6 +28,7 @@ $data[] = array(
 
 //Проходим по всем вопросам
 for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
+
   //Перемешивание ответов
   $questions = array(
     $_POST["question_answer_a_$i"],
@@ -38,10 +36,11 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $_POST["question_answer_c_$i"],
     $_POST["question_answer_d_$i"]);
   shuffle($questions);
+
   //проверка наличия у вопроса изображения, если нет - тэг останется пустым
   $imagepath = '';
   if(isset($_FILES["question_image_$i"])){
-    // echo " Обработка изображения к вопросу $i ";
+    //Загрузка изображения
     $imageName = $_FILES["question_image_$i"]['name'];
     $imageTmpName = $_FILES["question_image_$i"]['tmp_name'];
     $imageSize = $_FILES["question_image_$i"]['size'];
@@ -49,21 +48,23 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $imageType = $_FILES["question_image_$i"]['type'];
     $imageExtTmp = explode('.', $imageName);
     $imageExtAct = strtolower(end($imageExtTmp));
-    // print_r($_FILES["question_image_$i"]);
     if($imageError === 0){
       $imagepath = "$path/images/image_q_$i.$imageExtAct";
-      // echo "$imagepath";
       move_uploaded_file($imageTmpName, $imagepath);
     } else {
       $error .= "<p class='upload-error'> Случилась ошибка при загрузки изображения для вопроса номер $i текст ошибки:".$imageError."</p>";
     }
   }
-  //Добавляем в массив со всей информаций теста массив вопроса
+
+  //Добавляем в массив задание
   $data[] = array(
     "QUESTION_NUM" => $_POST["question_a_num_$i"],
     "VAR" => $_POST["question_var_$i"],
     "IMAGE" => $imagepath,
     "TYPE" => 'choose-answer',
+    "QUESTION_TYPE" => '',
+    "QUESTION_SUBTYPE" => '',
+    "QUESTION_COMMENTARY" => '',
     "QUESTION" => $_POST["question_text_$i"],
     "A" => $questions[0],
     "B" => $questions[1],
@@ -77,6 +78,8 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
 $class = $_POST['class'];
 $name = $_POST['Module_name'];
 $qst = $path.'/'.$_POST['Module_name'].'.json';
+
+//Записываем тест в бд
 $sbj = $_POST['module_subject'];
 $sql = "INSERT INTO new_module (`Name`,`Class`,`Questions`,`subject`) VALUES (
   '$name',
@@ -84,6 +87,7 @@ $sql = "INSERT INTO new_module (`Name`,`Class`,`Questions`,`subject`) VALUES (
   '$qst',
   '$sbj')";
 $result = mysqli_query($conn, $sql);
+
 //Записываем модуль в JSON
 $jsoned_data = json_encode($data,JSON_UNESCAPED_UNICODE);
 $module_name = preg_replace('/\s+/', '_', $module_name);
