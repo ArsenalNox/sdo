@@ -1,6 +1,6 @@
 <?php
   if(!isset($_COOKIE['UTM'])){
-    //Куки с айди устройства
+    //Если куки отсутсвует - создать его, перезагрузить страницу, на всякий случай убить соединение 
     setcookie('UTM', md5(date("Y-m-d H:i:s")), time()+86400*30*30);
     header("Refresh:0");
     die();
@@ -20,14 +20,12 @@
         $pass = $_POST['pwd'];
         $id = $_POST['uid'];
         $sql = "SELECT ID FROM teach WHERE uid = '$id' AND pwd = '$pass'";
-
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
           setcookie('STS', $id, time()+12000, '/');
 
           //"Логирование" входящих пользователей в панель управления
           $entryDate = date("Y-m-d H:i:s");
-
           $_SESSION['SSID'] = uniqid();
           $ssid = $_SESSION['SSID'];
           $name = $_COOKIE['UTM'];
