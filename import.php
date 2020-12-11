@@ -1,5 +1,6 @@
 <?php
 include_once "dtb/dtb.php";
+include_once "php/functions/checkAuth.php";
 
 require 'php/functions/code_functions.php';
 require 'php/vendor/autoload.php';
@@ -7,9 +8,10 @@ require 'php/vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-// TODO: Нормальный ипорт таблицы
-// TODO: Кол-во вопросов определяется автоматически
-// TODO: Обработка картинок
+// TODO: Кол-во вопросов определяется автоматически.
+// TODO: Кол-во вариантов задания определяется автоматически и записывается без повторений.
+// TODO: Записывать комметарий к заданию, вид задания и подвид задания.
+// TODO: Возможность добавить задания с 4 или 5 вариантами
 
 if(isset($_COOKIE['STS'])){
   $teachid = $_COOKIE['STS'];
@@ -66,7 +68,7 @@ if(isset($_COOKIE['STS'])){
                 $variant = 1;
                 if( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow(7, $i)->getValue())<1 ){
                   echo "<p>
-                  Пустой вопрос. Заканчиваю обратоку теста
+                  Пустой вопрос.
                   </p>";
                   break;
                 }
@@ -98,7 +100,6 @@ if(isset($_COOKIE['STS'])){
                   <p> Комментарий к заданию: $qcomm </p>
                   <p> Текст вопроса: $qtextF $qtextL </p>
                   <p> Правильный ответ: $qansw </p>
-
                     <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>

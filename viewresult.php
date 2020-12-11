@@ -9,6 +9,8 @@
 <?php
 //Показ резуьтата теста ученика преподавателю
 include_once "dtb/dtb.php";
+include_once "php/functions/checkAuth.php";
+
 $test = $_GET['td'];
 
 $test_id = explode('_',$test)[1];

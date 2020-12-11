@@ -1,6 +1,8 @@
 <pre>
 <?php
 include_once "dtb/dtb.php";
+include_once "php/functions/checkAuth.php";
+
 
 //создать папку для теста
 //создать папку для изображений (папка будет создана даже если она будет пустой)

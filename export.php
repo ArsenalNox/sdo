@@ -1,5 +1,7 @@
 <?php
 include_once "dtb/dtb.php";
+include_once "php/functions/checkAuth.php";
+
 ?>
 <html lang="ru">
 <head>

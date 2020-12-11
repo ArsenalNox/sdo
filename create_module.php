@@ -1,7 +1,9 @@
 <?php
+
   session_start();
   $_SESSION['QUESTIONS_QUANTITY_CREATED'] = 1;
   include_once "dtb/dtb.php";
+  include_once "php/functions/checkAuth.php";
   if(isset($_COOKIE['STS'])){
     $teachid = $_COOKIE['STS'];
     $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
@@ -14,7 +16,7 @@
     header("Location: panel-login.php");
     die();
   }
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">

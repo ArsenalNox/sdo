@@ -1,17 +1,7 @@
 <?php
 include_once "dtb/dtb.php";
-if(isset($_COOKIE['STS'])){
-  $teachid = $_COOKIE['STS'];
-  $checkteach = "SELECT id FROM teach WHERE uid = '$teachid' ;";
-  $check = mysqli_query($conn, $checkteach);
-  if(mysqli_num_rows($check) == 0){
-    header("Location: panel-login.php");
-    die();
-  }
-} else {
-  header("Location: panel-login.php");
-  die();
-}
+include_once "php/functions/checkAuth.php";
+
 ?>
 
 <!DOCTYPE html>
