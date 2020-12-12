@@ -29,7 +29,7 @@
         }
         $uname = $_COOKIE['UTSID'];
         $sql = "INSERT INTO connectons (
-          ip, uiqname, student_uid, status, group_nl, test_status, test_id)
+           ip, uiqname, student_uid, status, group_nl, test_status, test_id)
            VALUES (
           '$ip', '$uname', '', '0', '', '', '') ;";
         $insert = mysqli_query($conn, $sql);

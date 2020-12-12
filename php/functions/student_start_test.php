@@ -2,6 +2,7 @@
 session_start();
 //Начало тестов
 include_once "../../dtb/dtb.php";
+
 //Загрузка данных из таблицы текущего теста
 $test_id = $_POST['test_id'];
 $sql = "SELECT * FROM current_test WHERE id ='$test_id'";
@@ -11,6 +12,7 @@ $test_name = $row['test_dir'];
 $test_subject = $row['subject'];
 $class = $row['group_to_test'];
 $time_to_complete = $row['time_to_complete'];
+
 //Загрузка данных о самом тесте
 $sql = "SELECT * FROM new_module WHERE Name = '$test_name'";
 $result = mysqli_query($conn, $sql);
@@ -24,6 +26,8 @@ $i = 0;
 $_SESSION['MODULE'] = $test_name;
 $showmeta = true;
 $vars = 1;
+// TODO: Глобальный таймер для ученика на выполнение теста
+// TODO: Получение значения и запоминание типа/подтипа вопроса
 foreach ($json_a as $struct => $quest) {
   if($showmeta){
     $showmeta=false;
@@ -54,7 +58,16 @@ foreach ($json_a as $struct => $quest) {
           $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
           $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
           $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
-          echo "
+	  if(isset($quest['QUESTION_TYPE'])){
+	  	$_SESSION["Question_type_$i"] = $quest['QUESTION_TYPE'];
+	  } else {$_SESSION["Question_type_$i"] = '';}
+	  if(isset($quest['QUESTION_SUBTYPE'])){
+	  	$_SESSION["Question_subtype_$i"] = $quest['QUESTION_SUBTYPE'];
+	  } else {$_SESSION["Question_subtype_$i"] = '';}
+    if(isset($quest['QUESTION_SUBTYPE'])){
+	  	$_SESSION["Question_commentary_$i"] = $quest['QUESTION_COMMENTARY'];
+	  } else {$_SESSION["Question_commentary_$i"] = '';}
+    echo "
           <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
           <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
           if($quest['IMAGE'] !== ''){

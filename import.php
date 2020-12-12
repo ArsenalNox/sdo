@@ -105,7 +105,7 @@ if(isset($_COOKIE['STS'])){
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>
                     <input type='hidden' name='IMAGE' value=''>
-	                   <input type='hidden' name='question_type_$i'value='$qtype'>
+	                  <input type='hidden' name='question_type_$i'value='$qtype'>
 		                <input type='hidden' name='question_subtype_$i' value='$qsubtype'>
 		                <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
                     <input type='hidden' name='question_answer_a_$qnum_post' value='$qansw'>
@@ -125,7 +125,6 @@ if(isset($_COOKIE['STS'])){
             Найдено $qnum вопросов, всего с вариантами $qquant
             <input type='hidden' name='quest_quantity' value='$qquant'>
             <button> Загрузить данный модуль </button>  </form> ";
-
           }
         }
          ?>

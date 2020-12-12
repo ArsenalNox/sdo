@@ -4,7 +4,7 @@ include_once "../../dtb/dtb.php";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 		if(isset($_POST['group'])){
 			$groupNumber = preg_replace('/[^0-9]/',' ',$_POST['group']);
-		}else {
+		} else {
 			$groupNumber = '';
 		}
   	$subj = $_POST['subject'];
@@ -17,6 +17,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       		echo "<option> $theme </option>";
   	  	}
     	echo "</select>";
-  	}
+  	}else{
+			echo "<p>
+			Отсутсвуют модули для данного класса по выбранному предмету
+			</p>";
+		}
 }
 ?>
