@@ -88,7 +88,9 @@ $uid = $_SESSION['UID'];
           Given_answer varchar(512),
           Correct_answer varchar(512),
           Correctness tinyint(1),
-          Image varchar(512),
+	        Image varchar(512),
+	        Question_type varchar(512),
+	        Qustiion_subtype varchar(512) NULL,
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -100,9 +102,10 @@ $uid = $_SESSION['UID'];
           $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
           if(isset($_SESSION["QUESTION_IMAGE_$i"])){
             $image = $_SESSION["QUESTION_IMAGE_$i"];
-          } else {
-            $image = '';
-          }
+          } else { $image = ''; }
+          if(isset($_SESSION["QUESTION_IMAGE_$i"])){
+
+          } else {}
           echo "$image";
           if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
             $correct = 0;
@@ -136,8 +139,8 @@ $uid = $_SESSION['UID'];
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
     }
   }
-  echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
-  echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
+  // echo "<section class='debug'> <pre> " . print_r($_SESSION) . "</pre> </section> <br> <hr>";
+  // echo "<section class='debug'> <pre> " . print_r($_POST) . "</pre> </section>";
  ?>
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
