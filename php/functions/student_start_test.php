@@ -71,7 +71,7 @@ foreach ($json_a as $struct => $quest) {
           <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
           <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
           if($quest['IMAGE'] !== ''){
-              echo "<img src='/sdo".$quest['IMAGE']."' >";
+              echo "<img src='/sdo/".$quest['IMAGE']."' >";
               $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';

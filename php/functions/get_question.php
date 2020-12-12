@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if($quest['IMAGE'] == ''){
       $image = '';
     } else {
-      $image = "<img src='/sdo".$quest['IMAGE']."'>";
+      $image = "<img src='/sdo/".$quest['IMAGE']."'>";
     }
 
     echo "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
