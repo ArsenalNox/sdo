@@ -55,8 +55,8 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
       $error .= "<p class='upload-error'> Случилась ошибка при загрузки изображения для вопроса номер $i текст ошибки:".$imageError."</p>";
     }
   }
-  if(isset($_POST["question_type_$i"])){$qtype = $_POST["question_type_$i"]}else{ $qtype = ''}
-  if(isset($_POST["question_subtype_$i"])){$qsubtype = $_POST["question_subtype_$i"]}else{ $qsubtype = ''}
+  if(isset($_POST["question_type_$i"])){$qtype = $_POST["question_type_$i"];}else{ $qtype = '';}
+  if(isset($_POST["question_subtype_$i"])){$qsubtype = $_POST["question_subtype_$i"];}else{ $qsubtype = '';}
 
   //Добавляем в массив задание
   $data[] = array(
