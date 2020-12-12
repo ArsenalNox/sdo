@@ -3,6 +3,9 @@
 include_once "dtb/dtb.php";
 include_once "php/functions/checkAuth.php";
 
+print_r($_POST);
+print_r($_FILES);
+
 //создать папку для теста
 //создать папку для изображений (папка будет создана даже если в модуле не будет ни одного изображения)
 $module_name = $_POST['Module_name'];
@@ -54,6 +57,8 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     } else {
       $error .= "<p class='upload-error'> Случилась ошибка при загрузки изображения для вопроса номер $i текст ошибки:".$imageError."</p>";
     }
+  }else{
+    echo "у задания $i нет картинки";
   }
   if(isset($_POST["question_type_$i"])){$qtype = $_POST["question_type_$i"];}else{ $qtype = '';}
   if(isset($_POST["question_subtype_$i"])){$qsubtype = $_POST["question_subtype_$i"];}else{ $qsubtype = '';}
