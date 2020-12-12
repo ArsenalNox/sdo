@@ -57,14 +57,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($quest['A'])){
       echo "  A) " . $quest['A'] . " ;";
     }
-    if(isset($quest['A'])){
-      echo "  A) " . $quest['A'] . " ;";
+    if(isset($quest['B'])){
+      echo "  B) " . $quest['B'] . " ;";
     }
-    if(isset($quest['A'])){
-      echo "  A) " . $quest['A'] . " ;";
+    if(isset($quest['C'])){
+      echo "  C) " . $quest['C'] . " ;";
     }
-    if(isset($quest['A'])){
-      echo "  A) " . $quest['A'] . " ;";
+    if(isset($quest['D'])){
+      echo "  D) " . $quest['D'] . " ;";
     }
     echo "<br> <b> Правильный ответ: " . $quest['CORRECT'] . " </b>
     <hr> </div>";
