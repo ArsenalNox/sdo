@@ -37,7 +37,7 @@ if(isset($_COOKIE['STS'])){
 
     <section>
     <div class="import">
-      <form class="import-from" action="import.php" method="post" enctype="multipart/form-data">
+      <form class="import-from" action="import.php" method="POST" enctype='multipart/form-data'>
         <input type="file" name="uploadedFile" id='fu' class="importfile">
         <input type="submit" name="submit" class="importbutton">
       </form>
@@ -46,9 +46,9 @@ if(isset($_COOKIE['STS'])){
         <?php
         if ($_SERVER['REQUEST_METHOD']=='POST') {
           if (isset($_POST['submit'])) {
-            echo"<hr> <form method='POST' action='submit_new_module.php' class='fromimport'>
+            echo"<hr> <form method='POST' action='submit_new_module.php' class='fromimport' enctype='multipart/form-data'>
             <input type='text' name='Module_name' placeholder='Название модуля'>
-            <input type='text' name='module_subject' placeholder='Название модуля'>
+            <input type='text' name='module_subject' placeholder='Название предмет'>
             <input type='number' name='class' placeholder='Класс' max='11' min='0' style='width: 70px' />
             <br>";
 
@@ -58,7 +58,6 @@ if(isset($_COOKIE['STS'])){
               $reader = IOFactory::createReader('Xlsx');
               $spreadsheet = $reader->load($_FILES['uploadedFile']['tmp_name']);
               $writer = IOFactory::createWriter($spreadsheet, 'Html');
-              // $message = $writer->save('php://output');
               echo "</div>";
             }
             while(true){
@@ -100,12 +99,12 @@ if(isset($_COOKIE['STS'])){
                   <p> Комментарий к заданию: $qcomm </p>
                   <p> Текст вопроса: $qtextF $qtextL </p>
                   <p> Правильный ответ: $qansw </p>
-                    <input type='file' name='question_image_$i'>
+                    <input type='file' name='question_image_$qnum_post' />
                     <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>
-	                  <input type='hidden' name='question_type_$i'value='$qtype'>
-		                <input type='hidden' name='question_subtype_$i' value='$qsubtype'>
+	                  <input type='hidden' name='question_type_$qnum_post'value='$qtype'>
+		                <input type='hidden' name='question_subtype_$qnum_post' value='$qsubtype'>
 		                <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
                     <input type='hidden' name='question_answer_a_$qnum_post' value='$qansw'>
                     <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
