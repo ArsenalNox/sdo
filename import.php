@@ -100,11 +100,10 @@ if(isset($_COOKIE['STS'])){
                   <p> Комментарий к заданию: $qcomm </p>
                   <p> Текст вопроса: $qtextF $qtextL </p>
                   <p> Правильный ответ: $qansw </p>
-                  <input type='file' name='question_image_$i' />
+                    <input type='file' name='question_image_$i'>
                     <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>
-                    <input type='hidden' name='IMAGE' value=''>
 	                  <input type='hidden' name='question_type_$i'value='$qtype'>
 		                <input type='hidden' name='question_subtype_$i' value='$qsubtype'>
 		                <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>

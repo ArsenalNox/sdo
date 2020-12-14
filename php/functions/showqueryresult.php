@@ -2,6 +2,24 @@
 session_start();
 //Создание SQL запроса
 include_once "../../dtb/dtb.php";
+
+
+function loadModuleAnswersTable($id, $link){
+	$sql = "SELECT * FROM tr_".$id." ";
+	$result = mysqli_query($link, $sql);
+	if($result){
+		if(mysqli_num_rows($result)>0){
+			while($row = mysqli_fetch_assoc($result)){
+				if($row['Correctness'] == 1){
+					echo "<td style='background-color: #00FF00; width: 20px; height: 20px;' >  </td>";
+				} else {
+					echo "<td style='background-color: #FF0000; width: 20px; height: 20px;' >  </td>";
+				}
+			}
+		}
+	}
+}
+
 switch ($_POST['method']) {
   case 'module':
     $module = $_POST['data'];
@@ -99,17 +117,20 @@ if($result){
               <th> ФИО студента </th>
               <th> Класс </th>
               <th> Дата выполнения </th>
-              <th> Процент выполнения </th>
+	      <th> Процент выполнения </th>
+	 	<th> 1 </th>
+	 	<th> 2 </th>
             </tr>
           ";
           while ($row = mysqli_fetch_assoc($result)) {
             echo "
             <tr>
               <td> ".$row['student']."  </td>
-              <td>  ".$row['class']."   </td>
-              <td>  ".$row['date']."    </td>
-              <td> ".$row['percent']."
-              <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+              <td> ".$row['class']."    </td>
+              <td> ".$row['date']."     </td>
+              <td> ".$row['percent']." ";
+	    loadModuleAnswersTable($row['id'], $conn);
+	    echo "<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
               Смотреть результат </a> </td>
             </tr>
             ";
