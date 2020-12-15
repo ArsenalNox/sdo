@@ -119,7 +119,14 @@ if($result){
               <th> Дата выполнения </th>
 	      <th> Процент выполнения </th>
 	 	<th> 1 </th>
-	 	<th> 2 </th>
+		<th> 2 </th>
+		<th> 3 </th>
+		<th> 4 </th>
+		<th> 5 </th>
+	 	<th> 6 </th>
+		<th> 7 </th>
+		<th>  </th>
+
             </tr>
           ";
           while ($row = mysqli_fetch_assoc($result)) {
@@ -128,9 +135,9 @@ if($result){
               <td> ".$row['student']."  </td>
               <td> ".$row['class']."    </td>
               <td> ".$row['date']."     </td>
-              <td> ".$row['percent']." ";
+              <td> ".$row['percent']."</td>";
 	    loadModuleAnswersTable($row['id'], $conn);
-	    echo "<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+	    echo "<td> <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
               Смотреть результат </a> </td>
             </tr>
             ";
