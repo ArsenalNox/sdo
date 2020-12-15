@@ -88,9 +88,9 @@ $uid = $_SESSION['UID'];
           Given_answer varchar(512),
           Correct_answer varchar(512),
           Correctness tinyint(1),
-	        Image varchar(512),
-	        Question_type varchar(512),
-	        Qustiion_subtype varchar(512) NULL,
+	  Image varchar(512),
+	  Question_type varchar(512),
+	  Qustiion_subtype varchar(512) NULL,
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -110,12 +110,13 @@ $uid = $_SESSION['UID'];
           if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
             $correct = 0;
           }
-          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`, `Image`) VALUES (
+          $sql = "INSERT INTO $result_table_name (`Question_var`, `Question_text`, `Given_answer`, `Correct_answer`, `Correctness`, `qtype`, `Image`) VALUES (
               '$variant',
               '$question_text',
               '$question_answer_given',
               '$question_answer_correct',
-              '$correct',
+	      '$correct',
+	      '".$_SESSION["Question_type_$i"]."',
               '$image'
           )";
           $insert = mysqli_query($conn, $sql);
