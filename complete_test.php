@@ -36,13 +36,14 @@ $uid = $_SESSION['UID'];
     //   <p> Номер вопроса $i</p>
     //   <p> Текст вопрос: $question_text</p>
     //   ";
-    // if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
-    //   echo "
-    //   <p> Ответ ученика: '$question_answer_given'. </p>
-    //   <p> Ответ правильный. </p>
-    //   ";
-    //   $correct_answers++;
-    // } else {
+    if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
+      // echo "
+      // <p> Ответ ученика: '$question_answer_given'. </p>
+      // <p> Ответ правильный. </p>
+      // ";
+      $correct_answers++;
+    }
+    // else {
     //   echo "
     //   <p> Ответ ученика: '$question_answer_given'. </p>
     //   <p> Ответ не правильный!</p>";
