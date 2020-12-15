@@ -1,6 +1,10 @@
 function showAllResults() {
   //Выводит запрашиваемые данные в таблицу
-  var request = document.getElementById('dvm1').value;
+try{
+	var request = document.getElementById('dvm1').value;
+} catch {
+	var request = 'none';
+}
   var method = document.getElementById('ms1').value;
   var sort = document.getElementById('ss1').value;
   var additionalOptions = processOptions();
