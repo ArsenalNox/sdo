@@ -13,11 +13,11 @@ $dir = preg_replace('/\s+/', '_', $module_name);
 $path = 'tests/'.$dir;
 
 //информация для проверки изображений
-$allowed_extensions = array('jpg','jpeg', 'png');
+$allowed_extensions = array('jpg','jpeg', 'png', 'tiff');
 $error = '';
 if(!is_dir($path)){
   //Создание папки теста и папки изображений
-  mkdir("$path", 777);
+  mkdir("$path", 0777);
   mkdir("$path/images", 0777);
 }
 
@@ -31,7 +31,6 @@ $data[] = array(
 
 //Проходим по всем вопросам
 for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
-
   //Перемешивание ответов
   $questions = array(
     $_POST["question_answer_a_$i"],
