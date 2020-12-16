@@ -117,7 +117,6 @@ if($result){
               <th> ФИО студента </th>
               <th> Класс </th>
               <th> Дата выполнения </th>
-	      <th> Процент выполнения </th>
 	 	<th> 1 </th>
 		<th> 2 </th>
 		<th> 3 </th>
@@ -134,8 +133,7 @@ if($result){
             <tr>
               <td> ".$row['student']."  </td>
               <td> ".$row['class']."    </td>
-              <td> ".$row['date']."     </td>
-              <td> ".$row['percent']."</td>";
+              <td> ".$row['date']."     </td>";
 	    loadModuleAnswersTable($row['id'], $conn);
 	    echo "<td> <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
               Смотреть результат </a> </td>
