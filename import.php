@@ -63,7 +63,7 @@ if(isset($_COOKIE['STS'])){
             while(true){
               $qquant = 0;
               $qnum_post = 1;
-              for ($i=6; $i<20 ; $i++) {
+              for ($i=6; $i<100 ; $i++) {
                 $variant = 1;
                 if( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow(7, $i)->getValue())<1 ){
                   echo "<p>
@@ -103,9 +103,9 @@ if(isset($_COOKIE['STS'])){
                     <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>
-	                  <input type='hidden' name='question_type_$qnum_post'value='$qtype'>
-		                <input type='hidden' name='question_subtype_$qnum_post' value='$qsubtype'>
-		                <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
+	            <input type='hidden' name='question_type_$qnum_post'value='$qtype'>
+		    <input type='hidden' name='question_subtype_$qnum_post' value='$qsubtype'>
+		    <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
                     <input type='hidden' name='question_answer_a_$qnum_post' value='$qansw'>
                     <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
                     <input type='hidden' name='question_answer_c_$qnum_post' value='$qanswc'>
