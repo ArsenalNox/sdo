@@ -38,7 +38,7 @@ function loadModuleQuestionQuant($moduleName, $link){
 					if(isset($quest['QUESTION_NUM'])){
 						$qquant = $quest['QUESTION_NUM'];
 					}
-				}	
+				}
 				$data['question_quantity'] = $qquant;
 			} else {$error = 'Ошибка 3';}
 		} else {$error = 'Ошибка 2';}
@@ -96,6 +96,7 @@ if(isset($_POST['addoptcount'])){
     }
   }
 }
+
 //Выбор сортировки
 switch ($_POST['sort']) {
   case 'class-asc':
@@ -136,7 +137,7 @@ if($result){
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		break;
-	}	  //print_r($moduleQuestionQuantity);	  
+	}	  //print_r($moduleQuestionQuantity);
 	echo "
           <div class='data-preview'>
             <p>Таблица результатов модуля ".$module."</p>

@@ -60,7 +60,7 @@
             <div class="selection" id='sg1'><h1 class="group">ВЫБЕРИТЕ СЕБЯ:</h1>
                     <select name="get_group" id="student_group_selector" class="get_group" onchange="GetGroupNames()">
                         <?php
-                            $sql = "SELECT * FROM group_student";
+                            $sql = "SELECT * FROM group_student ORDER BY NAME DESC";
                             $result = mysqli_query($conn, $sql);
                             echo "<option>--</option>";
                             if(mysqli_num_rows($result) > 0){

@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 			$groupNumber = '';
 		}
   	$subj = $_POST['subject'];
-  	$sql = "SELECT Name FROM new_module WHERE subject='$subj' AND Class = '$groupNumber'";
+  	$sql = "SELECT Name FROM new_module WHERE subject='$subj' AND Class = '$groupNumber' ORDER BY Name DESC";
   	$result = mysqli_query($conn, $sql);
   	if(mysqli_num_rows($result)>0){
     		echo "Выберите модуль <select id='module-select' onchange='ShowQuestions()'> <option value='0'>--Выберите модуль--</option>";
