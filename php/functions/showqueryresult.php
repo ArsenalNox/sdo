@@ -1,10 +1,9 @@
 <?php
 session_start();
-//Создание SQL запроса
 include_once "../../dtb/dtb.php";
 
-
 function loadModuleAnswersTable($id, $link){
+	//Загружает ответы ученика на модуль
 	$sql = "SELECT * FROM tr_".$id." ";
 	$result = mysqli_query($link, $sql);
 	if($result){
@@ -21,6 +20,8 @@ function loadModuleAnswersTable($id, $link){
 }
 
 function loadModuleQuestionQuant($moduleName, $link){
+	//Получает кол-во вопросов модуля
+	// NOTE: Это можно было бы уместить в 1 SQL запрос...
 	//echo "Загружаю кол-во вопросов модуля $moduleName";
 	$sql = "SELECT Questions FROM new_module WHERE Name='$moduleName'";
 	$result = mysqli_query($link, $sql);
@@ -40,12 +41,14 @@ function loadModuleQuestionQuant($moduleName, $link){
 					}
 				}
 				$data['question_quantity'] = $qquant;
-			} else {$error = 'Ошибка 3';}
-		} else {$error = 'Ошибка 2';}
-	} else {$error = 'Ошибка 1';}
+			} else {$error = 'Ошибка 3: Не удалось получить инофрмацию о модуле.';}
+		} else {$error = 'Ошибка 2: Отсутсвует результат запроса.';}
+	} else {$error = 'Ошибка 1: Не удалось получить ответ на запрос.';}
 	if(isset($error)){$data['errors'] = $error;}
 	return $data;
 }
+
+//Создание SQL запроса
 switch ($_POST['method']) {
   case 'module':
     $module = $_POST['data'];
@@ -96,7 +99,7 @@ if(isset($_POST['addoptcount'])){
     }
   }
 }
-
+// TODO: Добавить кнопку смореть похожее
 //Выбор сортировки
 switch ($_POST['sort']) {
   case 'class-asc':
@@ -132,44 +135,54 @@ if($result){
   if(mysqli_num_rows($result)>0){
     //Вывод соответсвующей таблицы
     switch ($_POST['method']) {
-      case 'module':
-	$moduleQ = loadModuleQuestionQuant($module, $conn);
-	if(isset($moduleQ['errors'])){
-		echo $moduleQ['errors'];
-		break;
-	}	  //print_r($moduleQuestionQuantity);
-	echo "
-          <div class='data-preview'>
-            <p>Таблица результатов модуля ".$module."</p>
-            <p>Кол-во учеников, выполнивших данный модуль ".mysqli_num_rows($result)."</p>
-          </div>
-          <br>
-          <table>
-            <tr>
-              <th> ФИО студента </th>
-              <th> Класс </th>
-              <th> Дата выполнения </th>
-	";
-	for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
-		echo "<th>$i</th>";
-	}
-	echo"<th></th></tr>";
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "
-            <tr>
-              <td> ".$row['student']."  </td>
-              <td> ".$row['class']."    </td>
-              <td> ".$row['date']."     </td>";
-	    loadModuleAnswersTable($row['id'], $conn);
-	    echo "<td> <a  style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-              Смотреть результат </a> </td>
-            </tr>
-            ";
-          }
-          echo "</table>";
+	    case 'module':
+				//Таблица при выборе модуля
+				//Получение информаци об общем кол-ве вопросов в модуле
+				$moduleQ = loadModuleQuestionQuant($module, $conn);
+				if(isset($moduleQ['errors'])){
+					echo $moduleQ['errors'];
+					break;
+				}
+				echo "
+        				<div class='data-preview'>
+			            <p>Таблица результатов модуля ".$module."</p>
+			            <p>Кол-во учеников, выполнивших данный модуль ".mysqli_num_rows($result)."</p>
+			          </div><br>
+			          <table>
+			            <tr>
+			              <th> ФИО студента </th>
+			              <th> Класс </th>
+			              <th> Дата выполнения </th>
+				";
+				for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
+					echo "<th> $i </th>";
+				}
+				//<th></th> <- нужен для кнопки смореть результат
+				echo"<th></th></tr>";
+	          while ($row = mysqli_fetch_assoc($result)) {
+	            echo "
+	            <tr>
+	              <td> ".$row['student']."  </td>
+	              <td> ".$row['class']."    </td>
+	              <td> ".$row['date']."     </td>";
+		    			loadModuleAnswersTable($row['id'], $conn);
+		    			echo "
+								<td> <a
+									style='width:100%'
+									class='veiwlink'
+									href='viewresult.php?td=tr_".$row['id']."'
+									target='_blank'>
+	            	Смотреть результат </a> </td>
+	            </tr>
+	            ";
+	          }
+	          echo "</table>";
         break;
 
       case 'class':
+				// TODO: Показ таблицы как с модулями
+				// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу
+				// TODO: Добавить каждой ячейке таблицы с ответом tooltip, нажав на который покажется текст вопроса, правильный ответ и ответ ученика
         echo "
         <div class='data-preview'>
           Таблица результатов класса ".$class."
