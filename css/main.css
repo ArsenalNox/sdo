@@ -627,4 +627,10 @@ table, th, td {
   font-size: 25px;
 }
 
+
+.back {
+  margin-top: 10px;
+  float: right;
+}
+
 textarea::-webkit-input-placeholder { color: #fff};

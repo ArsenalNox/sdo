@@ -37,11 +37,13 @@ if(isset($_COOKIE['STS'])){
 
     <section>
     <div class="import">
+      <a href="panel.php" class="to-crmd back">
+        <button class="to-crmd">Назад</button>
+      </a>
       <form class="import-from" action="import.php" method="POST" enctype='multipart/form-data'>
         <input type="file" name="uploadedFile" id='fu' class="importfile">
         <input type="submit" name="submit" class="importbutton">
       </form>
-
     <section class='import-preview' id='ip1'>
         <?php
         if ($_SERVER['REQUEST_METHOD']=='POST') {
