@@ -11,28 +11,27 @@ if($result1){
 		$result2 = mysqli_query($conn, $sql2);
 		for($i = 1; $i < 8; $i++){
 			switch ($i){
-			case 1:	
+			case 1:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение текстовых задач' WHERE id ='1' ";
 				break;
-			case 2: 
+			case 2:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение текстовых задач' WHERE id ='2' ";
 				break;
-			case 3: 
+			case 3:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение текстовых задач' WHERE id ='3' ";
 				break;
-			case 4: 
+			case 4:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение задач с диаграммы' WHERE id ='4' ";
 				break;
-			case 5: 
+			case 5:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение текстовых задач' WHERE id ='5' ";
 				break;
-			case 6: 
+			case 6:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение задач с таблиц' WHERE id ='6' ";
 				break;
-			case 7: 
+			case 7:
 				$sql3 = "UPDATE tr_".$row['id']." set qtype = 'Решение задач с таблиц' WHERE id ='7' ";
 				break;
-
 			}
 			$result3 = mysqli_query($conn, $sql3);
 		}
