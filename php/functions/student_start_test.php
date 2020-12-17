@@ -20,10 +20,13 @@ $row = mysqli_fetch_assoc($result);
 $path = $row['Questions'];
 $string = file_get_contents("../../$path");
 $json_a = json_decode($string, true);
+
 $qselector = 1;
 $selector = 1;
 $i = 0;
 $_SESSION['MODULE'] = $test_name;
+$_SESSION['TEST_SUBJECT'] = $test_subject;
+
 $showmeta = true;
 $vars = 1;
 // TODO: Глобальный таймер для ученика на выполнение теста
@@ -64,7 +67,7 @@ foreach ($json_a as $struct => $quest) {
 	  if(isset($quest['QUESTION_SUBTYPE'])){
 	  	$_SESSION["Question_subtype_$i"] = $quest['QUESTION_SUBTYPE'];
 	  } else {$_SESSION["Question_subtype_$i"] = '';}
-    if(isset($quest['QUESTION_SUBTYPE'])){
+	  if(isset($quest['QUESTION_SUBTYPE'])){
 	  	$_SESSION["Question_commentary_$i"] = $quest['QUESTION_COMMENTARY'];
 	  } else {$_SESSION["Question_commentary_$i"] = '';}
     echo "
@@ -157,5 +160,7 @@ foreach ($json_a as $struct => $quest) {
         }
       }
   }
-  echo "</form>";
+echo "
+</form>
+";
 ?>

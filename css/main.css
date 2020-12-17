@@ -626,5 +626,10 @@ table, th, td {
   background: #29a8df;
   font-size: 25px;
 }
+.ref-wrap{
+	display: fles;
+	justify-content: center;
+}
 
 textarea::-webkit-input-placeholder { color: #fff};
+

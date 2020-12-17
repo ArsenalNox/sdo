@@ -62,6 +62,7 @@ function startTest(id) {
       document.getElementById('test').innerHTML = this.responseText;
       document.title = document.getElementById('ntl').value;
       shuffle_divs();
+      loadReferenceBook()	
       tick();
       timer = setInterval(tick, 1000);
     }
@@ -191,4 +192,21 @@ function tick(){
       alert('Время на выполнение теста вышло, \nваши ответы будут записанны как есть.');
       stopTest('timeout');
   }
+}
+
+function loadReferenceBook(){
+	var xhttp = new XMLHttpRequest();
+  	xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+      			if(this.responseText == 'includes'){
+				let divw = document.createElement('div')
+				divw.className = 'reference-wrapper'
+				divw.innerHTML = "<a href='reference-book.php' target='_blank'> Открыть справочные материалы </a> "
+  				document.body.append(divw)	
+			}
+		}	
+	}
+	xhttp.open("POST", "reference-book.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("test_request=1");
 }
