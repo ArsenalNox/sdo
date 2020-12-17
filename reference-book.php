@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+$referLessons = array('Математика','математика','физика','Физика','Химия','химия');
+if(isset($_POST['test_request'])){
+	if(isset($_SESSION['TEST_SUBJECT'])){
+		if(in_array($_SESSION['TEST_SUBJECT'], $referLessons)){
+			echo "includes";
+			die();
+		}	
+	}
+}
+?>
+
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="css/main.css">
@@ -8,8 +22,8 @@
     <meta name="viewport" width="device-width, initial-scale=1.0">
     <title> Справочный матерал </title>
 </head>
+
 <?php
-session_start();
 
 function checkReferenceMaterial($checkSubject){
 	//Проверяет наличие справочного материала у предмета, возвращает true если есть
@@ -19,15 +33,7 @@ function checkReferenceMaterial($checkSubject){
 function loadReferenceMaterial($targetSubject){
 	//Загружает из дерктории справочный материал	
 }
-$referLessons = array('Математика','математика','физика','Физика','Химия','химия');
-if(isset($_POST['test_request'])){
-	if(isset($_SESSION['TEST_SUBJECT'])){
-		if(in_array($_SESSION['TEST_SUBJECT'], $referLessons)){
-			echo "includes";
-			die();
-		}	
-	}
-}
+
 
 if(isset($_SESSION['TEST_SUBJECT'])){
 

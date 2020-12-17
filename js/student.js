@@ -199,10 +199,13 @@ function loadReferenceBook(){
   	xhttp.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
       			if(this.responseText == 'includes'){
+				console.log('1')
 				let divw = document.createElement('div')
 				divw.className = 'reference-wrapper'
 				divw.innerHTML = "<a href='reference-book.php' target='_blank'> Открыть справочные материалы </a> "
   				document.body.append(divw)	
+			}else{
+				console.log(this.responseText)
 			}
 		}	
 	}
