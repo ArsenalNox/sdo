@@ -90,8 +90,7 @@ $uid = $_SESSION['UID'];
           Correct_answer varchar(512),
           Correctness tinyint(1),
 	  Image varchar(512),
-	  Question_type varchar(512),
-	  Qustiion_subtype varchar(512) NULL,
+	  qtype varchar(512),
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -106,7 +105,12 @@ $uid = $_SESSION['UID'];
           } else { $image = ''; }
           if(isset($_SESSION["QUESTION_IMAGE_$i"])){
 
-          } else {}
+          } 
+	  if(isset($_SESSION["Question_type_$i"])){
+	  	$qtype = $_SESSION["Question_type_$i"];
+	  }else{
+	  	$qtype = 'empty';
+	  }
           echo "$image";
           if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
             $correct = 0;
@@ -117,9 +121,10 @@ $uid = $_SESSION['UID'];
               '$question_answer_given',
               '$question_answer_correct',
 	      '$correct',
-	      '".$_SESSION["Question_type_$i"]."',
+	      '$qtype',
               '$image'
           )";
+	  echo "<br> $sql <br>";
           $insert = mysqli_query($conn, $sql);
         }
       }
