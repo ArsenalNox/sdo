@@ -631,12 +631,10 @@ table, th, td {
 	justify-content: center;
 }
 
-textarea::-webkit-input-placeholder { color: #fff};
-
-
 .back {
   margin-top: 10px;
   float: right;
+  width: 80px;
 }
 
-textarea::-webkit-input-placeholder { color: #fff};
+textarea::-webkit-input-placeholder { color: #fff;}
