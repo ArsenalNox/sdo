@@ -472,11 +472,11 @@ table, th, td {
   background: #29a8df;
   padding-bottom: 7px;
 }
-/* 
+/*
 .buttonmet2 {
   position: absolute;
   top: 94%;
-  left: 80%;  
+  left: 80%;
 } */
 
 .buttonmet {
@@ -633,3 +633,10 @@ table, th, td {
 
 textarea::-webkit-input-placeholder { color: #fff};
 
+
+.back {
+  margin-top: 10px;
+  float: right;
+}
+
+textarea::-webkit-input-placeholder { color: #fff};
