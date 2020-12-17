@@ -7,6 +7,7 @@ require 'php/vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\RichText\RichText;
 
 // TODO: Кол-во вопросов определяется автоматически.
 // TODO: Кол-во вариантов задания определяется автоматически и записывается без повторений.
@@ -79,7 +80,10 @@ if(isset($_COOKIE['STS'])){
                   $qsubtype = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(4, $i)->getValue();
                   $qcomm = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(5, $i)->getValue();
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
-                  $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+		  $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+		  //$testText = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+		  //print_r($testText);
+			  
                   if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<1 ) {
                     $variant++;
                     continue;
