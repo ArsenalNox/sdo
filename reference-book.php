@@ -37,8 +37,8 @@ function loadReferenceMaterial($targetSubject){
 
 if(isset($_SESSION['TEST_SUBJECT'])){
 
-//	$subject = strtolower($_SESSION['TEST_SUBJECT']);
-	$subject = 'Физика';
+	$subject = strtolower($_SESSION['TEST_SUBJECT']);
+//	$subject = 'Физика';
 	switch($subject){
 		case 'Математика':
 			echo "
