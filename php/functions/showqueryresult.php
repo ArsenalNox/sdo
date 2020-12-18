@@ -1,4 +1,7 @@
 <?php
+
+use PhpOffice\PhpSpreadsheet\Shared\OLE\ChainedBlockStream;
+
 session_start();
 //Создание SQL запроса
 include_once "../../dtb/dtb.php";
@@ -46,6 +49,40 @@ function loadModuleQuestionQuant($moduleName, $link){
 	if(isset($error)){$data['errors'] = $error;}
 	return $data;
 }
+
+function loadMaxQuestionQuant($target, $link, string $targetLiteral = ''){
+	$sql = "SELECT DISTINCT module FROM test_results ";
+	if($targetLiteral !== ''){
+		switch($targetLiteral){
+			case "student":
+					$sql .= "WHERE student = '$target' ";
+				break;
+			case "class":
+					$sql .= "WHERE student = '$target' ";
+				break;
+			case "date":
+					$sql .= "WHERE student = '$target' ";
+				break;
+			case "student":
+					$sql .= "WHERE student = '$target' ";
+				break;
+		}
+	}
+	$result = mysqli_query($link, $sql);
+	$maxQnum = 0;
+	if($result){
+		if(mysqli_num_rows($result)>0){
+			while($row = mysqli_fetch_assoc($result)){
+				$newNum = loadModuleQuestionQuant($row['module'], $link);
+				if( $newNum > $maxQnum ){
+					$maxQnum = $newNum['question_quantity'];	
+				}
+			}	
+		}
+	}
+	return $maxQnum;
+}
+
 switch ($_POST['method']) {
   case 'module':
     $module = $_POST['data'];
@@ -136,7 +173,8 @@ if($result){
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		break;
-	}	  //print_r($moduleQuestionQuantity);	  
+	}
+	//print_r($moduleQuestionQuantity);	  
 	echo "
           <div class='data-preview'>
             <p>Таблица результатов модуля ".$module."</p>
@@ -152,16 +190,16 @@ if($result){
 	for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
 		echo "<th>$i</th>";
 	}
-	echo"<th></th></tr>";
+	echo"<th>Действия</th></tr>";
           while ($row = mysqli_fetch_assoc($result)) {
             echo "
             <tr>
               <td> ".$row['student']."  </td>
               <td> ".$row['class']."    </td>
               <td> ".$row['date']."     </td>";
-	    loadModuleAnswersTable($row['id'], $conn);
-	    echo "<td> <a  style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-              Смотреть результат </a> </td>
+	      loadModuleAnswersTable($row['id'], $conn);
+	    echo "<td style='display:flex'> <a  style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+              Смотреть результат </a> <a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </button></td>
             </tr>
             ";
           }
@@ -179,7 +217,7 @@ if($result){
             <th> ФИО студента </th>
             <th> Модуль </th>
             <th> Дата выполнения </th>
-            <th> Процент выполнения </th>
+	    <th> Действия </th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -188,8 +226,7 @@ if($result){
             <td> ".$row['student']." </td>
             <td> ".$row['module']." </td>
             <td> ".$row['date']." </td>
-            <td> ".$row['percent']."
-            <a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+            <td><a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
             Смотреть результат </a> </td>
           </tr>
           ";
@@ -208,7 +245,7 @@ if($result){
             <th> Класс </th>
             <th> Модуль </th>
             <th> Дата выполнения </th>
-            <th> Процент выполнения </th>
+<th>Действия</th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -218,9 +255,7 @@ if($result){
             <td> ".$row['class']."</td>
             <td> ".$row['module']." </td>
             <td> ".$row['date']." </td>
-            <td> ".$row['percent']."
-              <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-              Смотреть результат </a> </td>
+              <td><a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>  </td>
           </tr>
           ";
         }
@@ -237,7 +272,7 @@ if($result){
           <tr>
             <th> Модуль </th>
             <th> Дата выполнения </th>
-            <th> Процент выполнения </th>
+            <th>Действия</th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -245,7 +280,7 @@ if($result){
           <tr>
             <td> ".$row['module']." </td>
             <td> ".$row['date']." </td>
-            <td> ".$row['percent']." <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+	    <td><a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
             Смотреть результат </a> </td>
           </tr>
           ";
@@ -264,7 +299,7 @@ if($result){
             <th> Класс </th>
             <th> Модуль </th>
             <th> Дата выполнения </th>
-            <th> Процент выполнения </th>
+	    <th>Действия</th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -274,7 +309,7 @@ if($result){
             <td> ".$row['class']."</td>
             <td> ".$row['module']." </td>
             <td> ".$row['date']." </td>
-            <td> ".$row['percent']." <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
+	    <td> <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
             Смотреть результат </a> </td>
           </tr>
           ";
