@@ -1,7 +1,7 @@
 <?php
 include_once "../../dtb/dtb.php";
 //Выбираем классы и выводим в список классы
-$groupQuery = "SELECT * FROM group_student;";
+$groupQuery = "SELECT * FROM group_student ORDER BY NAME DESC;";
 $result = mysqli_query($conn, $groupQuery);
 echo "<select id='group' name='group'> <option>--Класс--</option>";
 if(mysqli_num_rows($result) > 0){

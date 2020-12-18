@@ -30,7 +30,7 @@
 	Показывать класс: <select id='sgtuc1'> <option value='all'> Показывать все классы </option>
 	<?php
 	//Получаем список всех групп
-	$allGroupSql = "SELECT * FROM group_student";
+	$allGroupSql = "SELECT * FROM group_student ORDER BY NAME DESC";
   	$query = mysqli_query($conn, $allGroupSql);
 	if($query){
 		if(mysqli_num_rows($query) > 0){
@@ -56,7 +56,7 @@
       Выбрать класс для тестирования
       <?php
       //Выбираем классы и выводим в список классы
-      $groupQuery = "SELECT * FROM group_student;";
+      $groupQuery = "SELECT * FROM group_student ORDER BY NAME DESC;";
       $result = mysqli_query($conn, $groupQuery);
       echo "<select id='group'> <option>--Класс--</option>";
       if(mysqli_num_rows($result) > 0){
@@ -78,7 +78,7 @@
       Выберите предмет
         <?php
         //Список предметов
-        $sql = "SELECT DISTINCT subject FROM new_module";
+        $sql = "SELECT DISTINCT subject FROM new_module ORDER BY subject ASC";
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)>0){
           echo "<select id='subject' onchange='LoadMouleMenu()'> <option>--Предмет--</option>";

@@ -3,11 +3,10 @@
 use PhpOffice\PhpSpreadsheet\Shared\OLE\ChainedBlockStream;
 
 session_start();
-//Создание SQL запроса
 include_once "../../dtb/dtb.php";
 
-
 function loadModuleAnswersTable($id, $link){
+	//Загружает ответы ученика на модуль
 	$sql = "SELECT * FROM tr_".$id." ";
 	$result = mysqli_query($link, $sql);
 	if($result){
@@ -24,6 +23,8 @@ function loadModuleAnswersTable($id, $link){
 }
 
 function loadModuleQuestionQuant($moduleName, $link){
+	//Получает кол-во вопросов модуля
+	// NOTE: Это можно было бы уместить в 1 SQL запрос...
 	//echo "Загружаю кол-во вопросов модуля $moduleName";
 	$sql = "SELECT Questions FROM new_module WHERE Name='$moduleName'";
 	$result = mysqli_query($link, $sql);
@@ -41,11 +42,11 @@ function loadModuleQuestionQuant($moduleName, $link){
 					if(isset($quest['QUESTION_NUM'])){
 						$qquant = $quest['QUESTION_NUM'];
 					}
-				}	
+				}
 				$data['question_quantity'] = $qquant;
-			} else {$error = 'Ошибка 3';}
-		} else {$error = 'Ошибка 2';}
-	} else {$error = 'Ошибка 1';}
+			} else {$error = 'Ошибка 3: Не удалось получить инофрмацию о модуле.';}
+		} else {$error = 'Ошибка 2: Отсутсвует результат запроса.';}
+	} else {$error = 'Ошибка 1: Не удалось получить ответ на запрос.';}
 	if(isset($error)){$data['errors'] = $error;}
 	return $data;
 }
@@ -75,9 +76,9 @@ function loadMaxQuestionQuant($target, $link, string $targetLiteral = ''){
 			while($row = mysqli_fetch_assoc($result)){
 				$newNum = loadModuleQuestionQuant($row['module'], $link);
 				if( $newNum > $maxQnum ){
-					$maxQnum = $newNum['question_quantity'];	
+					$maxQnum = $newNum['question_quantity'];
 				}
-			}	
+			}
 		}
 	}
 	return $maxQnum;
@@ -133,6 +134,7 @@ if(isset($_POST['addoptcount'])){
     }
   }
 }
+// TODO: Добавить кнопку смореть похожее
 //Выбор сортировки
 switch ($_POST['sort']) {
   case 'class-asc':
@@ -174,7 +176,7 @@ if($result){
 		echo $moduleQ['errors'];
 		break;
 	}
-	//print_r($moduleQuestionQuantity);	  
+	//print_r($moduleQuestionQuantity);
 	echo "
           <div class='data-preview'>
             <p>Таблица результатов модуля ".$module."</p>
@@ -207,6 +209,9 @@ if($result){
         break;
 
       case 'class':
+				// TODO: Показ таблицы как с модулями
+				// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу
+				// TODO: Добавить каждой ячейке таблицы с ответом tooltip, нажав на который покажется текст вопроса, правильный ответ и ответ ученика
         echo "
         <div class='data-preview'>
           Таблица результатов класса ".$class."
