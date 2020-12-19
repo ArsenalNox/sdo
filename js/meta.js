@@ -92,21 +92,35 @@ function processOptions(){
   return processedOptions+result+type;
 }
 
-function exportToExcel(sql) {
-  //?????
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log('Готово! (2)');
-      document.getElementById('s-holder').innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("POST", "php/functions/showAdditionalOptions.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("data=" + option);
-}
-
 function exportCurrentTable(){
   //Скорее всего придётся переделать на ссылку и просто открывать export.php и брать из сессии sql
   console.log('Экспортирую таблци......');
+}
+
+function showSimilar(id){
+	console.log(id)
+}
+
+function showQuetionPopUp(resultId, questionNumber){
+	console.log(resultId, questionNumber);
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function (){
+		if(this.readyState == 4 && this.status == 200){
+			//Создаём popup с данными и показываем
+			console.log(this.responseText)
+			let popUpDiv = document.createElement('div');
+			popUpDiv.className = 'popup-wrapper';
+			popUpDiv.id = 'pq';
+			popUpDiv.innerHTML = this.responseText;
+			document.body.append(popUpDiv);
+			document.addEventListener('click', (e) => {
+				if(!e.path.includes(popUpDiv) || (e.target.id == 'colse-popup-button')){
+					popUpDiv.remove();
+				}
+			})
+		}
+	}
+	xhttp.open("POST", "php/functions/showSpecificQuestion.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("resultId=" + resultId + "&questionNumber=" + questionNumber);
 }
