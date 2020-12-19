@@ -5,18 +5,28 @@ use PhpOffice\PhpSpreadsheet\Shared\OLE\ChainedBlockStream;
 session_start();
 include_once "../../dtb/dtb.php";
 
-function loadModuleAnswersTable($id, $link){
+function loadModuleAnswersTable($id, $link, int $maxQ = 0){
 	//Загружает ответы ученика на модуль
+	$loaded = 0;
 	$sql = "SELECT * FROM tr_".$id." ";
 	$result = mysqli_query($link, $sql);
 	if($result){
 		if(mysqli_num_rows($result)>0){
 			while($row = mysqli_fetch_assoc($result)){
+				$loaded++;
+				echo "<td style='background-color: ";
 				if($row['Correctness'] == 1){
-					echo "<td style='background-color: #00FF00; width: 20px; height: 20px;' >  </td>";
+					echo "#00FF00;";
 				} else {
-					echo "<td style='background-color: #FF0000; width: 20px; height: 20px;' >  </td>";
+					echo "#FF0000;";
 				}
+				echo " width: 20px; height: 20px;' onclick=showQuetionPopUp(".$id.",".$row['id'].")>  </td>";
+			}
+		}
+		if( $maxQ !== 0 ){
+			while($loaded < $maxQ){
+				echo "<td style='background-color: #FFFFFF; width: 20px; height: 20px;'> A </td>";
+				$loaded++;
 			}
 		}
 	}
@@ -52,6 +62,7 @@ function loadModuleQuestionQuant($moduleName, $link){
 }
 
 function loadMaxQuestionQuant($target, $link, string $targetLiteral = ''){
+	//Получает максимальное кол-во колонок ответов из текущего запроса
 	$sql = "SELECT DISTINCT module FROM test_results ";
 	if($targetLiteral !== ''){
 		switch($targetLiteral){
@@ -59,28 +70,25 @@ function loadMaxQuestionQuant($target, $link, string $targetLiteral = ''){
 					$sql .= "WHERE student = '$target' ";
 				break;
 			case "class":
-					$sql .= "WHERE student = '$target' ";
+					$sql .= "WHERE class = '$target' ";
 				break;
 			case "date":
-					$sql .= "WHERE student = '$target' ";
-				break;
-			case "student":
-					$sql .= "WHERE student = '$target' ";
+					$sql .= "WHERE date = '$target' ";
 				break;
 		}
 	}
+	$maxQnum['qnum'] = 0;
 	$result = mysqli_query($link, $sql);
-	$maxQnum = 0;
 	if($result){
 		if(mysqli_num_rows($result)>0){
 			while($row = mysqli_fetch_assoc($result)){
 				$newNum = loadModuleQuestionQuant($row['module'], $link);
-				if( $newNum > $maxQnum ){
-					$maxQnum = $newNum['question_quantity'];
+				if( $newNum['question_quantity'] > $maxQnum['qnum'] ){
+					$maxQnum['qnum'] = $newNum['question_quantity'];
 				}
 			}
-		}
-	}
+		}else{ $maxQnum['errors'] = 'Ошибка 2';}
+	}else{ $maxQnum['errors'] = 'Ошибка 1';}
 	return $maxQnum;
 }
 
@@ -199,7 +207,7 @@ if($result){
               <td> ".$row['student']."  </td>
               <td> ".$row['class']."    </td>
               <td> ".$row['date']."     </td>";
-	      loadModuleAnswersTable($row['id'], $conn);
+	      loadModuleAnswersTable($row['id'], $conn, $moduleQ['question_quantity']);
 	    echo "<td style='display:flex'> <a  style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
               Смотреть результат </a> <a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </button></td>
             </tr>
@@ -209,9 +217,14 @@ if($result){
         break;
 
       case 'class':
-				// TODO: Показ таблицы как с модулями
-				// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу
-				// TODO: Добавить каждой ячейке таблицы с ответом tooltip, нажав на который покажется текст вопроса, правильный ответ и ответ ученика
+	// TODO: Показ таблицы как с модулями
+	// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу	
+	// TODO: Добавить каждой ячейке таблицы с ответом tooltip, нажав на который покажется текст вопроса, правильный ответ и ответ ученика
+	$moduleQ = loadMaxQuestionQuant($class, $conn, 'class'); 
+	if(isset($moduleQ['errors'])){
+		echo $moduleQ['errors'];
+		die();
+	}
         echo "
         <div class='data-preview'>
           Таблица результатов класса ".$class."
@@ -221,8 +234,11 @@ if($result){
           <tr>
             <th> ФИО студента </th>
             <th> Модуль </th>
-            <th> Дата выполнения </th>
-	    <th> Действия </th>
+            <th> Дата выполнения </th>";	
+	for($i=1; $i<$moduleQ['qnum']+1; $i++){
+		echo"<th>$i</th>";	
+	}
+	echo "<th> Действия </th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -230,7 +246,9 @@ if($result){
           <tr>
             <td> ".$row['student']." </td>
             <td> ".$row['module']." </td>
-            <td> ".$row['date']." </td>
+	    <td> ".$row['date']." </td>";
+	    loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
+          echo"
             <td><a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
             Смотреть результат </a> </td>
           </tr>
