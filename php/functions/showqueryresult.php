@@ -18,7 +18,7 @@ function loadModuleAnswersTable($id, $link, int $maxQ = 0){
 					$crts = '1';
 				} else {
 					echo "#FF0000;";
-					$crts = '1';
+					$crts = '0';
 				}
 				echo " width: 20px; height: 20px; position:relative;' onclick=showQuetionPopUp(".$id.",".$row['id'].")> <span style='display:none'> $crts </span> </td>";
 			}
