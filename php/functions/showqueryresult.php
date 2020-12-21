@@ -363,7 +363,7 @@ if($result){
             <th> Модуль </th>
 	    <th> Дата выполнения </th>";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
-		echo"<th>$i</th>";	
+		echo"<th style='width:40px;'>$i</th>";	
 	}
 	echo"<th> Действия</th>
           </tr>
