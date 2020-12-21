@@ -25,7 +25,7 @@ function loadModuleAnswersTable($id, $link, int $maxQ = 0){
 		}
 		if( $maxQ !== 0 ){
 			while($loaded < $maxQ){
-				echo "<td style='background-color: #FFFFFF;' > X </td>";
+				echo "<td style='background-color: #FFFFFF;'>  </td>";
 				$loaded++;
 			}
 		}
@@ -212,7 +212,7 @@ if($result){
 	      echo "
 		<td style='display:flex'> 
 			<a style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
-			<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
+			<a style='width:50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
 		</td>
             </tr>
             ";
@@ -254,7 +254,7 @@ if($result){
 	    loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
           echo"
 	    <td style='display:flex'>
-		<a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> </td>
           </tr>
           ";
@@ -298,7 +298,7 @@ if($result){
 	  loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
           echo"
 	    <td style='display:flex'>
-   	    	<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+   	    	<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  </td>
           </tr>
           ";
@@ -335,7 +335,7 @@ if($result){
 	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
  	  echo"
 	    <td style='display:flex'> 
-		<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  
 	    </td>
           </tr>
@@ -379,7 +379,7 @@ if($result){
 	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
 	echo"
 	    <td style='display:flex'> 
-		<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
 	    </td>
           </tr>
