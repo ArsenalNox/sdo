@@ -199,7 +199,7 @@ if($result){
               <th> Дата выполнения </th>
 	";
 	for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
-		echo "<th style='width:30px; height:20px; position: relative;'>$i</th>";
+		echo "<th style='width:30px;'>$i</th>";
 	}
 	echo"<th>Действия</th></tr>";
           while ($row = mysqli_fetch_assoc($result)) {
@@ -210,9 +210,9 @@ if($result){
               <td> ".$row['date']."     </td>";
 	      loadModuleAnswersTable($row['id'], $conn, $moduleQ['question_quantity']);
 	      echo "
-		<td style='display:flex'> 
-			<a style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
-			<a style='width:50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
+		<td style='display:flex'>
+			<a style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>
+			<a style='width:50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>
 		</td>
             </tr>
             ";
@@ -222,9 +222,9 @@ if($result){
 
       case 'class':
 	// TODO: Показ таблицы как с модулями
-	// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу	
+	// TODO: Определить максимальное кол-во ответов из решённых этим классом модулей и построить соответсвущию таблицу
 	// TODO: Добавить каждой ячейке таблицы с ответом tooltip, нажав на который покажется текст вопроса, правильный ответ и ответ ученика
-	$moduleQ = loadMaxQuestionQuant($class, $conn, 'class'); 
+	$moduleQ = loadMaxQuestionQuant($class, $conn, 'class');
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		die();
@@ -238,13 +238,11 @@ if($result){
           <tr>
             <th> ФИО студента </th>
             <th> Модуль </th>
-            <th> Дата выполнения </th>";	
+            <th> Дата выполнения </th>";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
-		echo"<th>$i</th>";	
+		echo"<th style='width:30px'>$i</th>";
 	}
-	echo "<th> Действия </th>
-          </tr>
-        ";
+	echo "<th> Действия </th> </tr> ";
         while ($row = mysqli_fetch_assoc($result)) {
           echo "
           <tr>
@@ -254,7 +252,7 @@ if($result){
 	    loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
           echo"
 	    <td style='display:flex'>
-		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> </td>
           </tr>
           ";
@@ -264,7 +262,7 @@ if($result){
 
       case 'date':
 	//Вывод по дате
-	$moduleQ = loadMaxQuestionQuant($date, $conn, 'date'); 
+	$moduleQ = loadMaxQuestionQuant($date, $conn, 'date');
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		die();
@@ -282,9 +280,9 @@ if($result){
             <th> Модуль </th>
 	    <th> Дата выполнения </th>";
 	    for($i=1; $i<$moduleQ['qnum']+1; $i++){
-	    	echo"<th>$i</th>";	
+	    	echo"<th style='width:30px'>$i</th>";
 	    }
-	echo"   
+	echo"
     	    <th> Действия </th>
           </tr>
         ";
@@ -298,7 +296,7 @@ if($result){
 	  loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
           echo"
 	    <td style='display:flex'>
-   	    	<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+   	    	<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>
 		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  </td>
           </tr>
           ";
@@ -308,7 +306,7 @@ if($result){
 
       case 'student':
 	//За студента
-	$moduleQ = loadMaxQuestionQuant($student, $conn, 'student'); 
+	$moduleQ = loadMaxQuestionQuant($student, $conn, 'student');
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		die();
@@ -324,7 +322,7 @@ if($result){
             <th> Дата выполнения </th>
 	    ";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
-		echo"<th>$i</th>";	
+		echo"<th style='width:30px'>$i</th>";
 	}
 	echo"<th> Действия</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -334,9 +332,9 @@ if($result){
 	    <td> ".$row['date']." </td>";
 	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
  	  echo"
-	    <td style='display:flex'> 
-		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
-		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  
+	    <td style='display:flex'>
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>
 	    </td>
           </tr>
           ";
@@ -345,12 +343,12 @@ if($result){
         break;
 
       case 'all':
-	//Все резултаты      
-	$moduleQ = loadMaxQuestionQuant('all', $conn); 
+	//Все резултаты
+	$moduleQ = loadMaxQuestionQuant('all', $conn);
 	if(isset($moduleQ['errors'])){
 		echo $moduleQ['errors'];
 		die();
-	}     
+	}
 	echo "
         <div class='data-preview'>
           Полная таблица результатов
@@ -363,9 +361,9 @@ if($result){
             <th> Модуль </th>
 	    <th> Дата выполнения </th>";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
-		echo"<th style='width:40px;'>$i</th>";	
+		echo"<th style='width:30px;'>$i</th>";
 	}
-	echo"<th> Действия</th>
+	echo"<th> Действия </th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -378,9 +376,9 @@ if($result){
 	";
 	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
 	echo"
-	    <td style='display:flex'> 
-		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
-		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
+	    <td style='display:flex'>
+		<a style='width: 50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>
 	    </td>
           </tr>
           ";
