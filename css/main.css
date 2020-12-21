@@ -396,10 +396,11 @@ a {
 
 .test-list-wrapper{
   display: none;
-  width: 80%;
   position: relative;
   left: 50%;
   margin-top: 3rem;
+  margin-left: 10px;
+  margin-right: 10px;
   transform: translate(-50%,0);
   border: 1px solid black;
   padding: 1rem;

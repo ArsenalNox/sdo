@@ -21,10 +21,17 @@ if(isset($_POST['resultId']) && isset($_POST['questionNumber'])){
 			} else {
 				$answer = "<p style='color: #FF0000'> Ответ неправильный </p>";
 			}
+			if(isset($row['Image'])){
+				if($row['Image']!==''){
+					$image = "<img href='".$row['Image']."'>";
+				} else {$image = '';}
+			} else {$image = '';}
 			echo"
 				<div class='question-popup'> 
-					<p> Вопрос №".$row['id']." </p>	
+					<div id='colse-popup-button' style='float:right; border-bottom: 1px solid black; cursor: context-menu;'> закрыть </div> 
+					<p> Вопрос №".$row['id']." Вариант:".$row['Question_var']."</p>	
 					<p> Тип вопроса: $qtype </p>
+					$image	
 					<p> Текст вопроса:'".$row['Question_text']."' </p>
 					<p> Правильный ответ: '".$row['Correct_answer']."'</p>
 					<p> Ответ обучаещегося: '".$row['Given_answer']."'</p>
