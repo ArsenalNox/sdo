@@ -1,12 +1,10 @@
 <?php
 
-use PhpOffice\PhpSpreadsheet\Shared\OLE\ChainedBlockStream;
-
 session_start();
 include_once "../../dtb/dtb.php";
 
 function loadModuleAnswersTable($id, $link, int $maxQ = 0){
-	//Загружает ответы ученика на модуль
+	//Загружает ответы ученика за модуль
 	$loaded = 0;
 	$sql = "SELECT * FROM tr_".$id." ";
 	$result = mysqli_query($link, $sql);
@@ -17,15 +15,17 @@ function loadModuleAnswersTable($id, $link, int $maxQ = 0){
 				echo "<td style='background-color: ";
 				if($row['Correctness'] == 1){
 					echo "#00FF00;";
+					$crts = '1';
 				} else {
 					echo "#FF0000;";
+					$crts = '1';
 				}
-				echo " width: 20px; height: 20px;' onclick=showQuetionPopUp(".$id.",".$row['id'].")>  </td>";
+				echo " width: 20px; height: 20px; position:relative;' onclick=showQuetionPopUp(".$id.",".$row['id'].")> <span style='display:none'> $crts </span> </td>";
 			}
 		}
 		if( $maxQ !== 0 ){
 			while($loaded < $maxQ){
-				echo "<td style='background-color: #FFFFFF; width: 20px; height: 20px;'> A </td>";
+				echo "<td style='background-color: #FFFFFF;' > X </td>";
 				$loaded++;
 			}
 		}
@@ -189,6 +189,7 @@ if($result){
           <div class='data-preview'>
             <p>Таблица результатов модуля ".$module."</p>
             <p>Кол-во учеников, выполнивших данный модуль ".mysqli_num_rows($result)."</p>
+	    <hr>
           </div>
           <br>
           <table>
@@ -198,7 +199,7 @@ if($result){
               <th> Дата выполнения </th>
 	";
 	for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
-		echo "<th>$i</th>";
+		echo "<th style='width:30px; height:20px; position: relative;'>$i</th>";
 	}
 	echo"<th>Действия</th></tr>";
           while ($row = mysqli_fetch_assoc($result)) {
@@ -208,8 +209,11 @@ if($result){
               <td> ".$row['class']."    </td>
               <td> ".$row['date']."     </td>";
 	      loadModuleAnswersTable($row['id'], $conn, $moduleQ['question_quantity']);
-	    echo "<td style='display:flex'> <a  style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-              Смотреть результат </a> <a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </button></td>
+	      echo "
+		<td style='display:flex'> 
+			<a style='width:50%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+			<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
+		</td>
             </tr>
             ";
           }
@@ -249,14 +253,23 @@ if($result){
 	    <td> ".$row['date']." </td>";
 	    loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
           echo"
-            <td><a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-            Смотреть результат </a> </td>
+	    <td style='display:flex'>
+		<a style='width:100%' class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> </td>
           </tr>
           ";
         }
         echo "</table>";
         break;
+
       case 'date':
+	//Вывод по дате
+	$moduleQ = loadMaxQuestionQuant($date, $conn, 'date'); 
+	if(isset($moduleQ['errors'])){
+		echo $moduleQ['errors'];
+		die();
+	}
+
         echo "
         <div class='data-preview'>
           Таблица результатов за ".$date."
@@ -267,8 +280,12 @@ if($result){
             <th> ФИО студента </th>
             <th> Класс </th>
             <th> Модуль </th>
-            <th> Дата выполнения </th>
-<th>Действия</th>
+	    <th> Дата выполнения </th>";
+	    for($i=1; $i<$moduleQ['qnum']+1; $i++){
+	    	echo"<th>$i</th>";	
+	    }
+	echo"   
+    	    <th> Действия </th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -277,8 +294,12 @@ if($result){
             <td> ".$row['student']." </td>
             <td> ".$row['class']."</td>
             <td> ".$row['module']." </td>
-            <td> ".$row['date']." </td>
-              <td><a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a>  </td>
+	    <td> ".$row['date']." </td>";
+	  loadModuleAnswersTable($row['id'],$conn, $moduleQ['qnum']);
+          echo"
+	    <td style='display:flex'>
+   	    	<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  </td>
           </tr>
           ";
         }
@@ -286,6 +307,12 @@ if($result){
         break;
 
       case 'student':
+	//За студента
+	$moduleQ = loadMaxQuestionQuant($student, $conn, 'student'); 
+	if(isset($moduleQ['errors'])){
+		echo $moduleQ['errors'];
+		die();
+	}
         echo "
         <div class='data-preview'>
           Таблица результатов обучающегося ".$student."
@@ -295,23 +322,36 @@ if($result){
           <tr>
             <th> Модуль </th>
             <th> Дата выполнения </th>
-            <th>Действия</th>
-          </tr>
-        ";
+	    ";
+	for($i=1; $i<$moduleQ['qnum']+1; $i++){
+		echo"<th>$i</th>";	
+	}
+	echo"<th> Действия</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
           echo "
           <tr>
             <td> ".$row['module']." </td>
-            <td> ".$row['date']." </td>
-	    <td><a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-            Смотреть результат </a> </td>
+	    <td> ".$row['date']." </td>";
+	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
+ 	  echo"
+	    <td style='display:flex'> 
+		<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a>  
+	    </td>
           </tr>
           ";
         }
         echo "</table>";
         break;
+
       case 'all':
-        echo "
+	//Все резултаты      
+	$moduleQ = loadMaxQuestionQuant('all', $conn); 
+	if(isset($moduleQ['errors'])){
+		echo $moduleQ['errors'];
+		die();
+	}     
+	echo "
         <div class='data-preview'>
           Полная таблица результатов
         </div>
@@ -321,8 +361,11 @@ if($result){
             <th> ФИО студента </th>
             <th> Класс </th>
             <th> Модуль </th>
-            <th> Дата выполнения </th>
-	    <th>Действия</th>
+	    <th> Дата выполнения </th>";
+	for($i=1; $i<$moduleQ['qnum']+1; $i++){
+		echo"<th>$i</th>";	
+	}
+	echo"<th> Действия</th>
           </tr>
         ";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -332,18 +375,20 @@ if($result){
             <td> ".$row['class']."</td>
             <td> ".$row['module']." </td>
             <td> ".$row['date']." </td>
-	    <td> <a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'>
-            Смотреть результат </a> </td>
+	";
+	loadModuleAnswersTable($row['id'], $conn, $moduleQ['qnum']);
+	echo"
+	    <td style='display:flex'> 
+		<a class='veiwlink' href='viewresult.php?td=tr_".$row['id']."' target='_blank'> Смотреть результат </a> 
+		<a style='width: 50%' href='#' onclick='showSimilar(".$row['id'].")'> Смотреть похожее </a> 
+	    </td>
           </tr>
           ";
         }
         echo "</table>";
       break;
     }
-    echo "<br>
-    <p>
-    <a class='tabling' href='php/functions/export.php'> Экспортировать данную таблицу </a>
-    </p>";
+	// echo "<br> <p> <a class='tabling' href='php/functions/export.php'> Экспортировать данную таблицу </a> </p>";
   } else {
     echo "По данному запросу отсутсвуют результаты";
   }
