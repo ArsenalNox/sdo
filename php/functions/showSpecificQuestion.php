@@ -23,7 +23,7 @@ if(isset($_POST['resultId']) && isset($_POST['questionNumber'])){
 			}
 			if(isset($row['Image'])){
 				if($row['Image']!==''){
-					$image = "<img src=/sdo/".$row['Image']."'>";
+					$image = "<img src=/sdo".$row['Image']."'>";
 				} else {$image = '';}
 			} else {$image = '';}
 			echo"
