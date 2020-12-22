@@ -8,7 +8,7 @@ function showAllResults() {
   var method = document.getElementById('ms1').value;
   var sort = document.getElementById('ss1').value;
   var additionalOptions = processOptions();
-  console.log(' Запрос ' + method + ", " + request + ", " + sort + ' дополнительные опции: ' + additionalOptions);
+  console.log('Запрос данных для таблицы...');
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
