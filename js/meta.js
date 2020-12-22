@@ -15,6 +15,7 @@ function showAllResults() {
       console.log('Готово!');
       document.getElementById('tlw1').style.display = 'grid';
       document.getElementById('tlw1').innerHTML = this.responseText;
+      createResultGraph();
     }
   };
   xhttp.open("POST", "php/functions/showqueryresult.php", true);
@@ -184,4 +185,39 @@ function sortTable(n) {
   } catch (err) {
     console.log(err);
   }
+}
+
+function createResultGraph(){
+	try{
+		var table = document.getElementById('table-1');
+		let th = table.rows[0].getElementsByTagName("TH")
+		for(let i = 0; i< (th.length); i++){
+			if(th[i].className == 'table-head-clickable'){
+				//Генерация канваса 
+				let bounding = th[i].getBoundingClientRect();
+				let canvasBox = document.createElement('canvas');
+				let width = (2+parseInt(th[i].style.width));
+				let height = (2+parseInt(th[i].style.height));
+				console.log(width, height);
+				canvasBox.className = 'abs-pos-canvas';
+				canvasBox.style.position = 'absolute';
+				canvasBox.style.top = (bounding['y'] - Math.round(bounding['height']) )+'px'; 
+				canvasBox.style.left = bounding['x']+'px';
+				canvasBox.style.width = (2+parseInt(th[i].style.width))+'px';
+				canvasBox.style.height = (2+parseInt(th[i].style.height))+'px';
+				canvasBox.style.border = "1px solid black";
+				document.body.append(canvasBox);
+				ctx = canvasBox.getContext('2d');
+				ctx.fillStyle = '#00FF00';
+				ctx.fillRect(0,0, canvasBox.width, canvasBox.height);
+				
+				//Заполнение канваса данными
+				for(){
+				
+				}		
+			}
+		}
+	}catch(err) {
+		console.log(err)
+	}
 }

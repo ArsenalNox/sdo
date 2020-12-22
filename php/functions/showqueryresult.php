@@ -210,7 +210,8 @@ if($result){
 			onclick='sortTable(".($i+2).")' 
 			style='width:30px; height:20px; position: relative;'
 			title='".$moduleQ["qtype_$i"]."'
-			id='$i'>$i</th>";
+			class='table-head-clickable'
+			id='th_$i'>$i</th>";
 	}
 	echo"<th>Действия</th></tr>";
           while ($row = mysqli_fetch_assoc($result)) {
