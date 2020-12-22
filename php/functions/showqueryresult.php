@@ -237,8 +237,8 @@ if($result){
         <table id='table-1'>
           <tr>
             <th onclick='sortTable(0)'> ФИО студента </th>
-            <th onclick='sortTable(0)'> Модуль </th>
-            <th onclick='sortTable(0)'> Дата выполнения </th>";
+            <th onclick='sortTable(1)'> Модуль </th>
+            <th onclick='sortTable(2)'> Дата выполнения </th>";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
 		echo"<th onclick='sortTable(".($i+2).")' >$i</th>";
 	}
@@ -278,11 +278,11 @@ if($result){
         <table id='table-1'>
           <tr>
             <th onclick='sortTable(0)'> ФИО студента </th>
-            <th onclick='sortTable(0)'> Класс </th>
-            <th onclick='sortTable(0)'> Модуль </th>
-	    <th> Дата выполнения </th>";
+            <th onclick='sortTable(1)'> Класс </th>
+            <th onclick='sortTable(2)'> Модуль </th>
+	    <th onclick='sortTable(3)'> Дата выполнения </th>";
 	    for($i=1; $i<$moduleQ['qnum']+1; $i++){
-	    	echo"<th onclick='sortTable(".($i+2).")' >$i</th>";
+	    	echo"<th onclick='sortTable(".($i+3).")' >$i</th>";
 	    }
 				  echo"
     	    <th> Действия </th>
@@ -321,10 +321,10 @@ if($result){
         <table id='table-1'>
           <tr>
             <th onclick='sortTable(0)'> Модуль </th>
-            <th onclick='sortTable(0)'> Дата выполнения </th>
+            <th onclick='sortTable(1)'> Дата выполнения </th>
 	    ";
 	for($i=1; $i<$moduleQ['qnum']+1; $i++){
-		echo"<th onclick='sortTable(".($i+2).")' >$i</th>";
+		echo"<th onclick='sortTable(".($i+1).")' >$i</th>";
 	}
 	echo"<th> Действия</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
