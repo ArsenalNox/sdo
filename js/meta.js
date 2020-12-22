@@ -2,7 +2,7 @@ function showAllResults() {
   //Выводит запрашиваемые данные в таблицу
   try {
     var request = document.getElementById('dvm1').value;
-  } catch {
+  } catch  {
     var request = 'none';
   }
   var method = document.getElementById('ms1').value;
@@ -15,7 +15,7 @@ function showAllResults() {
       console.log('Готово!');
       document.getElementById('tlw1').style.display = 'grid';
       document.getElementById('tlw1').innerHTML = this.responseText;
-      createResultGraph();
+      if(method == 'module'){createResultGraph();}
     }
   };
   xhttp.open("POST", "php/functions/showqueryresult.php", true);
@@ -93,12 +93,8 @@ function processOptions() {
   return processedOptions + result + type;
 }
 
-function exportCurrentTable() {
-  //Скорее всего придётся переделать на ссылку и просто открывать export.php и брать из сессии sql
-  console.log('Экспортирую таблци......');
-}
-
 function showSimilar(id) {
+  // TODO: Показ похожиз результатов
   console.log(id)
 }
 
@@ -127,7 +123,14 @@ function showQuetionPopUp(resultId, questionNumber) {
 
 function sortTable(n) {
   try {
-    var table, rows, switching, i, x, y, shouldSwitch, dir
+    var table,
+      rows,
+      switching,
+      i,
+      x,
+      y,
+      shouldSwitch,
+      dir
     var switchcount = 0;
     table = document.getElementById('table-1');
     switching = true;
@@ -181,43 +184,55 @@ function sortTable(n) {
       }
     }
 
-
   } catch (err) {
     console.log(err);
   }
 }
 
-function createResultGraph(){
-	try{
-		var table = document.getElementById('table-1');
-		let th = table.rows[0].getElementsByTagName("TH")
-		for(let i = 0; i< (th.length); i++){
-			if(th[i].className == 'table-head-clickable'){
-				//Генерация канваса 
-				let bounding = th[i].getBoundingClientRect();
-				let canvasBox = document.createElement('canvas');
-				let width = (2+parseInt(th[i].style.width));
-				let height = (2+parseInt(th[i].style.height));
-				console.log(width, height);
-				canvasBox.className = 'abs-pos-canvas';
-				canvasBox.style.position = 'absolute';
-				canvasBox.style.top = (bounding['y'] - Math.round(bounding['height']) )+'px'; 
-				canvasBox.style.left = bounding['x']+'px';
-				canvasBox.style.width = (2+parseInt(th[i].style.width))+'px';
-				canvasBox.style.height = (2+parseInt(th[i].style.height))+'px';
-				canvasBox.style.border = "1px solid black";
-				document.body.append(canvasBox);
-				ctx = canvasBox.getContext('2d');
-				ctx.fillStyle = '#00FF00';
-				ctx.fillRect(0,0, canvasBox.width, canvasBox.height);
-				
-				//Заполнение канваса данными
-				for(){
-				
-				}		
-			}
-		}
-	}catch(err) {
-		console.log(err)
-	}
+function createResultGraph() {
+  //Создаёт по канвасу каждому столбцу с номером задания, заполнеят его в зависимости от процента правильного выполнения
+  try {
+    var table = document.getElementById('table-1');
+    let th = table.rows[0].getElementsByTagName("TH")
+    for (let i = 0; i < (th.length); i++) {
+      if (th[i].className == 'table-head-clickable') {
+
+        //Генерация канваса
+        let bounding = th[i].getBoundingClientRect();
+        let canvasBox = document.createElement('canvas');
+        let width = (2 + parseInt(th[i].style.width));
+        let height = (2 + parseInt(th[i].style.height));
+        canvasBox.className = 'abs-pos-canvas';
+        canvasBox.style.position = 'absolute';
+        canvasBox.style.top = (bounding['y'] - Math.round(bounding['height'])) + 'px';
+        canvasBox.style.left = bounding['x'] + 'px';
+        canvasBox.style.width = (2 + parseInt(th[i].style.width)) + 'px';
+        canvasBox.style.height = (2 + parseInt(th[i].style.height)) + 'px';
+        canvasBox.style.border = "1px solid black";
+        document.body.append(canvasBox);
+        ctx = canvasBox.getContext('2d');
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect(0, 0, canvasBox.width, canvasBox.height);
+
+        //Считывание и обработка данных с таблицы
+        let count = 0;
+        let correctCount = 0;
+        for (let j = 1; j < table.rows.length; j++) {
+          count++;
+          let content = parseInt(table.rows[j].getElementsByTagName("TD")[i].textContent);
+          if (content) {
+            correctCount++;
+          }
+        }
+        let percent = Math.round((correctCount/count)*100);
+        console.log(count, correctCount, percent);
+        ctx.fillStyle = '#00FF00';
+        if(percent!==100){
+          ctx.fillRect(0, 0, canvasBox.width,  Math.round((correctCount/count)*canvasBox.height ));
+        }
+      }
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }

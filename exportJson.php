@@ -6,10 +6,35 @@
   </head>
   <body>
     <?php
-
       include_once 'dtb/dtb.php';
-      function export($id,$link){
 
+      function getStudentId($student, $link){
+        //получаем айди студента
+        $studentName = explode(" ", $student);
+        $firstName = $studentName[1];
+        $lastName = $studentName[0];
+        $studIdSql = "SELECT ID,GROUP_STUDENT_ID FROM student WHERE LAST_NAME='$lastName' and NAME='$firstName'";
+        echo $studIdSql;
+        $studQuery = mysqli_query($link, $studIdSql);
+        if($studQuery){
+          $studIdRow = mysqli_fetch_assoc($studQuery);
+        } else {
+          $studIdRow = 'ERROR';
+          return $studIdRow;
+        }
+        return $studIdRow;
+      }
+
+      function getModuleSubject($id, $link){
+        $sql = "SELECT subject FROM new_module WHERE Name in (SELECT DISTINCT module FROM test_results WHERE id='$id')";
+        $result=mysqli_query($link, $sql);
+        if($result){
+          $ret = mysqli_fetch_assoc($result);
+          return $ret['subject'];
+        } else return 'ERROR';
+      }
+
+      function export($id,$link){
         $sql = "SELECT * FROM test_results WHERE id = '$id' ";
         $result = mysqli_query($link, $sql);
         if($result){
@@ -17,11 +42,13 @@
           $result2 = mysqli_query($link, $sql2);
           if($result2){
             $row = mysqli_fetch_assoc($result);
+            $stIds = getStudentId($row['student'], $link);
             $jsonArrayMeta['test_id'] = $row['id'];
-            $jsonArrayMeta['student'] = $row['student'];
-            $jsonArrayMeta['class'] = $row['class'];
+            $jsonArrayMeta['studentId'] = $stIds['ID'];
+            $jsonArrayMeta['classId'] = $stIds['GROUP_STUDENT_ID'];
             $jsonArrayMeta['date'] = $row['date'];
             $jsonArrayMeta['module'] = $row['module'];
+            $jsonArrayMeta['subject'] = getModuleSubject($row['id'], $link);
             while($row = mysqli_fetch_assoc($result2)){
               $jsonTestContents['Question_num'] = $row['id'];
               $jsonTestContents['Question_var'] = $row['Question_var'];
@@ -30,13 +57,13 @@
               $jsonTestContents['Given_answer'] = $row['Correct_answer'];
               $jsonTestContents['Correctness'] = $row['Correctness'];
               $jsonTestContents['qtype'] = $row['qtype'];
-              $jsonArrayHolder["question_".$row['id']] = $jsonTestContents;
+              $jsonArrayHolder[] = $jsonTestContents;
             }
             $jsonArray['meta'] = $jsonArrayMeta;
             $jsonArray['test_content'] = $jsonArrayHolder;
             $actj['test'] = $jsonArray;
+            // print_r($actj);
             return $actj;
-            $actj = json_encode($actj);
           }
         }
 
