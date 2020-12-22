@@ -48,10 +48,17 @@ function loadModuleQuestionQuant($moduleName, $link){
 				$string = file_get_contents($path);
 				$moduleJSON = json_decode($string, true);
 				$qquant = 0;
+				$qNumCurrent = 1;
 				foreach($moduleJSON as $struct => $quest){
 					if(isset($quest['QUESTION_NUM'])){
 						$qquant = $quest['QUESTION_NUM'];
 					}
+					if(isset($quest['QUESTION_TYPE'])){
+						$data["qtype_$qNumCurrent"] = $quest['QUESTION_TYPE']; 
+					} else {
+						$data["qtype_$qNumCurrent"] = 'Тип отсутвует';
+					}
+					$qNumCurrent++;		
 				}
 				$data['question_quantity'] = $qquant;
 			} else {$error = 'Ошибка 3: Не удалось получить инофрмацию о модуле.';}
@@ -199,7 +206,11 @@ if($result){
               <th onclick='sortTable(2)'> Дата выполнения </th>
 	";
 	for($i=1; $i < $moduleQ['question_quantity']+1; $i++){
-		echo "<th onclick='sortTable(".($i+2).")' style='width:30px; height:20px; position: relative;'>$i</th>";
+		echo "<th 
+			onclick='sortTable(".($i+2).")' 
+			style='width:30px; height:20px; position: relative;'
+			title='".$moduleQ["qtype_$i"]."'
+			id='$i'>$i</th>";
 	}
 	echo"<th>Действия</th></tr>";
           while ($row = mysqli_fetch_assoc($result)) {
