@@ -31,26 +31,9 @@ $uid = $_SESSION['UID'];
     $question_text = $_SESSION["QUESTION_$i"];
     $question_answer_given = $_POST["ANSW_$i"];
     $question_answer_correct = $_SESSION["CORRECT_ANSW_$i"];
-    // echo "
-    // <div class='question-result'>
-    //   <p> Номер вопроса $i</p>
-    //   <p> Текст вопрос: $question_text</p>
-    //   ";
     if(strcasecmp($question_answer_given,$question_answer_correct) == 0){
-      // echo "
-      // <p> Ответ ученика: '$question_answer_given'. </p>
-      // <p> Ответ правильный. </p>
-      // ";
       $correct_answers++;
     }
-    // else {
-    //   echo "
-    //   <p> Ответ ученика: '$question_answer_given'. </p>
-    //   <p> Ответ не правильный!</p>";
-    //   }
-    // echo "
-    // </div>
-    // ";
   }
   if($correct_answers == 0){
     $percent = "0%";
@@ -64,14 +47,21 @@ $uid = $_SESSION['UID'];
     if(mysqli_num_rows($check) == 0){
       $today = date("Y-m-d");
       $group = $_SESSION['GROUP_UID'];
-      $sql = "INSERT INTO `test_results`(`student`, `class`, `date`, `module`, `percent`) VALUES (
-        '$student',
+      if(isset($_SESSION['TEST_ID'])){
+        $module_id = $_SESSION['TEST_ID'];
+      }else{
+      	$module_id = '0';
+      }
+      $sql = "INSERT INTO `test_results` (`test_id`, `student`, `class`, `date`, `module`, `percent`, `sent`) VALUES (
+	'$module_id',      
+	'$student',
         '$group',
         '$today',
         '$module_name',
-        '$percent'
+	'$percent',
+	'0'
       )";
-      // echo "$sql";
+     // echo "$sql";
       $result = mysqli_query($conn, $sql);
       if($result){
         //Создание отдельной таблицы для хранения детальных результатов теста
@@ -111,7 +101,7 @@ $uid = $_SESSION['UID'];
 	  }else{
 	  	$qtype = 'empty';
 	  }
-          echo "$image";
+   //       echo "$image";
           if(strcasecmp($question_answer_given,$question_answer_correct) == 0){$correct = 1;} else {
             $correct = 0;
           }
