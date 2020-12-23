@@ -21,12 +21,12 @@ $path = $row['Questions'];
 $string = file_get_contents("../../$path");
 $json_a = json_decode($string, true);
 
+$_SESSION['MODULE'] = $test_name;
+$_SESSION['TEST_SUBJECT'] = $test_subject;
+$_SESSION['TEST_ID'] = $row['id']; 
 $qselector = 1;
 $selector = 1;
 $i = 0;
-$_SESSION['MODULE'] = $test_name;
-$_SESSION['TEST_SUBJECT'] = $test_subject;
-
 $showmeta = true;
 $vars = 1;
 // TODO: Глобальный таймер для ученика на выполнение теста
@@ -79,82 +79,24 @@ foreach ($json_a as $struct => $quest) {
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';
           }
-          if(isset($quest['TYPE']) ){
-            switch ($quest['TYPE']) {
-            // TODO: Переписать вывод кол-ва вопросов в зависимости от их наличия в json, что убирает необходимость в NUM_ANSW (if isset)
-            // TODO: (Под вопросом) Убрать проверку на тип вопроса и всегда выводить выбор ответа
-                //С открытым ответом
-                case 'open':
-                  echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " <br> ";
-                  if(isset($quest['NUM_ANSW'])){
-                    switch ($quest['NUM_ANSW']) {
-                      case '4':
-                          echo "
-                          A) " . $quest['A'] . "
-                          B) " . $quest['B'] . "
-                          C) " . $quest['C'] . "
-                          D) " . $quest['D'] . "</p>";
-                        break;
-                      case '2':
-                          echo "
-                          A) " . $quest['A'] . "
-                          B) " . $quest['B'] . "
-                          </p>";
-                        break;
-                    }
-                  } else {
-                    echo "
-                    A) " . $quest['A'] . "
-                    B) " . $quest['B'] . "
-                    C) " . $quest['C'] . "
-                    D) " . $quest['D'] . "</p>";
-                  }
-                  echo "
-                  <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
-                  <hr> </div>";
-                  break;
+		echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " </p> <br>";
+		  if(isset($quest['A'])){
+			echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>"; 
+		  }		  
+		  if(isset($quest['B'])){
+			echo "<input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."' required> <label for='B$qselector'> B) ".$quest['B']." </label> <br>"; 
+		  }
+		  if(isset($quest['C'])){
+			echo "<input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."' required> <label for='C$qselector'> C) ".$quest['C']." </label> <br>"; 
+		  }
+		  if(isset($quest['D'])){
+			echo "<input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."' required> <label for='D$qselector'> D) ".$quest['D']." </label> <br>"; 
+		  }
+		  if(isset($quest['E'])){
+			echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>"; 
+		  }
+		echo "<hr> </div>";
 
-                //С выбором ответа
-                case 'choose-answer':
-                  echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " </p> <br>";
-                  if(isset($quest['NUM_ANSW'])){
-                    switch ($quest['NUM_ANSW']) {
-                      case '4':
-                          echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
-                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
-                          <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
-                          <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
-                          <hr> </div>";
-                        break;
-                      case '2':
-                          echo "
-                          <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
-                          <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
-                          <br>
-                          <hr> </div>";
-                        break;
-                  }}else {
-                    echo "
-                    <input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>
-                    <input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."'> <label for='B$qselector'> B) ".$quest['B']." </label> <br>
-                    <input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."'> <label for='C$qselector'> C) ".$quest['C']." </label> <br>
-                    <input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."'> <label for='D$qselector'> D) ".$quest['D']." </label> <br>
-                    <br>
-                    <hr> </div>";
-                  }
-                  break;
-
-              }
-            } else {
-              echo "<p style='color: #606060;'>" .  $quest['QUESTION'] . " <br>
-              A) " . $quest['A'] . "
-              B) " . $quest['B'] . "
-              C) " . $quest['C'] . "
-              D) " . $quest['D'] . "</p>
-              <br> <input name='ANSW_$qselector' type='text' class='answer' placeholder='Ваш ответ'>
-              <hr> </div>";
-            }
             $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
             $qselector++;
         }
