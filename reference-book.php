@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$referLessons = array('Математика','математика','физика','Физика','Химия','химия');
+$referLessons = array('физика','Физика','Химия','химия');
 if(isset($_POST['test_request'])){
 	if(isset($_SESSION['TEST_SUBJECT'])){
 		if(in_array($_SESSION['TEST_SUBJECT'], $referLessons)){

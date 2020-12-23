@@ -189,8 +189,8 @@ function tick(){
   document.getElementById('timer').innerText = timeLeftMinutes + ':' + timeLeftSeconds;
   if( (timeToComplete-timePassedSeconds) < 0 ){
       clearInterval(timer);
-      alert('Время на выполнение теста вышло, \nваши ответы будут записанны как есть.');
       stopTest('timeout');
+      alert('Время на выполнение теста вышло, \nответы будут записанны как есть.');
   }
 }
 
@@ -213,3 +213,4 @@ function loadReferenceBook(){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("test_request=1");
 }
+
