@@ -1,7 +1,6 @@
 <?php
 include_once "dtb/dtb.php";
 include_once "php/functions/checkAuth.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +22,7 @@ include_once "php/functions/checkAuth.php";
       <a href="panel.php" class="to-crmd">
         <button class="to-crmd">Назад</button>
       </a>
+      <a href="viewDataStat.php" style='float:right; width: auto'>Статус отправки</a> 
       <hr>
       <div class="method-select-wrapper">
         Провести выбор по:
