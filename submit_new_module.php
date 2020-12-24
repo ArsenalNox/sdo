@@ -26,7 +26,7 @@ if(!is_dir($path)){
 $data[] = array(
   'Module_name' => "".$_POST['Module_name']."",
   'module_subject' => "".$_POST['module_subject']."",
-  'quest_quantity_actual' => "".$_POST['quest_quantity_actual']."",
+  'quest_quantity' => "".$_POST['quest_quantity_actual']."",
   'class' => "".$_POST['class']."");
 
 //Проходим по всем вопросам
