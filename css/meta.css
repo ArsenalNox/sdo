@@ -1,6 +1,6 @@
 .data-div{
-	width: 40%;
-	height: 120px;
+	width: 70%;
+	height: fit-content;
 	border: 1px solid black;
 	position: relative;
 	top: 50%;
