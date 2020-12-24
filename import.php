@@ -83,7 +83,7 @@ if(isset($_COOKIE['STS'])){
 		  $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
 		  //$testText = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
 		  //print_r($testText);
-			  
+
                   if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<1 ) {
                     $variant++;
                     continue;
@@ -127,7 +127,7 @@ if(isset($_COOKIE['STS'])){
             }
             echo"
             Найдено $qnum вопросов, всего с вариантами $qquant
-            <input type='hidden' name='quest_quantity' value='$qnum'>
+            <input type='hidden' name='quest_quantity' value='$qquant'>
             <button> Загрузить данный модуль </button>  </form> ";
           }
         }
