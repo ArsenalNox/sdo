@@ -200,8 +200,6 @@ function createResultGraph() {
         //Генерация канваса
         let bounding = th[i].getBoundingClientRect();
         let canvasBox = document.createElement('canvas');
-        let width = (2 + parseInt(th[i].style.width));
-        let height = (2 + parseInt(th[i].style.height));
         canvasBox.className = 'abs-pos-canvas';
         canvasBox.style.position = 'absolute';
         canvasBox.style.top = (bounding['y'] - Math.round(bounding['height'])) + 'px';
@@ -229,7 +227,9 @@ function createResultGraph() {
         ctx.fillStyle = '#00FF00';
         if(percent!==100){
           ctx.fillRect(0, 0, canvasBox.width,  Math.round((correctCount/count)*canvasBox.height ));
-        }
+        } else {
+	  ctx.fillRect(0, 0, canvasBox.width,  canvasBox.height);
+	}
       }
     }
   } catch (err) {
