@@ -128,6 +128,7 @@ if(isset($_COOKIE['STS'])){
             echo"
             Найдено $qnum вопросов, всего с вариантами $qquant
             <input type='hidden' name='quest_quantity' value='$qquant'>
+	    <input type='hidden' name='quest_quantity_actual' value='$qnum'>
             <button> Загрузить данный модуль </button>  </form> ";
           }
         }
