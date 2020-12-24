@@ -17,7 +17,7 @@ function getDataCommonInfo(){
 			let div = document.getElementById('ddy1');
 			div.style.display = 'block';
 			if(response.errors){
-				div.innerHTML = 'При запросе произошла, текст ошибки:" ' + response.errors + "'";
+				div.innerHTML =  response.errors ;
 			} else {
 				if(response.notSent !== 0 ){
 					dataStatusP.innerHTML = '';
