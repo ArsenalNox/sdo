@@ -1,13 +1,14 @@
 <?php
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
+if(isset($_POST['test_ids'])){
+	$testIds = $_POST['test_ids'];
+	$postData = json_decode($testIds);
 
-include_once "../../../dtb/dtb.php";
+	$cURLConnection = curl_init('http://localhost/dataAggr/index.php');
+	curl_setopt($cURLConnection, CURLOPT_POSTFIELDS, $postData);
+	curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
 
-$sql = "SELECT * FROM test_results WHERE sent = '0'";
-$result = mysqli_query($conn, $sql);
-$i = 0;
-echo "data: $sql";
-
-flush();
+	$api_respone = curl_exec($cURLConnection);
+	curl_close($cURLConnection);
+	echo $api_respone;
+}
 ?>

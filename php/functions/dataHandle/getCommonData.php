@@ -2,7 +2,7 @@
 include_once "../../../dtb/dtb.php";
 function getStudentId($student, $link){
 
-        //получаем айди студента
+        //получаем айди студента и айди класса
         $studentName = explode(" ", $student);
         $firstName = $studentName[1];
         $lastName = $studentName[0];
@@ -28,7 +28,7 @@ if($result){
 			$test['id'] = $row['id'];
 			$test['date'] = $row['date'];
 			$test['student'] = getStudentId($row['student'], $conn);
-			$testData[] = $test; 
+			$testData[] = $test;
 		}
 	}
 	$data['testData'] = $testData;

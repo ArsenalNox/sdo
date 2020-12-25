@@ -1,6 +1,7 @@
 var source;
 var lastTestQuantity = NaN;
 var progressTimer;
+var recievedIds = [];
 
 function getDataCommonInfo(){
 	//Получает общую инофрмацию об неотправенных данных
@@ -50,6 +51,8 @@ function getDataCommonInfo(){
 					table.append(tr)
 					for(i in response.testData){
 						let tr = document.createElement('tr');
+						recievedIds.push(response.testData[i].id)
+						tr.id = response.testData[i].id;
 						let td1 = document.createElement('td');
 						td1.innerText = '000001.';
 						td1.innerText += fillWithZeroes(response.testData[i].student.GROUP_STUDENT_ID,6)+"."
@@ -63,9 +66,9 @@ function getDataCommonInfo(){
 						table.append(tr)
 					}
 					div.append(table)
-					}	
+					}
 				} else {
-					div.innerHTML = 'Все тесты успешно отправленны.';		
+					div.innerHTML = 'Все тесты успешно отправленны.';
 				}
 			}
 		}
@@ -79,7 +82,32 @@ function initiateSending(option){
 	console.log(option)
 	progressTimer = setInterval(()=>{
 		console.log('Checking for updates...')
-	},1000)		
+	},1000)
+}
+
+function checkUpdate(ids){
+	console.log('checking', ids);
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			//Сверяем отправленные айди с хранящимися
+			console.log(this.responseText);
+			let data = JSON.parse(this.response);
+			if(data.sentIds){
+			for(i in data.sentIds){
+					if(recievedIds.includes(data.sentIds[i])){
+						document.getElementById(data.sentIds[i]).style.backgroundColor = '#7fff00';
+					} else {
+						console.log('Был получен неожиданный айди '+data.sentIds[i])
+					}
+
+				}
+			}
+		}
+	}
+	xhttp.open('POST', 'php/functions/dataHandle/sendData.php', true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send('test_ids='+ids);
 }
 
 function fillWithZeroes(string, desiredLenght){
