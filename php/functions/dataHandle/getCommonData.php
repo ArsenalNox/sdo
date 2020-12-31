@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "../../../dtb/dtb.php";
 function getStudentId($student, $link){
 
@@ -17,8 +18,6 @@ function getStudentId($student, $link){
         return $studIdRow;
 }
 
-
-
 $sql = 'SELECT * FROM test_results WHERE sent = 0';
 $result = mysqli_query($conn, $sql);
 if($result){
@@ -28,10 +27,12 @@ if($result){
 			$test['id'] = $row['id'];
 			$test['date'] = $row['date'];
 			$test['student'] = getStudentId($row['student'], $conn);
+			$test['module'] = $row['module'];
 			$testData[] = $test;
 		}
 	}
 	$data['testData'] = $testData;
+	$_SESSION['test_ids'] = $testData;
 } else {
 	$data['errors'] = 'Произошла ошибка при запросе';
 }

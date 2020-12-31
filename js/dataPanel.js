@@ -17,6 +17,7 @@ function getDataCommonInfo(){
 		}
 		if(this.readyState == 4 && this.status == 200){
 			var response = JSON.parse(this.response);
+			console.log(response);
 			let div = document.getElementById('ddy1');
 			div.style.display = 'block';
 			if(response.errors){
@@ -80,34 +81,27 @@ function getDataCommonInfo(){
 function initiateSending(option){
 	//Отсылает на страницу экспотра опцию экспорта, запускает интервал обновления полосы прогресса
 	console.log(option)
+	sendExportApproval()
 	progressTimer = setInterval(()=>{
-		console.log('Checking for updates...')
+		console.log('Checking for updates...');
+		checkUpdate(recievedIds);
 	},1000)
 }
 
 function checkUpdate(ids){
-	console.log('checking', ids);
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-			//Сверяем отправленные айди с хранящимися
-			console.log(this.responseText);
-			let data = JSON.parse(this.response);
-			if(data.sentIds){
-			for(i in data.sentIds){
-					if(recievedIds.includes(data.sentIds[i])){
-						document.getElementById(data.sentIds[i]).style.backgroundColor = '#7fff00';
-					} else {
-						console.log('Был получен неожиданный айди '+data.sentIds[i])
-					}
 
-				}
-			}
-		}
+		}	
 	}
 	xhttp.open('POST', 'php/functions/dataHandle/sendData.php', true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send('test_ids='+ids);
+}
+
+function sendExportApproval(){
+	//Начинает отправку всех тестов 
 }
 
 function fillWithZeroes(string, desiredLenght){

@@ -123,14 +123,7 @@ function showQuetionPopUp(resultId, questionNumber) {
 
 function sortTable(n) {
   try {
-    var table,
-      rows,
-      switching,
-      i,
-      x,
-      y,
-      shouldSwitch,
-      dir
+    var table, rows, switching, i, x, y, shouldSwitch, dir
     var switchcount = 0;
     table = document.getElementById('table-1');
     switching = true;
@@ -191,7 +184,13 @@ function sortTable(n) {
 
 function createResultGraph() {
   //Создаёт по канвасу каждому столбцу с номером задания, заполнеят его в зависимости от процента правильного выполнения
-  try {
+	try{
+		var canvases = document.getElementsByClassName('abs-pos-canvas')
+		while(canvases[0]){
+			canvases[0].parentNode.removeChild(canvases[0])
+		}
+	} finally {
+   try {
     var table = document.getElementById('table-1');
     let th = table.rows[0].getElementsByTagName("TH")
     for (let i = 0; i < (th.length); i++) {
@@ -235,4 +234,5 @@ function createResultGraph() {
   } catch (err) {
     console.log(err)
   }
+	}
 }
