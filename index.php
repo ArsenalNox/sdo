@@ -40,8 +40,7 @@
 ?>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/media.css"> -->
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">

@@ -6,7 +6,7 @@ include_once "php/functions/checkAuth.php";
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/media.css"> -->
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="utf-8">
@@ -19,10 +19,8 @@ include_once "php/functions/checkAuth.php";
   </head>
   <body>
     <section class='viewpanel-wrapper'>
-      <a href="panel.php" class="to-crmd">
-        <button class="to-crmd">Назад</button>
-      </a>
-      <a href="viewDataStat.php" style='float:right; width: auto'>Статус отправки</a> 
+      <button onclick="window.location.href='panel.php'">Назад</button>
+      <button onclick="window.location.href='viewDataStat.php'" style="float:right; width: auto">Статус отправки</button>
       <hr>
       <div class="method-select-wrapper">
         Провести выбор по:

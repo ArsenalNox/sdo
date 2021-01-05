@@ -1,0 +1,397 @@
+@import "variables"
+@import "mixins"
+
+*
+    margin: 0
+    padding: 0
+    text-decoration: none
+
+// Ученик
+
+.student-wrapper
+    margin: auto
+    display: flex
+    flex-flow: column
+    padding: 1rem
+    width: 60%
+    .fieldset
+        border: 2px solid #0d47a1
+        margin-bottom: 20px
+        padding: 15px
+        .test
+            p
+                margin: 10px 0
+                font-size: 20px
+            .timer-wrap
+                p
+                    span
+                        font-weight: 600
+            form
+                font-size: 20px
+                .task
+                    &:last-child
+                        margin-bottom: 20px
+                    h4
+                        margin: 20px 0
+                        border: 2px solid #000
+                        border-image: linear-gradient(to right, #0852ff, #b866b0)
+                        border-image-slice: 1
+                        padding: 10px 10px 10px 40%
+                    .font
+                        font-family: Panton-Regular
+                        font-size: 20px
+                    input
+                        margin-bottom: 10px
+                button
+                    @include button(#fff, $colorBlu)
+                    margin-top: 10px
+                    font-size: 20px
+                    width: fit-content
+                    height: min-content
+        .selection
+            display: flex
+            flex-flow: column
+            .group
+                color: #0d47a1
+            select
+                height: 30px
+                margin: 5px 0
+                background: #29a8df
+                width: 100%
+                color: #fff
+                border: 0
+                border-radius: 5px
+            button
+                @include button(#fff, $colorButton, 150px)
+                margin: auto
+                border-radius: 14px
+                font-size: 30px
+                padding: 0
+        .student-info
+            color: #000
+            font-family: Panton-Black
+            font-size: 20px
+            .info
+                display: flex
+                margin-top: 14px
+                .infotext
+                    margin-top: 4px
+                    margin-bottom: 0
+                .auth-button
+                    height: 50px
+                    border: 1px solid #000
+                    margin: auto
+                    font-size: 20px
+                    padding: 5px
+                    color: #fff
+                    background: #29a8df
+                    border-radius: 5px
+                    line-height: 80%
+                    font-family: Panton-Bold
+        .main-testfield
+            border-radius: 5px
+            .avaliable-test
+                background: #606060
+                transition: background 0.1s
+                color: #fff
+                border-radius: 5px
+                padding: 5px
+                font-family: Panton-Black
+                font-size: 20px
+                margin: 20px 0
+.reference-wrapper
+    a
+        text-decoration: none
+        border-radius: 5px
+        background-color: #29a8df
+        color: #fff
+        text-align: center
+        width: 150px
+        font-size: 20px
+        padding: 5px 10px
+        margin-left: 5px
+
+// Вход в панель
+
+.panellogin
+    background: linear-gradient(to bottom right, #21abec, #9a32b0)
+    height: 1px
+    .main
+        position: absolute
+        width: 100%
+        height: 100%
+        display: flex
+        .imgLogin
+            position: absolute
+            width: 500px
+            height: 500px
+        .form
+            position: absolute
+            top: 50%
+            .login
+                width: 220px
+                height: 250px
+                flex-direction: column
+                .fieldsetlogin
+                    height: 190px
+                    border: 2px solid #fff
+                    legend
+                        font-family: Panton-ExtraBold
+                        color: #0d47a1
+                        text-transform: uppercase
+                        .text
+                            color: #fff
+                    input
+                        font-family: Panton-Regular
+                        font-size: 25px
+                        margin-bottom: 20px
+                        height: 30px
+                        border-radius: 5px
+                        background: #fff
+                        border: 1px solid #fff
+                        outline: none
+                        margin-left: 20px
+                        margin-top: 20px
+                        width: 180px
+                        &:last-child
+                            margin-top: 0
+                    button
+                        @include button(#0852ff, #fff, 70%)
+                        margin-left: 35px
+                        font-family: Panton-ExtraBold
+                        font-size: 25px
+
+// админ панель
+
+.wrapper
+    display: flex
+    font-size: 20px
+    fieldset
+        border: 2px solid #0d47a1
+        margin-bottom: 20px
+        padding: 10px
+    legend
+        font-family: Panton-ExtraBold
+        color: #0d47a1
+        text-transform: uppercase
+    .student-ip-panel
+        width: fit-content
+        height: min-content
+        padding: 20px
+        .knopka button
+            @include button(#fff, $colorBlu)
+        select
+            background-color: $colorBlu
+            color: #fff
+            border: 0
+            border-radius: 5px
+            height: 30px
+            font-size: 15px
+            margin: 10px 0 10px 18px
+            font-family: Panton-Bold
+        #scnt
+            color: #606060
+            .student-ip-info
+                padding: 20px
+                margin-bottom: 10px
+                border-bottom: 1px solid #000
+            button
+                @include button(#fff, #65aa13, 110px)
+    .module-wrapper
+        width: 60%
+        position: relative
+        padding-top: 25px
+        .exit-wrap
+            position: fixed
+            top: 95%
+            left: 10px
+            border-radius: 5px
+            button
+                @include button(#fff, $colorBlu, 70px)
+                a
+                    color: #fff
+        .module-selector, .subject-selector, .class-module-confirmation
+            font-size: 20px
+            color: #606060
+            margin: 5px
+            #group, #subject, #module-select, #topic
+                padding-left: 7px
+                float: right
+                background-color: $colorBlu
+                height: 30px
+                width: 280px
+                color: #fff
+                border: 0
+                border-radius: 10px
+        .test-preview
+            p
+                margin: 10px 0
+            .task
+                padding-top: 10px
+                h4
+                    margin: 10px 0
+                hr
+                    margin-top: 10px
+            button
+                @include button(#fff, $colorBlu, 135px)
+                font-size: 25px
+                padding: 5px 10px
+                line-height: 80%
+                width: fit-content
+                height: min-content
+    .met
+        button
+            @include button(#fff, $colorBlu)
+            font-size: 20px
+            width: fit-content
+            height: min-content
+            padding: 5px 10px
+
+// Просмотр мероприятий
+
+.viewpanel-wrapper
+    width: 80%
+    position: relative
+    left: 50%
+    margin-top: 3rem
+    transform: translate(-50%,0)
+    border: 1px solid black
+    padding: 1rem
+    button
+        @include button(#fff, $colorBlu)
+        font-size: 20px
+        width: fit-content
+        height: min-content
+    hr
+        margin-top: 10px
+    select
+        background-color: #29a8df
+        color: #fff
+        border: 0
+        border-radius: 5px
+        font-size: 20px
+    .data-select-wrapper
+        select
+            width: 300px
+    .addv-opt-wrapper
+        margin-top: 12px
+        padding: 1rem
+        border-bottom: 1px black solid
+        border-top: 1px black solid
+        .add-opt-select
+            display: none
+            .option-wrap
+                margin: 1rem
+                padding: 5px
+                border-bottom: 1px dotted black
+                border-top: 1px dotted black
+                .option
+                    display: none
+                    input
+                        color: #fff
+                        border-radius: 5px
+                        background: #606060
+                        border: 0
+                        margin-top: 5px
+                        height: 30px
+                        padding-left: 10px
+                        &::placeholder
+                            color: #fff
+        .addv-p
+            width: max-content
+.test-list-wrapper
+    display: none
+    position: relative
+    left: 50%
+    margin-top: 3rem
+    transform: translate(-50%,0)
+    border: 1px solid black
+    padding: 1rem
+    width: 80%
+    th, td
+        padding: 1px
+        border: 1px solid black
+        a
+            background: $colorBlu
+            color: #fff
+            text-align: center
+            border-right: 1px solid black
+            padding: 7px
+            width: fit-content
+            height: min-content
+            &:last-child
+                border: 0
+
+// Импорт
+
+.import
+    width: 70%
+    margin-left: auto
+    margin-right: auto
+    border: 2px solid #0d47a1
+    margin-top: 20px
+    padding: 10px
+    margin-bottom: 20px
+    .back
+        margin-top: 10px
+        float: right
+        width: 80px
+        font-size: 25px
+        background: $colorBlu
+        border-radius: 10px
+        color: #fff
+        text-align: center
+    form
+        .importfile
+            position: relative
+            top: -2px
+            margin: 0
+            padding-top: 10px
+            padding-left: 10px
+            color: #fff
+            border-radius: 5px
+            background: #606060
+            border: 0
+            height: 30px
+        .importbutton
+            @include button(#fff, $colorBlu)
+            width: fit-content
+            height: min-content
+    .import-preview
+        .fromimport
+            font-size: 20px
+            hr
+                margin-top: 20px
+            p
+                margin-top: 10px
+                margin-bottom: 10px
+            input
+                color: #fff
+                border-radius: 5px
+                background: #606060
+                border: 0
+                margin-top: 5px
+                height: 30px
+                padding-left: 10px
+                &::placeholder
+                            color: #fff
+            .importname
+                margin-top: 20px
+                margin-bottom: 20px
+            .importmodule
+                width: 80%
+                margin-left: auto
+                margin-right: auto
+                font-size: 20px
+            button
+                border-radius: 5px
+                background: #29a8df
+                font-size: 20px
+                border: 0
+                height: 30px
+                color: #fff
+                font-family: Panton-Bold
+                line-height: 80%
+                padding-top: 5px
+                padding: 0 10px
+                float: right

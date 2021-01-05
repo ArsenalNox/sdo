@@ -61,7 +61,7 @@
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/media.css"> -->
     <link rel="stylesheet" href="css/fonts.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -78,8 +78,8 @@
           <form class="login" action="panel-login.php" method="post">
             <fieldset class="fieldsetlogin">
               <legend align="center"><h1 class="text">ВХОД</h1></legend>
-              <input type="text" name="uid" placeholder="Логин" class="loginIn">
-              <input type="password" name="pwd" placeholder="Пароль" class="password">
+              <input type="text" name="uid" placeholder="Логин" class="loginIn" autocomplete="off">
+              <input type="password" name="pwd" placeholder="Пароль" class="password" autocomplete="off">
               <!-- <?php if(isset($error)){echo"<p> $error </p>";} ?> -->
               <button type="submit" name="" value="Войти" class="button5">Войти</button>
             </fieldset>

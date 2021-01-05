@@ -8,8 +8,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="css/main.css">
-    <!-- <link rel="stylesheet" href="css/media.css"> -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,12 +21,12 @@
 
 <section class='student-ip-panel'>
   <fieldset class="fieldset">
-    <legend align="center"><h1 style="text-transform: uppercase">Устройства</h1></legend>
+    <legend align="center"><h1>Устройства</h1></legend>
     <div class="knopka">
-    <button type="button" name="button" onclick="getConnections()" class="button2">Обновить соединения</button>
-    <button type="button" name="button" onclick="ResetConnections()" class="button2">Обнулить соединения</button>
+    <button type="button" name="button" onclick="getConnections()">Обновить соединения</button>
+    <button type="button" name="button" onclick="ResetConnections()">Обнулить соединения</button>
     </div>
-	Показывать класс: <select id='sgtuc1'> <option value='all'> Показывать все классы </option>
+	<p>Показывать класс: <select id='sgtuc1'> <option value='all'> Показывать все классы </option></p>
 	<?php
 	//Получаем список всех групп
 	$allGroupSql = "SELECT * FROM group_student ORDER BY NAME DESC";
@@ -107,14 +106,8 @@
           <button>Создать модуль</button>
         </a>
         <br> -->
-        <a href="viewmod.php" id="buttonmet" style="margin-right: 1%;">
-          <button class='buttonmet'>Просмотр мероприятий</button>
-        </a>
-
-        <a href="import.php" id="buttonmet">
-          <button class="buttonmet">Импорт модуля</button>
-        </a>
-
+        <button class='buttonmet' onclick="window.location.href='viewmod.php'">Просмотр мероприятий</button>
+          <button class="buttonmet" onclick="window.location.href='import.php'">Импорт модуля</button>
     </div>
 </section>
 </div>

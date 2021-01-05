@@ -30,7 +30,7 @@ if(isset($_COOKIE['STS'])){
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
     <title>Импорт модуля</title>
   </head>
@@ -38,9 +38,7 @@ if(isset($_COOKIE['STS'])){
 
     <section>
     <div class="import">
-      <a href="panel.php" class="to-crmd back">
-        <button class="to-crmd">Назад</button>
-      </a>
+      <a href="panel.php" class="to-crmd back">Назад</a>
       <form class="import-from" action="import.php" method="POST" enctype='multipart/form-data'>
         <input type="file" name="uploadedFile" id='fu' class="importfile">
         <input type="submit" name="submit" class="importbutton">
