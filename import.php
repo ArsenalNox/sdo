@@ -78,9 +78,9 @@ if(isset($_COOKIE['STS'])){
                   $qsubtype = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(4, $i)->getValue();
                   $qcomm = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(5, $i)->getValue();
                   $qtextF = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, $i)->getValue();
-		  $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
-		  //$testText = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
-		  //print_r($testText);
+            		  $qtextL = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+            		  //$testText = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
+            		  //print_r($testText);
 
                   if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<1 ) {
                     $variant++;
@@ -88,18 +88,64 @@ if(isset($_COOKIE['STS'])){
                   }
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
                   //Проверка на кол-во вариантов ответа, если один из них отсутвует - впорос пропускается
-                  $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
-                  if(strlen($qanswb)<1){ continue;}
-                  $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
-                  if(strlen($qanswc)<1){ continue;}
-                  $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
-                  if(strlen($qanswd)<1){ continue;}
-		  $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
-		  if(!strlen($qanswe)<1){
-			$addAnswer = '';
-		  } else {
-		  	$addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
-		  }
+                  switch($j+1){
+                    case 10:
+                        $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, $i)->getValue();
+                        if(strlen($qanswb)<1){ continue;}
+                        $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                        if(strlen($qanswc)<1){ continue;}
+                        $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
+                        if(strlen($qanswd)<1){ continue;}
+                  		  $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
+                  		  if(!strlen($qanswe)<1){
+                  			$addAnswer = '';
+                  		  } else {
+                  		  	$addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+                  		  }
+                      break;
+                    case 12:
+                        $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, $i)->getValue();
+                        if(strlen($qanswb)<1){ continue;}
+                        $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                        if(strlen($qanswc)<1){ continue;}
+                        $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
+                        if(strlen($qanswd)<1){ continue;}
+                        $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
+                        if(!strlen($qanswe)<1){
+                        $addAnswer = '';
+                        } else {
+                          $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+                        }
+                      break;
+                    case 14:
+                        $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, $i)->getValue();
+                        if(strlen($qanswb)<1){ continue;}
+                        $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                        if(strlen($qanswc)<1){ continue;}
+                        $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                        if(strlen($qanswd)<1){ continue;}
+                        $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
+                        if(!strlen($qanswe)<1){
+                        $addAnswer = '';
+                        } else {
+                          $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+                        }
+                      break;
+                        case 16:
+                        $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, $i)->getValue();
+                        if(strlen($qanswb)<1){ continue;}
+                        $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                        if(strlen($qanswc)<1){ continue;}
+                        $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                        if(strlen($qanswd)<1){ continue;}
+                        $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
+                        if(!strlen($qanswe)<1){
+                        $addAnswer = '';
+                        } else {
+                          $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+                        }
+                      break;
+                  }
 
 
                   echo "
@@ -114,14 +160,15 @@ if(isset($_COOKIE['STS'])){
                     <input type='hidden' name='question_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_a_num_$qnum_post' value='$qnum'>
                     <input type='hidden' name='question_var_$qnum_post' value='$variant'>
-	            <input type='hidden' name='question_type_$qnum_post'value='$qtype'>
-		    <input type='hidden' name='question_subtype_$qnum_post' value='$qsubtype'>
-		    <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
+	                  <input type='hidden' name='question_type_$qnum_post'value='$qtype'>
+            		    <input type='hidden' name='question_subtype_$qnum_post' value='$qsubtype'>
+            		    <input type='hidden' name='question_text_$qnum_post' value='$qtextF $qtextL'>
                     <input type='hidden' name='question_answer_a_$qnum_post' value='$qansw'>
+
                     <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
                     <input type='hidden' name='question_answer_c_$qnum_post' value='$qanswc'>
                     <input type='hidden' name='question_answer_d_$qnum_post' value='$qanswd'>
-  		    $addAnswer 
+  		              $addAnswer
                   </div>
                   <hr>";
                   $variant++;
