@@ -63,13 +63,13 @@ foreach ($json_a as $struct => $quest) {
           $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
 	  if(isset($quest['QUESTION_TYPE'])){
 	  	$_SESSION["Question_type_$i"] = $quest['QUESTION_TYPE'];
-	  } else {$_SESSION["Question_type_$i"] = '';}
+	  } else $_SESSION["Question_type_$i"] = '';
 	  if(isset($quest['QUESTION_SUBTYPE'])){
 	  	$_SESSION["Question_subtype_$i"] = $quest['QUESTION_SUBTYPE'];
-	  } else {$_SESSION["Question_subtype_$i"] = '';}
+	  } else $_SESSION["Question_subtype_$i"] = '';
 	  if(isset($quest['QUESTION_SUBTYPE'])){
 	  	$_SESSION["Question_commentary_$i"] = $quest['QUESTION_COMMENTARY'];
-	  } else {$_SESSION["Question_commentary_$i"] = '';}
+	  } else $_SESSION["Question_commentary_$i"] = '';
     echo "
           <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
           <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
@@ -105,4 +105,6 @@ foreach ($json_a as $struct => $quest) {
 echo "
 </form>
 ";
+
 ?>
+

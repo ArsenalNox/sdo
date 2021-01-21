@@ -96,8 +96,12 @@ if(isset($_COOKIE['STS'])){
                   if(strlen($qanswc)<1){ continue;}
                   $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
                   if(strlen($qanswd)<1){ continue;}
-		  $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
-                  if(strlen($qanswe)<1){}
+		  $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
+		  if(!strlen($qanswe)<1){
+			$addAnswer = '';
+		  } else {
+		  	$addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+		  }
 
 
                   echo "
@@ -119,7 +123,7 @@ if(isset($_COOKIE['STS'])){
                     <input type='hidden' name='question_answer_b_$qnum_post' value='$qanswb'>
                     <input type='hidden' name='question_answer_c_$qnum_post' value='$qanswc'>
                     <input type='hidden' name='question_answer_d_$qnum_post' value='$qanswd'>
-  		    <input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>
+  		    $addAnswer 
                   </div>
                   <hr>";
                   $variant++;

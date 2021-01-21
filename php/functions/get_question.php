@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     die();
   }
 
+  // QUESTION: Надо ли фильтр по вариантам
   // echo "<select onselect='ShowSpecificVariants()' id='varsel'>
   // <option value='0'> Показать все варианты       </option>
   // <option value='1'> Показывать только вариант 1 </option>
@@ -25,13 +26,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   // <option value='5'> Показывать только вариант 5 </option>
   // </select>" ;
 
-  //$i - кол-во итераций в JSON'е модуля
-  $i = 0;
-  //Флаг показа мета информации
-  $showmeta = true;
+  $i = 0; //  кол-во итераций в JSON'е модуля
+  $showmeta = true; //Флаг показа мета информации
 
   $json_a = json_decode($string, true);
-  foreach ($json_a as $struct => $quest) {
+  foreach ($json_a as $struct => $quest) { //Проходимся по всем эелементам JSON'а
     if($showmeta){
       //Показываем мету
       $showmeta=false;
@@ -44,16 +43,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }
 
     $i++;
-    if($quest['IMAGE'] == ''){
+    if($quest['IMAGE'] == ''){ //Если у вопроса есть картинка
       $image = '';
     } else {
       $image = "<img src='/sdo/".$quest['IMAGE']."'>";
     }
 
-    echo "<div class='task' id='n" . $quest['QUESTION_NUM'] . "-v" . $quest['VAR'] . "-" . $quest['QUESTION_NUM'] . "'>
-    <h4> Задание №" . $quest['QUESTION_NUM'] . "
-    Вариант " . $quest['VAR'] . " $image
-    </h4> " . $quest['QUESTION'] . " <br>";
+    echo "
+	<div class='task' id='n".$quest['QUESTION_NUM']."-v".$quest['VAR']."-".$quest['QUESTION_NUM']."'>
+	<h4> Задание №".$quest['QUESTION_NUM']."
+	Вариант ".$quest['VAR']." 
+	$image 
+	</h4> ".$quest['QUESTION']." <br>
+    ";
+    
+    //Вывод вариантов ответа 
     if(isset($quest['A'])){
       echo "  A) " . $quest['A'] . " ;";
     }
@@ -66,6 +70,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($quest['D'])){
       echo "  D) " . $quest['D'] . " ;";
     }
+    if(isset($quest['E'])){
+      echo "  E) " . $quest['E'] . " ;";
+   }
+
     echo "<br> <b> Правильный ответ: " . $quest['CORRECT'] . " </b>
     <hr> </div>";
   }
