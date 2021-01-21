@@ -1,0 +1,560 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.student-wrapper {
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+  width: 60%;
+}
+.student-wrapper .fieldset {
+  border: 2px solid #0d47a1;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.student-wrapper .fieldset .test p {
+  margin: 10px 0;
+  font-size: 20px;
+}
+.student-wrapper .fieldset .test .timer-wrap p span {
+  font-weight: 600;
+}
+.student-wrapper .fieldset .test form {
+  font-size: 20px;
+}
+.student-wrapper .fieldset .test form .task:last-child {
+  margin-bottom: 20px;
+}
+.student-wrapper .fieldset .test form .task h4 {
+  margin: 20px 0;
+  border: 2px solid #000;
+  border-image: linear-gradient(to right, #0852ff, #b866b0);
+  border-image-slice: 1;
+  padding: 10px 10px 10px 40%;
+}
+.student-wrapper .fieldset .test form .task .font {
+  font-family: Panton-Regular;
+  font-size: 20px;
+}
+.student-wrapper .fieldset .test form .task input {
+  margin-bottom: 10px;
+}
+.student-wrapper .fieldset .test form button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 180px;
+  font-size: 15px;
+  margin-top: 10px;
+  font-size: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
+.student-wrapper .fieldset .selection {
+  display: flex;
+  flex-flow: column;
+}
+.student-wrapper .fieldset .selection .group {
+  color: #0d47a1;
+}
+.student-wrapper .fieldset .selection select {
+  height: 30px;
+  margin: 5px 0;
+  background: #29a8df;
+  width: 100%;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+.student-wrapper .fieldset .selection button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: linear-gradient(to right, #0852ff, #b866b0);
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 150px;
+  font-size: 15px;
+  margin: auto;
+  border-radius: 14px;
+  font-size: 30px;
+  padding: 0;
+}
+.student-wrapper .fieldset .student-info {
+  color: #000;
+  font-family: Panton-Black;
+  font-size: 20px;
+}
+.student-wrapper .fieldset .student-info .info {
+  display: flex;
+  margin-top: 14px;
+}
+.student-wrapper .fieldset .student-info .info .infotext {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.student-wrapper .fieldset .student-info .info .auth-button {
+  height: 50px;
+  border: 1px solid #000;
+  margin: auto;
+  font-size: 20px;
+  padding: 5px;
+  color: #fff;
+  background: #29a8df;
+  border-radius: 5px;
+  line-height: 80%;
+  font-family: Panton-Bold;
+}
+.student-wrapper .fieldset .main-testfield {
+  border-radius: 5px;
+}
+.student-wrapper .fieldset .main-testfield .avaliable-test {
+  background: #606060;
+  transition: background 0.1s;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: Panton-Black;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.reference-wrapper a {
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #29a8df;
+  color: #fff;
+  text-align: center;
+  width: 150px;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+
+.panellogin {
+  background: linear-gradient(to bottom right, #21abec, #9a32b0);
+  height: 1px;
+}
+.panellogin .main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.panellogin .main .imgLogin {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+}
+.panellogin .main .form {
+  position: absolute;
+  top: 50%;
+}
+.panellogin .main .form .login {
+  width: 220px;
+  height: 250px;
+  flex-direction: column;
+}
+.panellogin .main .form .login .fieldsetlogin {
+  height: 190px;
+  border: 2px solid #fff;
+}
+.panellogin .main .form .login .fieldsetlogin legend {
+  font-family: Panton-ExtraBold;
+  color: #0d47a1;
+  text-transform: uppercase;
+}
+.panellogin .main .form .login .fieldsetlogin legend .text {
+  color: #fff;
+}
+.panellogin .main .form .login .fieldsetlogin input {
+  font-family: Panton-Regular;
+  font-size: 25px;
+  margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #fff;
+  outline: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 180px;
+}
+.panellogin .main .form .login .fieldsetlogin input:last-child {
+  margin-top: 0;
+}
+.panellogin .main .form .login .fieldsetlogin button {
+  border: 0;
+  border-radius: 10px;
+  color: #0852ff;
+  padding: 5px;
+  background: #fff;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 70%;
+  font-size: 15px;
+  margin-left: 35px;
+  font-family: Panton-ExtraBold;
+  font-size: 25px;
+}
+
+.wrapper {
+  display: flex;
+  font-size: 20px;
+}
+.wrapper fieldset {
+  border: 2px solid #0d47a1;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.wrapper legend {
+  font-family: Panton-ExtraBold;
+  color: #0d47a1;
+  text-transform: uppercase;
+}
+.wrapper .student-ip-panel {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+  padding: 20px;
+}
+.wrapper .student-ip-panel .knopka button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 180px;
+  font-size: 15px;
+}
+.wrapper .student-ip-panel select {
+  background-color: #29a8df;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 15px;
+  margin: 10px 0 10px 18px;
+  font-family: Panton-Bold;
+}
+.wrapper .student-ip-panel #scnt {
+  color: #606060;
+}
+.wrapper .student-ip-panel #scnt .student-ip-info {
+  padding: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+.wrapper .student-ip-panel #scnt button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #65aa13;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 110px;
+  font-size: 15px;
+}
+.wrapper .module-wrapper {
+  width: 60%;
+  position: relative;
+  padding-top: 25px;
+}
+.wrapper .module-wrapper .exit-wrap {
+  position: fixed;
+  top: 95%;
+  left: 10px;
+  border-radius: 5px;
+}
+.wrapper .module-wrapper .exit-wrap button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 70px;
+  font-size: 15px;
+}
+.wrapper .module-wrapper .exit-wrap button a {
+  color: #fff;
+}
+.wrapper .module-wrapper .module-selector, .wrapper .module-wrapper .subject-selector, .wrapper .module-wrapper .class-module-confirmation {
+  font-size: 20px;
+  color: #606060;
+  margin: 5px;
+}
+.wrapper .module-wrapper .module-selector #group, .wrapper .module-wrapper .module-selector #subject, .wrapper .module-wrapper .module-selector #module-select, .wrapper .module-wrapper .module-selector #topic, .wrapper .module-wrapper .subject-selector #group, .wrapper .module-wrapper .subject-selector #subject, .wrapper .module-wrapper .subject-selector #module-select, .wrapper .module-wrapper .subject-selector #topic, .wrapper .module-wrapper .class-module-confirmation #group, .wrapper .module-wrapper .class-module-confirmation #subject, .wrapper .module-wrapper .class-module-confirmation #module-select, .wrapper .module-wrapper .class-module-confirmation #topic {
+  padding-left: 7px;
+  float: right;
+  background-color: #29a8df;
+  height: 30px;
+  width: 280px;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+}
+.wrapper .module-wrapper .test-preview p {
+  margin: 10px 0;
+}
+.wrapper .module-wrapper .test-preview .task {
+  padding-top: 10px;
+}
+.wrapper .module-wrapper .test-preview .task h4 {
+  margin: 10px 0;
+}
+.wrapper .module-wrapper .test-preview .task hr {
+  margin-top: 10px;
+}
+.wrapper .module-wrapper .test-preview button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 135px;
+  font-size: 15px;
+  font-size: 25px;
+  padding: 5px 10px;
+  line-height: 80%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
+.wrapper .met button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 180px;
+  font-size: 15px;
+  font-size: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+  padding: 5px 10px;
+}
+
+.viewpanel-wrapper {
+  width: 80%;
+  position: relative;
+  left: 50%;
+  margin-top: 3rem;
+  transform: translate(-50%, 0);
+  border: 1px solid black;
+  padding: 1rem;
+}
+.viewpanel-wrapper button {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 180px;
+  font-size: 15px;
+  font-size: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
+.viewpanel-wrapper hr {
+  margin-top: 10px;
+}
+.viewpanel-wrapper select {
+  background-color: #29a8df;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.viewpanel-wrapper .data-select-wrapper select {
+  width: 300px;
+}
+.viewpanel-wrapper .addv-opt-wrapper {
+  margin-top: 12px;
+  padding: 1rem;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+}
+.viewpanel-wrapper .addv-opt-wrapper .add-opt-select {
+  display: none;
+}
+.viewpanel-wrapper .addv-opt-wrapper .add-opt-select .option-wrap {
+  margin: 1rem;
+  padding: 5px;
+  border-bottom: 1px dotted black;
+  border-top: 1px dotted black;
+}
+.viewpanel-wrapper .addv-opt-wrapper .add-opt-select .option-wrap .option {
+  display: none;
+}
+.viewpanel-wrapper .addv-opt-wrapper .add-opt-select .option-wrap .option input {
+  color: #fff;
+  border-radius: 5px;
+  background: #606060;
+  border: 0;
+  margin-top: 5px;
+  height: 30px;
+  padding-left: 10px;
+}
+.viewpanel-wrapper .addv-opt-wrapper .add-opt-select .option-wrap .option input::placeholder {
+  color: #fff;
+}
+.viewpanel-wrapper .addv-opt-wrapper .addv-p {
+  width: -webkit-max-content;
+  width: max-content;
+}
+
+.test-list-wrapper {
+  display: none;
+  position: relative;
+  left: 50%;
+  margin-top: 3rem;
+  transform: translate(-50%, 0);
+  border: 1px solid black;
+  padding: 1rem;
+  width: 80%;
+}
+.test-list-wrapper th, .test-list-wrapper td {
+  padding: 1px;
+  border: 1px solid black;
+}
+.test-list-wrapper th a, .test-list-wrapper td a {
+  background: #29a8df;
+  color: #fff;
+  text-align: center;
+  border-right: 1px solid black;
+  padding: 7px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
+.test-list-wrapper th a:last-child, .test-list-wrapper td a:last-child {
+  border: 0;
+}
+
+.import {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0d47a1;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.import .back {
+  margin-top: 10px;
+  float: right;
+  width: 80px;
+  font-size: 25px;
+  background: #29a8df;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+.import form .importfile {
+  position: relative;
+  top: -2px;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: #fff;
+  border-radius: 5px;
+  background: #606060;
+  border: 0;
+  height: 30px;
+}
+.import form .importbutton {
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  height: 35px;
+  width: 180px;
+  font-size: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
+.import .import-preview .fromimport {
+  font-size: 20px;
+}
+.import .import-preview .fromimport hr {
+  margin-top: 20px;
+}
+.import .import-preview .fromimport p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.import .import-preview .fromimport input {
+  color: #fff;
+  border-radius: 5px;
+  background: #606060;
+  border: 0;
+  margin-top: 5px;
+  height: 30px;
+  padding-left: 10px;
+}
+.import .import-preview .fromimport input::placeholder {
+  color: #fff;
+}
+.import .import-preview .fromimport .importname {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.import .import-preview .fromimport .importmodule {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+.import .import-preview .fromimport button {
+  border-radius: 5px;
+  background: #29a8df;
+  font-size: 20px;
+  border: 0;
+  height: 30px;
+  color: #fff;
+  font-family: Panton-Bold;
+  line-height: 80%;
+  padding-top: 5px;
+  padding: 0 10px;
+  float: right;
+}
