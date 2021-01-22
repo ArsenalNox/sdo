@@ -46,12 +46,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if($quest['IMAGE'] == ''){ //Если у вопроса есть картинка
       $image = '';
     } else {
-      $image = "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+      $image = "<figure><img src='/sdo/".$quest['IMAGE']."'></figure>";
+      if(strpos($quest['QUESTION'], "{<image>}") !== false){ //Если присутвтует тэг точного расположения
+      	$quest['QUESTION'] = str_replace('{<image>}', $image, $quest['QUESTION']); //заменить тэг на изображение
+        $image = '';
+      }
     }
-    if(strpos($quest['QUESTION'], "{<image>}") !== false){	
-	str_replace($quest['QUESTION'], '{<image>}', "<figure><img src='/sdo/'".$image."></figure>", 1);	
-	$image = '';
-    }
+
 
     echo "
 	<div class='task' id='n".$quest['QUESTION_NUM']."-v".$quest['VAR']."-".$quest['QUESTION_NUM']."'>

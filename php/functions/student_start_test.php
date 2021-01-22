@@ -76,14 +76,17 @@ foreach ($json_a as $struct => $quest) {
 
           if($quest['IMAGE'] !== ''){
               $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
-              echo "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
-              if(strpos($quest['QUESTION'], "{<image>}") !== false){
-                $image = "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
-                str_replace($quest['QUESTION'], '{<image>}', "<figure><img src='/sdo/'".$image."></figure>", 1);
-                $image = '';
-            }
+
+                $image = "<figure><img src='/sdo/".$quest['IMAGE']."'></figure>";
+                if(strpos($quest['QUESTION'], "{<image>}") !== false){ //Если присутвтует тэг точного расположения
+                	$quest['QUESTION'] = str_replace('{<image>}', $image, $quest['QUESTION']); //заменить тэг на изображение
+                  $image = '';
+                }else {
+                  echo "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+                }
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';
+            $image='';
           }
 
 
