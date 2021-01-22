@@ -79,7 +79,7 @@ foreach ($json_a as $struct => $quest) {
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';
           }
-		echo "<p style='color: #606060;' class='font'>" .  $quest['QUESTION'] . " </p> <br>";
+		echo "<p class='font'>" .  $quest['QUESTION'] . " </p> <br>";
 		  if(isset($quest['A'])){
 			echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>"; 
 		  }		  
