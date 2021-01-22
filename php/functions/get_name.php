@@ -14,7 +14,7 @@
         }
         print_r($currentStudents);
       }
-      $sql = "SELECT * FROM student WHERE GROUP_STUDENT_ID ='$group' ORDER BY LAST_NAME ASC";
+      $sql = "SELECT * FROM student WHERE GROUP_STUDENT_ID ='$group' ORDER BY LAST_NAME ASC, NAME";
       $result = mysqli_query($conn, $sql);
       if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){

@@ -52,26 +52,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     echo "
 	<div class='task' id='n".$quest['QUESTION_NUM']."-v".$quest['VAR']."-".$quest['QUESTION_NUM']."'>
 	<h4> Задание №".$quest['QUESTION_NUM']."
-	Вариант ".$quest['VAR']." 
-	$image 
+	Вариант ".$quest['VAR']."
+	$image
 	</h4> ".$quest['QUESTION']." <br>
     ";
-    
-    //Вывод вариантов ответа 
+
+    //Вывод вариантов ответа
     if(isset($quest['A'])){
-      echo "  A) " . $quest['A'] . " ;";
+      echo "  A) " . $quest['A'] . ";<br>";
     }
     if(isset($quest['B'])){
-      echo "  B) " . $quest['B'] . " ;";
+      echo "  B) " . $quest['B'] . ";<br>";
     }
     if(isset($quest['C'])){
-      echo "  C) " . $quest['C'] . " ;";
+      echo "  C) " . $quest['C'] . ";<br>";
     }
     if(isset($quest['D'])){
-      echo "  D) " . $quest['D'] . " ;";
+      echo "  D) " . $quest['D'] . ";<br>";
     }
     if(isset($quest['E'])){
-      echo "  E) " . $quest['E'] . " ;";
+      echo "  E) " . $quest['E'] . ";<br>";
    }
 
     echo "<br> <b> Правильный ответ: " . $quest['CORRECT'] . " </b>
