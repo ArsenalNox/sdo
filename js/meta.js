@@ -15,6 +15,14 @@ function showAllResults() {
       console.log('Готово!');
       document.getElementById('tlw1').style.display = 'grid';
       document.getElementById('tlw1').innerHTML = this.responseText;
+	try{
+		var canvases = document.getElementsByClassName('abs-pos-canvas')
+		while(canvases[0]){
+			canvases[0].parentNode.removeChild(canvases[0])
+		}
+	}catch(e){
+		console.log(e)
+	}
       if(method == 'module'){createResultGraph();}
     }
   };
@@ -184,12 +192,7 @@ function sortTable(n) {
 
 function createResultGraph() {
   //Создаёт по канвасу каждому столбцу с номером задания, заполнеят его в зависимости от процента правильного выполнения
-	try{
-		var canvases = document.getElementsByClassName('abs-pos-canvas')
-		while(canvases[0]){
-			canvases[0].parentNode.removeChild(canvases[0])
-		}
-	} finally {
+	
    try {
     var table = document.getElementById('table-1');
     let th = table.rows[0].getElementsByTagName("TH")
@@ -234,5 +237,5 @@ function createResultGraph() {
   } catch (err) {
     console.log(err)
   }
-	}
+  
 }
