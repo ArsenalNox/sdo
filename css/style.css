@@ -18,13 +18,17 @@
 }
 .student-wrapper .fieldset .test p {
   margin: 10px 0;
-  font-size: 20px;
+  font-size: 25px;
 }
 .student-wrapper .fieldset .test .timer-wrap p span {
   font-weight: 600;
 }
 .student-wrapper .fieldset .test form {
-  font-size: 20px;
+  font-size: 25px;
+}
+.student-wrapper .fieldset .test form .task {
+  font-size: 25px;
+  color: #000;
 }
 .student-wrapper .fieldset .test form .task:last-child {
   margin-bottom: 20px;
@@ -38,7 +42,6 @@
 }
 .student-wrapper .fieldset .test form .task .font {
   font-family: Panton-Regular;
-  font-size: 20px;
 }
 .student-wrapper .fieldset .test form .task input {
   margin-bottom: 10px;
