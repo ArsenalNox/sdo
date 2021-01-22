@@ -82,13 +82,27 @@ if(isset($_COOKIE['STS'])){
             		  //$testText = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();
             		  //print_r($testText);
 
-                  if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<1 ) {
+                  if ( strlen($spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue())<3 ) {
                     $variant++;
                     continue;
                   }
                   $qansw = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j+1, $i)->getValue();
                   //Проверка на кол-во вариантов ответа, если один из них отсутвует - впорос пропускается
                   switch($j+1){
+                    case 8:
+                        $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(10, $i)->getValue();
+                        if(strlen($qanswb)<1){ continue;}
+                        $qanswc = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
+                        if(strlen($qanswc)<1){ continue;}
+                        $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
+                        if(strlen($qanswd)<1){ continue;}
+                        $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
+                        if(strlen($qanswe)<1){
+                        $addAnswer = '';
+                        } else {
+                          $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
+                        }
+                      break;
                     case 10:
                         $qanswb = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, $i)->getValue();
                         if(strlen($qanswb)<1){ continue;}
@@ -97,7 +111,7 @@ if(isset($_COOKIE['STS'])){
                         $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
                         if(strlen($qanswd)<1){ continue;}
                   		  $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
-                  		  if(!strlen($qanswe)<1){
+                  		  if(strlen($qanswe)<1){
                   			$addAnswer = '';
                   		  } else {
                   		  	$addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
@@ -111,7 +125,7 @@ if(isset($_COOKIE['STS'])){
                         $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
                         if(strlen($qanswd)<1){ continue;}
                         $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
-                        if(!strlen($qanswe)<1){
+                        if(strlen($qanswe)<1){
                         $addAnswer = '';
                         } else {
                           $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
@@ -125,7 +139,7 @@ if(isset($_COOKIE['STS'])){
                         $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
                         if(strlen($qanswd)<1){ continue;}
                         $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(16, $i)->getValue();
-                        if(!strlen($qanswe)<1){
+                        if(strlen($qanswe)<1){
                         $addAnswer = '';
                         } else {
                           $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
@@ -139,7 +153,7 @@ if(isset($_COOKIE['STS'])){
                         $qanswd = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(12, $i)->getValue();
                         if(strlen($qanswd)<1){ continue;}
                         $qanswe = $spreadsheet->getActiveSheet()->getCellByColumnAndRow(14, $i)->getValue();
-                        if(!strlen($qanswe)<1){
+                        if((strlen($qanswe)<1)||($qanswe!==' ')){
                         $addAnswer = '';
                         } else {
                           $addAnswer = "<input type='hidden' name='question_answer_e_$qnum_post' value='$qanswe'>";
