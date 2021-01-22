@@ -14,7 +14,7 @@ $dir = preg_replace('/\s+/', '_', $module_name);
 $path = 'tests/'.$dir;
 
 //Проверка изображений
-$allowed_extensions = array('jpg','jpeg', 'png', 'tiff');//Допустимые расширения 
+$allowed_extensions = array('jpg','jpeg', 'png', 'tiff');//Допустимые расширения
 $error = '';
 if(!is_dir($path)){ //Если папки теста не существует
   //Создание папки теста и папки изображений
@@ -38,13 +38,13 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $_POST["question_answer_b_$i"],
     $_POST["question_answer_c_$i"],
     $_POST["question_answer_d_$i"]);
-  if(isset($_POST["question_answer_e_$i"])){ //Если есть пятый вопрос 
+  if(isset($_POST["question_answer_e_$i"])){ //Если есть пятый вопрос
 	  array_push($questions, $_POST["question_answer_e_$i"]);
   }
   shuffle($questions);
 
   //проверка наличия у вопроса изображения, если нет - тэг останется пустым
-  $imagepath = ''; //пусть к изображению 
+  $imagepath = ''; //пусть к изображению
   if(isset($_FILES["question_image_$i"])){
     //Загрузка изображения
     $imageName = $_FILES["question_image_$i"]['name'];
@@ -56,7 +56,7 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
     $imageExtAct = strtolower(end($imageExtTmp));
     if($imageError === 0){
       $imagepath = "$path/images/image_q_$i.$imageExtAct";
-      move_uploaded_file($imageTmpName, $imagepath); //Если всё ОК картинка перемещается по пути 
+      move_uploaded_file($imageTmpName, $imagepath); //Если всё ОК картинка перемещается по пути
     } else {
       $error .= "<p class='upload-error'> Случилась ошибка при загрузки изображения для вопроса номер $i текст ошибки:".$imageError."</p>";
     }
@@ -66,8 +66,7 @@ for ($i=1; $i < $_POST['quest_quantity']+1; $i++) {
 
   //Добавляем в массив задание
   if(isset($_POST["question_answer_e_$i"])){
-	  $data[] = array();
-  	  $data[] = array(
+  	   $data[] = array(
 	    "QUESTION_NUM" => $_POST["question_a_num_$i"],
 	    "VAR" => $_POST["question_var_$i"],
 	    "IMAGE" => $imagepath,
