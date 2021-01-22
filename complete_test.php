@@ -53,7 +53,7 @@ $uid = $_SESSION['UID'];
       	$module_id = '0';
       }
       $sql = "INSERT INTO `test_results` (`test_id`, `student`, `class`, `date`, `module`, `percent`, `sent`) VALUES (
-	'$module_id',      
+	'$module_id',
 	'$student',
         '$group',
         '$today',
@@ -79,8 +79,8 @@ $uid = $_SESSION['UID'];
           Given_answer varchar(512),
           Correct_answer varchar(512),
           Correctness tinyint(1),
-	  Image varchar(512),
-	  qtype varchar(512),
+      	  Image varchar(512),
+      	  qtype varchar(512),
           PRIMARY KEY(id)
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
@@ -95,7 +95,7 @@ $uid = $_SESSION['UID'];
           } else { $image = ''; }
           if(isset($_SESSION["QUESTION_IMAGE_$i"])){
 
-          } 
+          }
 	  if(isset($_SESSION["Question_type_$i"])){
 	  	$qtype = $_SESSION["Question_type_$i"];
 	  }else{
@@ -110,27 +110,27 @@ $uid = $_SESSION['UID'];
               '$question_text',
               '$question_answer_given',
               '$question_answer_correct',
-	      '$correct',
-	      '$qtype',
+      	      '$correct',
+      	      '$qtype',
               '$image'
           )";
-	  echo "<br> $sql <br>";
+	    //echo "<br> $sql <br>";
           $insert = mysqli_query($conn, $sql);
         }
       }
-      echo "
-      <p> Ваш результат был сохранён! </p>
-      <p> Процент правильных ответов: " .$percent. " </p>
-      <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
-      ";
-      echo "
-      <script type='text/javascript' src='js/student.js'></script>
-      <script type='text/javascript'>
-      var status = true
-      var test = '".$result_table_name."'
-      sendtestinfo()
-      </script>
-      ";
+      // echo "
+      // <p> Ваш результат был сохранён! </p>
+      // <p> Процент правильных ответов: " .$percent. " </p>
+      // <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
+      // ";
+      // echo "
+      // <script type='text/javascript' src='js/student.js'></script>
+      // <script type='text/javascript'>
+      // var status = true
+      // var test = '".$result_table_name."'
+      // sendtestinfo()
+      // </script>
+      // ";
     } else {
       echo "Ваш результат уже записан
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
