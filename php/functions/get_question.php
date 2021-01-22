@@ -46,7 +46,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if($quest['IMAGE'] == ''){ //Если у вопроса есть картинка
       $image = '';
     } else {
-      $image = "<img src='/sdo/".$quest['IMAGE']."'>";
+      $image = "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+    }
+    if(strpos($quest['QUESTION'], "{<image>}") !== false){	
+	str_replace($quest['QUESTION'], '{<image>}', "<figure><img src='/sdo/'".$image."></figure>", 1);	
+	$image = '';
     }
 
     echo "

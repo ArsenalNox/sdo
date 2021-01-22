@@ -23,7 +23,7 @@ $json_a = json_decode($string, true);
 
 $_SESSION['MODULE'] = $test_name;
 $_SESSION['TEST_SUBJECT'] = $test_subject;
-$_SESSION['TEST_ID'] = $row['id']; 
+$_SESSION['TEST_ID'] = $row['id'];
 $qselector = 1;
 $selector = 1;
 $i = 0;
@@ -73,27 +73,33 @@ foreach ($json_a as $struct => $quest) {
     echo "
           <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
           <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
+
           if($quest['IMAGE'] !== ''){
-              echo "<img src='/sdo/".$quest['IMAGE']."' >";
               $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
+              echo "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+              if(strpos($quest['QUESTION'], "{<image>}") !== false){
+                $image = "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+                str_replace($quest['QUESTION'], '{<image>}', "<figure><img src='/sdo/'".$image."></figure>", 1);
+                $image = '';
+            }
           } else {
             $_SESSION["QUESTION_IMAGE_$qselector"] = '';
           }
 		echo "<p class='font'>" .  $quest['QUESTION'] . " </p> <br>";
 		  if(isset($quest['A'])){
-			echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>"; 
-		  }		  
+			echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>";
+		  }
 		  if(isset($quest['B'])){
-			echo "<input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."' required> <label for='B$qselector'> B) ".$quest['B']." </label> <br>"; 
+			echo "<input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."' required> <label for='B$qselector'> B) ".$quest['B']." </label> <br>";
 		  }
 		  if(isset($quest['C'])){
-			echo "<input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."' required> <label for='C$qselector'> C) ".$quest['C']." </label> <br>"; 
+			echo "<input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."' required> <label for='C$qselector'> C) ".$quest['C']." </label> <br>";
 		  }
 		  if(isset($quest['D'])){
-			echo "<input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."' required> <label for='D$qselector'> D) ".$quest['D']." </label> <br>"; 
+			echo "<input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."' required> <label for='D$qselector'> D) ".$quest['D']." </label> <br>";
 		  }
 		  if(isset($quest['E'])){
-			echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>"; 
+			echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>";
 		  }
 		echo "<hr> </div>";
 
@@ -107,4 +113,3 @@ echo "
 ";
 
 ?>
-
