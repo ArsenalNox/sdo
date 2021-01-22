@@ -118,19 +118,19 @@ $uid = $_SESSION['UID'];
           $insert = mysqli_query($conn, $sql);
         }
       }
-      // echo "
-      // <p> Ваш результат был сохранён! </p>
-      // <p> Процент правильных ответов: " .$percent. " </p>
-      // <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
-      // ";
-      // echo "
-      // <script type='text/javascript' src='js/student.js'></script>
-      // <script type='text/javascript'>
-      // var status = true
-      // var test = '".$result_table_name."'
-      // sendtestinfo()
-      // </script>
-      // ";
+      echo "
+      <p> Ваш результат был сохранён! </p>
+      <p> Процент правильных ответов: " .$percent. " </p>
+      <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
+      ";
+      echo "
+      <script type='text/javascript' src='js/student.js'></script>
+      <script type='text/javascript'>
+      var status = true
+      var test = '".$result_table_name."'
+      sendtestinfo()
+      </script>
+      ";
     } else {
       echo "Ваш результат уже записан
       <a class='home' href='index.php'> Вернутся на главную </a> </fieldset> </section>";
