@@ -14,9 +14,8 @@ function dbquery($sql)
 function dbexecute($sql)
 {
   global $conn;
-  if($result = mysqli_query($conn, $sql))
+  if(mysqli_query($conn, $sql))
   {
-    mysqli_free_result($result);
     return true;
   }
   return false;
