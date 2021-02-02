@@ -22,11 +22,198 @@ if(isset($_POST['users'])){
 ?>
 
 <form action="">
-    <select name="" id="">
-        <?php foreach($result as $group):
-            var_dump($group);?>
-            <option value="<?php echo $group['ID']; ?>"><?php echo $group['NAME']; ?></option>
-        <?php endforeach; ?>
-    </select>
-    <input type="text">
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        <select name="GROUP_STUDENT_ID" id="">
+            <option value="">Выберите класс</option>
+        </select>
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
+    <div class="item">
+        <input name="NAME" type="text" placeholder="Введите Имя">
+        <input name="LAST_NAME" type="text" placeholder="Введите Фамилию">
+        <input name="MIDDLE_NAME" type="text" placeholder="Введите Отчество">
+        
+    </div>
 </form>
