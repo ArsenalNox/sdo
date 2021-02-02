@@ -4,17 +4,18 @@ $groups = dbquery('SELECT * FROM group_student');
 
 if(isset($_POST['students']) && isset($_POST['group']))
 {
-  $students = $_POST['students'];
+  $students = json_decode($_POST['students'], true);;
   $group_id = $_POST['group'];
   foreach($students as $student)
   {
-    if(dbexecute('INSERT INTO `student`(`NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_ID`) VALUES ("{$student['fname']}", "{$student['lname']}", "{$student['mname']}", "{$group_id}")'))
+    $sql = "INSERT INTO `student` (`NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_ID`) VALUES ('".$student['fname']."', '".$student['lname']."', '".$student['mname']."', '".$group_id."')";
+    if(dbexecute($sql))
     {
-      echo '<h1 style="color: green;">Круть!</h1>';
+        exit(json_encode(['type' => 'success', 'data' => 'Круть!']));
     }
     else
     {
-      echo '<h1 style="color: red;">не крута :(</h1>';
+        exit(json_encode(['type' => 'error', 'data' => 'не крута :(']));
     }
   }
 }
