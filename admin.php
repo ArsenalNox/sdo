@@ -9,15 +9,9 @@ if(isset($_POST['students']) && isset($_POST['group']))
   foreach($students as $student)
   {
     $sql = "INSERT INTO `student` (`NAME`, `LAST_NAME`, `MIDDLE_NAME`, `GROUP_STUDENT_ID`) VALUES ('".$student['fname']."', '".$student['lname']."', '".$student['mname']."', '".$group_id."')";
-    if(dbexecute($sql))
-    {
-        exit(json_encode(['type' => 'success', 'data' => 'Круть!']));
-    }
-    else
-    {
-        exit(json_encode(['type' => 'error', 'data' => 'не крута :(']));
-    }
+    dbexecute($sql);
   }
+  exit(json_encode(['type' => 'success', 'data' => 'Круть!']));
 }
 ?>
 <link rel="stylesheet" href="css/admin.css">
