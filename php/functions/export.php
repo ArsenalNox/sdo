@@ -58,7 +58,6 @@ header("Expires: 0");
 $separator = "\t";
 
 if(!empty($rows)){
-    $header_row = ['date', 'module', 'percent'];
     for($i = 0; $i < count($rows); $i++)
     {
         $row = [];
@@ -73,19 +72,22 @@ if(!empty($rows)){
               $row[$k] = $rows[$i][$k];
             }
         }
-        $sql_ = "SELECT id, Question_var, Correctness FROM tr_".$rows[$i]['id'];
-        $stmt_ = $pdo->query($sql_);
-        $rows_ = $stmt_->fetchAll(PDO::FETCH_ASSOC);
-        foreach($rows_ as $row_)
+        if($_POST['export_option'] == '04_02_2021')
         {
-          $row['q'.$row_['id'].'_varior'] = $row_['Question_var'];
-          if($row_['Correctness'] == '1')
+          $sql_ = "SELECT id, Question_var, Correctness FROM tr_".$rows[$i]['id'];
+          $stmt_ = $pdo->query($sql_);
+          $rows_ = $stmt_->fetchAll(PDO::FETCH_ASSOC);
+          foreach($rows_ as $row_)
           {
-            $row['q'.$row_['id']] = mb_convert_encoding('Да', 'Windows-1251');
-          }
-          else
-          {
-            $row['q'.$row_['id']] = mb_convert_encoding('Нет', 'Windows-1251');
+            $row['задание'.$row_['id'].' вариант'] = $row_['Question_var'];
+            if($row_['Correctness'] == '1')
+            {
+              $row['задание '.$row_['id']] = mb_convert_encoding('Да', 'Windows-1251');
+            }
+            else
+            {
+              $row['задание '.$row_['id']] = mb_convert_encoding('Нет', 'Windows-1251');
+            }
           }
         }
 
