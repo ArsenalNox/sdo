@@ -192,7 +192,7 @@ function sortTable(n) {
 
 function createResultGraph() {
   //Создаёт по канвасу каждому столбцу с номером задания, заполнеят его в зависимости от процента правильного выполнения
-	
+
    try {
     var table = document.getElementById('table-1');
     let th = table.rows[0].getElementsByTagName("TH")
@@ -237,5 +237,5 @@ function createResultGraph() {
   } catch (err) {
     console.log(err)
   }
-  
+
 }

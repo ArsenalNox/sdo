@@ -3,7 +3,7 @@
 
 include_once 'dtb/dtb.php';
 
-$sql1 = "SELECT * FROM test_results";
+$sql1 = "SELECT * FROM test_results WHERE module=''";
 $result1 = mysqli_query($conn, $sql1);
 if($result1){
 	while($row = mysqli_fetch_assoc($result1)){

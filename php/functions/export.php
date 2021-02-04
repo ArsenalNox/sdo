@@ -7,25 +7,25 @@ $database = 'sdo';
 if(!isset($_SESSION['sql'])){
   switch ($_POST['export_option']) {
     case 'all_all':
-        $sql = 'SELECT * FROM test_results';
+        $sql = 'SELECT student, class, date, module, percent FROM test_results';
         $filename = 'результаты_за_всё_время.xls';
       break;
 
     case 'all_time':
         $date_start = $_POST['first_date'];
         $date_end = $_POST['second_date'];
-        $sql = "SELECT * FROM test_results WHERE date >= '$date_start' and date <= '$date_end'";
+        $sql = "SELECT student, class, date, module, percent FROM test_results WHERE date >= '$date_start' and date <= '$date_end'";
         $filename = "результаты_за_$date_start-$date_end.xls";
       break;
 
     case 'spec_all':
         $group = $_POST['group'];
-        $sql = "SELECT * FROM test_results WHERE class = '$group'";
+        $sql = "SELECT student, class, date, module, percent FROM test_results WHERE class = '$group'";
         $filename = "результаты_класса_$group.xls";
       break;
 
     default:
-        $sql = 'SELECT * FROM test_results';
+        $sql = 'SELECT student, class, date, module, percent FROM test_results';
         $filename = 'результаты_за_всё_время.xls';
       break;
   }

@@ -561,3 +561,32 @@
   padding: 0 10px;
   float: right;
 }
+
+/* POPUP */
+.popup-wrapper{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.15);
+}
+.popup-wrapper .question-popup{
+  padding: 42px 16px 16px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  position: relative;
+}
+#colse-popup-button{
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
