@@ -9,30 +9,30 @@ $database = 'sdo';
 if(!isset($_SESSION['sql'])){
   switch ($_POST['export_option']) {
     case 'all_all':
-        $sql = 'SELECT id, date, module, percent FROM test_results';
+        $sql = 'SELECT id, date, module, percent FROM test_results LIMIT 500';
         $filename = 'результаты_за_всё_время.xls';
       break;
 
     case '04_02_2021':
-      $sql = 'SELECT id FROM test_results';
+      $sql = 'SELECT id FROM test_results LIMIT 500';
       $filename = 'результаты_для_министра.xls';
       break;
 
     case 'all_time':
         $date_start = $_POST['first_date'];
         $date_end = $_POST['second_date'];
-        $sql = "SELECT id, date, module, percent FROM test_results WHERE date >= '$date_start' and date <= '$date_end'";
+        $sql = "SELECT id, date, module, percent FROM test_results WHERE date >= '$date_start' and date <= '$date_end' LIMIT 500";
         $filename = "результаты_за_$date_start-$date_end.xls";
       break;
 
     case 'spec_all':
         $group = $_POST['group'];
-        $sql = "SELECT id, date, module, percent FROM test_results WHERE class = '$group'";
+        $sql = "SELECT id, date, module, percent FROM test_results WHERE class = '$group' LIMIT 500";
         $filename = "результаты_класса_$group.xls";
       break;
 
     default:
-        $sql = 'SELECT id, date, module, percent FROM test_results';
+        $sql = 'SELECT id, date, module, percent FROM test_results LIMIT 500';
         $filename = 'результаты_за_всё_время.xls';
       break;
   }
