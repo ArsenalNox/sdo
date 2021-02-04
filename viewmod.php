@@ -54,6 +54,7 @@ include_once "php/functions/checkAuth.php";
     </div>
     <br>
     <button class="search" type="button" name="button" onclick="showAllResults()">Провести поиск</button>
+    <!-- <button type="button" onclick="createResultGraph()">Канвас</button> -->
     </section>
     <div class="test-list-wrapper" id='tlw1'> </div>
     <script src="js/meta.js" charset="utf-8"></script>
@@ -75,7 +76,6 @@ include_once "php/functions/checkAuth.php";
             break;
         }
       }
-
     </script>
   </body>
 </html>

@@ -23,12 +23,13 @@ function showAllResults() {
 	}catch(e){
 		console.log(e)
 	}
-      if(method == 'module'){createResultGraph();}
+      if(method == 'module' || 'class' || 'date' || 'student' || 'all'){createResultGraph();}
     }
   };
   xhttp.open("POST", "php/functions/showqueryresult.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("method=" + method + "&data=" + request + "&sort=" + sort + additionalOptions);
+  // sreateResultGraph()
 }
 
 function loadAssociatedData() {
@@ -192,13 +193,12 @@ function sortTable(n) {
 
 function createResultGraph() {
   //Создаёт по канвасу каждому столбцу с номером задания, заполнеят его в зависимости от процента правильного выполнения
-
    try {
     var table = document.getElementById('table-1');
     let th = table.rows[0].getElementsByTagName("TH")
     for (let i = 0; i < (th.length); i++) {
       if (th[i].className == 'table-head-clickable') {
-
+        console.log('Ошибка')
         //Генерация канваса
         let bounding = th[i].getBoundingClientRect();
         let canvasBox = document.createElement('canvas');
@@ -227,15 +227,17 @@ function createResultGraph() {
         let percent = Math.round((correctCount/count)*100);
         console.log(count, correctCount, percent);
         ctx.fillStyle = '#00FF00';
+        
         if(percent!==100){
           ctx.fillRect(0, 0, canvasBox.width,  Math.round((correctCount/count)*canvasBox.height ));
         } else {
-	  ctx.fillRect(0, 0, canvasBox.width,  canvasBox.height);
-	}
+          ctx.fillRect(0, 0, canvasBox.width,  canvasBox.height);
+        }
       }
+      console.log('Ошибка')
     }
   } catch (err) {
     console.log(err)
   }
-
+  
 }
