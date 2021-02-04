@@ -36,6 +36,7 @@ include_once "php/functions/checkAuth.php";
         <option value="all_all">Все результаты за всё время</option>
         <option value="all_time">Все результаты за промежуток времени</option>
         <option value="spec_all">Результаты класса за всё время</option>
+        <option value="04_02_2021">FOR MINISTR</option>
         <!-- <option value="spec_time">Результаты класса за промежуток времени</option>
         <option value="all_all">Результаты ученика за всё время</option>
         <option value="all_all">Результаты ученика за промежуток времени</option> -->
@@ -60,6 +61,13 @@ include_once "php/functions/checkAuth.php";
           button.type = 'submit';
           button.innerText = 'Экспортировать'
           document.getElementById('addinfo').append(button);
+        break;
+
+      case "04_02_2021":
+          let button4 = document.createElement('button');
+          button4.type = 'submit';
+          button4.innerText = 'Экспортировать'
+          document.getElementById('addinfo').append(button4);
         break;
 
       case "all_time":
