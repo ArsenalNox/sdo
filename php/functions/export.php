@@ -14,7 +14,7 @@ if(!isset($_SESSION['sql'])){
       break;
 
     case '04_02_2021':
-      $sql = 'SELECT id, date, module, percent FROM test_results';
+      $sql = 'SELECT id FROM test_results';
       $filename = 'результаты_для_министра.xls';
       break;
 
@@ -79,14 +79,14 @@ if(!empty($rows)){
           $rows_ = $stmt_->fetchAll(PDO::FETCH_ASSOC);
           foreach($rows_ as $row_)
           {
-            $row['задание'.$row_['id'].' вариант'] = $row_['Question_var'];
+            $row[mb_convert_encoding('задание '.$row_['id'].' вариант', 'Windows-1251')] = $row_['Question_var'];
             if($row_['Correctness'] == '1')
             {
-              $row['задание '.$row_['id']] = mb_convert_encoding('Да', 'Windows-1251');
+              $row[mb_convert_encoding('задание '.$row_['id'], 'Windows-1251')] = mb_convert_encoding('Да', 'Windows-1251');
             }
             else
             {
-              $row['задание '.$row_['id']] = mb_convert_encoding('Нет', 'Windows-1251');
+              $row[mb_convert_encoding('задание '.$row_['id'], 'Windows-1251')] = mb_convert_encoding('Нет', 'Windows-1251');
             }
           }
         }
