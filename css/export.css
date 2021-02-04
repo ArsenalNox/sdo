@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a button {
+  background: #29a8df;
+  color: #fff;
+  border: 0;
+  border-radius: 20px;
+  padding: 8px 10px;
+}
+
+form select {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 15px;
+  background: #29a8df;
+  color: #fff;
+}
+form button {
+  background: #29a8df;
+  color: #fff;
+  border: 0;
+  border-radius: 20px;
+  padding: 8px 10px;
+}
+form #addinfo {
+  display: flex;
+  margin-top: 20px;
+}
+form #addinfo input {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 15px;
+  background: #29a8df;
+  color: #fff;
+}
