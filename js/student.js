@@ -53,13 +53,16 @@ function SendStudentInfo() {
 function startTest(id) {
   //Начинает тест по его id
   document.getElementById('student_test_status').value = t_ong
-  var test_id = id;
+  window.test_id = id;
+  console.log(id);
   document.getElementById('mtf').remove();
   var xhttp = new XMLHttpRequest();
   document.getElementById('nauth').style.display = 'none';
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('test').innerHTML = this.responseText;
+      //Проверям, все ли вопросы дошли
+      checkTestIntegrity(document.querySelectorAll('.task').length, window.test_id)
       document.title = document.getElementById('ntl').value;
       shuffle_divs();
       loadReferenceBook()	
@@ -69,7 +72,7 @@ function startTest(id) {
   };
   xhttp.open("POST", "php/functions/student_start_test.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("test_id=" + test_id);
+  xhttp.send("test_id=" + window.test_id);
 }
 
 function getStatus() {
@@ -214,3 +217,22 @@ function loadReferenceBook(){
 	xhttp.send("test_request=1");
 }
 
+function checkTestIntegrity(len, testId){
+  console.log(len, testId);
+  var xhttp = new XMLHttpRequest();
+  	xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+          try{
+            resp = JSON.parse(this.response)
+            if(parseInt(resp[0].question_quantity) !== len){
+              window.location.reload()
+            }
+          }catch{
+            console.log(this.response);
+          }
+        } 
+		}	
+	xhttp.open("POST", "php/functions/checkTestIntegroty.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("len="+len+"&id="+testId);
+}
