@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 }
             }
             $data[] = array( 'question_quantity' => $qnum);
-            echo json_encode($data);
+            echo json_encode(array($data, $quest_file), true);
         } else { 
             $data['error'] = 'second step error';
             $data['queryData'] = $row;

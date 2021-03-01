@@ -225,10 +225,10 @@ function checkTestIntegrity(len, testId){
           try{
             resp = JSON.parse(this.response)
             if(parseInt(resp[0].question_quantity) !== len){
-              startTest(testId);
+              window.location.reload()
             }
-          }catch{
-            console.log(this.response);
+          }catch (e) {
+            console.log(e, this.response);
           }
         } 
 		}	
