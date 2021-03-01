@@ -227,8 +227,8 @@ function checkTestIntegrity(len, testId){
             if(parseInt(resp[0].question_quantity) !== len){
               startTest(testId);
             }
-          }catch{
-            console.log(this.response);
+          }catch (e) {
+            console.log(e, this.response);
           }
         } 
 		}	
