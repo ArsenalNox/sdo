@@ -246,7 +246,7 @@ function skipQuestion(element){
       inputs[i].required = false
       console.log(inputs[i]);
     }
-    var button = document.getElementById('s'+id.id)
+    var button = document.getElementById('s'+element.id)
     button.innerText = 'Вопрос пропущен'
     button.onclick = false
   }
