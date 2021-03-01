@@ -24,6 +24,7 @@
   font-weight: 600;
 }
 .student-wrapper .fieldset .test form {
+  line-height: 1.5;
   font-size: 25px;
 }
 .student-wrapper .fieldset .test form .task {
@@ -132,6 +133,18 @@
   font-family: Panton-Black;
   font-size: 20px;
   margin: 20px 0;
+}
+
+.help {
+  position: absolute;
+  top: 94%;
+  left: 2%;
+  background: #29a8df;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 7px;
+  height: 30px;
 }
 
 .reference-wrapper a {
@@ -562,31 +575,43 @@
   float: right;
 }
 
-/* POPUP */
-.popup-wrapper{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.15);
-}
-.popup-wrapper .question-popup{
-  padding: 42px 16px 16px 16px;
+.b-container {
+  width: 200px;
+  height: 150px;
   background-color: #fff;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-  position: relative;
+  margin: 0px auto;
+  padding: 10px;
+  font-size: 30px;
+  color: #fff;
 }
-#colse-popup-button{
+
+.b-popup {
   position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0px;
+}
+.b-popup .b-popup-content {
+  color: #000;
+  margin: 40px auto 0px auto;
+  width: 90%;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #000;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.b-popup .b-popup-content .studentPanel img {
+  width: 100%;
+}
+.b-popup .b-popup-content .studentPanel ul {
+  list-style: none;
+}
+.b-popup .b-popup-content .close {
+  float: right;
+  color: #000;
+  font-size: 30px;
 }

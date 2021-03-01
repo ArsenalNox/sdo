@@ -61,7 +61,7 @@
                         <?php
                             $sql = "SELECT * FROM group_student ORDER BY NAME DESC";
                             $result = mysqli_query($conn, $sql);
-                            echo "<option>--</option>";
+                            echo "<option>--Класс--</option>";
                             if(mysqli_num_rows($result) > 0){
                                 while($row = mysqli_fetch_assoc($result)){
                                     $name = $row['NAME'];
@@ -119,9 +119,54 @@
         <div class="test" id='test'>
         </div>
         </fieldset>
+        <button class="help" onclick="PopUpShow()">Инструкия</button>
+        <div class="b-popup" id="popup1">
+            <div class="b-popup-content">
+                <a href="javascript:PopUpHide()" class="close">X</a>
+                <div class="studentPanel">
+                    <h2>Панель обучающегося</h2>
+                    <p>Цель использования: зайти за нужного обучающегося и пройти тест нужного модуля.</p>
+                    <ul>
+                        <li>
+                            1.	Зайти на http://176.28.64.201:83/sdo 
+                        </li>
+                        <li>2.	Выбрать класс и ученика (и нажать на кнопку «войти») <br>
+                            <img src="img/1.png" alt="">
+                        </li>
+                        <li>
+                            3.	Выбрать нужный тест (тут показывается все доступные или пройденные тесты, ученик выбирает тот, который учитель скажет или доступный). <br>
+                            <img src="img/2.png" alt="">
+                        </li>
+                        <li>
+                            4.  Открывается выбранный тест. Что бы выбрать ответ нужно кликнуть на него, ответ выберется. Что бы пропустить вопрос надо кликнуть на кнопку после вопроса.
+                            <img src="img/14.png" style="width: 500px;">
+                        </li>
+                        <li>
+                            5.	Пройти тест и отправить результат (ответить на все задания и нажать на кнопку «завершить тест», после будет показаны задания и правильно он ответил или нет, а также процент правильных ответов).
+                        </li>
+                        <li>
+                            6.	Нажать на кнопку «Вернутся на главную».
+                        </li>
+                    </ul>
+                </div>
+                <!-- <a href="javascript:PopUpHide()">X</a> -->
+            </div>
+        </div>
     </section>
-    <iframe src="reviewform.html" frameborder="1"></iframe>
     <script src="js/jquery-3.5.1.js" charset="utf-8"></script>
-
+    <script>
+    $(document).ready(function(){
+        //Скрыть PopUp при загрузке страницы    
+        PopUpHide();
+    });
+    //Функция отображения PopUp
+    function PopUpShow(){
+        $("#popup1").show();
+    }
+    //Функция скрытия PopUp
+    function PopUpHide(){
+        $("#popup1").hide();
+    }
+    </script>
 </body>
 </html>
