@@ -237,10 +237,10 @@ function checkTestIntegrity(len, testId){
 	xhttp.send("len="+len+"&id="+testId);
 }
 
-function skipQuestion(id){
+function skipQuestion(element){
   if(confirm('Вы уверенны что хотите пропустить это задание?')){
-    var inputs = id.querySelectorAll('input')
-    id.style.opacity = 0.5
+    var inputs = element.querySelectorAll('input')
+    element.style.opacity = 0.5
     console.log(inputs);
     for(let i=0; i< inputs.length; i++){
       inputs[i].required = false
