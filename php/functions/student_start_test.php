@@ -32,7 +32,7 @@ $vars = 1;
 // TODO: Глобальный таймер для ученика на выполнение теста
 // TODO: Получение значения и запоминание типа/подтипа вопроса
 foreach ($json_a as $struct => $quest) {
-  if($showmeta){
+  if($showmeta){ //Флаг показа метаинформации
     $showmeta=false;
     if(isset($quest['quest_vars'])){
       $vars = $quest['quest_vars'];
@@ -51,65 +51,72 @@ foreach ($json_a as $struct => $quest) {
     echo "<form action='complete_test.php' method='POST' id='tfs1'>";
     continue;
   }
-  if($quest['QUESTION_NUM'] == "$qselector"){
+
+  if($quest['QUESTION_NUM'] == "$qselector"){ 
   	if($quest['VAR'] == "$selector"){
-          if($vars>1){
-            $selector = rand(1,$vars);
-          }else {
-            $selector = 1;
-          }
-          $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
-          $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
-          $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
-	  if(isset($quest['QUESTION_TYPE'])){
-	  	$_SESSION["Question_type_$i"] = $quest['QUESTION_TYPE'];
-	  } else $_SESSION["Question_type_$i"] = '';
-	  if(isset($quest['QUESTION_SUBTYPE'])){
-	  	$_SESSION["Question_subtype_$i"] = $quest['QUESTION_SUBTYPE'];
-	  } else $_SESSION["Question_subtype_$i"] = '';
-	  if(isset($quest['QUESTION_SUBTYPE'])){
-	  	$_SESSION["Question_commentary_$i"] = $quest['QUESTION_COMMENTARY'];
-	  } else $_SESSION["Question_commentary_$i"] = '';
-    echo "
-          <div class='task' id='n" . $quest['QUESTION_NUM'] . "'>
-          <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>";
-
-          if($quest['IMAGE'] !== ''){
-              $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
-
-                $image = "<figure><img src='/sdo/".$quest['IMAGE']."'></figure>";
-                if(strpos($quest['QUESTION'], "{<image>}") !== false){ //Если присутвтует тэг точного расположения
-                	$quest['QUESTION'] = str_replace('{<image>}', $image, $quest['QUESTION']); //заменить тэг на изображение
-                  $image = '';
-                }else {
-                  echo "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
-                }
-          } else {
-            $_SESSION["QUESTION_IMAGE_$qselector"] = '';
-            $image='';
-          }
-		echo "<p class='font'>" .  $quest['QUESTION'] . " </p> <br>";
-		  if(isset($quest['A'])){
-			echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>";
-		  }
-		  if(isset($quest['B'])){
-			echo "<input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."' required> <label for='B$qselector'> B) ".$quest['B']." </label> <br>";
-		  }
-		  if(isset($quest['C'])){
-			echo "<input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."' required> <label for='C$qselector'> C) ".$quest['C']." </label> <br>";
-		  }
-		  if(isset($quest['D'])){
-			echo "<input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."' required> <label for='D$qselector'> D) ".$quest['D']." </label> <br>";
-		  }
-		  if(isset($quest['E'])){
-			echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>";
-		  }
-		echo "<hr> </div>";
-
-            $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
-            $qselector++;
-        }
+      if($vars>1){
+        $selector = rand(1,$vars);
+      }else {
+        $selector = 1;
       }
+      $_SESSION["QUESTION_$qselector"] = $quest['QUESTION'];
+      $_SESSION["QUESTION_VAR_$qselector"] = $quest['VAR'];
+      $_SESSION["CORRECT_ANSW_$qselector"] = $quest['CORRECT'];
+
+      //Тип, подтип и комментарий к вопросу 
+      if(isset($quest['QUESTION_TYPE'])){
+        $_SESSION["Question_type_$i"] = $quest['QUESTION_TYPE'];
+      } else $_SESSION["Question_type_$i"] = '';
+      
+      if(isset($quest['QUESTION_SUBTYPE'])){
+        $_SESSION["Question_subtype_$i"] = $quest['QUESTION_SUBTYPE'];
+      } else $_SESSION["Question_subtype_$i"] = '';
+
+      if(isset($quest['QUESTION_SUBTYPE'])){
+        $_SESSION["Question_commentary_$i"] = $quest['QUESTION_COMMENTARY'];
+      } else $_SESSION["Question_commentary_$i"] = '';
+
+      echo "
+            <div class='task' id='n". $quest['QUESTION_NUM'] ."'>
+            <h4 class='tests' style='border-radius: 15px;' id='num$qselector'> Задание №" . $quest['QUESTION_NUM'] ."</h4>
+            ";
+
+      if($quest['IMAGE'] !== ''){
+          $_SESSION["QUESTION_IMAGE_$qselector"] = $quest['IMAGE'];
+
+            $image = "<figure><img src='/sdo/".$quest['IMAGE']."'></figure>";
+            if(strpos($quest['QUESTION'], "{<image>}") !== false){ //Если присутвтует тэг точного расположения
+              $quest['QUESTION'] = str_replace('{<image>}', $image, $quest['QUESTION']); //заменить тэг на изображение
+              $image = '';
+            }else {
+              echo "<figure><img src='/sdo/".$quest['IMAGE']."'><figure/>";
+            }
+      } else {
+        $_SESSION["QUESTION_IMAGE_$qselector"] = '';
+        $image='';
+      }
+
+      echo "<p class='font'>". $quest['QUESTION'] ." </p> <br>";
+        if(isset($quest['A'])){
+        echo "<input type='radio' id='A$qselector' name='ANSW_$qselector' value='".$quest['A']."' required> <label for='A$qselector'> A) ".$quest['A']." </label> <br>";
+        }
+        if(isset($quest['B'])){
+        echo "<input type='radio' id='B$qselector' name='ANSW_$qselector' value='".$quest['B']."' required> <label for='B$qselector'> B) ".$quest['B']." </label> <br>";
+        }
+        if(isset($quest['C'])){
+        echo "<input type='radio' id='C$qselector' name='ANSW_$qselector' value='".$quest['C']."' required> <label for='C$qselector'> C) ".$quest['C']." </label> <br>";
+        }
+        if(isset($quest['D'])){
+        echo "<input type='radio' id='D$qselector' name='ANSW_$qselector' value='".$quest['D']."' required> <label for='D$qselector'> D) ".$quest['D']." </label> <br>";
+        }
+        if(isset($quest['E'])){
+        echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>";
+        }
+      echo "<hr> <button id='sq". $quest['QUESTION_NUM'] ."' type='button' onclick='skipQuestion(q". $quest['QUESTION_NUM'] .")'>Пропустить вопрос</button> </div>";
+      $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
+      $qselector++;
+      }
+    }
   }
 echo "
 </form>

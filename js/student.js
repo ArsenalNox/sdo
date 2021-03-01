@@ -236,3 +236,18 @@ function checkTestIntegrity(len, testId){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("len="+len+"&id="+testId);
 }
+
+function skipQuestion(id){
+  if(confirm('Вы уверенны что хотите пропустить это задание?')){
+    var inputs = id.querySelectorAll('input')
+    id.style.opacity = 0.5
+    console.log(inputs);
+    for(let i=0; i< inputs.length; i++){
+      inputs[i].required = false
+      console.log(inputs[i]);
+    }
+    var button = document.getElementById('s'+id.id)
+    button.innerText = 'Вопрос пропущен'
+    button.onclick = false
+  }
+}
