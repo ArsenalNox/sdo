@@ -604,6 +604,9 @@
   font-size: 22px;
   margin-bottom: 20px;
 }
+.b-popup .b-popup-content .studentPanel {
+  padding: 15px;
+}
 .b-popup .b-popup-content .studentPanel img {
   width: 100%;
 }
