@@ -11,6 +11,7 @@ $uid = $_SESSION['UID'];
   <head>
     <link rel="stylesheet" href="css/student.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/reviewform.css">
     <!-- <link rel="stylesheet" href="css/media.css"> -->
     <meta charset="utf-8">
     <title>Результаты теста</title>
@@ -85,7 +86,7 @@ $uid = $_SESSION['UID'];
         )";
         $create_table = mysqli_query($conn, $resulttable_sql);
         for ($i=1; $i < $_SESSION['QUESTIONS_QUANTITY']+1; $i++) {
-          echo "вопрос $i";
+          // echo "вопрос $i";
           $variant = $_SESSION["QUESTION_VAR_$i"];
           $question_text = $_SESSION["QUESTION_$i"];
           $question_answer_given = $_POST["ANSW_$i"];
@@ -120,9 +121,14 @@ $uid = $_SESSION['UID'];
       }
       echo "
       <p> Ваш результат был сохранён! </p>
-      <p> Процент правильных ответов: " .$percent. " </p>
-      <a class='home' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>
-      ";
+      <section class='review'>
+        <h2>Форма для предложений</h2>
+        <div style='display: grid;width: 100%;'>
+        <textarea name='content' id='rc1' cols='30' rows='10'></textarea>
+        <button onclick='ur_send()' class='button'>Отправить</button>
+        </div>
+      </section>
+      <a class='home' style='border: 0;border-radius: 10px;padding: 5px;background: #29a8df;font-family: Panton-Bold;font-size: 20px;width: fit-content;height: min-content;text-decoration: none; color:#fff' href='index.php?status=true&test=".$result_table_name."'> Вернутся на главную </a> </fieldset> </section>";
       echo "
       <script type='text/javascript' src='js/student.js'></script>
       <script type='text/javascript'>
@@ -142,7 +148,29 @@ $uid = $_SESSION['UID'];
  <script type="text/javascript">
    document.getElementById('student_test_status').value = t_cmp;
    set_test_status();
-   window.location.href = "index.php";
+  //  window.location.href = "index.php";
  </script>
+ <script>
+        function ur_send()
+        {
+            var content = document.getElementById('rc1').value
+            content =  JSON.stringify(content);
+
+            var xhttp = new XMLHttpRequest();
+  	        xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    try{
+                        let response = JSON.parse(this.response)
+                        alert(response.message)
+                    } catch {
+                        console.log(this.response);
+                    }
+                } 
+		    }   	
+            xhttp.open("POST", "php/functions/send_review.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        	xhttp.send("content="+content);
+        }
+    </script>
   </body>
 </html>

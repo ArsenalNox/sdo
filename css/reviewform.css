@@ -1,0 +1,23 @@
+.review textarea {
+  width: 97%;
+  height: 150px;
+  font-size: 20px;
+  margin-right: 20px;
+  padding: 7px;
+}
+.review button {
+  margin-bottom: 20px;
+  margin-top: 15px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px;
+  background: #29a8df;
+  font-family: Panton-Bold;
+  font-size: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-min-content;
+  height: min-content;
+}
