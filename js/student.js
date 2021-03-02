@@ -224,11 +224,12 @@ function checkTestIntegrity(len, testId){
     		if (this.readyState == 4 && this.status == 200) {
           try{
             resp = JSON.parse(this.response)
-            if(parseInt(resp[0].question_quantity) !== len){
+            if(parseInt(resp[0][0].question_quantity) !== len){
               window.location.reload()
+              console.log((resp[0][0].question_quantity !== len))
             }
           }catch (e) {
-            console.log(e, this.response);
+            console.log(e, this.response, resp);
           }
         } 
 		}	
