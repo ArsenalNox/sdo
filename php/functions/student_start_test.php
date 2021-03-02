@@ -112,7 +112,7 @@ foreach ($json_a as $struct => $quest) {
         if(isset($quest['E'])){
         echo "<input type='radio' id='E$qselector' name='ANSW_$qselector' value='".$quest['E']."' required> <label for='E$qselector'> E) ".$quest['E']." </label> <br>";
         }
-      echo "<hr> <button id='sq". $quest['QUESTION_NUM'] ."' type='button' onclick='skipQuestion(q". $quest['QUESTION_NUM'] .")'>Пропустить вопрос</button> </div>";
+      echo "<hr> <button id='sq". $quest['QUESTION_NUM'] ."' type='button'>Пропустить вопрос</button> </div>";
       $_SESSION['QUESTIONS_QUANTITY'] = $qselector;
       $qselector++;
       }

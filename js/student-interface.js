@@ -14,6 +14,8 @@ function shuffle_divs() {
   while (divs.length) {
     selector = divs.splice(Math.floor(Math.random() * divs.length), 1);
     selector[0].id = 'q'+question_num;
+    selector[0].querySelector('button').id = 'sq'+question_num
+    selector[0].querySelector('button').onclick = skipQuestion.bind(this, ('q'+question_num))
     parent.append(selector[0]);
     $("#q"+question_num).children("h4").text('Задание № '+question_num);
     question_num++;

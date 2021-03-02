@@ -238,7 +238,10 @@ function checkTestIntegrity(len, testId){
 	xhttp.send("len="+len+"&id="+testId);
 }
 
-function skipQuestion(element){
+function skipQuestion(id){
+
+  element = document.getElementById(id)
+  console.log(id, element);
   if(confirm('Вы уверенны что хотите пропустить это задание?')){
     var inputs = element.querySelectorAll('input')
     element.style.opacity = 0.5
