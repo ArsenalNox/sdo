@@ -136,7 +136,7 @@
 }
 
 .help {
-  position: absolute;
+  position: fixed;
   top: 94%;
   left: 2%;
   background: #29a8df;
