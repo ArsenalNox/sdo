@@ -3,7 +3,7 @@
 include_once "../../dtb/dtb.php";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 		if(isset($_POST['group'])){
-			$groupNumber = preg_replace('/[^0-9]/',' ',$_POST['group']);
+			$groupNumber = trim(preg_replace('/[^0-9]/',' ',$_POST['group']));
 		} else {
 			$groupNumber = '';
 		}
@@ -20,6 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   	}else{
 			echo "<p>
 			Отсутсвуют модули для данного класса по выбранному предмету
+			<span style='display: none'>
+			$groupNumber
+			</span>
 			</p>";
 		}
 }
