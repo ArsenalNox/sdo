@@ -89,6 +89,7 @@ if(!empty($rows)){
               $row[mb_convert_encoding('задание '.$row_['id'], 'Windows-1251')] = mb_convert_encoding('Нет', 'Windows-1251');
             }
           }
+          //TODO:ВОТ ТУТ ВОТ ДОЛЖНО БЫТЬ СОСТАВЛЕНИЕ ОСТАЛЬНЫХ ТРЕБОВАНИЙ МИНИСТРА 
         }
 
         if($i == 0)

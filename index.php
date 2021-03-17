@@ -2,7 +2,7 @@
 <?php
 // TODO: Логирование ученика
 // TODO: Обнуление статуса ученика когда он закрывает страницу
-
+    error_reporting(E_ALL);
     include_once "dtb/dtb.php";
     session_start();
     $ip = $_SERVER['REMOTE_ADDR'];
