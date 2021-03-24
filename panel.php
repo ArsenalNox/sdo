@@ -20,6 +20,9 @@
 <!-- <button id="tema" onclick="tema()">Темная тема</button> --> <div class="wrapper">
 
 <section class='student-ip-panel'>
+<fieldset class='fieldset'>
+<a href="php/functions/newExport.php">Скачать</a>
+</fieldset>
   <fieldset class="fieldset">
     <legend align="center"><h1>Устройства</h1></legend>
     <div class="knopka">
