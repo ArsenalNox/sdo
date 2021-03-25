@@ -2,13 +2,23 @@
 session_start();
 
 require_once '../../dtb/dtb.php';
+
+require_once '../vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Style\Conditional;
+
+
 if(isset($user) & isset($password) & isset($server) & isset($database)){
     $dtb = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);
 } else {
     $user = 'root';
     $password = '';
     $server = 'localhost';
-    $database = 'sdo3';
+    $database = 'sdo';
 
     $dtb = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);
 }
@@ -18,7 +28,9 @@ function sortStudentsByErrors($students_array){
     $tmp = '';
     $sorted = false;
     $swichOccured = false;
+    $loops = 0; //На всякий случай, если вдруг попадётся бесконечный цикл
     while(!$sorted){   
+        $loops++;
         $swichOccured = false;
         for($i = 0; $i<count($students_array)-1; $i++){
             if($students_array[$i]['wrong_answers'] > $students_array[$i+1]['wrong_answers']){
@@ -31,18 +43,13 @@ function sortStudentsByErrors($students_array){
         if(!$swichOccured){
             $sorted = true;
         }
+        if($loops>1000){
+            break;
+        }
     }
     $sorted_array = $students_array;
     return $sorted_array;
 }
-
-require '../vendor/autoload.php';
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Style\Color;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
-use PhpOffice\PhpSpreadsheet\Style\Conditional;
 
 //TODO: Опции выборки 
 
@@ -59,7 +66,11 @@ if($stm){
 
     //Заголовки колонн
     $sheet->setCellValueByColumnAndRow(1, $s_column, 'Номер записи');
-    $sheet->setCellValueByColumnAndRow(2, $s_column, 'ФИО'); $s_column++; //Перейти на строку ниже Условное форматирование 
+    $sheet->setCellValueByColumnAndRow(2, $s_column, 'ФИО'); 
+    
+    $s_column++; //Перейти на строку ниже 
+
+    //Условное форматирование 
     $condition_correctness_true = new Conditional(); 
     $condition_correctness_true->setConditionType(Conditional::CONDITION_CELLIS) 
                         ->setOperatorType(Conditional::OPERATOR_EQUAL) 
@@ -92,14 +103,17 @@ if($stm){
         $test_result['id'] = $row['id'];
         $test_result['student'] = $row['student'];
 
-        $s_row = 3;
+        $s_row = 3; 
 
         $question_count = 0; 
         $wrong_answers = 0;
         
         if($dtb->query($sql)){
+
             $result = $dtb->query($sql);
+
             while($tr_row = $result->fetch(PDO::FETCH_ASSOC)){ //Итерация по вопросам конкретного теста 
+
                 //Записывание название колонны
                 $question_count++;
                 $sheet->setCellValueByColumnAndRow($s_row,   1, 'Задание '.$tr_row['id']);
@@ -128,8 +142,8 @@ if($stm){
                 }
                 
                 if($hideUnnecessaryColumns){
-                $sheet->getColumnDimensionByColumn($s_row+1)->setVisible(false);               
-                $sheet->getColumnDimensionByColumn($s_row)->setVisible(false);               
+                    $sheet->getColumnDimensionByColumn($s_row+1)->setVisible(false);               
+                    $sheet->getColumnDimensionByColumn($s_row)->setVisible(false);               
                 }
 
                 //Применение условного форматирования 
@@ -142,6 +156,7 @@ if($stm){
             $sheet->setCellValueByColumnAndRow($s_row, $s_column, "$wrong_answers");
             $sheet->setCellValueByColumnAndRow($s_row, 1, "Ошибки");
 
+
             if($wrong_answers != 0){
                 $percent = round($wrong_answers/$question_count*100);
             } else {
@@ -149,9 +164,11 @@ if($stm){
             }
             $sheet->setCellValueByColumnAndRow($s_row+1, $s_column, ' '.$percent.'%');
 
+            //TODO: Добавление форматирования процентов неправильных ответов по цветовой шкале 
+            
             $test_result['wrong_answers'] = $wrong_answers;
             $test_result['percent'] = ' '.$percent.'%';
-            $students_unsorted[] = $test_result;
+            $students_unsorted[] = $test_result; //Добавление в массив для дальнешей сортировки
 
             $wrong_answers = 0;
         } else { 
@@ -159,6 +176,7 @@ if($stm){
         }
         $s_column++;
     }
+
     //Пишем итоговую статистику 
     $sheet->setCellValueByColumnAndRow(1, $s_column+2, 'Начало статистики');
     $sheet->setCellValueByColumnAndRow(1, $s_column+3, "Кол-во вопросов: $question_count");
@@ -168,12 +186,12 @@ if($stm){
     $sheet->fromArray($students_sorted, null, 'A'.($s_column+6));
     
     for($i=0; $i<count($students_sorted); $i++){ //Применение стиля для новой таблицы
-        for($j=0; $j<count($students_sorted[0]); $j){
-
+        for($j=0; $j<$question_count; $j++){
+            $sheet->getCellByColumnAndRow($j*3+5, $s_column+6+$i)->getStyle()->setConditionalStyles($all_conditional_styles);
         }
     }
 
-   
+    //Вывод файла 
     $writer = new Xlsx($spreadSheet);
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="demo.xlsx"');
