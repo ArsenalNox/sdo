@@ -18,11 +18,14 @@ if(isset($user) & isset($password) & isset($server) & isset($database)){
     $user = 'root';
     $password = '';
     $server = 'localhost';
-    $database = 'sdo';
+    $database = 'sdo3';
 
     $dtb = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);
 }
 
+/** Сотрирует массив со студетами по кол-ву ошибок 
+ * @param ($students_array) array string 
+ * */
 function sortStudentsByErrors($students_array){
     $sorted_array = [];
     $tmp = '';
@@ -51,8 +54,35 @@ function sortStudentsByErrors($students_array){
     return $sorted_array;
 }
 
-//TODO: Опции выборки 
+/**
+ * Применяет оболочку со статистикой к таблице 
+ * @param ($startRow) int - Номер начальной колонны (отступ в строке)
+ * @param ($startColumn) int
+ * @param ($lenght) int - Длина таблицы (Кол-во вопросов, только они учавстуют в обработке данных)
+ * @param ($height) int - Высота таблицы, кол-во учеников 
+ * @param ($endRow) int - На какой строке кончилась таблица
+ * @param ($endColumn) int - На какой колонке кончилась таблица 
+ * */
+function applyStatWrapper($startRow, $startColumn, $lenght, $height, $endRow, $endColumn){
+    global $sheet;
+    //Применение горизонтального стиля 
+    for($i=0; $i<$lenght; $i++){
+        $wrong_answers = 0;
+        $correct_answers = 0;
+        for($j=0; $j<$height; $j++){
+            if($sheet->getCellByColumnAndRow($startRow+$i*3, $startColumn-($j+1))->getValue() === 0){
+                $wrong_answers++;
+            }else if($sheet->getCellByColumnAndRow($startRow+$i*3, $startColumn-($j+1))->getValue() === 1){
+                $correct_answers++;
+            }
+        }
+        $sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn, $wrong_answers);
+        $sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn+1, round($wrong_answers/$height*100)."%");
+    }
+}
 
+
+//TODO: Опции выборки 
 $sql = 'SELECT * FROM test_results';
 $stm = $dtb->query($sql);
 if($stm){
@@ -125,7 +155,7 @@ if($stm){
                 $test_result["Вариант_$question_count"] = $tr_row['Question_var'];
                 $test_result[$question_count] = (($tr_row['Correctness']) ? "1" : "0");
 
-                //1нные 
+                //Данные 
                 $sheet->setCellValueByColumnAndRow($s_row,   $s_column, $tr_row['id']);
                 $sheet->setCellValueByColumnAndRow($s_row+1, $s_column, $tr_row['Question_var']);
                 $sheet->setCellValueByColumnAndRow($s_row+2, $s_column, (($tr_row['Correctness']) ? "1" : "0"));
@@ -171,11 +201,15 @@ if($stm){
             $students_unsorted[] = $test_result; //Добавление в массив для дальнешей сортировки
 
             $wrong_answers = 0;
+
+            //КОНЕЦ ИНДИВИДУАЛЬНОГО УЧЕНИКА 
         } else { 
             $sheet->setCellValueByColumnAndRow($s_row, $s_column, "Не удалось загрузить результат, таблица результатов отсутсвует");
         }
         $s_column++;
     }
+    
+    applyStatWrapper(5, $s_column, $question_count, count($students_unsorted), 0, 0);
 
     //Пишем итоговую статистику 
     $sheet->setCellValueByColumnAndRow(1, $s_column+2, 'Начало статистики');
@@ -190,6 +224,11 @@ if($stm){
             $sheet->getCellByColumnAndRow($j*3+5, $s_column+6+$i)->getStyle()->setConditionalStyles($all_conditional_styles);
         }
     }
+    
+    $s_column += 6 + count($students_sorted);
+    
+    $s_row = 5; //Передвинуть указатель для статистики 
+    applyStatWrapper($s_row, $s_column, $question_count, count($students_sorted), 0 ,0);
 
     //Вывод файла 
     $writer = new Xlsx($spreadSheet);
