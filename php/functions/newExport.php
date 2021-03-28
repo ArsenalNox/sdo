@@ -2,7 +2,6 @@
 session_start();
 
 require_once '../../dtb/dtb.php';
-
 require_once '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -11,14 +10,13 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Conditional;
 
-
 if(isset($user) & isset($password) & isset($server) & isset($database)){
     $dtb = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);
 } else {
     $user = 'root';
     $password = '';
     $server = 'localhost';
-    $database = 'sdo';
+    $database = 'sdo3';
 
     $dtb = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);
 }
@@ -79,7 +77,7 @@ function applyStatWrapper($startRow, $startColumn, $lenght, $height){
         $sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn, $wrong_answers);
         $sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn+1, round($wrong_answers/$height*100)."%");
 
-        //$sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn+1, calculateCellColorByCorrectPercent($wrong_answers/$height));
+//        $sheet->setCellValueByColumnAndRow($startRow+$i*3+4, $startColumn+1, calculateCellColorByCorrectPercent($wrong_answers/$height));
 
         $sheet->setCellValueByColumnAndRow($startRow+$i*3, $startColumn+1, round($wrong_answers/$height*100)."%");
         $sheet->getCellByColumnAndRow($startRow+$i*3, $startColumn+1)->getStyle()->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB(calculateCellColorByCorrectPercent($wrong_answers/$height));
@@ -87,6 +85,9 @@ function applyStatWrapper($startRow, $startColumn, $lenght, $height){
 }
 
 function calculateCellColorByCorrectPercent($percent){
+    if(strpos($percent, '%') !== false){
+        $percent = preg_replace('/%/', '', $percent)/100;
+    }
     $red = round(256*$percent);
     $green = round(256*(1-$percent));
     if($red>255) $red = 255;
@@ -138,7 +139,6 @@ if($stm){
 
     //Для составления второй отсортированной таблицы
     $students_unsorted = [];
-
 
     while($row = $stm->fetch(PDO::FETCH_ASSOC)){ //Итерация через все результаты
         //Записывам id/фио
@@ -192,7 +192,6 @@ if($stm){
                     $sheet->getColumnDimensionByColumn($s_row+1)->setVisible(false);
                     $sheet->getColumnDimensionByColumn($s_row)->setVisible(false);
                 }
-
                 //Применение условного форматирования
                 $sheet->getCellByColumnAndRow($s_row+2, $s_column)->getStyle()->setConditionalStyles($all_conditional_styles);
 
@@ -203,13 +202,13 @@ if($stm){
             $sheet->setCellValueByColumnAndRow($s_row, $s_column, "$wrong_answers");
             $sheet->setCellValueByColumnAndRow($s_row, 1, "Ошибки");
 
-
             if($wrong_answers != 0){
                 $percent = round($wrong_answers/$question_count*100);
             } else {
                 $percent = 0;
             }
             $sheet->setCellValueByColumnAndRow($s_row+1, $s_column, ' '.$percent.'%');
+            $sheet->getCellByColumnAndRow($s_row+1, $s_column)->getStyle()->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB(calculateCellColorByCorrectPercent($percent/100));
 
             //TODO: Добавление форматирования процентов неправильных ответов по цветовой шкале
 
@@ -239,6 +238,9 @@ if($stm){
     for($i=0; $i<count($students_sorted); $i++){ //Применение стиля для новой таблицы
         for($j=0; $j<$question_count; $j++){
             $sheet->getCellByColumnAndRow($j*3+5, $s_column+6+$i)->getStyle()->setConditionalStyles($all_conditional_styles);
+            if($j == $question_count-1){
+                $sheet->getCellByColumnAndRow($j*3+7, $s_column+6+$i)->getStyle()->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB(calculateCellColorByCorrectPercent($students_sorted[$i]["percent"]));
+            }
         }
     }
 
