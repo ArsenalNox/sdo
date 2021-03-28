@@ -20,13 +20,17 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
     if(writeHeader): #записать названия колонок и скрыть ненужные 
         for attr in students[0]:
             print(attr)
+
             if attr in headerNames:
                 sheet.write(0, column, headerNames[attr])
+
             if attr.isdigit():
                 sheet.write(0, column, attr)               
+            
             if 'test_num_' in attr:
                 sheet.write(0, column, 'Номер задания')
                 sheet.set_column(column, column, None, None, {'hidden': True})
+            
             if 'test_var_' in attr: 
                 sheet.write(0, column, 'Вариант')
                 sheet.set_column(column, column, None, None, {'hidden': True})
@@ -37,10 +41,10 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
     for student in students: #Записываение всех данных массива
         tableHeight+=1
         for attr in student:
-            
             if attr.isdigit(): #Если колонна - данных о задании 
                 if attr not in wrongs: #Если нет в словере 
                     wrongs[attr] = {'col': 0, 'val': 0}
+
                 if attr in wrongs:
                     if student[attr] == 0: #Увеличить значение если ответ неправильный 
                         wrongs[attr]['val'] += 1
@@ -58,7 +62,6 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
                 if '%' in str(student[attr]):
                     percent = int(student[attr].split('%')[0])/100
                     sheet.write(row, column, student[attr], workBook.add_format({'bg_color': getCellColorByPercent(percent, True)}))
-                    print('Coloring percentile cell with vale {}'.format(percent) )
                 else: 
                     sheet.write(row, column, student[attr])
 
@@ -69,9 +72,10 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
     for stat in wrongs: #Пройтись по неправильным вопросам и записать
         sheet.write(startRow+tableHeight, wrongs[stat]['col'], wrongs[stat]['val'])
         sheet.write(startRow+tableHeight+1, wrongs[stat]['col'], wrongs[stat]['val']/tableHeight*100, workBook.add_format({'bg_color': getCellColorByPercent(wrongs[stat]['val']/tableHeight, False)}))
-    tableHeight+=3
+    tableHeight+=2
     print(columnsToCheck, tableHeight, startRow, wrongs)
-    return tableHeight
+
+    return tableHeight, wrongs
 
 def getCellColorByPercent(percent:float, reverse:bool):
     """Возвращает цвет в зависимости от процента ошибок"""
@@ -89,7 +93,7 @@ def getCellColorByPercent(percent:float, reverse:bool):
         green = hex(round(255*(1-percent))).split('x')[-1]
         return "{}{}00".format(red, green)
 #-----------------------
-
+print('#----------------')
 argms = sys.argv
 
 dbConn = mysql.connector.connect(
@@ -150,7 +154,25 @@ for line in result:
     student['percent_correct'] = line[6]
     studentsUnsorted.append(student)
 
-lastIndex = writeTable(workSheet, studentsUnsorted, 1, 0, True)
-writeTable(workSheet, sorted(studentsUnsorted, key=itemgetter('wrong_answers')), lastIndex+3, 0, False)
-workBook.close()
+table1 = writeTable(workSheet, studentsUnsorted, 1, 0, True)
+lastIndex = table1[0]
+table2 = writeTable(workSheet, sorted(studentsUnsorted, key=itemgetter('wrong_answers')), lastIndex+3, 0, False)
 
+
+print(table1[0], table1[1]['1']['col'], table1[0], table1[1][list(table1[1].keys())[-1]]['col'])
+
+chart = workBook.add_chart({'type': 'column'})
+chart.add_series({
+    'values': ['Sheet1', table1[0]-1, table1[1]['1']['col'], table1[0]-1, table1[1][list(table1[1].keys())[-1]]['col']],    
+    'gap': 2
+    })
+chart.set_y_axis({'major_gridlines': {'visible': False}})
+
+chart2 = workBook.add_chart({'type': 'column'})
+
+workSheet.insert_chart( table2[0]*2+5, 1, chart)
+
+
+workBook.close()
+print('\n{}'.format(table1))
+print('#--------------')
