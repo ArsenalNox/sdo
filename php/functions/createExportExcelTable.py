@@ -3,6 +3,8 @@ import sys
 import mysql.connector
 from operator import itemgetter
 from xlsxwriter import utility
+from datetime import datetime
+
 #-----------------------
 
 def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
@@ -16,6 +18,8 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
     columnsToCheck = []
     tableHeight = 0
     wrongs = {}
+    roundedCompletionPercent = 0;
+    answersAmount = {'Correct': 0, 'Wrong': 0}
 
     if(writeHeader): #записать названия колонок и скрыть ненужные 
         for attr in students[0]:
@@ -39,6 +43,8 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
         column = startColumn
 
     for student in students: #Записываение всех данных массива
+        if len(student) < 6:
+            continue
         tableHeight+=1
         for attr in student:
             if attr.isdigit(): #Если колонна - данных о задании 
@@ -55,12 +61,15 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
 
                 if student[attr] == 1: #Если ответ правильный окрасить в зелёный 
                     sheet.write(row, column, student[attr], workBook.add_format({'bg_color':'#00DD00'}))
+                    answersAmount['Correct'] += 1
                 else:
                     sheet.write(row, column, student[attr], workBook.add_format({'bg_color':'#DD0000'}))
+                    answersAmount['Wrong'] += 1
                 
             else: 
                 if '%' in str(student[attr]):
                     percent = int(student[attr].split('%')[0])/100
+                    roundedCompletionPercent+=percent
                     sheet.write(row, column, student[attr], workBook.add_format({'bg_color': getCellColorByPercent(percent, True)}))
                 else: 
                     sheet.write(row, column, student[attr])
@@ -69,26 +78,42 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
         row += 1 
         column = startColumn
 
+
     for stat in wrongs: #Пройтись по неправильным вопросам и записать
         sheet.write(startRow+tableHeight, wrongs[stat]['col'], wrongs[stat]['val'])
         sheet.write(startRow+tableHeight+1, wrongs[stat]['col'], wrongs[stat]['val']/tableHeight*100, workBook.add_format({'bg_color': getCellColorByPercent(wrongs[stat]['val']/tableHeight, False)}))
-    tableHeight+=2
+
+    roundedCompletionPercent = roundedCompletionPercent/(len(students)/100)
+    sheet.write(startRow+tableHeight+2, startColumn, 'Общий процент завершения: {}'.format(round(roundedCompletionPercent)))
+    sheet.write(startRow+tableHeight+3, startColumn, 'Количество учеников, сдавших тест: {} '.format(len(students)))
+    sheet.write(startRow+tableHeight+4, startColumn, 'Правильные ответы: {}'.format(answersAmount['Correct']))
+    sheet.write(startRow+tableHeight+5, startColumn, 'Неправильные ответы: {} '.format(answersAmount['Wrong']))
+
+    tableHeight+=6
+
     print(columnsToCheck, tableHeight, startRow, wrongs)
 
     return tableHeight, wrongs
+
 
 def getCellColorByPercent(percent:float, reverse:bool):
     """Возвращает цвет в зависимости от процента ошибок"""
     print('percent given {}'.format(percent))
     if reverse:
-        if percent == 0:
+        if percent == 0.0:
+            return 'FF0-00'
+        if percent == 1.0:
             return '00FF00'
+
         red = hex(round(255*percent)).split('x')[-1]
         green = hex(round(255*(1-percent))).split('x')[-1]
         return "{}{}00".format(green, red)
     else:
-        if percent == 0:
+        if percent == 0.0:
+            return 'FF0000'
+        if percent == 1.0:
             return '00FF00'
+
         red = hex(round(255*percent)).split('x')[-1]
         green = hex(round(255*(1-percent))).split('x')[-1]
         return "{}{}00".format(red, green)
@@ -103,7 +128,8 @@ dbConn = mysql.connector.connect(
         database = argms[4]
         )
 
-workBook = xlsxwriter.Workbook('result.xlsx')
+now = datetime.now()
+workBook = xlsxwriter.Workbook('{}.xlsx'.format(now.strftime("%d-%m-%Y_%H:%M:%S")))
 workSheet = workBook.add_worksheet()
 
 headerNames = { #Словарь для названий колонн
@@ -131,10 +157,10 @@ for line in result:
     student = {} 
     student['test_id'] = line[0]
     #student['student_id'] = line[1]
-    student['name'] = line[2]
-    student['class'] = line[3]
-    student['date'] = line[4].strftime("%Y-%m-%d")
-    student['module_name'] = line[5]
+    student['name'] = line[1]
+    student['class'] = line[2]
+    student['date'] = line[3].strftime("%Y-%m-%d")
+    student['module_name'] = line[4]
 
     sql = "SELECT * FROM tr_{}".format(student['test_id'])
     cursor.execute(sql)
@@ -151,15 +177,16 @@ for line in result:
                 wrongAnswers+=1
 
     student['wrong_answers'] = wrongAnswers
-    student['percent_correct'] = line[6]
+    student['percent_correct'] = line[5]
     studentsUnsorted.append(student)
+
 
 table1 = writeTable(workSheet, studentsUnsorted, 1, 0, True)
 lastIndex = table1[0]
 table2 = writeTable(workSheet, sorted(studentsUnsorted, key=itemgetter('wrong_answers')), lastIndex+3, 0, False)
 
-
 print(table1[0], table1[1]['1']['col'], table1[0], table1[1][list(table1[1].keys())[-1]]['col'])
+print('%:{}'.format(table1[-1]))
 
 chart = workBook.add_chart({'type': 'column'})
 chart.add_series({
@@ -174,5 +201,4 @@ workSheet.insert_chart( table2[0]*2+5, 1, chart)
 
 
 workBook.close()
-print('\n{}'.format(table1))
 print('#--------------')
