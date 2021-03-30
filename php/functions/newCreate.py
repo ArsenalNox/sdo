@@ -47,9 +47,7 @@ def writeTable(sheet, students:list, row:int, column:int, writeHeader:bool):
             continue
         tableHeight+=1
         for attr in student:
-            if attr.isdigit(): #Если колонна - данных о задании 
-                if attr not in wrongs: #Если нет в словере 
-                    wrongs[attr] = {'col': 0, 'val': 0}
+            if attr.isdigit(): #Если колонна - данных о задании if attr not in wrongs: #Если нет в словере wrongs[attr] = {'col': 0, 'val': 0}
 
                 if attr in wrongs:
                     if student[attr] == 0: #Увеличить значение если ответ неправильный 
