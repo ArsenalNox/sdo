@@ -6,8 +6,8 @@ $group_id = $_POST['group'];
 $student = $_SESSION['UID'];
 $sql = "SELECT * FROM current_test WHERE group_to_test = '$group_id'";
 $result = mysqli_query($conn, $sql);
-$csql = "SELECT * FROM test_results WHERE student = '$student'";
-$check = mysqli_query($conn, $csql);
+$csql = "SELECT * FROM test_results WHERE student = '$student' AND class = '$group_id' "; //Исправление 4.26.2021 для питона 
+$ch eck = mysqli_query($conn, $csql);
 $completed[] = 'null';
 if($check){
   if(mysqli_num_rows($check) > 0){
