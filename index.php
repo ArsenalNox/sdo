@@ -119,7 +119,7 @@
         <div class="test" id='test'>
         </div>
         </fieldset>
-        <button class="help" onclick="PopUpShow()">Инструкия</button>
+        <button class="help" onclick="PopUpShow()">Инструкция</button>
         <div class="b-popup" id="popup1">
             <div class="b-popup-content">
                 <a href="javascript:PopUpHide()" class="close">X</a>
